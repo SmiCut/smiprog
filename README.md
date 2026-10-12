@@ -81,6 +81,15 @@ theme and shortcode: the automated package verifier uses a simulated WordPress
 page. Distribution packages include LICENSE.
 
 See [docs/development.md](docs/development.md) for architecture and test scope.
-The MIT license does not include access to SmiCut's hosted AI service. Arrange
-permitted access or configure your own compatible backend for third-party deployments.
+## Material Selector on your website
+
+Email [oliver@smicut.se](mailto:oliver@smicut.se?subject=Material%20Selector%20website%20access)
+with your company name, website address(es), program and language to request access
+to SmiCut's optional AI material service. Once SmiCut confirms the approved website,
+the app connects automatically. **No API key is needed.** The existing limit of
+30 requests per minute per IP address remains.
+
+Follow the [three-step Material Selector guide](MATERIAL_SELECTOR.md).
+The calculators also work without AI access by selecting materials manually.
+Hosted service access is separate from the MIT software license.
 SmiCalc is maintained at [SmiCut/smicalc](https://github.com/SmiCut/smicalc).

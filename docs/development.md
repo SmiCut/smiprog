@@ -40,6 +40,10 @@ The optional Material Selector calls SmiCut's separately hosted service at
 it before scripts load. Keep the shared request contract, language codes and
 canonical material keys stable. Service access is separate from MIT licensing.
 
+For SmiCut-hosted access, follow [the website approval guide](../MATERIAL_SELECTOR.md).
+Website approval requires no browser API key and no changes to the default service
+URL. The existing short-term limit is 30 requests per minute per IP address.
+
 Keep widget CSS scoped under `#smiprog-app`; see the embedding guide at the root.
 Changes to calculations require updated technical documentation, relevant tests
 and a review of the controller/post scope. Experimental Heidenhain output keeps

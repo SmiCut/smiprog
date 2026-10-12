@@ -61,3 +61,10 @@ Use `npm run test:languages` for package integrity and `npm run verify:languages
 for desktop/mobile loading, selected locale, Material Selector language, image
 loading and CNC output. Add translated dictionaries before adding new locale
 codes to `tools/build-language-packages.mjs`.
+
+## CNC motion regression checks
+
+See [CNC motion calculations and verification](cnc-motion-and-validation.md) for
+the axial/tapered milling corrections, pass rejection rules, independent command
+checks and exact reviewed deviations from the immutable Excel references.
+`npm run test:cnc-motion` is included in `npm test`.

@@ -1,0 +1,630 @@
+[
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "41f9828d1d90b6a11ce321ca12182e2d2aadc8c20942c22c7ad573428dfba24b",
+    "cases": [
+      "baseline-fanuc-recalc-milling-axial-custom",
+      "fanuc-recalc-milling-axial-custom.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 23,
+        "excel": "G00 Z3.",
+        "corrected": "G00 Z3.624"
+      },
+      {
+        "line": 26,
+        "excel": "G00 Z-4.",
+        "corrected": "G00 Z-4.624"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "ca2fa28737505ea5be3f13f058cadf14a94b074e228898ae42ed3ced8072922b",
+    "cases": [
+      "baseline-fanuc-recalc-milling-tapered-npt",
+      "baseline-fanuc-recalc-milling-nptf-tapered",
+      "fanuc-recalc-milling-nptf-tapered.json",
+      "fanuc-recalc-milling-tapered-npt.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 11,
+        "excel": "G00 Z18.031",
+        "corrected": "G00 Z18.03"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "bb1a066686f89d7779bd5073119dac1d8f7c87193aa984f29ad1ec743bcac0e8",
+    "cases": [
+      "baseline-fanuc-recalc-milling-bspt-tapered",
+      "fanuc-recalc-milling-bspt-tapered.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 11,
+        "excel": "G00 Z19.113",
+        "corrected": "G00 Z19.114"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "29d3816a4fe0f3d59acf132fa325c36ce598e4e3a7e3b8dea7d198152b4a1e9c",
+    "cases": [
+      "profile-bspt"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 11,
+        "excel": "G00 Z10.867",
+        "corrected": "G00 Z10.866"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "cb2d53973a878eaeb324f588345b7be94e990f589028b0e47a2b7175e4797de5",
+    "cases": [
+      "profile-npt",
+      "profile-nptf"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 11,
+        "excel": "G00 Z-1.275",
+        "corrected": "G00 Z-1.274"
+      },
+      {
+        "line": 20,
+        "excel": "G00 Z10.823",
+        "corrected": "G00 Z10.824"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "616939a68b01cc96b705f2b7744c1711199ab1a7184bfd27799df6f85144a772",
+    "cases": [
+      "custom-diameter-2"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 23,
+        "excel": "G00 Z5.625",
+        "corrected": "G00 Z5.858"
+      },
+      {
+        "line": 26,
+        "excel": "G00 Z2.",
+        "corrected": "G00 Z1.766"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "4deccdd70d0db89ca3e7c26e50bd3cfe6f49e454e8c3ffb8f8fbc90b47fb9757",
+    "cases": [
+      "custom-diameter-3p999"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 23,
+        "excel": "G00 Z5.625",
+        "corrected": "G00 Z5.858"
+      },
+      {
+        "line": 26,
+        "excel": "G00 Z2.",
+        "corrected": "G00 Z1.766"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "085109783ba118745f9bd485030641f96d24b0e51b5c25495712112a07c94671",
+    "cases": [
+      "custom-diameter-4"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 23,
+        "excel": "G00 Z5.625",
+        "corrected": "G00 Z5.858"
+      },
+      {
+        "line": 26,
+        "excel": "G00 Z2.",
+        "corrected": "G00 Z1.766"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "add9d46a8ff4f8cab7680190a52ac201ca1f43d35c4f41d9fc8bf9d1f0b0e432",
+    "cases": [
+      "custom-diameter-4p001"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 23,
+        "excel": "G00 Z5.625",
+        "corrected": "G00 Z5.858"
+      },
+      {
+        "line": 26,
+        "excel": "G00 Z2.",
+        "corrected": "G00 Z1.766"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "bc60ed8a6b6a0ed73f2d4a61e5c6455d8eada80f2ef16b09ed0cd7ed648436a5",
+    "cases": [
+      "custom-diameter-7p5"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 11,
+        "excel": "G00 Z5.625",
+        "corrected": "G00 Z5.624"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "d6f1c7c8535dde3d69c98bb6d5b34ee2ee7a0de1a5e568e6e38c87a832bf9d14",
+    "cases": [
+      "custom-diameter-10"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 11,
+        "excel": "G00 Z5.625",
+        "corrected": "G00 Z5.624"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "3749f0189fc5a1c4470467bef7271c73eb660c6235821dfdba43cee715f44204",
+    "cases": [
+      "custom-diameter-11"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 11,
+        "excel": "G00 Z5.625",
+        "corrected": "G00 Z5.624"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "c792cc9d6f3c745a85d3e07b26086c990c31175aa6a93a05ff16802ffb551973",
+    "cases": [
+      "custom-diameter-12"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 11,
+        "excel": "G00 Z5.625",
+        "corrected": "G00 Z5.624"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "bcd39e45021fd6c8186f5f0ce806b99eb7954633421788c254bbad029bc32b0a",
+    "cases": [
+      "custom-diameter-20"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 11,
+        "excel": "G00 Z5.625",
+        "corrected": "G00 Z5.624"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "bd0772ff01cf5659a1887dc936beed19c48ee101951b784234c4899b07bf83e5",
+    "cases": [
+      "axial-length-100"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 23,
+        "excel": "G00 Z3.",
+        "corrected": "G00 Z3.624"
+      },
+      {
+        "line": 26,
+        "excel": "G00 Z22.",
+        "corrected": "G00 Z21.376"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "e2249b33967e7be81fe87331c193aaff58b97507eea11b770ba56297c601fa07",
+    "cases": [
+      "axial-length-200"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 23,
+        "excel": "G00 Z3.",
+        "corrected": "G00 Z3.624"
+      },
+      {
+        "line": 26,
+        "excel": "G00 Z122.",
+        "corrected": "G00 Z121.376"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "7411cc4635e1a5cef4c660de03a7b5e5fa0c60a26df5f448ce649ecdde9d422c",
+    "cases": [
+      "edge-length-1p499",
+      "edge-length-1p501"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 17,
+        "excel": "G00 Z-0.375",
+        "corrected": "G00 Z-0.223"
+      },
+      {
+        "line": 20,
+        "excel": "G00 Z17.",
+        "corrected": "G00 Z16.847"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "86f0f03c84cdacba53cdbfbd9c69705cb23f715991853031e5c6c9aaf515ca72",
+    "cases": [
+      "edge-length-3"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 17,
+        "excel": "G00 Z1.125",
+        "corrected": "G00 Z1.277"
+      },
+      {
+        "line": 20,
+        "excel": "G00 Z2.",
+        "corrected": "G00 Z1.847"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "heidenhain",
+    "referenceSha256": "401929ed649b566e79c96edc0f573a31804a9b8c4b048ddd3968fa3cd255bc8f",
+    "cases": [
+      "heidenhain-profile-bspt"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 18,
+        "excel": "18 L IZ+10.867 FMAX",
+        "corrected": "18 L IZ+10.866 FMAX"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "heidenhain",
+    "referenceSha256": "8396a77b9ad96ba969dacd8a67d54cd15af7553e5162501a974a3f109f76b784",
+    "cases": [
+      "heidenhain-profile-npt",
+      "heidenhain-profile-nptf"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 18,
+        "excel": "18 L IZ-1.275 FMAX",
+        "corrected": "18 L IZ-1.274 FMAX"
+      },
+      {
+        "line": 33,
+        "excel": "33 L IZ+10.823 FMAX",
+        "corrected": "33 L IZ+10.824 FMAX"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "heidenhain",
+    "referenceSha256": "3b2bafc23b5a509d1f81e61e041111cc67d7465d4debd2de985e80a844da40a1",
+    "cases": [
+      "heidenhain-axial-length-100"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 33,
+        "excel": "33 L IZ+3 FMAX",
+        "corrected": "33 L IZ+3.624 FMAX"
+      },
+      {
+        "line": 36,
+        "excel": "36 L IZ+22 FMAX",
+        "corrected": "36 L IZ+21.376 FMAX"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "314c5162c35577a4ff7046df6b7cd04935d165a6861ae6f659ccc6d4d3e66137",
+    "cases": [
+      "regression-angle-bspt-machining-center-2"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 11,
+        "excel": "G00 Z-1.216",
+        "corrected": "G00 Z-1.217"
+      },
+      {
+        "line": 20,
+        "excel": "G00 Z10.867",
+        "corrected": "G00 Z10.866"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "bd58b9b94b4928685678d59d626d01dce4bd7210e94c20609802ebcfc311f911",
+    "cases": [
+      "regression-angle-bspt-machining-center-3"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 11,
+        "excel": "G00 Z-1.208",
+        "corrected": "G00 Z-1.209"
+      },
+      {
+        "line": 20,
+        "excel": "G00 Z-1.208",
+        "corrected": "G00 Z-1.187"
+      },
+      {
+        "line": 29,
+        "excel": "G00 Z10.867",
+        "corrected": "G00 Z10.866"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "fbac4ad5796e3350d975e5d8d2c876b19a0e5477dcb74b93e756f08975143e73",
+    "cases": [
+      "fanuc-cached-milling-axial-1-pass.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 2,
+        "excel": "G00 G91 Z-35.587",
+        "corrected": "G00 G91 Z-36."
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "83d1448cb461fda68ee125e444ea5ac64763ead4ee70b8f14cdd668e27e75e1e",
+    "cases": [
+      "fanuc-cached-milling-axial-2-pass.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 17,
+        "excel": "G00 Z-1.",
+        "corrected": "G00 Z-0.587"
+      },
+      {
+        "line": 20,
+        "excel": "G00 Z0.",
+        "corrected": "G00 Z-0.413"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "7b30513dc37abe1eec3575805aed4ac9d48846efcd4eaca803ad746c0bafceb2",
+    "cases": [
+      "fanuc-cached-milling-axial-3-pass.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 2,
+        "excel": "G00 G91 Z-35.587",
+        "corrected": "G00 G91 Z-35.376"
+      },
+      {
+        "line": 23,
+        "excel": "G00 Z-1.",
+        "corrected": "G00 Z-0.376"
+      },
+      {
+        "line": 26,
+        "excel": "G00 Z0.",
+        "corrected": "G00 Z-0.624"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "ed1d61ab334d22e8f78f2b0609c6294a7794729198f50d26102d48ef96ea3020",
+    "cases": [
+      "fanuc-cached-milling-tapered-1-pass.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 2,
+        "excel": "G00 G91 Z-35.587",
+        "corrected": "G00 G91 Z-36."
+      }
+    ]
+  },
+  {
+    "controlSystemId": "fanuc",
+    "referenceSha256": "edbfd9fb841d23cbefc951b66623d2ee6e1a9097215980d2e35ae3b71c6b238b",
+    "cases": [
+      "fanuc-cached-milling-tapered-3-pass.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 2,
+        "excel": "G00 G91 Z-35.587",
+        "corrected": "G00 G91 Z-35.376"
+      },
+      {
+        "line": 20,
+        "excel": "G00 Z-5.375",
+        "corrected": "G00 Z-5.249"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "heidenhain",
+    "referenceSha256": "5126b962604720044a9feb6bdbd89fc09b38513cbb18f0dee742f0c0f159e51b",
+    "cases": [
+      "heidenhain-cached-milling-axial-1-pass.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 3,
+        "excel": "3 L IZ-35.587 FMAX",
+        "corrected": "3 L IZ-36 FMAX"
+      },
+      {
+        "line": 15,
+        "excel": "15 L IZ+-1 FMAX",
+        "corrected": "15 L IZ-1 FMAX"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "heidenhain",
+    "referenceSha256": "3d81ba618dadd1f56eb1efec240776ec27dcb5545d9c34aeb1674895badc943c",
+    "cases": [
+      "heidenhain-cached-milling-axial-2-pass.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 24,
+        "excel": "24 L IZ+-1 FMAX",
+        "corrected": "24 L IZ-0.587 FMAX"
+      },
+      {
+        "line": 27,
+        "excel": "27 L IZ+0 FMAX",
+        "corrected": "27 L IZ-0.413 FMAX"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "heidenhain",
+    "referenceSha256": "0c01a46dae3b7ced8a550030f50dc33e29325550e8bcaceac0496e26e92ccdd2",
+    "cases": [
+      "heidenhain-cached-milling-axial-3-pass.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 3,
+        "excel": "3 L IZ-35.587 FMAX",
+        "corrected": "3 L IZ-35.376 FMAX"
+      },
+      {
+        "line": 33,
+        "excel": "33 L IZ+-1 FMAX",
+        "corrected": "33 L IZ-0.376 FMAX"
+      },
+      {
+        "line": 36,
+        "excel": "36 L IZ+0 FMAX",
+        "corrected": "36 L IZ-0.624 FMAX"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "heidenhain",
+    "referenceSha256": "0fa56ef307ec16e849b2ccddd80cb51f13d333fc2696a8e2d73e0f93fa30081f",
+    "cases": [
+      "heidenhain-cached-milling-tapered-1-pass.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 3,
+        "excel": "3 L IZ-35.587 FMAX",
+        "corrected": "3 L IZ-36 FMAX"
+      }
+    ]
+  },
+  {
+    "controlSystemId": "heidenhain",
+    "referenceSha256": "c945723c0740d1ab5a16cbbce005d9286b6e937c34733a947e9dd04bff67a45d",
+    "cases": [
+      "heidenhain-cached-milling-tapered-3-pass.json"
+    ],
+    "reason": "milling-z-balance-2026-10-12",
+    "changes": [
+      {
+        "line": 3,
+        "excel": "3 L IZ-35.587 FMAX",
+        "corrected": "3 L IZ-35.376 FMAX"
+      },
+      {
+        "line": 18,
+        "excel": "18 L IZ-5.413 FMAX",
+        "corrected": "18 L IZ-5.375 FMAX"
+      },
+      {
+        "line": 33,
+        "excel": "33 L IZ-5.413 FMAX",
+        "corrected": "33 L IZ-5.249 FMAX"
+      }
+    ]
+  }
+]

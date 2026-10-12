@@ -63,3 +63,22 @@ test("the real core only marks supported, valid CNC output as available", () => 
     assert.equal(rejectsInputSafely(core.calculate(entry.input, data)), true, entry.id);
   }
 });
+
+test("reviewed motion corrections cannot hide changed feeds, counts or unreviewed Z values", () => {
+  const corrections = JSON.parse(fs.readFileSync(new URL('./cnc-reviewed-corrections.json', import.meta.url)));
+  const native = JSON.parse(fs.readFileSync(new URL('./excel-parity-oracle.json', import.meta.url)));
+  const reference = native.cases.find(e => e.id === 'heidenhain-axial-length-100').cncProgram;
+  const correction = corrections.find(e => e.cases.includes('heidenhain-axial-length-100'));
+  const corrected = reference.slice();
+  for (const change of correction.changes) corrected[change.line - 1] = change.corrected;
+  assert.equal(compareCncPrograms(corrected, reference, 'heidenhain').differences.length, 0);
+  for (const [before, after] of [['IZ+3.624', 'IZ+3.625'], ['Q1 =+10', 'Q1 =+9'], ['F156', 'F157']]) {
+    // Use a concrete feed token from this oracle instead of depending on one feed value.
+    const mutated = before.startsWith('F') ? corrected.map(l => l.replace(/ F(\d+)$/, (_, f) => ` F${Number(f)+1}`))
+      : corrected.map(l => l.replace(before, after));
+    assert.notDeepEqual(mutated, corrected);
+    assert.ok(compareCncPrograms(mutated, reference, 'heidenhain').differences.length);
+  }
+  const changedReference = reference.map(l => l.replace('Q1 =+10', 'Q1 =+9'));
+  assert.ok(compareCncPrograms(corrected, changedReference, 'heidenhain').differences.length);
+});

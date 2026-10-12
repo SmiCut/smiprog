@@ -1,0 +1,50 @@
+{
+  "name": "Excel recalculated Fanuc milling G stainless standard tool case",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceNotes": "Generated from a copied workbook after Microsoft Excel recalculation. Inputs were written to CNC sheet cells and visible output was read from CNC!F4:F150.",
+  "generatedBy": "apps/web/tools/export-excel-recalc-fixture.py",
+  "recalcCase": "fanuc-recalc-milling-g-stainless-standard",
+  "input": {
+    "processId": "machining-center",
+    "controlSystemId": "fanuc",
+    "threadProfileId": "g",
+    "materialId": "material-13",
+    "diameter": 30,
+    "pitch": 11,
+    "threadLength": 20,
+    "safetyDistance": 2,
+    "selectedToolId": "27",
+    "overrides": {
+      "cutterDiameter": null,
+      "cuttingEdgeLength": null,
+      "flutes": null,
+      "cuttingSpeed": null,
+      "feedPerTooth": null,
+      "radialPasses": null
+    }
+  },
+  "expectedCuttingData": {
+    "cutterDiameter": 12,
+    "cuttingEdgeLength": 26.55,
+    "flutes": 3,
+    "cuttingSpeed": 138,
+    "feedPerTooth": 0.03638742004975002,
+    "radialPasses": 1,
+    "axialPasses": 1,
+    "spindleSpeed": 3661,
+    "feedAtThreadDiameter": 400,
+    "centerFeed": 240,
+    "machiningTime": 22
+  },
+  "expectedCncProgram": [
+    "S3661 M3",
+    "G00 G91 Z-22.",
+    "G01 G41 X4.5 Y-4.5 F120",
+    "G03 X4.5 Y4.5 Z0.289 I0. J4.5",
+    "G03 X0. Y0. Z2.309 I-9. J0. F240",
+    "G03 X-4.5 Y4.5 Z0.289 I-4.5 J0. F1200",
+    "G01 G40 X-4.5 Y-4.5",
+    "G00 Z19.113"
+  ]
+}

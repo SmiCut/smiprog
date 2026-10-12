@@ -1,0 +1,214 @@
+key,en
+app.title,SmiProg - Thread Milling
+aria.calculator,SmiProg thread milling calculator
+aria.sections,SmiProg sections
+aria.machiningNotes,Machining notes
+aria.warning,Important warning
+tabs.start,Start<br>Page
+tabs.materialSelector,Material<br>Selector
+tabs.threadMilling,Internal Thread Milling
+tabs.compare,Compare
+tabs.information,Information
+start.selectTool,SELECT SMIPROG TOOL
+start.threadMilling.title,Internal Thread Milling
+start.threadMilling.description,"Calculate cutting data, select a SmiCut thread mill and generate a Fanuc CNC program."
+start.compare.title,Compare
+start.compare.description,"Compare two thread mills, machining time and cost per thread."
+start.information.title,Information
+start.information.description,Read the practical notes for using SmiProg before machining.
+start.materialSelector.title,SmiCut Material Selector
+start.materialSelector.description,Enter a material designation and SmiProg will apply the recommended SmiCut category.
+materialSelector.title,SmiCut Material Selector
+materialSelector.send,Send ➜
+materialSelector.sending,Sending
+materialSelector.selectedPrefix,Selected material category: 
+materialSelector.noExactMatch,No exact cutting data material category found in the latest recommendation.
+materialGroup.steel,Steel
+materialGroup.castIron,Cast iron
+materialGroup.stainlessSteel,Stainless steel
+materialGroup.titanium,Titanium
+materialGroup.nickel,Nickel
+materialGroup.copper,Copper
+materialGroup.aluminium,Aluminium
+materialGroup.inconel,Inconel
+materialGroup.graphite,Graphite
+materialDescriptor.steel-low-carbon,"low carbon, C < 0.25%"
+materialDescriptor.steel-medium-carbon,"medium carbon, C < 0.55%"
+materialDescriptor.steel-high-carbon,"high carbon, C < 0.85%"
+materialDescriptor.steel-low-alloy,low alloy
+materialDescriptor.steel-high-alloy,high alloy
+materialDescriptor.steel-hardened-hrc45,"hardened, HRC < 45"
+materialDescriptor.steel-hardened-hrc55,"hardened, HRC < 55"
+materialDescriptor.steel-hardened-hrc65,"hardened, HRC < 65"
+materialDescriptor.cast-iron-lamellar-hb150,lamellar graphite
+materialDescriptor.cast-iron-lamellar-hb300,lamellar graphite
+materialDescriptor.cast-iron-nodular-hb200,"nodular graphite, malleable"
+materialDescriptor.cast-iron-nodular-hb300,"nodular graphite, malleable"
+materialDescriptor.stainless-free-machining,free machining
+materialDescriptor.stainless-austenitic,austenitic
+materialDescriptor.stainless-ferritic-austenitic,ferritic and austenitic
+materialDescriptor.titanium-unalloyed,unalloyed
+materialDescriptor.titanium-alloyed-hb270,alloyed
+materialDescriptor.titanium-alloyed-hb350,alloyed
+materialDescriptor.nickel-unalloyed,unalloyed
+materialDescriptor.nickel-alloyed-hb270,alloyed
+materialDescriptor.nickel-alloyed-hb350,alloyed
+materialDescriptor.copper-unalloyed,unalloyed
+materialDescriptor.copper-brass-bronze,"brass, bronze"
+materialDescriptor.copper-high-strength-bronze,high strength bronze
+materialDescriptor.aluminium-unalloyed,unalloyed
+materialDescriptor.aluminium-alloyed-si-lt-0-5,"alloyed, Si < 0.5%"
+materialDescriptor.aluminium-alloyed-si-lt-10,"alloyed, Si < 10%"
+materialDescriptor.aluminium-alloyed-si-gt-10,"alloyed, Si > 10%"
+materialDescriptor.inconel-718,718
+materialDescriptor.graphite,graphite
+field.material,Material to machine
+field.threadProfile,Thread profile
+field.threadSize,Thread size
+field.threadDiameter,Thread diameter (mm)
+field.pitch,Pitch (mm)
+field.threadLength,Thread length (mm)
+field.safetyDistance,Safety distance (mm)
+field.tool,Tool
+field.cutterDiameter,Cutter diameter (mm)
+field.cuttingLength,Cutting length (mm)
+field.flutes,Flutes
+field.manufacturingProcess,Manufacturing process
+field.controlSystem,Control system
+field.threadHand,Thread hand
+field.programTemplate,Fanuc program template
+field.machineCostPerHour,Machine cost per hour (€)
+field.toolA,Tool A
+field.toolB,Tool B
+field.toolingCost,Tooling cost (€)
+field.toolLife,Tool life (minutes)
+field.cuttingSpeed,Cutting speed (m/min)
+field.feedPerTooth,Feed/tooth (mm/tooth)
+field.radialPassesMax,Radial passes (max 3)
+field.threadsPerInch,Threads per inch
+field.pitchInMillimeters,Pitch in millimeters
+placeholder.enterLength,Enter length
+placeholder.auto,Auto
+placeholder.cncProgram,Enter thread length to generate CNC program.
+note.title,NOTE:
+note.enterThreadLength,Enter thread length to select a matching tool.
+note.enterThreadGeometry,"Enter thread diameter, pitch and thread length."
+note.noMatchingTool,No matching tool was found for the selected thread and thread length.
+section.cuttingData,Cutting Data
+section.cncProgram,CNC Program
+section.compare,Compare
+cnc.disclaimer,Verify the CNC program in simulation or single block before machining. Machine-specific options and post settings can require adjustment.
+result.cuttingSpeed,Cutting speed
+result.feedTooth,Feed/tooth
+result.radialPasses,Radial passes
+result.max3,(max 3)
+result.axialPasses,Axial passes
+result.spindleSpeed,Spindle speed
+result.feedThreadDiameter,Feed at thread diameter
+result.feedCenter,Feed in center of mill
+result.timeToMillThread,Time to mill thread
+option.rightHandThread,Right-hand thread
+option.leftHandThread,Left-hand thread
+option.auto,Auto
+option.millingNormal1,Milling normal - 1 pass
+option.millingNormal2,Milling normal - 2 pass
+option.millingNormal3,Milling normal - 3 pass
+option.millingAxial1,Milling axial - 1 pass
+option.millingAxial2,Milling axial - 2 pass
+option.millingAxial3,Milling axial - 3 pass
+option.millingMicro1,Milling micro - 1 pass
+option.millingMicro2,Milling micro - 2 pass
+option.millingMicro3,Milling micro - 3 pass
+option.millingTapered1,Milling tapered - 1 pass
+option.millingTapered2,Milling tapered - 2 pass
+option.millingTapered3,Milling tapered - 3 pass
+option.latheNormal1,Lathe normal - 1 pass
+option.latheNormal2,Lathe normal - 2 pass
+option.latheNormal3,Lathe normal - 3 pass
+option.latheAxial1,Lathe axial - 1 pass
+option.latheAxial2,Lathe axial - 2 pass
+option.latheAxial3,Lathe axial - 3 pass
+option.latheMicro1,Lathe micro - 1 pass
+option.latheMicro2,Lathe micro - 2 pass
+option.latheMicro3,Lathe micro - 3 pass
+option.latheTapered1,Lathe tapered - 1 pass
+option.latheTapered2,Lathe tapered - 2 pass
+option.latheTapered3,Lathe tapered - 3 pass
+button.copy,Copy
+button.unlock,Unlock
+copy.noData,no data
+copy.copied,copied
+copy.failed,copy failed
+compare.password,Password
+compare.lockHelp,This section is intended for SmiCut and distributors.
+compare.enterThreadLength,Enter thread length to compare tools.
+compare.result,Result
+tool.enterThreadLength,Enter thread length
+tool.noMatchingTool,No matching tool
+tool.customDimensions,➜ Custom tool dimensions
+tool.custom,Custom tool
+tool.linkText,➜ See tool page for all dimensions and 3D STEP file
+info.howToUse,How to use SmiProg
+info.step1.title,Define the thread
+info.step1.body,"Select material, thread profile, thread size, thread length and safety distance."
+info.step2.title,Select the thread mill
+info.step2.body,Use a suggested SmiCut tool or enter custom tool dimensions in the tool selection.
+info.step3.title,Check output
+info.step3.body,"Review cutting data, machining time and the Fanuc CNC program before machining."
+info.beforeMachining.title,Before machining
+info.beforeMachining.body,"Check that the selected thread mill can machine the thread diameter, pitch and thread length. Confirm the program in simulation or single block before running production."
+info.figureAlt,"Thread milling dimension reference showing thread diameter, pitch, cutting length, safety distance and cutter diameter."
+info.figure.threadDiameter,Thread diameter
+info.figure.pitch,Pitch
+info.figure.threadLength,Thread length
+info.figure.safetyDistance,Safety distance
+info.figure.cutterDiameter,Cutter diameter
+info.figure.cuttingLength,Cutting length
+info.machiningNotes,Machining Notes
+info.toolCompensation.title,Tool Compensation
+info.toolCompensation.body,Compensation of tooling is normally only needed for small adjustments. Large compensation values can cause problems. Use a value close to zero for cutter diameter compensation in the control system tool library.
+info.correctThreadDiameter.title,Correct Thread Diameter
+info.correctThreadDiameter.body,"The pitch diameter is usually checked with a thread plug gauge or another accepted thread measuring method. If adjustment is needed, compensate in the machine control rather than changing standard thread data."
+info.customTools.title,Custom and Special Tools
+info.customTools.body,"If your tool is not in the list, choose custom tool dimensions in the tool selection and enter cutter diameter, cutting length and number of flutes. Verify the generated program carefully when using custom tooling."
+info.threadBurr.title,ThreadBurr
+info.threadBurr.body,"To use the deburring feature of solid carbide thread mills from SmiCut, input the complete cutting length of the tool in the thread length box. That way the threading and deburring will be made in the same operation."
+info.threadBurr.link,Read more in the article ThreadBurr Solid Carbide Thread Mills.
+info.oneTwoRows.title,Thread Mills with One or Two Rows of Teeth
+info.oneTwoRows.body,"SmiProg compensates for standard SmiCut cutters with one or two rows of teeth. When using a non-standard cutter, check the cutting length and pitch relationship before machining."
+info.flankInfeed.title,Flank Infeed
+info.flankInfeed.body,SmiProg uses flank infeed when programming multiple radial passes. This helps reduce vibration and improves machining stability.
+info.flankInfeed.link,Read more in the article Vibration-Free Thread Milling.
+info.shortCuttingLength.title,Short Cutting Length
+info.shortCuttingLength.body,"If the selected tool has a shorter cutting length than the requested thread length, SmiProg divides the operation into several axial passes when the tool type supports it."
+info.inserts.title,Thread Mills with Inserts
+info.inserts.body,"Use custom tool dimensions in the tool selection to get cutting data for indexable thread mills. Enter the actual cutter diameter, cutting length and number of inserts or flutes, then verify the generated program before machining."
+info.taperedThreads.title,Tapered Threads
+info.taperedThreads.body,"For tapered threads, the cutter diameter is related to the last full thread closest to the shank. Register the thread diameter at that position for correct CNC output."
+info.warning.title,Warning
+info.warning.body,"The cutting data in SmiProg is recommended starting data. Many factors can require adjustments, including workpiece material, machine stability, fixturing, tool setup, coolant and chip evacuation. SmiCut does not take responsibility for damage caused by using the CNC program or cutting data recommended by the software."
+materialSelector.welcomeTitle,Which material will you machine?
+materialSelector.welcomeDescription,"Enter the material designation or name, and we’ll help you find the right material category."
+materialSelector.findCategory,Find material category
+materialSelector.placeholder,E.g. AISI 1045 or EN 1.4301
+materialSelector.applyHelp,The material will be used in all calculators.
+materialSelector.selected,Material selected
+materialSelector.showExplanation,Show explanation
+materialSelector.hideExplanation,Hide explanation
+materialSelector.followUp,Ask a follow-up question or enter another material
+materialSelector.messagePlaceholder,Write a message…
+materialSelector.enterLabel,Enter your material
+materialSelector.openCalculator,Open calculator
+materialSelector.retry,Try again
+materialSelector.sendingMessage,Sending message
+materialSelector.sendMessage,Send message
+materialSelector.conversation,Material conversation
+materialSelector.apply,Use in SmiProg
+materialSelector.thinking,Thinking...
+materialSelector.recommendedCategory,Recommended material category
+materialSelector.enterMaterial,Please enter a material.
+materialSelector.serverError,Error from server.
+materialSelector.noResponse,No response.
+materialSelector.networkError,Network or server error.
+materialSelector.requestTimedOut,Request timed out. Please try again.
+materialSelector.welcome,Enter a material designation and the tool will recommend the right SmiCut category.

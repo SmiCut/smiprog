@@ -1,0 +1,40 @@
+{
+  "name": "Cached Fanuc variant: Fräs, KONISK, 1 pass, Fanuc",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceColumn": "BW",
+  "sourceProgramCode": 10011,
+  "sourceNotes": "Cached program variant from the original workbook. Active for the migrated Fanuc milling tapered 1-pass template.",
+  "input": {
+    "processId": "machining-center",
+    "controlSystemId": "fanuc",
+    "threadProfileId": "m",
+    "materialId": "material-14",
+    "diameter": 16,
+    "pitch": 4,
+    "threadLength": 34,
+    "safetyDistance": 2,
+    "selectedToolId": "",
+    "overrides": {
+      "cutterDiameter": 11,
+      "cuttingEdgeLength": 4,
+      "flutes": 3,
+      "feedPerTooth": 0.05,
+      "radialPasses": 2
+    },
+    "programVariant": "milling-tapered-1-pass"
+  },
+  "expectedCncProgram": [
+    "S2981 M3",
+    "G00 G91 Z-35.587",
+    "G01 G41 X1.25 Y-1.25 F70",
+    "G03 X1.25 Y1.25 Z0.5 I0. J1.25",
+    "G03 X-2.5 Y2.531 Z1. I-2.5 J0.031 F140",
+    "G03 X-2.562 Y-2.531 Z1. I-0.031 J-2.531",
+    "G03 X2.562 Y-2.593 Z1. I2.562 J-0.031",
+    "G03 X2.624 Y2.593 Z1. I0.031 J2.593",
+    "G03 X-1.25 Y1.25 Z0.5 I-1.25 J0. F700",
+    "G01 G40 X-1.374 Y-1.25",
+    "G00 Z31."
+  ]
+}

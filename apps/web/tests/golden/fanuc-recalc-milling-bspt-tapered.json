@@ -1,0 +1,53 @@
+{
+  "name": "Excel recalculated Fanuc milling tapered BSPT standard tool case",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceNotes": "Generated from a copied workbook after Microsoft Excel recalculation. Inputs were written to CNC sheet cells and visible output was read from CNC!F4:F150.",
+  "generatedBy": "apps/web/tools/export-excel-recalc-fixture.py",
+  "recalcCase": "fanuc-recalc-milling-bspt-tapered",
+  "input": {
+    "processId": "machining-center",
+    "controlSystemId": "fanuc",
+    "threadProfileId": "bspt",
+    "materialId": "material-14",
+    "diameter": 25,
+    "pitch": 11,
+    "threadLength": 20,
+    "safetyDistance": 2,
+    "selectedToolId": "13",
+    "overrides": {
+      "cutterDiameter": null,
+      "cuttingEdgeLength": null,
+      "flutes": null,
+      "cuttingSpeed": null,
+      "feedPerTooth": null,
+      "radialPasses": null
+    }
+  },
+  "expectedCuttingData": {
+    "cutterDiameter": 16,
+    "cuttingEdgeLength": 31.17,
+    "flutes": 4,
+    "cuttingSpeed": 103,
+    "feedPerTooth": 0.06809370880510028,
+    "radialPasses": 1,
+    "axialPasses": 1,
+    "spindleSpeed": 2049,
+    "feedAtThreadDiameter": 558,
+    "centerFeed": 201,
+    "machiningTime": 13
+  },
+  "expectedCncProgram": [
+    "S2049 M3",
+    "G00 G91 Z-22.",
+    "G01 G41 X2.25 Y-2.25 F101",
+    "G03 X2.25 Y2.25 Z0.289 I0. J2.25",
+    "G03 X-4.5 Y4.518 Z0.577 I-4.5 J0.018 F201",
+    "G03 X-4.536 Y-4.518 Z0.577 I-0.018 J-4.518",
+    "G03 X4.536 Y-4.554 Z0.577 I4.536 J-0.018",
+    "G03 X4.572 Y4.554 Z0.577 I0.018 J4.554",
+    "G03 X-2.25 Y2.25 Z0.289 I-2.25 J0. F1005",
+    "G01 G40 X-2.322 Y-2.25",
+    "G00 Z19.113"
+  ]
+}

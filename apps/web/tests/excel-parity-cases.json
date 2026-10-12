@@ -1,0 +1,2974 @@
+{
+  "referenceWorkbook": "SmiProg_230915.xlsx",
+  "cases": [
+    {
+      "id": "baseline-fanuc-recalc-default-milling-normal",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-axial-custom",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 34,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      }
+    },
+    {
+      "id": "baseline-fanuc-recalc-lathe-normal-standard",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-micro-custom",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 34,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 4,
+          "flutes": 3,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      }
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-tapered-npt",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "npt",
+        "materialId": "material-14",
+        "diameter": 30,
+        "pitch": 8,
+        "threadLength": 20,
+        "safetyDistance": 2,
+        "selectedToolId": "7",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 7
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-un-steel-standard",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "un",
+        "materialId": "material-3",
+        "diameter": 5,
+        "pitch": 40,
+        "threadLength": 5,
+        "safetyDistance": 1,
+        "selectedToolId": "505",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 505
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-g-stainless-standard",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "g",
+        "materialId": "material-13",
+        "diameter": 30,
+        "pitch": 11,
+        "threadLength": 20,
+        "safetyDistance": 2,
+        "selectedToolId": "27",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 27
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-bspt-tapered",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "bspt",
+        "materialId": "material-14",
+        "diameter": 25,
+        "pitch": 11,
+        "threadLength": 20,
+        "safetyDistance": 2,
+        "selectedToolId": "13",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 13
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-material-titanium",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-18",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-metric-large-standard",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-5",
+        "diameter": 30,
+        "pitch": 3,
+        "threadLength": 25,
+        "safetyDistance": 2,
+        "selectedToolId": "339",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 339
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-nm-standard",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 13.6,
+        "pitch": 2,
+        "threadLength": 44,
+        "safetyDistance": 2,
+        "selectedToolId": "218",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 218
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-ns-standard",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 13.6,
+        "pitch": 2,
+        "threadLength": 44,
+        "safetyDistance": 2,
+        "selectedToolId": "57",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        },
+        "selectedToolIndex": 2
+      },
+      "expectedSelectedToolId": 57
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-nm-short-high-carbon",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-3",
+        "diameter": 10,
+        "pitch": 1.5,
+        "threadLength": 12,
+        "safetyDistance": 2,
+        "selectedToolId": "222",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        },
+        "selectedToolIndex": 16
+      },
+      "expectedSelectedToolId": 222
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-ns-short-stainless",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 10,
+        "pitch": 1.5,
+        "threadLength": 12,
+        "safetyDistance": 2,
+        "selectedToolId": "70",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        },
+        "selectedToolIndex": 17
+      },
+      "expectedSelectedToolId": 70
+    },
+    {
+      "id": "baseline-fanuc-recalc-lathe-axial-custom",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 34,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      }
+    },
+    {
+      "id": "baseline-fanuc-recalc-lathe-un-steel-standard",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "un",
+        "materialId": "material-3",
+        "diameter": 36,
+        "pitch": 6,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "313",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 313
+    },
+    {
+      "id": "baseline-fanuc-recalc-lathe-tapered-nptf",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "nptf",
+        "materialId": "material-14",
+        "diameter": 30,
+        "pitch": 8,
+        "threadLength": 20,
+        "safetyDistance": 2,
+        "selectedToolId": "6",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 6
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-nptf-tapered",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "nptf",
+        "materialId": "material-14",
+        "diameter": 30,
+        "pitch": 8,
+        "threadLength": 20,
+        "safetyDistance": 2,
+        "selectedToolId": "6",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 6
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-npsf-standard",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "npsf",
+        "materialId": "material-14",
+        "diameter": 24,
+        "pitch": 11.5,
+        "threadLength": 20,
+        "safetyDistance": 2,
+        "selectedToolId": "16",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 16
+    },
+    {
+      "id": "baseline-fanuc-recalc-milling-pg-standard",
+      "group": "existing-recalculated",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "pg",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 16,
+        "threadLength": 20,
+        "safetyDistance": 2,
+        "selectedToolId": "20",
+        "overrides": {
+          "cutterDiameter": null,
+          "cuttingEdgeLength": null,
+          "flutes": null,
+          "cuttingSpeed": null,
+          "feedPerTooth": null,
+          "radialPasses": null
+        }
+      },
+      "expectedSelectedToolId": 20
+    },
+    {
+      "id": "material-01",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-1",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-02",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-2",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-03",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-3",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-04",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-4",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-05",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-5",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-06",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-6",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-07",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-7",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-08",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-8",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-09",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-9",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-10",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-10",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-11",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-11",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-12",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-12",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-13",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-13",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-14",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-15",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-15",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-16",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-16",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-17",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-17",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-18",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-18",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-19",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-19",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-20",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-20",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-21",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-21",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-22",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-22",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-23",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-23",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-24",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-24",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-25",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-25",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-26",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-26",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-27",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-27",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-28",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-28",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-29",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "material-30",
+      "group": "all-materials",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-30",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "profile-m",
+      "group": "all-profiles",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 2.8,
+        "pitch": 0.4,
+        "threadLength": 3.4,
+        "safetyDistance": 2,
+        "selectedToolId": "519",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 519
+    },
+    {
+      "id": "profile-un",
+      "group": "all-profiles",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "un",
+        "materialId": "material-14",
+        "diameter": 2.984,
+        "pitch": 56,
+        "threadLength": 3.86,
+        "safetyDistance": 2,
+        "selectedToolId": "516",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 516
+    },
+    {
+      "id": "profile-g",
+      "group": "all-profiles",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "g",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "47",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 47
+    },
+    {
+      "id": "profile-bspt",
+      "group": "all-profiles",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "bspt",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "48",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 48
+    },
+    {
+      "id": "profile-npt",
+      "group": "all-profiles",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "npt",
+        "materialId": "material-14",
+        "diameter": 8,
+        "pitch": 27,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "50",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 50
+    },
+    {
+      "id": "profile-nptf",
+      "group": "all-profiles",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "nptf",
+        "materialId": "material-14",
+        "diameter": 8,
+        "pitch": 27,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "49",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 49
+    },
+    {
+      "id": "profile-npsf",
+      "group": "all-profiles",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "npsf",
+        "materialId": "material-14",
+        "diameter": 8,
+        "pitch": 27,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "46",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 46
+    },
+    {
+      "id": "profile-pg",
+      "group": "all-profiles",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "pg",
+        "materialId": "material-14",
+        "diameter": 10.7,
+        "pitch": 20,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "38",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 38
+    },
+    {
+      "id": "family-ns-small",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 0.4,
+        "pitch": 0.125,
+        "threadLength": 1.3,
+        "safetyDistance": 2,
+        "selectedToolId": "214",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 214
+    },
+    {
+      "id": "family-ns-large",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 15.475,
+        "pitch": 2,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "51",
+        "overrides": {},
+        "selectedToolIndex": 12
+      },
+      "expectedSelectedToolId": 51
+    },
+    {
+      "id": "family-nm-small",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 1.8,
+        "pitch": 0.4,
+        "threadLength": 6.4,
+        "safetyDistance": 2,
+        "selectedToolId": "242",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 242
+    },
+    {
+      "id": "family-nm-large",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 15.6,
+        "pitch": 2,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "216",
+        "overrides": {},
+        "selectedToolIndex": 20
+      },
+      "expectedSelectedToolId": 216
+    },
+    {
+      "id": "family-nf-small",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 2.8,
+        "pitch": 0.5,
+        "threadLength": 9.75,
+        "safetyDistance": 2,
+        "selectedToolId": "264",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 264
+    },
+    {
+      "id": "family-nf-large",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 11.6,
+        "pitch": 1.75,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "244",
+        "overrides": {},
+        "selectedToolIndex": 19
+      },
+      "expectedSelectedToolId": 244
+    },
+    {
+      "id": "family-nb-small",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 1.8,
+        "pitch": 0.4,
+        "threadLength": 4.6,
+        "safetyDistance": 2,
+        "selectedToolId": "518",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 518
+    },
+    {
+      "id": "family-nb-large",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 23.6,
+        "pitch": 2,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "314",
+        "overrides": {},
+        "selectedToolIndex": 12
+      },
+      "expectedSelectedToolId": 314
+    },
+    {
+      "id": "family-nbk-small",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 4.8,
+        "pitch": 0.8,
+        "threadLength": 8.4,
+        "safetyDistance": 2,
+        "selectedToolId": "310",
+        "overrides": {},
+        "selectedToolIndex": 11
+      },
+      "expectedSelectedToolId": 310
+    },
+    {
+      "id": "family-nbk-large",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 29.6,
+        "pitch": 3.5,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "277",
+        "overrides": {},
+        "selectedToolIndex": 5
+      },
+      "expectedSelectedToolId": 277
+    },
+    {
+      "id": "family-nbt-small",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 7.8,
+        "pitch": 1.25,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "276",
+        "overrides": {},
+        "selectedToolIndex": 10
+      },
+      "expectedSelectedToolId": 276
+    },
+    {
+      "id": "family-nbt-large",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 19.6,
+        "pitch": 2,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "268",
+        "overrides": {},
+        "selectedToolIndex": 20
+      },
+      "expectedSelectedToolId": 268
+    },
+    {
+      "id": "family-xb-small",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "g",
+        "materialId": "material-29",
+        "diameter": 7.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "44",
+        "overrides": {},
+        "selectedToolIndex": 2
+      },
+      "expectedSelectedToolId": 44
+    },
+    {
+      "id": "family-xb-large",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "g",
+        "materialId": "material-29",
+        "diameter": 25,
+        "pitch": 11,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "5",
+        "overrides": {},
+        "selectedToolIndex": 4
+      },
+      "expectedSelectedToolId": 5
+    },
+    {
+      "id": "family-xbt-small",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "g",
+        "materialId": "material-29",
+        "diameter": 7.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "4",
+        "overrides": {},
+        "selectedToolIndex": 3
+      },
+      "expectedSelectedToolId": 4
+    },
+    {
+      "id": "family-xbt-large",
+      "group": "tool-families",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "g",
+        "materialId": "material-29",
+        "diameter": 20.5,
+        "pitch": 11,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "1",
+        "overrides": {},
+        "selectedToolIndex": 4
+      },
+      "expectedSelectedToolId": 1
+    },
+    {
+      "id": "custom-diameter-2",
+      "group": "custom-geometry",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 2,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "custom-diameter-3p999",
+      "group": "custom-geometry",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 3.999,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "custom-diameter-4",
+      "group": "custom-geometry",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 4,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "custom-diameter-4p001",
+      "group": "custom-geometry",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 4.001,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "custom-diameter-7p5",
+      "group": "custom-geometry",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "custom-diameter-10",
+      "group": "custom-geometry",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 10,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "custom-diameter-11",
+      "group": "custom-geometry",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "custom-diameter-12",
+      "group": "custom-geometry",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 12,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "custom-diameter-20",
+      "group": "custom-geometry",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 20,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "axial-length-3p999",
+      "group": "axial-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 3.999,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "axial-length-4",
+      "group": "axial-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 4,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "axial-length-4p001",
+      "group": "axial-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 4.001,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "axial-length-7p999",
+      "group": "axial-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 7.999,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "axial-length-8",
+      "group": "axial-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 8,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "axial-length-8p001",
+      "group": "axial-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 8.001,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "axial-length-15p999",
+      "group": "axial-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 15.999,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "axial-length-16",
+      "group": "axial-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 16,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "axial-length-16p001",
+      "group": "axial-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 16.001,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "axial-length-100",
+      "group": "axial-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 100,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "axial-length-200",
+      "group": "axial-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 200,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "edge-length-1p499",
+      "group": "micro-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 1.499,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "edge-length-1p5",
+      "group": "micro-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 1.5,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "edge-length-1p501",
+      "group": "micro-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 1.501,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "edge-length-3",
+      "group": "micro-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 3,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "edge-length-30",
+      "group": "micro-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 30,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "edge-length-30p001",
+      "group": "micro-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 30.001,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "override-passes-1-machining-center",
+      "group": "radial-overrides",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "radialPasses": 1,
+          "feedPerTooth": 0.037,
+          "cuttingSpeed": 87
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "override-passes-1-lathe-live-tool",
+      "group": "radial-overrides",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "radialPasses": 1,
+          "feedPerTooth": 0.037,
+          "cuttingSpeed": 87
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "override-passes-2-machining-center",
+      "group": "radial-overrides",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "radialPasses": 2,
+          "feedPerTooth": 0.037,
+          "cuttingSpeed": 87
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "override-passes-2-lathe-live-tool",
+      "group": "radial-overrides",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "radialPasses": 2,
+          "feedPerTooth": 0.037,
+          "cuttingSpeed": 87
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "override-passes-3-machining-center",
+      "group": "radial-overrides",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "radialPasses": 3,
+          "feedPerTooth": 0.037,
+          "cuttingSpeed": 87
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "override-passes-3-lathe-live-tool",
+      "group": "radial-overrides",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "radialPasses": 3,
+          "feedPerTooth": 0.037,
+          "cuttingSpeed": 87
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "safety-0",
+      "group": "clearance-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 0,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "safety-0p001",
+      "group": "clearance-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 0.001,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "safety-10",
+      "group": "clearance-boundaries",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 10,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "selection-1",
+      "group": "tool-selection",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "selection-5",
+      "group": "tool-selection",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "222",
+        "overrides": {},
+        "selectedToolIndex": 5
+      },
+      "expectedSelectedToolId": 222
+    },
+    {
+      "id": "selection-6",
+      "group": "tool-selection",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "67",
+        "overrides": {},
+        "selectedToolIndex": 6
+      },
+      "expectedSelectedToolId": 67
+    },
+    {
+      "id": "invalid-diameter-0",
+      "group": "invalid-inputs",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 0,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {}
+      }
+    },
+    {
+      "id": "invalid-diameter-negative10",
+      "group": "invalid-inputs",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": -10,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {}
+      }
+    },
+    {
+      "id": "invalid-pitch-0",
+      "group": "invalid-inputs",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 0,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {}
+      }
+    },
+    {
+      "id": "invalid-pitch-negative1p5",
+      "group": "invalid-inputs",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": -1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {}
+      }
+    },
+    {
+      "id": "invalid-threadlength-0",
+      "group": "invalid-inputs",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 0,
+        "safetyDistance": 2,
+        "selectedToolId": "415",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 415
+    },
+    {
+      "id": "invalid-threadlength-negative1",
+      "group": "invalid-inputs",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": -1,
+        "safetyDistance": 2,
+        "selectedToolId": "415",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 415
+    },
+    {
+      "id": "invalid-safetydistance-negative2",
+      "group": "invalid-inputs",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": -2,
+        "selectedToolId": "412",
+        "overrides": {}
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "invalid-diameter-1",
+      "group": "invalid-inputs",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 1,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {}
+      }
+    },
+    {
+      "id": "invalid-threadlength-999",
+      "group": "invalid-inputs",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 999,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {}
+      }
+    },
+    {
+      "id": "heidenhain-profile-m",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 2.8,
+        "pitch": 0.4,
+        "threadLength": 3.4,
+        "safetyDistance": 2,
+        "selectedToolId": "519",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 519
+    },
+    {
+      "id": "heidenhain-profile-un",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "un",
+        "materialId": "material-14",
+        "diameter": 2.984,
+        "pitch": 56,
+        "threadLength": 3.86,
+        "safetyDistance": 2,
+        "selectedToolId": "516",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 516
+    },
+    {
+      "id": "heidenhain-profile-g",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "g",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "47",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 47
+    },
+    {
+      "id": "heidenhain-profile-bspt",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "bspt",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "48",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 48
+    },
+    {
+      "id": "heidenhain-profile-npt",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "npt",
+        "materialId": "material-14",
+        "diameter": 8,
+        "pitch": 27,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "50",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 50
+    },
+    {
+      "id": "heidenhain-profile-nptf",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "nptf",
+        "materialId": "material-14",
+        "diameter": 8,
+        "pitch": 27,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "49",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 49
+    },
+    {
+      "id": "heidenhain-profile-npsf",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "npsf",
+        "materialId": "material-14",
+        "diameter": 8,
+        "pitch": 27,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "46",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 46
+    },
+    {
+      "id": "heidenhain-profile-pg",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "pg",
+        "materialId": "material-14",
+        "diameter": 10.7,
+        "pitch": 20,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "38",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 38
+    },
+    {
+      "id": "heidenhain-family-ns-small",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 0.4,
+        "pitch": 0.125,
+        "threadLength": 1.3,
+        "safetyDistance": 2,
+        "selectedToolId": "214",
+        "overrides": {},
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 214
+    },
+    {
+      "id": "heidenhain-family-nm-large",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "m",
+        "materialId": "material-29",
+        "diameter": 15.6,
+        "pitch": 2,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "216",
+        "overrides": {},
+        "selectedToolIndex": 20
+      },
+      "expectedSelectedToolId": 216
+    },
+    {
+      "id": "heidenhain-axial-length-16p001",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 16.001,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "heidenhain-axial-length-100",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 16,
+        "pitch": 4,
+        "threadLength": 100,
+        "safetyDistance": 2,
+        "selectedToolId": "",
+        "overrides": {
+          "cutterDiameter": 11,
+          "cuttingEdgeLength": 8,
+          "flutes": 3
+        }
+      }
+    },
+    {
+      "id": "heidenhain-override-passes-2-machining-center",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "radialPasses": 2,
+          "feedPerTooth": 0.037,
+          "cuttingSpeed": 87
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "heidenhain-override-passes-3-machining-center",
+      "group": "heidenhain-fresh",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "radialPasses": 3,
+          "feedPerTooth": 0.037,
+          "cuttingSpeed": 87
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "regression-lathe-axial-1",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 8,
+          "flutes": 3,
+          "radialPasses": 1
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "regression-lathe-axial-2",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 8,
+          "flutes": 3,
+          "radialPasses": 2
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "regression-lathe-axial-3",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 30,
+        "safetyDistance": 2,
+        "selectedToolId": "412",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 8,
+          "flutes": 3,
+          "radialPasses": 3
+        }
+      },
+      "expectedSelectedToolId": 412
+    },
+    {
+      "id": "regression-angle-g-machining-center-2",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "g",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "47",
+        "overrides": {
+          "radialPasses": 2
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 47
+    },
+    {
+      "id": "regression-angle-g-machining-center-3",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "g",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "47",
+        "overrides": {
+          "radialPasses": 3
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 47
+    },
+    {
+      "id": "regression-angle-g-lathe-live-tool-2",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "g",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "47",
+        "overrides": {
+          "radialPasses": 2
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 47
+    },
+    {
+      "id": "regression-angle-g-lathe-live-tool-3",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "g",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "47",
+        "overrides": {
+          "radialPasses": 3
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 47
+    },
+    {
+      "id": "regression-angle-bspt-machining-center-2",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "bspt",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "48",
+        "overrides": {
+          "radialPasses": 2
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 48
+    },
+    {
+      "id": "regression-angle-bspt-machining-center-3",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "bspt",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "48",
+        "overrides": {
+          "radialPasses": 3
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 48
+    },
+    {
+      "id": "regression-angle-bspt-lathe-live-tool-2",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "bspt",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "48",
+        "overrides": {
+          "radialPasses": 2
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 48
+    },
+    {
+      "id": "regression-angle-bspt-lathe-live-tool-3",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "bspt",
+        "materialId": "material-14",
+        "diameter": 8.8,
+        "pitch": 28,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "48",
+        "overrides": {
+          "radialPasses": 3
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 48
+    },
+    {
+      "id": "regression-angle-pg-machining-center-2",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "pg",
+        "materialId": "material-14",
+        "diameter": 10.7,
+        "pitch": 20,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "38",
+        "overrides": {
+          "radialPasses": 2
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 38
+    },
+    {
+      "id": "regression-angle-pg-machining-center-3",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "pg",
+        "materialId": "material-14",
+        "diameter": 10.7,
+        "pitch": 20,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "38",
+        "overrides": {
+          "radialPasses": 3
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 38
+    },
+    {
+      "id": "regression-angle-pg-lathe-live-tool-2",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "pg",
+        "materialId": "material-14",
+        "diameter": 10.7,
+        "pitch": 20,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "38",
+        "overrides": {
+          "radialPasses": 2
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 38
+    },
+    {
+      "id": "regression-angle-pg-lathe-live-tool-3",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "lathe-live-tool",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "pg",
+        "materialId": "material-14",
+        "diameter": 10.7,
+        "pitch": 20,
+        "threadLength": 10,
+        "safetyDistance": 2,
+        "selectedToolId": "38",
+        "overrides": {
+          "radialPasses": 3
+        },
+        "selectedToolIndex": 1
+      },
+      "expectedSelectedToolId": 38
+    },
+    {
+      "id": "regression-micro-single-pass",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "fanuc",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 0.749,
+        "safetyDistance": 2,
+        "selectedToolId": "415",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 1.5,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 415
+    },
+    {
+      "id": "regression-heidenhain-micro-boundary",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 13.501,
+        "safetyDistance": 2,
+        "selectedToolId": "415",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 1.5,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 415
+    },
+    {
+      "id": "regression-heidenhain-micro-ten",
+      "group": "fix-regressions",
+      "input": {
+        "processId": "machining-center",
+        "controlSystemId": "heidenhain",
+        "threadProfileId": "m",
+        "materialId": "material-14",
+        "diameter": 42,
+        "pitch": 1.5,
+        "threadLength": 13.503,
+        "safetyDistance": 2,
+        "selectedToolId": "415",
+        "overrides": {
+          "cutterDiameter": 7.5,
+          "cuttingEdgeLength": 1.5,
+          "flutes": 3
+        }
+      },
+      "expectedSelectedToolId": 415
+    }
+  ]
+}

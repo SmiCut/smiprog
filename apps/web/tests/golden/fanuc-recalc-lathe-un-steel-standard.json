@@ -1,0 +1,52 @@
+{
+  "name": "Excel recalculated Fanuc lathe UN steel standard tool case",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceNotes": "Generated from a copied workbook after Microsoft Excel recalculation. Inputs were written to CNC sheet cells and visible output was read from CNC!F4:F150.",
+  "generatedBy": "apps/web/tools/export-excel-recalc-fixture.py",
+  "recalcCase": "fanuc-recalc-lathe-un-steel-standard",
+  "input": {
+    "processId": "lathe-live-tool",
+    "controlSystemId": "fanuc",
+    "threadProfileId": "un",
+    "materialId": "material-3",
+    "diameter": 36,
+    "pitch": 6,
+    "threadLength": 30,
+    "safetyDistance": 2,
+    "selectedToolId": "313",
+    "overrides": {
+      "cutterDiameter": null,
+      "cuttingEdgeLength": null,
+      "flutes": null,
+      "cuttingSpeed": null,
+      "feedPerTooth": null,
+      "radialPasses": null
+    }
+  },
+  "expectedCuttingData": {
+    "cutterDiameter": 25,
+    "cuttingEdgeLength": 61.38,
+    "flutes": 3,
+    "cuttingSpeed": 118,
+    "feedPerTooth": 0.09190893591060564,
+    "radialPasses": 1,
+    "axialPasses": 1,
+    "spindleSpeed": 1502,
+    "feedAtThreadDiameter": 414,
+    "centerFeed": 127,
+    "machiningTime": 25
+  },
+  "expectedCncProgram": [
+    "S1502 M13",
+    "G00 G91 G94 Z-32.",
+    "G12.1",
+    "G01 G41 X2.75 C-2.75 F64",
+    "G03 X2.75 C2.75 Z0.529 I0. J2.75",
+    "G03 X0. C0. Z4.233 I-5.5 J0. F127",
+    "G03 X-2.75 C2.75 Z0.529 I-2.75 J0. F635",
+    "G01 G40 X-2.75 C-2.75",
+    "G13.1",
+    "G00 Z26.709"
+  ]
+}

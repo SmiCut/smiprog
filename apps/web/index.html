@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmiProg - Thread Milling</title>
+  <!-- Copyright (c) 2026 SmiCut AB. Licensed under the MIT License; see LICENSE. -->
+  <meta name="description" content="SmiCut SmiProg thread milling calculator for cutting data, tool selection and Fanuc CNC program generation.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./styles.css?v=20261005-6">
+  <link rel="stylesheet" href="./material-selector.css?v=20261005-1">
+</head>
+<body>
+  <main id="smiprog-app" class="spg-app">
+    <section class="spg-shell" aria-label="SmiProg thread milling calculator" data-i18n-aria-label="aria.calculator">
+      <div class="spg-tabs" role="tablist" aria-label="SmiProg sections" data-i18n-aria-label="aria.sections">
+        <button type="button" class="spg-tab spg-tab-active" data-spg-tab="start" role="tab" aria-selected="true" data-i18n-html="tabs.start">Start<br>Page</button>
+        <button type="button" class="spg-tab" data-spg-tab="materialselector" role="tab" aria-selected="false" data-i18n-html="tabs.materialSelector">Material<br>Selector</button>
+        <button type="button" class="spg-tab" data-spg-tab="main" role="tab" aria-selected="false" data-i18n="tabs.threadMilling">Internal Thread Milling</button>
+        <button type="button" class="spg-tab" data-spg-tab="compare" role="tab" aria-selected="false" data-i18n="tabs.compare">Compare</button>
+        <button type="button" class="spg-tab" data-spg-tab="information" role="tab" aria-selected="false" data-i18n="tabs.information">Information</button>
+      </div>
+
+      <section id="spg-start-panel" class="spg-panel spg-panel-active" role="tabpanel">
+        <div class="spg-start-content">
+          <!-- Lucide icons (arrow-left-right, book-open): ISC License.
+          Copyright (c) 2026 Lucide Icons and Contributors.
+          Permission to use, copy, modify, and/or distribute this software for any purpose
+          with or without fee is hereby granted, provided that the above copyright notice
+          and this permission notice appear in all copies.
+          THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+          REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+          AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+          INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+          LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+          OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+          PERFORMANCE OF THIS SOFTWARE. -->
+          <div class="spg-start-grid">
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-main" data-spg-start-tab="main">
+              <strong><span data-i18n="start.threadMilling.title">Internal Thread Milling</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.threadMilling.description">Calculate cutting data, select a SmiCut thread mill and generate a Fanuc CNC program.</span>
+              <span class="spg-start-card-visual" aria-hidden="true"><img src="./assets/thread-mills/NB08075D21_1.5ISO_AC.png" alt=""></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-compare" data-spg-start-tab="compare">
+              <strong><span data-i18n="start.compare.title">Compare</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.compare.description">Compare two thread mills, machining time and cost per thread.</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="arrow-left-right" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-information" data-spg-start-tab="information">
+              <strong><span data-i18n="start.information.title">Information</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.information.description">Read the practical notes for using SmiProg before machining.</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="book-open" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16"/><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"/></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-materialselector" data-spg-start-tab="materialselector">
+              <span class="spg-start-card-materialselector-icon" aria-hidden="true"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><circle cx="21" cy="21" r="12" style="fill:none; stroke:#676d72; stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round;"/><path d="M30.2,30.2l10.2,10.2" style="fill:none; stroke:#676d72; stroke-width:4.6; stroke-linecap:round; stroke-linejoin:round;"/></svg></span>
+              <strong><span data-i18n="start.materialSelector.title">SmiCut Material Selector</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.materialSelector.description">Enter a material designation and SmiProg will apply the recommended SmiCut category.</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-material-selector-panel" class="spg-panel spg-material-selector-panel" role="tabpanel" hidden>
+        <div id="spg-material-selector-widget">
+          <div class="sms-panel">
+            <div class="sms-header"><span>SmiCut Material Selector</span></div>
+            <div class="sms-welcome" id="spg-material-selector-welcome" data-sms-role="welcome">
+              <div class="sms-welcome-title" data-sms-i18n="welcomeTitle" role="heading" aria-level="2">Which material will you machine?</div>
+              <div data-sms-i18n="welcomeDescription">Enter the material designation or name, and we’ll help you find the right material category.</div>
+            </div>
+            <div id="spg-material-selector-messages" data-sms-role="messages" class="sms-messages" role="log" aria-label="Material conversation" aria-live="polite" hidden></div>
+            <div class="sms-composer">
+              <label id="spg-material-selector-label" data-sms-role="label" for="spg-material-selector-input"><svg class="sms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg> <span data-sms-i18n="enterLabel">Enter your material</span></label>
+              <div class="sms-input-row">
+                <textarea id="spg-material-selector-input" data-sms-role="input" rows="1" maxlength="4000" placeholder="E.g. AISI 1045 or EN 1.4301"></textarea>
+                <button id="spg-material-selector-send" data-sms-role="send" type="button" aria-label="Find material category" disabled>Find material category</button>
+              </div>
+              <div id="spg-material-selector-status" data-sms-role="status" role="status"></div>
+              <button id="spg-material-selector-retry" data-sms-role="retry" type="button" hidden data-sms-i18n="retry">Try again</button>
+            </div>
+            <button id="spg-material-selector-apply" data-sms-role="apply" class="sms-apply-material" type="button" hidden>Use in SmiProg</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-main-panel" class="spg-panel" role="tabpanel" hidden>
+        <div class="spg-layout">
+          <form class="spg-form-stack" id="spg-form">
+            <section class="spg-inputs-card">
+              <div class="spg-field">
+                <label for="spg-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Material to machine</span></label>
+                <select id="spg-material" class="spg-control"></select>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Thread profile</span></label>
+                  <select id="spg-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Thread size</span></label>
+                  <select id="spg-thread-size" class="spg-control"></select>
+                </div>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Thread diameter (mm)</span></label>
+                  <input id="spg-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label id="spg-pitch-label" for="spg-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Pitch (mm)</span></label>
+                  <input id="spg-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Thread length (mm)</span></label>
+                  <input id="spg-thread-length" class="spg-control" type="number" min="0" step="0.001" placeholder="Enter length" data-i18n-placeholder="placeholder.enterLength">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-safety-distance" class="spg-field-label"><span class="spg-step">7</span><span data-i18n="field.safetyDistance">Safety distance (mm)</span></label>
+                  <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2">
+                </div>
+              </div>
+
+              <div id="spg-tool-field" class="spg-field">
+                <label for="spg-tool" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.tool">Tool</span></label>
+                <select id="spg-tool" class="spg-control"></select>
+                <div id="spg-custom-tool-fields" class="spg-custom-tool-fields" hidden>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cutterDiameter">Cutter diameter (mm)</span></label>
+                    <input id="spg-override-cutter-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-edge-length" class="spg-field-label"><span class="spg-step">10</span><span data-i18n="field.cuttingLength">Cutting length (mm)</span></label>
+                    <input id="spg-override-edge-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-flutes" class="spg-field-label"><span class="spg-step">11</span><span data-i18n="field.flutes">Flutes</span></label>
+                    <input id="spg-override-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                </div>
+                <div id="spg-tool-summary" class="spg-tool-inline-summary"></div>
+                <a id="spg-tool-link" class="spg-tool-link spg-tool-link-disabled" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">&nbsp;</a>
+              </div>
+
+              <div class="spg-note" role="status" aria-live="polite">
+                <div class="spg-note-title" data-i18n="note.title">NOTE:</div>
+                <div id="spg-note-message" class="spg-note-text" data-i18n="note.enterThreadLength">Enter thread length to select a matching tool.</div>
+              </div>
+            </section>
+          </form>
+
+          <div class="spg-results">
+            <section class="spg-card spg-final-card">
+              <div class="spg-card-head">
+                <div class="spg-section-title" data-i18n="section.cuttingData">Cutting Data</div>
+                <div id="spg-cutting-data-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cutting-data" class="spg-button" data-i18n="button.copy">Copy</button>
+              </div>
+              <div id="spg-cutting-data" class="spg-final-calculations">
+                <div class="spg-final-summary-frame">
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.cuttingSpeed">Cutting speed</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-cutting-speed" class="spg-result-value">-</span>
+                      <input id="spg-override-cutting-speed" class="spg-adjustable-input" type="number" min="0" step="1">
+                      <span id="spg-final-cutting-speed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.feedTooth">Feed/tooth</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-feed" class="spg-result-value">-</span>
+                      <input id="spg-override-feed" class="spg-adjustable-input" type="number" min="0" step="0.001">
+                      <span id="spg-final-feed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label"><span data-i18n="result.radialPasses">Radial passes</span> <span class="spg-label-note" data-i18n="result.max3">(max 3)</span></span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-radial-passes" class="spg-result-value">-</span>
+                      <input id="spg-override-radial-passes" class="spg-adjustable-input" type="number" min="1" max="3" step="1">
+                      <span id="spg-final-radial-passes-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.axialPasses">Axial passes</span>
+                    <span id="spg-final-axial-passes" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.spindleSpeed">Spindle speed</span>
+                    <span id="spg-final-spindle-speed" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedThreadDiameter">Feed at thread diameter</span>
+                    <span id="spg-final-feed-thread" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedCenter">Feed in center of mill</span>
+                    <span id="spg-final-feed-center" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.timeToMillThread">Time to mill thread</span>
+                    <span id="spg-final-machining-time" class="spg-result-value">-</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="spg-card spg-cnc-card">
+              <div class="spg-cnc-head">
+                <div class="spg-section-title" data-i18n="section.cncProgram">CNC Program</div>
+                <div id="spg-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cnc" class="spg-button" data-i18n="button.copy">Copy</button>
+              </div>
+              <div class="spg-cnc-settings spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-process" class="spg-field-label spg-visually-hidden"><span data-i18n="field.manufacturingProcess">Manufacturing process</span></label>
+                  <select id="spg-process" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-control-system" class="spg-field-label spg-visually-hidden"><span data-i18n="field.controlSystem">Control system</span></label>
+                  <select id="spg-control-system" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-thread-hand" class="spg-field-label spg-visually-hidden"><span data-i18n="field.threadHand">Thread hand</span></label>
+                  <select id="spg-thread-hand" class="spg-control">
+                    <option value="right" data-i18n="option.rightHandThread">Right-hand thread</option>
+                    <option value="left" data-i18n="option.leftHandThread">Left-hand thread</option>
+                  </select>
+                </div>
+
+                <div class="spg-field spg-dev-only">
+                  <label for="spg-program-template" data-i18n="field.programTemplate">Fanuc program template</label>
+                  <select id="spg-program-template" class="spg-control">
+                    <option value="" data-i18n="option.auto">Auto</option>
+                    <option value="milling-normal-1-pass" data-i18n="option.millingNormal1">Milling normal - 1 pass</option>
+                    <option value="milling-normal-2-pass" data-i18n="option.millingNormal2">Milling normal - 2 pass</option>
+                    <option value="milling-normal-3-pass" data-i18n="option.millingNormal3">Milling normal - 3 pass</option>
+                    <option value="milling-axial-1-pass" data-i18n="option.millingAxial1">Milling axial - 1 pass</option>
+                    <option value="milling-axial-2-pass" data-i18n="option.millingAxial2">Milling axial - 2 pass</option>
+                    <option value="milling-axial-3-pass" data-i18n="option.millingAxial3">Milling axial - 3 pass</option>
+                    <option value="milling-micro-1-pass" data-i18n="option.millingMicro1">Milling micro - 1 pass</option>
+                    <option value="milling-micro-2-pass" data-i18n="option.millingMicro2">Milling micro - 2 pass</option>
+                    <option value="milling-micro-3-pass" data-i18n="option.millingMicro3">Milling micro - 3 pass</option>
+                    <option value="milling-tapered-1-pass" data-i18n="option.millingTapered1">Milling tapered - 1 pass</option>
+                    <option value="milling-tapered-2-pass" data-i18n="option.millingTapered2">Milling tapered - 2 pass</option>
+                    <option value="milling-tapered-3-pass" data-i18n="option.millingTapered3">Milling tapered - 3 pass</option>
+                    <option value="lathe-normal-1-pass" data-i18n="option.latheNormal1">Lathe normal - 1 pass</option>
+                    <option value="lathe-normal-2-pass" data-i18n="option.latheNormal2">Lathe normal - 2 pass</option>
+                    <option value="lathe-normal-3-pass" data-i18n="option.latheNormal3">Lathe normal - 3 pass</option>
+                    <option value="lathe-axial-1-pass" data-i18n="option.latheAxial1">Lathe axial - 1 pass</option>
+                    <option value="lathe-axial-2-pass" data-i18n="option.latheAxial2">Lathe axial - 2 pass</option>
+                    <option value="lathe-axial-3-pass" data-i18n="option.latheAxial3">Lathe axial - 3 pass</option>
+                    <option value="lathe-micro-1-pass" data-i18n="option.latheMicro1">Lathe micro - 1 pass</option>
+                    <option value="lathe-micro-2-pass" data-i18n="option.latheMicro2">Lathe micro - 2 pass</option>
+                    <option value="lathe-micro-3-pass" data-i18n="option.latheMicro3">Lathe micro - 3 pass</option>
+                    <option value="lathe-tapered-1-pass" data-i18n="option.latheTapered1">Lathe tapered - 1 pass</option>
+                    <option value="lathe-tapered-2-pass" data-i18n="option.latheTapered2">Lathe tapered - 2 pass</option>
+                    <option value="lathe-tapered-3-pass" data-i18n="option.latheTapered3">Lathe tapered - 3 pass</option>
+                  </select>
+                </div>
+              </div>
+              <textarea id="spg-cnc-program" class="spg-copy-text" readonly spellcheck="false" placeholder="Enter thread length to generate CNC program." data-i18n-placeholder="placeholder.cncProgram"></textarea>
+              <div id="spg-cnc-disclaimer" class="spg-help-text" data-i18n="cnc.disclaimer">Verify the CNC program in simulation or single block before machining. Machine-specific options and post settings can require adjustment.</div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden>
+        <div id="spg-compare-lock" class="spg-card spg-lock-card">
+          <div class="spg-section-title" data-i18n="section.compare">Compare</div>
+          <div class="spg-lock-row">
+            <label for="spg-compare-password" data-i18n="compare.password">Password</label>
+            <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="button.unlock">Unlock</button>
+          </div>
+          <div class="spg-help-text" data-i18n="compare.lockHelp">This section is intended for SmiCut and distributors.</div>
+        </div>
+
+        <div id="spg-compare-content" class="spg-compare-content" hidden>
+          <div class="spg-compare-workspace">
+            <section class="spg-compare-thread-card">
+              <div class="spg-compare-thread-input-grid">
+                <div class="spg-field spg-compare-thread-material-field">
+                  <label for="spg-compare-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Material to machine</span></label>
+                  <select id="spg-compare-material" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-compare-thread-profile-field">
+                  <label for="spg-compare-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Thread profile</span></label>
+                  <select id="spg-compare-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-size-field">
+                  <label for="spg-compare-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Thread size</span></label>
+                  <select id="spg-compare-thread-size" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-diameter-field">
+                  <label for="spg-compare-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Thread diameter (mm)</span></label>
+                  <input id="spg-compare-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-pitch-field">
+                  <label id="spg-compare-pitch-label" for="spg-compare-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Pitch (mm)</span></label>
+                  <input id="spg-compare-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-length-field">
+                  <label for="spg-compare-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Thread length (mm)</span></label>
+                  <input id="spg-compare-thread-length" class="spg-control" type="number" min="0" step="0.001" value="12">
+                </div>
+
+                <div class="spg-field spg-compare-machine-cost-field">
+                  <label for="spg-machine-cost" class="spg-field-label"><span data-i18n="field.machineCostPerHour">Machine cost per hour (€)</span></label>
+                  <input id="spg-machine-cost" class="spg-control" type="number" min="0" step="0.01" value="80">
+                </div>
+              </div>
+            </section>
+
+            <div class="spg-compare-tool-grid">
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-a-card">
+                <div id="spg-compare-tool-a-type" class="spg-compare-tool-type" hidden>-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-a" data-i18n="field.toolA">Tool A</label>
+                  <select id="spg-compare-tool-a" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-a-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-price" data-i18n="field.toolingCost">Tooling cost (€)</label>
+                  <input id="spg-compare-tool-a-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-life" data-i18n="field.toolLife">Tool life (minutes)</label>
+                  <input id="spg-compare-tool-a-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-diameter" data-i18n="field.cutterDiameter">Cutter diameter (mm)</label>
+                  <input id="spg-compare-tool-a-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-length" data-i18n="field.cuttingLength">Cutting length (mm)</label>
+                  <input id="spg-compare-tool-a-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-flutes" data-i18n="field.flutes">Flutes</label>
+                  <input id="spg-compare-tool-a-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-speed" data-i18n="field.cuttingSpeed">Cutting speed (m/min)</label>
+                  <input id="spg-compare-tool-a-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-feed" data-i18n="field.feedPerTooth">Feed/tooth (mm/tooth)</label>
+                  <input id="spg-compare-tool-a-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-passes" data-i18n="field.radialPassesMax">Radial passes (max 3)</label>
+                  <input id="spg-compare-tool-a-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-b-card">
+                <div id="spg-compare-tool-b-type" class="spg-compare-tool-type" hidden>-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-b" data-i18n="field.toolB">Tool B</label>
+                  <select id="spg-compare-tool-b" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-b-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-price" data-i18n="field.toolingCost">Tooling cost (€)</label>
+                  <input id="spg-compare-tool-b-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-life" data-i18n="field.toolLife">Tool life (minutes)</label>
+                  <input id="spg-compare-tool-b-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-diameter" data-i18n="field.cutterDiameter">Cutter diameter (mm)</label>
+                  <input id="spg-compare-tool-b-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-length" data-i18n="field.cuttingLength">Cutting length (mm)</label>
+                  <input id="spg-compare-tool-b-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-flutes" data-i18n="field.flutes">Flutes</label>
+                  <input id="spg-compare-tool-b-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-speed" data-i18n="field.cuttingSpeed">Cutting speed (m/min)</label>
+                  <input id="spg-compare-tool-b-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-feed" data-i18n="field.feedPerTooth">Feed/tooth (mm/tooth)</label>
+                  <input id="spg-compare-tool-b-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-passes" data-i18n="field.radialPassesMax">Radial passes (max 3)</label>
+                  <input id="spg-compare-tool-b-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="spg-note spg-compare-note" role="status" aria-live="polite">
+            <div class="spg-note-title" data-i18n="note.title">NOTE:</div>
+            <div id="spg-compare-summary" class="spg-note-text"></div>
+          </div>
+
+          <section class="spg-card spg-final-card spg-compare-results-card">
+            <div id="spg-cost-data" class="spg-compare-result-table"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="spg-information-panel" class="spg-panel" role="tabpanel" hidden>
+        <div class="spg-info-page">
+          <article class="spg-info-card spg-info-overview-card">
+            <div class="spg-info-hero-head">
+              <h2 data-i18n="info.howToUse">How to use SmiProg</h2>
+            </div>
+            <div class="spg-info-overview-copy">
+              <div class="spg-info-workflow">
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Define the thread</strong><p data-i18n="info.step1.body">Select material, thread profile, thread size, thread length and safety distance.</p></div></div>
+                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Select the thread mill</strong><p data-i18n="info.step2.body">Use a suggested SmiCut tool or enter custom tool dimensions in the tool selection.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Check output</strong><p data-i18n="info.step3.body">Review cutting data, machining time and the Fanuc CNC program before machining.</p></div></div>
+              </div>
+              <div class="spg-info-check-strip">
+                <strong data-i18n="info.beforeMachining.title">Before machining</strong>
+                <p data-i18n="info.beforeMachining.body">Check that the selected thread mill can machine the thread diameter, pitch and thread length. Confirm the program in simulation or single block before running production.</p>
+              </div>
+            </div>
+
+            <div class="spg-info-overview-figure">
+              <figure class="spg-info-figure">
+                <img src="./assets/info/smiprog-nb.svg" alt="Thread milling dimension reference showing thread diameter, pitch, cutting length, safety distance and cutter diameter." data-i18n-alt="info.figureAlt">
+                <figcaption>
+                  <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Thread diameter</span></span>
+                  <span><strong>P</strong><span data-i18n="info.figure.pitch">Pitch</span></span>
+                  <span><strong>L</strong><span data-i18n="info.figure.threadLength">Thread length</span></span>
+                  <span><strong>S</strong><span data-i18n="info.figure.safetyDistance">Safety distance</span></span>
+                  <span><strong>d</strong><span data-i18n="info.figure.cutterDiameter">Cutter diameter</span></span>
+                  <span><strong>l</strong><span data-i18n="info.figure.cuttingLength">Cutting length</span></span>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <section class="spg-info-section" aria-label="Machining notes" data-i18n-aria-label="aria.machiningNotes">
+            <div class="spg-info-section-head">
+              <h2 data-i18n="info.machiningNotes">Machining Notes</h2>
+            </div>
+            <div class="spg-info-notes-grid">
+              <article class="spg-info-card">
+                <h2 data-i18n="info.toolCompensation.title">Tool Compensation</h2>
+                <p data-i18n="info.toolCompensation.body">Compensation of tooling is normally only needed for small adjustments. Large compensation values can cause problems. Use a value close to zero for cutter diameter compensation in the control system tool library.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.correctThreadDiameter.title">Correct Thread Diameter</h2>
+                <p data-i18n="info.correctThreadDiameter.body">The pitch diameter is usually checked with a thread plug gauge or another accepted thread measuring method. If adjustment is needed, compensate in the machine control rather than changing standard thread data.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.customTools.title">Custom and Special Tools</h2>
+                <p data-i18n="info.customTools.body">If your tool is not in the list, choose custom tool dimensions in the tool selection and enter cutter diameter, cutting length and number of flutes. Verify the generated program carefully when using custom tooling.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
+                <p data-i18n="info.threadBurr.body">To use the deburring feature of solid carbide thread mills from SmiCut, input the complete cutting length of the tool in the thread length box. That way the threading and deburring will be made in the same operation.</p>
+                <p><a href="https://smicut.com/en/threadburr-solid-carbide-thread-mills/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link">Read more in the article ThreadBurr Solid Carbide Thread Mills.</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.oneTwoRows.title">Thread Mills with One or Two Rows of Teeth</h2>
+                <p data-i18n="info.oneTwoRows.body">SmiProg compensates for standard SmiCut cutters with one or two rows of teeth. When using a non-standard cutter, check the cutting length and pitch relationship before machining.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.flankInfeed.title">Flank Infeed</h2>
+                <p data-i18n="info.flankInfeed.body">SmiProg uses flank infeed when programming multiple radial passes. This helps reduce vibration and improves machining stability.</p>
+                <p><a href="https://smicut.com/en/vibration-free-thread-milling-improving-productivity-and-economy/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link">Read more in the article Vibration-Free Thread Milling.</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.shortCuttingLength.title">Short Cutting Length</h2>
+                <p data-i18n="info.shortCuttingLength.body">If the selected tool has a shorter cutting length than the requested thread length, SmiProg divides the operation into several axial passes when the tool type supports it.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.inserts.title">Thread Mills with Inserts</h2>
+                <p data-i18n="info.inserts.body">Use custom tool dimensions in the tool selection to get cutting data for indexable thread mills. Enter the actual cutter diameter, cutting length and number of inserts or flutes, then verify the generated program before machining.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.taperedThreads.title">Tapered Threads</h2>
+                <p data-i18n="info.taperedThreads.body">For tapered threads, the cutter diameter is related to the last full thread closest to the shank. Register the thread diameter at that position for correct CNC output.</p>
+              </article>
+
+              <article class="spg-info-warning" aria-label="Important warning" data-i18n-aria-label="aria.warning">
+                <div class="spg-info-kicker" data-i18n="info.warning.title">Warning</div>
+                <p data-i18n="info.warning.body">The cutting data in SmiProg is recommended starting data. Many factors can require adjustments, including workpiece material, machine stability, fixturing, tool setup, coolant and chip evacuation. SmiCut does not take responsibility for damage caused by using the CNC program or cutting data recommended by the software.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="./i18n/en.js?v=20261005-2"></script>
+  <script src="./js/i18n.js?v=20261005-1"></script>
+  <script src="./data/smiprog-data.js?v=20260604-1"></script>
+  <script src="./data/tool-web-links.js?v=20260604-1"></script>
+  <script src="./js/core.js?v=20261005-4"></script>
+  <script src="./js/material-selector.js?v=20261005-1"></script>
+  <script src="./js/app.js?v=20261005-2"></script>
+</body>
+</html>

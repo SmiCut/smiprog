@@ -1,0 +1,503 @@
+{
+  "sourceWorkbook": "SmiProg MOLNIFY 240513.xlsx",
+  "sourceSha256": "d679af39666fab273b40f85ce8f76205ce74ff0437380dc1e6fe398521b552cd",
+  "sourceUnchanged": true,
+  "engine": "Microsoft Excel / calculate full",
+  "capturedAt": "2026-10-05T17:36:55.146952+00:00",
+  "timingOracleSha256": "15a3669e5b3831cb55c53145ffd0566cfed74fb0bd658247044f7d088280c9ba",
+  "originalFormulas": {
+    "C33": "(AO3/(AO5*60/C32))",
+    "E33": "(AO153/(AO155*60/E32))",
+    "C34": "(AO3/(AO5*60/C32))+(C32/3600*C18)",
+    "E34": "(AO153/(AO155*60/E32))+(E32/3600*C18)"
+  },
+  "scope": "Original cost formulas with independent native CNC timings supplied; not a full Molnify CNC recalculation.",
+  "cases": [
+    {
+      "id": "compare-cost-0-normal",
+      "timingCaseA": "baseline-fanuc-recalc-default-milling-normal",
+      "timingCaseB": "selection-5",
+      "priceA": 210.9,
+      "priceB": 232.1,
+      "lifeA": 120,
+      "lifeB": 120,
+      "machineCost": 80,
+      "inputReadBack": {
+        "C32": 97,
+        "E32": 123,
+        "AO3": 210.9,
+        "AO153": 232.1,
+        "AO5": 120,
+        "AO155": 120,
+        "C18": 80
+      },
+      "expectedA": {
+        "toolingCostPerThread": 2.8412916666666663,
+        "totalCostPerThread": 4.996847222222222
+      },
+      "expectedB": {
+        "toolingCostPerThread": 3.9650416666666666,
+        "totalCostPerThread": 6.698375
+      }
+    },
+    {
+      "id": "compare-cost-0-free",
+      "timingCaseA": "baseline-fanuc-recalc-default-milling-normal",
+      "timingCaseB": "selection-5",
+      "priceA": 0,
+      "priceB": 0,
+      "lifeA": 120,
+      "lifeB": 240,
+      "machineCost": 0,
+      "inputReadBack": {
+        "C32": 97,
+        "E32": 123,
+        "AO3": 0,
+        "AO153": 0,
+        "AO5": 120,
+        "AO155": 240,
+        "C18": 0
+      },
+      "expectedA": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      },
+      "expectedB": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      }
+    },
+    {
+      "id": "compare-cost-0-short-life",
+      "timingCaseA": "baseline-fanuc-recalc-default-milling-normal",
+      "timingCaseB": "selection-5",
+      "priceA": 123.45,
+      "priceB": 345.67,
+      "lifeA": 0.01,
+      "lifeB": 0.02,
+      "machineCost": 135.5,
+      "inputReadBack": {
+        "C32": 97,
+        "E32": 123,
+        "AO3": 123.45,
+        "AO153": 345.67,
+        "AO5": 0.01,
+        "AO155": 0.02,
+        "C18": 135.5
+      },
+      "expectedA": {
+        "toolingCostPerThread": 19957.75,
+        "totalCostPerThread": 19961.40097222222
+      },
+      "expectedB": {
+        "toolingCostPerThread": 35431.175,
+        "totalCostPerThread": 35435.80458333334
+      }
+    },
+    {
+      "id": "compare-cost-1-normal",
+      "timingCaseA": "custom-diameter-7p5",
+      "timingCaseB": "custom-diameter-11",
+      "priceA": 210.9,
+      "priceB": 232.1,
+      "lifeA": 120,
+      "lifeB": 120,
+      "machineCost": 80,
+      "inputReadBack": {
+        "C32": 183,
+        "E32": 138,
+        "AO3": 210.9,
+        "AO153": 232.1,
+        "AO5": 120,
+        "AO155": 120,
+        "C18": 80
+      },
+      "expectedA": {
+        "toolingCostPerThread": 5.360375,
+        "totalCostPerThread": 9.427041666666668
+      },
+      "expectedB": {
+        "toolingCostPerThread": 4.448583333333334,
+        "totalCostPerThread": 7.51525
+      }
+    },
+    {
+      "id": "compare-cost-1-free",
+      "timingCaseA": "custom-diameter-7p5",
+      "timingCaseB": "custom-diameter-11",
+      "priceA": 0,
+      "priceB": 0,
+      "lifeA": 120,
+      "lifeB": 240,
+      "machineCost": 0,
+      "inputReadBack": {
+        "C32": 183,
+        "E32": 138,
+        "AO3": 0,
+        "AO153": 0,
+        "AO5": 120,
+        "AO155": 240,
+        "C18": 0
+      },
+      "expectedA": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      },
+      "expectedB": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      }
+    },
+    {
+      "id": "compare-cost-1-short-life",
+      "timingCaseA": "custom-diameter-7p5",
+      "timingCaseB": "custom-diameter-11",
+      "priceA": 123.45,
+      "priceB": 345.67,
+      "lifeA": 0.01,
+      "lifeB": 0.02,
+      "machineCost": 135.5,
+      "inputReadBack": {
+        "C32": 183,
+        "E32": 138,
+        "AO3": 123.45,
+        "AO153": 345.67,
+        "AO5": 0.01,
+        "AO155": 0.02,
+        "C18": 135.5
+      },
+      "expectedA": {
+        "toolingCostPerThread": 37652.25,
+        "totalCostPerThread": 37659.13791666667
+      },
+      "expectedB": {
+        "toolingCostPerThread": 39752.05,
+        "totalCostPerThread": 39757.24416666667
+      }
+    },
+    {
+      "id": "compare-cost-2-normal",
+      "timingCaseA": "edge-length-1p5",
+      "timingCaseB": "edge-length-3",
+      "priceA": 210.9,
+      "priceB": 232.1,
+      "lifeA": 120,
+      "lifeB": 120,
+      "machineCost": 80,
+      "inputReadBack": {
+        "C32": 177,
+        "E32": 744,
+        "AO3": 210.9,
+        "AO153": 232.1,
+        "AO5": 120,
+        "AO155": 120,
+        "C18": 80
+      },
+      "expectedA": {
+        "toolingCostPerThread": 5.1846250000000005,
+        "totalCostPerThread": 9.117958333333334
+      },
+      "expectedB": {
+        "toolingCostPerThread": 23.983666666666664,
+        "totalCostPerThread": 40.516999999999996
+      }
+    },
+    {
+      "id": "compare-cost-2-free",
+      "timingCaseA": "edge-length-1p5",
+      "timingCaseB": "edge-length-3",
+      "priceA": 0,
+      "priceB": 0,
+      "lifeA": 120,
+      "lifeB": 240,
+      "machineCost": 0,
+      "inputReadBack": {
+        "C32": 177,
+        "E32": 744,
+        "AO3": 0,
+        "AO153": 0,
+        "AO5": 120,
+        "AO155": 240,
+        "C18": 0
+      },
+      "expectedA": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      },
+      "expectedB": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      }
+    },
+    {
+      "id": "compare-cost-2-short-life",
+      "timingCaseA": "edge-length-1p5",
+      "timingCaseB": "edge-length-3",
+      "priceA": 123.45,
+      "priceB": 345.67,
+      "lifeA": 0.01,
+      "lifeB": 0.02,
+      "machineCost": 135.5,
+      "inputReadBack": {
+        "C32": 177,
+        "E32": 744,
+        "AO3": 123.45,
+        "AO153": 345.67,
+        "AO5": 0.01,
+        "AO155": 0.02,
+        "C18": 135.5
+      },
+      "expectedA": {
+        "toolingCostPerThread": 36417.75,
+        "totalCostPerThread": 36424.412083333336
+      },
+      "expectedB": {
+        "toolingCostPerThread": 214315.40000000002,
+        "totalCostPerThread": 214343.40333333335
+      }
+    },
+    {
+      "id": "compare-cost-3-normal",
+      "timingCaseA": "regression-lathe-axial-3",
+      "timingCaseB": "regression-lathe-axial-2",
+      "priceA": 210.9,
+      "priceB": 232.1,
+      "lifeA": 120,
+      "lifeB": 120,
+      "machineCost": 80,
+      "inputReadBack": {
+        "C32": 273,
+        "E32": 228,
+        "AO3": 210.9,
+        "AO153": 232.1,
+        "AO5": 120,
+        "AO155": 120,
+        "C18": 80
+      },
+      "expectedA": {
+        "toolingCostPerThread": 7.996625000000001,
+        "totalCostPerThread": 14.063291666666668
+      },
+      "expectedB": {
+        "toolingCostPerThread": 7.349833333333334,
+        "totalCostPerThread": 12.416500000000001
+      }
+    },
+    {
+      "id": "compare-cost-3-free",
+      "timingCaseA": "regression-lathe-axial-3",
+      "timingCaseB": "regression-lathe-axial-2",
+      "priceA": 0,
+      "priceB": 0,
+      "lifeA": 120,
+      "lifeB": 240,
+      "machineCost": 0,
+      "inputReadBack": {
+        "C32": 273,
+        "E32": 228,
+        "AO3": 0,
+        "AO153": 0,
+        "AO5": 120,
+        "AO155": 240,
+        "C18": 0
+      },
+      "expectedA": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      },
+      "expectedB": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      }
+    },
+    {
+      "id": "compare-cost-3-short-life",
+      "timingCaseA": "regression-lathe-axial-3",
+      "timingCaseB": "regression-lathe-axial-2",
+      "priceA": 123.45,
+      "priceB": 345.67,
+      "lifeA": 0.01,
+      "lifeB": 0.02,
+      "machineCost": 135.5,
+      "inputReadBack": {
+        "C32": 273,
+        "E32": 228,
+        "AO3": 123.45,
+        "AO153": 345.67,
+        "AO5": 0.01,
+        "AO155": 0.02,
+        "C18": 135.5
+      },
+      "expectedA": {
+        "toolingCostPerThread": 56169.75,
+        "totalCostPerThread": 56180.025416666664
+      },
+      "expectedB": {
+        "toolingCostPerThread": 65677.3,
+        "totalCostPerThread": 65685.88166666667
+      }
+    },
+    {
+      "id": "compare-cost-4-normal",
+      "timingCaseA": "override-passes-2-machining-center",
+      "timingCaseB": "override-passes-3-machining-center",
+      "priceA": 210.9,
+      "priceB": 232.1,
+      "lifeA": 120,
+      "lifeB": 120,
+      "machineCost": 80,
+      "inputReadBack": {
+        "C32": 58,
+        "E32": 87,
+        "AO3": 210.9,
+        "AO153": 232.1,
+        "AO5": 120,
+        "AO155": 120,
+        "C18": 80
+      },
+      "expectedA": {
+        "toolingCostPerThread": 1.6989166666666666,
+        "totalCostPerThread": 2.987805555555555
+      },
+      "expectedB": {
+        "toolingCostPerThread": 2.8045416666666667,
+        "totalCostPerThread": 4.737875
+      }
+    },
+    {
+      "id": "compare-cost-4-free",
+      "timingCaseA": "override-passes-2-machining-center",
+      "timingCaseB": "override-passes-3-machining-center",
+      "priceA": 0,
+      "priceB": 0,
+      "lifeA": 120,
+      "lifeB": 240,
+      "machineCost": 0,
+      "inputReadBack": {
+        "C32": 58,
+        "E32": 87,
+        "AO3": 0,
+        "AO153": 0,
+        "AO5": 120,
+        "AO155": 240,
+        "C18": 0
+      },
+      "expectedA": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      },
+      "expectedB": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      }
+    },
+    {
+      "id": "compare-cost-4-short-life",
+      "timingCaseA": "override-passes-2-machining-center",
+      "timingCaseB": "override-passes-3-machining-center",
+      "priceA": 123.45,
+      "priceB": 345.67,
+      "lifeA": 0.01,
+      "lifeB": 0.02,
+      "machineCost": 135.5,
+      "inputReadBack": {
+        "C32": 58,
+        "E32": 87,
+        "AO3": 123.45,
+        "AO153": 345.67,
+        "AO5": 0.01,
+        "AO155": 0.02,
+        "C18": 135.5
+      },
+      "expectedA": {
+        "toolingCostPerThread": 11933.5,
+        "totalCostPerThread": 11935.683055555555
+      },
+      "expectedB": {
+        "toolingCostPerThread": 25061.075,
+        "totalCostPerThread": 25064.349583333333
+      }
+    },
+    {
+      "id": "compare-cost-5-normal",
+      "timingCaseA": "regression-heidenhain-micro-ten",
+      "timingCaseB": "regression-heidenhain-micro-ten",
+      "priceA": 210.9,
+      "priceB": 232.1,
+      "lifeA": 120,
+      "lifeB": 120,
+      "machineCost": 80,
+      "inputReadBack": {
+        "C32": 91,
+        "E32": 91,
+        "AO3": 210.9,
+        "AO153": 232.1,
+        "AO5": 120,
+        "AO155": 120,
+        "C18": 80
+      },
+      "expectedA": {
+        "toolingCostPerThread": 2.6655416666666665,
+        "totalCostPerThread": 4.687763888888888
+      },
+      "expectedB": {
+        "toolingCostPerThread": 2.933486111111111,
+        "totalCostPerThread": 4.955708333333333
+      }
+    },
+    {
+      "id": "compare-cost-5-free",
+      "timingCaseA": "regression-heidenhain-micro-ten",
+      "timingCaseB": "regression-heidenhain-micro-ten",
+      "priceA": 0,
+      "priceB": 0,
+      "lifeA": 120,
+      "lifeB": 240,
+      "machineCost": 0,
+      "inputReadBack": {
+        "C32": 91,
+        "E32": 91,
+        "AO3": 0,
+        "AO153": 0,
+        "AO5": 120,
+        "AO155": 240,
+        "C18": 0
+      },
+      "expectedA": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      },
+      "expectedB": {
+        "toolingCostPerThread": 0,
+        "totalCostPerThread": 0
+      }
+    },
+    {
+      "id": "compare-cost-5-short-life",
+      "timingCaseA": "regression-heidenhain-micro-ten",
+      "timingCaseB": "regression-heidenhain-micro-ten",
+      "priceA": 123.45,
+      "priceB": 345.67,
+      "lifeA": 0.01,
+      "lifeB": 0.02,
+      "machineCost": 135.5,
+      "inputReadBack": {
+        "C32": 91,
+        "E32": 91,
+        "AO3": 123.45,
+        "AO153": 345.67,
+        "AO5": 0.01,
+        "AO155": 0.02,
+        "C18": 135.5
+      },
+      "expectedA": {
+        "toolingCostPerThread": 18723.25,
+        "totalCostPerThread": 18726.675138888888
+      },
+      "expectedB": {
+        "toolingCostPerThread": 26213.308333333334,
+        "totalCostPerThread": 26216.733472222222
+      }
+    }
+  ]
+}

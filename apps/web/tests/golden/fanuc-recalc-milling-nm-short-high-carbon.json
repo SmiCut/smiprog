@@ -1,0 +1,55 @@
+{
+  "name": "Excel recalculated Fanuc milling NM short high-carbon tool case",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceNotes": "Generated from a copied workbook after Microsoft Excel recalculation. Inputs were written to CNC sheet cells and visible output was read from CNC!F4:F150.",
+  "generatedBy": "apps/web/tools/export-excel-recalc-fixture.py",
+  "recalcCase": "fanuc-recalc-milling-nm-short-high-carbon",
+  "input": {
+    "processId": "machining-center",
+    "controlSystemId": "fanuc",
+    "threadProfileId": "m",
+    "materialId": "material-3",
+    "diameter": 10,
+    "pitch": 1.5,
+    "threadLength": 12,
+    "safetyDistance": 2,
+    "selectedToolId": "222",
+    "overrides": {
+      "cutterDiameter": null,
+      "cuttingEdgeLength": null,
+      "flutes": null,
+      "cuttingSpeed": null,
+      "feedPerTooth": null,
+      "radialPasses": null
+    }
+  },
+  "expectedCuttingData": {
+    "cutterDiameter": 7.5,
+    "cuttingEdgeLength": 32,
+    "flutes": 5,
+    "cuttingSpeed": 118,
+    "feedPerTooth": 0.06723921954958535,
+    "radialPasses": 1,
+    "axialPasses": 8,
+    "spindleSpeed": 5008,
+    "feedAtThreadDiameter": 1684,
+    "centerFeed": 421,
+    "machiningTime": 9.5
+  },
+  "expectedCncProgram": [
+    "S5008 M3",
+    "G00 G91 Z-14.",
+    "G01 G41 X0.625 Y-0.625 F211",
+    "G03 X0.625 Y0.625 Z0.188 I0. J0.625",
+    "#1=8",
+    "#2=0",
+    "WHILE[#2LT#1]DO1",
+    "G03 X0. Y0. Z1.5 I-1.25 J0. F421",
+    "#2=#2+1",
+    "END1",
+    "G03 X-0.625 Y0.625 Z0.188 I-0.625 J0. F2105",
+    "G01 G40 X-0.625 Y-0.625",
+    "G00 Z1.624"
+  ]
+}

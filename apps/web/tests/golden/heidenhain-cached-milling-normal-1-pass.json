@@ -1,0 +1,42 @@
+{
+  "name": "Cached Heidenhain variant: Fräs, NORMAL, 1 pass, Heidenhain",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceColumn": "BF",
+  "sourceProgramCode": 12,
+  "sourceNotes": "Cached Heidenhain Klartext vertical milling program variant from the original workbook. Runs against the internal Heidenhain post until Timo approval.",
+  "allowInternalPost": true,
+  "input": {
+    "processId": "machining-center",
+    "controlSystemId": "heidenhain",
+    "threadProfileId": "m",
+    "materialId": "material-14",
+    "diameter": 16,
+    "pitch": 4,
+    "threadLength": 34,
+    "safetyDistance": 2,
+    "selectedToolId": "",
+    "overrides": {
+      "cutterDiameter": 11,
+      "cuttingEdgeLength": 4,
+      "flutes": 3,
+      "feedPerTooth": 0.05,
+      "radialPasses": 2
+    },
+    "programVariant": "milling-normal-1-pass"
+  },
+  "expectedCncProgram": [
+    "1 TOOL CALL 1 Z S2981",
+    "2 L M3",
+    "3 L IZ-35.587 FMAX",
+    "4 L IX+1.25 IY-1.25 RL F70",
+    "5 CC IX+0 IY+1.25",
+    "6 CP IPA+90 IZ+0.5 DR+",
+    "7 CC IX-2.5 IY+0",
+    "8 CP IPA+360 IZ+4 DR+ F140",
+    "9 CC IX-1.25 IY+0",
+    "10 CP IPA+90 IZ+0.5 DR+ F700",
+    "11 L IX-1.25 IY-1.25 R0",
+    "12 L IZ+31 FMAX"
+  ]
+}

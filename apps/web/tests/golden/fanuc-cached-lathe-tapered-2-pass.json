@@ -1,0 +1,51 @@
+{
+  "name": "Cached Fanuc variant: Svarv, KONISK, 2 pass, Fanuc",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceColumn": "CM",
+  "sourceProgramCode": 1010021,
+  "sourceNotes": "Cached program variant from the original workbook. Active for the migrated Fanuc lathe tapered 2-pass template.",
+  "input": {
+    "processId": "lathe-live-tool",
+    "controlSystemId": "fanuc",
+    "threadProfileId": "m",
+    "materialId": "material-14",
+    "diameter": 16,
+    "pitch": 4,
+    "threadLength": 34,
+    "safetyDistance": 2,
+    "selectedToolId": "",
+    "overrides": {
+      "cutterDiameter": 11,
+      "cuttingEdgeLength": 4,
+      "flutes": 3,
+      "feedPerTooth": 0.05,
+      "radialPasses": 2
+    },
+    "programVariant": "lathe-tapered-2-pass"
+  },
+  "expectedCncProgram": [
+    "S2981 M13",
+    "G00 G91 G94 Z-35.587",
+    "G12.1",
+    "G01 G41 X0.893 C-0.893 F55",
+    "G03 X0.893 C0.893 Z0.5 I0. J0.893",
+    "G03 X-1.786 C1.817 Z1. I-1.786 J0.031 F110",
+    "G03 X-1.848 C-1.817 Z1. I-0.031 J-1.817",
+    "G03 X1.848 C-1.879 Z1. I1.848 J-0.031",
+    "G03 X1.91 C1.879 Z1. I0.031 J1.879",
+    "G03 X-0.893 C0.893 Z0.5 I-0.893 J0. F550",
+    "G01 G40 X-1.017 C-0.893",
+    "G00 Z-5.413",
+    "G01 G41 X1.25 C-1.25 F70",
+    "G03 X1.25 C1.25 Z0.5 I0. J1.25",
+    "G03 X-2.5 C2.531 Z1. I-2.5 J0.031 F140",
+    "G03 X-2.562 C-2.531 Z1. I-0.031 J-2.531",
+    "G03 X2.562 C-2.593 Z1. I2.562 J-0.031",
+    "G03 X2.624 C2.593 Z1. I0.031 J2.593",
+    "G03 X-1.25 C1.25 Z0.5 I-1.25 J0. F700",
+    "G01 G40 X-1.374 C-1.25",
+    "G13.1",
+    "G00 Z31."
+  ]
+}

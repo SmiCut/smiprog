@@ -1,0 +1,62 @@
+{
+  "name": "Original Excel default Fanuc micro two-pass case",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceNotes": "Current cached workbook state. Uses manual optional tool geometry overrides in column D.",
+  "input": {
+    "processId": "machining-center",
+    "controlSystemId": "fanuc",
+    "threadProfileId": "m",
+    "materialId": "material-14",
+    "diameter": 16,
+    "pitch": 4,
+    "threadLength": 34,
+    "safetyDistance": 2,
+    "selectedToolId": "",
+    "overrides": {
+      "cutterDiameter": 11,
+      "cuttingEdgeLength": 4,
+      "flutes": 3,
+      "feedPerTooth": 0.05,
+      "radialPasses": 2
+    }
+  },
+  "expectedCuttingData": {
+    "cutterDiameter": 11,
+    "cuttingEdgeLength": 4,
+    "flutes": 3,
+    "cuttingSpeed": 103,
+    "feedPerTooth": 0.05,
+    "radialPasses": 2,
+    "axialPasses": 9,
+    "spindleSpeed": 2981,
+    "feedAtThreadDiameter": 447,
+    "centerFeed": 140,
+    "machiningTime": 123
+  },
+  "expectedCncProgram": [
+    "S2981 M3",
+    "G00 G91 Z-35.587",
+    "G01 G41 X0.893 Y-0.893 F55",
+    "G03 X0.893 Y0.893 Z0.5 I0. J0.893",
+    "#1=9",
+    "#2=0",
+    "WHILE[#2LT#1]DO1",
+    "G03 X0. Y0. Z4. I-1.786 J0. F110",
+    "#2=#2+1",
+    "END1",
+    "G03 X-0.893 Y0.893 Z0.5 I-0.893 J0. F550",
+    "G01 G40 X-0.893 Y-0.893",
+    "G00 Z-37.",
+    "G01 G41 X1.25 Y-1.25 F70",
+    "G03 X1.25 Y1.25 Z0.5 I0. J1.25",
+    "#2=0",
+    "WHILE[#2LT#1]DO2",
+    "G03 X0. Y0. Z4. I-2.5 J0. F140",
+    "#2=#2+1",
+    "END2",
+    "G03 X-1.25 Y1.25 Z0.5 I-1.25 J0. F700",
+    "G01 G40 X-1.25 Y-1.25",
+    "G00 Z-1.413"
+  ]
+}

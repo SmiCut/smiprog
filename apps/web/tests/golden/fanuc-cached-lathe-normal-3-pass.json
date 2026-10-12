@@ -1,0 +1,51 @@
+{
+  "name": "Cached Fanuc variant: Svarv, NORMAL, 3 pass, Fanuc",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceColumn": "CE",
+  "sourceProgramCode": 1000031,
+  "sourceNotes": "Cached program variant from the original workbook. Active for the migrated Fanuc lathe normal 3-pass template.",
+  "input": {
+    "processId": "lathe-live-tool",
+    "controlSystemId": "fanuc",
+    "threadProfileId": "m",
+    "materialId": "material-14",
+    "diameter": 16,
+    "pitch": 4,
+    "threadLength": 34,
+    "safetyDistance": 2,
+    "selectedToolId": "",
+    "overrides": {
+      "cutterDiameter": 11,
+      "cuttingEdgeLength": 4,
+      "flutes": 3,
+      "feedPerTooth": 0.05,
+      "radialPasses": 2
+    },
+    "programVariant": "lathe-normal-3-pass"
+  },
+  "expectedCncProgram": [
+    "S2981 M13",
+    "G00 G91 G94 Z-35.587",
+    "G12.1",
+    "G01 G41 X0.71 C-0.71 F46",
+    "G03 X0.71 C0.71 Z0.5 I0. J0.71",
+    "G03 X0. C0. Z4. I-1.42 J0. F92",
+    "G03 X-0.71 C0.71 Z0.5 I-0.71 J0. F460",
+    "G01 G40 X-0.71 C-0.71",
+    "G00 Z-5.413",
+    "G01 G41 X1.035 C-1.035 F61",
+    "G03 X1.035 C1.035 Z0.5 I0. J1.035",
+    "G03 X0. C0. Z4. I-2.07 J0. F122",
+    "G03 X-1.035 C1.035 Z0.5 I-1.035 J0. F610",
+    "G01 G40 X-1.035 C-1.035",
+    "G00 Z-5.413",
+    "G01 G41 X1.25 C-1.25 F70",
+    "G03 X1.25 C1.25 Z0.5 I0. J1.25",
+    "G03 X0. C0. Z4. I-2.5 J0. F140",
+    "G03 X-1.25 C1.25 Z0.5 I-1.25 J0. F700",
+    "G01 G40 X-1.25 C-1.25",
+    "G13.1",
+    "G00 Z31."
+  ]
+}

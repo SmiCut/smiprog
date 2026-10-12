@@ -1,0 +1,22 @@
+{
+  "name": "No matching tool uses original Excel Fanuc error text",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceColumn": "BD",
+  "sourceNotes": "Error output column in the original workbook.",
+  "input": {
+    "processId": "machining-center",
+    "controlSystemId": "fanuc",
+    "threadProfileId": "m",
+    "materialId": "material-14",
+    "diameter": 1,
+    "pitch": 99,
+    "threadLength": 999,
+    "safetyDistance": 2,
+    "selectedToolId": ""
+  },
+  "expectedCncProgram": [
+    "The program doesn't accept your choice.",
+    "Please, test with other values."
+  ]
+}

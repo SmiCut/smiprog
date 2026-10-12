@@ -1,0 +1,43 @@
+{
+  "name": "Cached Fanuc variant: Fräs, NORMAL, 2 pass, Fanuc",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceColumn": "BG",
+  "sourceProgramCode": 21,
+  "sourceNotes": "Cached program variant from the original workbook. Active for the migrated Fanuc milling normal 2-pass template.",
+  "input": {
+    "processId": "machining-center",
+    "controlSystemId": "fanuc",
+    "threadProfileId": "m",
+    "materialId": "material-14",
+    "diameter": 16,
+    "pitch": 4,
+    "threadLength": 34,
+    "safetyDistance": 2,
+    "selectedToolId": "",
+    "overrides": {
+      "cutterDiameter": 11,
+      "cuttingEdgeLength": 4,
+      "flutes": 3,
+      "feedPerTooth": 0.05,
+      "radialPasses": 2
+    },
+    "programVariant": "milling-normal-2-pass"
+  },
+  "expectedCncProgram": [
+    "S2981 M3",
+    "G00 G91 Z-35.587",
+    "G01 G41 X0.893 Y-0.893 F55",
+    "G03 X0.893 Y0.893 Z0.5 I0. J0.893",
+    "G03 X0. Y0. Z4. I-1.786 J0. F110",
+    "G03 X-0.893 Y0.893 Z0.5 I-0.893 J0. F550",
+    "G01 G40 X-0.893 Y-0.893",
+    "G00 Z-5.413",
+    "G01 G41 X1.25 Y-1.25 F70",
+    "G03 X1.25 Y1.25 Z0.5 I0. J1.25",
+    "G03 X0. Y0. Z4. I-2.5 J0. F140",
+    "G03 X-1.25 Y1.25 Z0.5 I-1.25 J0. F700",
+    "G01 G40 X-1.25 Y-1.25",
+    "G00 Z31."
+  ]
+}

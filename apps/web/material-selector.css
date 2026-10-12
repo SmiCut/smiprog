@@ -1,0 +1,103 @@
+
+
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) {width:100%; color:#242427!important; font-size:16px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) [hidden] {display:none!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-panel {border:1px solid #d7d7dc; border-radius:8px; overflow:hidden; background:linear-gradient(180deg, #fbfbfc 0%, #f4f4f6 100%);}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-header {display:flex; align-items:center; min-height:46px; padding:8px 14px; border-bottom:0; font-size:17px; font-weight:800; line-height:1.2; letter-spacing:0; color:#ffffff!important; background:#7b7d83;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-welcome {max-width:560px; margin:0 auto; padding:28px 24px 16px; text-align:center; line-height:1.55; color:#666870!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-welcome .sms-welcome-title {font-family:inherit!important; font-style:normal!important; text-transform:none!important; letter-spacing:normal!important; text-align:center!important; background:none!important; border:0!important; box-shadow:none!important; text-shadow:none!important; font-size:24px!important; font-weight:700!important; line-height:1.25!important; color:#242427!important; margin:0 0 14px!important; padding:0!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-composer {background:#fff; padding:16px 20px calc(16px + env(safe-area-inset-bottom)); border-top:1px solid #dddde3;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-panel:not(.sms-started) .sms-composer {max-width:560px; margin:0 auto 20px; border:0; background:transparent;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) label {display:block; font-size:14px!important; font-weight:600!important; color:#4f5158!important; margin:0 0 10px!important; line-height:1.4!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-input-row {display:flex; align-items:flex-end; gap:8px; padding:6px; border:1px solid #8e9095; border-radius:12px; background:#ffffff;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-input-row:focus-within {outline:2px solid #4f5158; outline-offset:1px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) [data-sms-role="input"] {display:block; flex:1; width:100%!important; min-width:0; min-height:44px!important; max-height:112px; resize:none; overflow-y:auto; padding:10px 8px!important; margin:0!important; border:0!important; border-radius:0!important; outline:0!important; box-shadow:none!important; background:transparent!important; color:#242427!important; font-size:16px!important; line-height:24px!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) [data-sms-role="input"]::placeholder {color:#85878e!important; opacity:1;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) button {font-family:inherit!important; font-size:16px!important; line-height:1.3!important; font-weight:600!important; letter-spacing:normal!important; text-transform:none!important; cursor:pointer; box-shadow:none!important; min-height:44px; padding:10px 14px!important; border:0!important; border-radius:10px!important; background:#4f5158!important; color:white!important; margin:0!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) button:disabled {background:#e5e6e8!important; color:#72747c!important; cursor:default;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) button:focus-visible, :is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) summary:focus-visible {outline:2px solid #4f5158!important; outline-offset:3px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-panel:not(.sms-started) .sms-input-row {display:grid; gap:12px; padding:0; border:0; border-radius:0; background:transparent; outline:none;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-panel:not(.sms-started) [data-sms-role="input"] {background:#fff!important; border:1px solid #8e9095!important; border-radius:12px!important; padding:12px 14px!important; min-height:50px!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-panel:not(.sms-started) [data-sms-role="input"]:focus {outline:2px solid #4f5158!important; outline-offset:1px!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-panel:not(.sms-started) [data-sms-role="send"] {width:100%;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-started [data-sms-role="send"] {flex:0 0 44px; width:44px!important; height:44px!important; padding:0!important; font-size:25px!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-panel {display:flex; flex-direction:column; height:min(620px, 80dvh); min-height:0;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-messages {position:relative; flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:20px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-message {width:fit-content; max-width:90%; padding:16px; border-radius:16px; line-height:1.5; overflow-wrap:anywhere; margin:0 0 16px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-message-user {margin-left:auto; background:#6d6f76; color:#fff!important; white-space:pre-wrap;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-message-bot {width:680px; background:white; border:1px solid #e0e0e4; box-shadow:0 2px 6px rgba(55,57,62,.04); color:#242427!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-sender {font-size:13px; color:#666870; font-weight:600; margin-bottom:12px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-category-result {background:#f1f2f3; border:1px solid #dfe1e4; padding:14px; border-radius:10px; margin-bottom:14px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-category-result-label {font-size:12px; font-weight:600; letter-spacing:.5px; text-transform:uppercase; color:#55575e; margin-bottom:8px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-category-result-value {font-size:20px; font-weight:700; line-height:1.3;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-category-spec {font-size:16px; color:#666870; margin-top:6px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-apply-material {width:100%;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-help {font-size:13px; text-align:center; color:#666870; margin:12px 0;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-selected {font-size:13px; font-weight:600; color:#4f5158; margin:0 0 10px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) summary {cursor:pointer; padding:12px 0; min-height:44px; font-weight:600; color:#4f5158;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-explanation {line-height:1.55;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-explanation a {color:#4f5158!important; text-decoration:underline!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-reply-heading {font-weight:700; margin-top:12px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators {display:grid; gap:8px; margin:12px 0;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-loading-message {color:#666870!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) [data-sms-role="status"] {font-size:14px; line-height:1.4; margin-top:10px; overflow-wrap:anywhere;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) [data-sms-role="status"]:empty {display:none;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-status-error {color:#a32828!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) [data-sms-role="retry"] {margin-top:8px!important;}
+@media(max-width:600px) {:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-messages {padding:14px;} :is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-message {max-width:100%;} :is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-composer {padding:12px 14px calc(12px + env(safe-area-inset-bottom));} :is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-header {padding:8px 14px;}}
+
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-header span {color:inherit!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) button:not(:disabled):hover {background:#3e4047!important;}
+
+
+
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-selected {display:table; background:#e9edeb; border-radius:6px; padding:5px 9px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) summary {display:flex; align-items:center; justify-content:space-between; list-style:none;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) summary::-webkit-details-marker {display:none;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) summary::after {content:'›'; font-size:26px; line-height:1;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) details[open] summary::after {transform:rotate(90deg);}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-status-success:not(:empty) {position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%);}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-header, :is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-composer {flex-shrink:0;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-input-arrow {display:inline-block; margin-right:5px; color:#6d6f76; font-size:20px; line-height:1; vertical-align:-1px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-icon {display:inline-block; width:20px; height:20px; flex-shrink:0; vertical-align:middle;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) [data-sms-role="send"] .sms-icon {width:24px; height:24px;}
+
+
+
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-send-spinner {display:inline-block; width:20px; height:20px; border:2px solid #c3c4c8; border-top-color:#55575e; border-radius:50%; vertical-align:middle; animation:sms-send-rotate .8s linear infinite;}
+@keyframes sms-send-rotate {to {transform:rotate(360deg);}}
+@media (prefers-reduced-motion:reduce) {:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-send-spinner {animation:none;}}
+
+
+
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="tapping"] {background:#a97862!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="tapping"]:not(:disabled):hover {background:#7a4f3d!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="tapping"]:focus-visible {outline-color:#7a4f3d!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="threadturning"] {background:#766a77!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="threadturning"]:not(:disabled):hover {background:#5f5363!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="threadturning"]:focus-visible {outline-color:#5f5363!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="grooving"] {background:#766a77!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="grooving"]:not(:disabled):hover {background:#5f5363!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="grooving"]:focus-visible {outline-color:#5f5363!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="endmills"] {background:#557fa3!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="endmills"]:not(:disabled):hover {background:#3f6f94!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="endmills"]:focus-visible {outline-color:#3f6f94!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="drills"] {background:#4d8c68!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="drills"]:not(:disabled):hover {background:#2f6247!important;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-calculators button[data-sms-calculator="drills"]:focus-visible {outline-color:#2f6247!important;}
+
+
+
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-panel:not(.sms-started) {overflow-y:auto;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-panel:not(.sms-started) .sms-welcome {flex-shrink:0; width:100%; margin-top:auto;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-panel:not(.sms-started) .sms-composer {width:100%; margin-bottom:auto; padding-bottom:28px;}
+
+
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) *,
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) *::before,
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) *::after {box-sizing:border-box;}
+
+
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-loading-message {display:flex; align-items:center; gap:9px;}
+:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-spinner {width:16px; height:16px; border:2px solid #d7d7dc; border-top-color:#6d6f76; border-radius:50%; animation:sms-send-rotate .8s linear infinite; flex:0 0 auto;}
+@media(prefers-reduced-motion:reduce) {:is(#smiprog-app #spg-material-selector-widget, #smicut-cutting-data-app #smicut-chat-widget) .sms-spinner {animation:none;}}

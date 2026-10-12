@@ -1,0 +1,48 @@
+{
+  "name": "Cached Heidenhain variant: Fräs, KONISK, 1 pass, Heidenhain",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceColumn": "BX",
+  "sourceProgramCode": 10012,
+  "sourceNotes": "Cached Heidenhain Klartext vertical milling program variant from the original workbook. Runs against the internal Heidenhain post until Timo approval.",
+  "allowInternalPost": true,
+  "input": {
+    "processId": "machining-center",
+    "controlSystemId": "heidenhain",
+    "threadProfileId": "m",
+    "materialId": "material-14",
+    "diameter": 16,
+    "pitch": 4,
+    "threadLength": 34,
+    "safetyDistance": 2,
+    "selectedToolId": "",
+    "overrides": {
+      "cutterDiameter": 11,
+      "cuttingEdgeLength": 4,
+      "flutes": 3,
+      "feedPerTooth": 0.05,
+      "radialPasses": 2
+    },
+    "programVariant": "milling-tapered-1-pass"
+  },
+  "expectedCncProgram": [
+    "1 TOOL CALL 1 Z S2981",
+    "2 L M3",
+    "3 L IZ-35.587 FMAX",
+    "4 L IX+1.25 IY-1.25 RL F70",
+    "5 CC IX+0 IY+1.25",
+    "6 CP IPA+90 IZ+0.5 DR+",
+    "7 CC IX-2.5 IY+0.031",
+    "8 CP IPA+90 IZ+1 DR+ F140",
+    "9 CC IX-0.031 IY-2.531",
+    "10 CP IPA+90 IZ+1 DR+",
+    "11 CC IX+2.562 IY-0.031",
+    "12 CP IPA+90 IZ+1 DR+",
+    "13 CC IX+0.031 IY+2.593",
+    "14 CP IPA+90 IZ+1 DR+",
+    "15 CC IX-1.25 IY+0",
+    "16 CP IPA+90 IZ+0.5 DR+ F700",
+    "17 L IX-1.374 IY-1.25 R0",
+    "18 L IZ+31 FMAX"
+  ]
+}

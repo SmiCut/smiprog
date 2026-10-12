@@ -1,0 +1,53 @@
+{
+  "name": "Excel recalculated Fanuc milling tapered NPTF standard tool case",
+  "sourceWorkbook": "SmiProg_230915.xlsx",
+  "sourceSheet": "CNC",
+  "sourceNotes": "Generated from a copied workbook after Microsoft Excel recalculation. Inputs were written to CNC sheet cells and visible output was read from CNC!F4:F150.",
+  "generatedBy": "apps/web/tools/export-excel-recalc-fixture.py",
+  "recalcCase": "fanuc-recalc-milling-nptf-tapered",
+  "input": {
+    "processId": "machining-center",
+    "controlSystemId": "fanuc",
+    "threadProfileId": "nptf",
+    "materialId": "material-14",
+    "diameter": 30,
+    "pitch": 8,
+    "threadLength": 20,
+    "safetyDistance": 2,
+    "selectedToolId": "6",
+    "overrides": {
+      "cutterDiameter": null,
+      "cuttingEdgeLength": null,
+      "flutes": null,
+      "cuttingSpeed": null,
+      "feedPerTooth": null,
+      "radialPasses": null
+    }
+  },
+  "expectedCuttingData": {
+    "cutterDiameter": 20,
+    "cuttingEdgeLength": 42.86,
+    "flutes": 4,
+    "cuttingSpeed": 103,
+    "feedPerTooth": 0.05038280759463201,
+    "radialPasses": 1,
+    "axialPasses": 1,
+    "spindleSpeed": 1639,
+    "feedAtThreadDiameter": 330,
+    "centerFeed": 110,
+    "machiningTime": 26
+  },
+  "expectedCncProgram": [
+    "S1639 M3",
+    "G00 G91 Z-22.",
+    "G01 G41 X2.5 Y-2.5 F55",
+    "G03 X2.5 Y2.5 Z0.397 I0. J2.5",
+    "G03 X-5. Y5.025 Z0.794 I-5. J0.025 F110",
+    "G03 X-5.05 Y-5.025 Z0.794 I-0.025 J-5.025",
+    "G03 X5.05 Y-5.075 Z0.794 I5.05 J-0.025",
+    "G03 X5.1 Y5.075 Z0.794 I0.025 J5.075",
+    "G03 X-2.5 Y2.5 Z0.397 I-2.5 J0. F550",
+    "G01 G40 X-2.6 Y-2.5",
+    "G00 Z18.031"
+  ]
+}

@@ -501,6 +501,30 @@ if (!compareCustomFilledUi.diameterInSummary || !compareCustomFilledUi.resultTex
   compareMismatches.push("Compare custom tool dimensions must produce results after entering cutter diameter, cutting length and flutes.");
 }
 
+// Exercise rejection and recovery through the rendered UI at both widths.
+const radialValidationMismatches = [];
+for (const width of [1440, 390]) {
+  await page.goto(appUrl);
+  await page.click('[data-spg-tab="main"]');
+  await page.setViewportSize({ width, height: 1100 });
+  await fillFixtureInput({ input: {
+    processId: "machining-center", controlSystemId: "heidenhain", threadProfileId: "m",
+    materialId: "material-14", diameter: 1.6, pitch: 0.4, threadLength: 5.6, safetyDistance: 2,
+    overrides: { cutterDiameter: 1.4, cuttingEdgeLength: 5.6, flutes: 4, radialPasses: 3 }
+  } });
+  const invalidProgram = await page.locator("#spg-cnc-program").inputValue();
+  const message = await page.locator("#spg-note-message").textContent();
+  if (/CP IPA|G0[123]/.test(invalidProgram) || !message.includes("radial pass")) {
+    radialValidationMismatches.push(`Invalid radial geometry must show an error and no CNC at width ${width}.`);
+  }
+  await page.screenshot({ path: path.resolve(`tmp/smiprog-radial-error-${width}.png`), fullPage: true });
+  await page.fill("#spg-override-radial-passes", "1");
+  if (!(await page.locator("#spg-cnc-program").inputValue()).includes("CP IPA+360")
+    || (await page.locator("#spg-note-message").textContent()).includes("radial pass")) {
+    radialValidationMismatches.push(`Valid single-pass geometry must recover CNC at width ${width}.`);
+  }
+}
+
 await browser.close();
 
 console.log(JSON.stringify({
@@ -554,6 +578,7 @@ console.log(JSON.stringify({
   goldenUiMismatches,
   templateUiPassed: templateUiMismatches.length === 0,
   templateUiMismatches,
+  radialValidationMismatches,
   errors,
   screenshots: {
     desktopMain: desktopMainScreenshotPath,
@@ -567,6 +592,6 @@ console.log(JSON.stringify({
   }
 }, null, 2));
 
-if (goldenUiMismatches.length > 0 || templateUiMismatches.length > 0 || threadSelectorMismatches.length > 0 || toolNoteMismatches.length > 0 || informationMismatches.length > 0 || mainCuttingDataMismatches.length > 0 || threadHandMismatches.length > 0 || controlSystemMismatches.length > 0 || compareMismatches.length > 0 || errors.length > 0) {
+if (radialValidationMismatches.length > 0 || goldenUiMismatches.length > 0 || templateUiMismatches.length > 0 || threadSelectorMismatches.length > 0 || toolNoteMismatches.length > 0 || informationMismatches.length > 0 || mainCuttingDataMismatches.length > 0 || threadHandMismatches.length > 0 || controlSystemMismatches.length > 0 || compareMismatches.length > 0 || errors.length > 0) {
   process.exitCode = 1;
 }

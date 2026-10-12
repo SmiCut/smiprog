@@ -15,8 +15,11 @@ widget, or be adapted by distributors under their own brand.
 
 The current Fanuc / ISO IJK post supports milling and selected lathe live-tool
 variants. Heidenhain Klartext vertical milling remains experimental (`internal`
-release metadata), although visible in the current interface. Its tested scope
-is narrower; left-hand and lathe output are not verified for that post.
+release metadata), although visible in the current interface. It supports right-hand vertical milling; left-hand and lathe requests are
+blocked. Software checks cover Excel reference comparisons and 21,926 catalogue
+and boundary inputs. Axial/tapered Z corrections intentionally differ from the
+original Excel output; [test scope and formulas](docs/cnc-motion-and-validation.md)
+explain the corrections and limits of these checks.
 Verify generated CNC for your actual controller, machine and setup before use.
 Publishing the source is not certification of every machining scenario.
 

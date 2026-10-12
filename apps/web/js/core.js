@@ -694,15 +694,14 @@
     const leadZ = round(pitch / 8, 3);
     const travelPerPass = (2 * leadZ) + pitch;
     const axialMove = getAxialMove(result.tool, input);
-    const lastAxialRetract = isLeftHandThread(input)
-      ? round(axialMove + travelPerPass, 3)
-      : round(axialMove - (pitch * 1.25), 3);
-    const finalAxialRetract = isLeftHandThread(input)
-      ? round(input.threadLength + input.safetyDistance - (data.axialPasses * axialMove) - travelPerPass, 3)
-      : round(input.threadLength + input.safetyDistance - (data.axialPasses * axialMove), 3);
-    const startZ = getFanucThreadStartDepth(input, data.radialPasses, travelPerPass);
+    const startZ = getFanucThreadStartDepth(input, passCount, travelPerPass);
     const passDiameters = getFanucRadialPassDiameters(input, passCount);
     const interPassCompensations = getFanucInterPassCompensations(passDiameters, input);
+    const cycleCompensation = interPassCompensations.reduce((sum, value) => sum + value, 0);
+    // Each loop must advance exactly axialMove, including the flank-infeed offsets.
+    const lastAxialRetract = round(axialMove + cycleCompensation
+      + (isLeftHandThread(input) ? travelPerPass : -travelPerPass), 3);
+    const finalAxialRetract = round(startZ - (data.axialPasses * axialMove), 3);
     const lines = [
       `S${data.spindleSpeed} M3`,
       `G00 G91 Z${formatFanucInitialRapidZ(startZ)}`,
@@ -733,18 +732,18 @@
     const input = result.input;
     const pitch = getProgramPitch(input);
     const leadZ = round(pitch / 8, 3);
-    const travelPerPass = (2 * leadZ) + pitch;
-    const startZ = getFanucThreadStartDepth(input, data.radialPasses, travelPerPass);
+    const travelPerPass = (2 * leadZ) + (4 * round(pitch / 4, 3));
+    const startZ = getFanucThreadStartDepth(input, passCount, travelPerPass);
     const finalRetract = getFanucFinalRetract(input, travelPerPass);
     const passDiameters = getFanucRadialPassDiameters(input, passCount);
     const interPassCompensations = getFanucInterPassCompensations(passDiameters, input);
-    const interPassRetract = getFanucInterPassRetract(input, travelPerPass, interPassCompensations[0] || 0);
     const lines = [`S${data.spindleSpeed} M3`, `G00 G91 Z${formatFanucInitialRapidZ(startZ)}`];
 
     passDiameters.forEach((diameter, index) => {
       appendFanucMillingTaperedPass(lines, input, result.tool, data, diameter);
 
       if (index < passDiameters.length - 1) {
+        const interPassRetract = getFanucInterPassRetract(input, travelPerPass, interPassCompensations[index]);
         lines.push(`G00 Z${formatGCodeNumber(interPassRetract, 3)}`);
       }
     });
@@ -1078,11 +1077,14 @@
     const leadZ = round(pitch / 8, 3);
     const travelPerPass = (2 * leadZ) + pitch;
     const axialMove = getAxialMove(result.tool, input);
-    const lastAxialRetract = round(axialMove - (pitch * 1.25), 3);
-    const finalAxialRetract = round(input.threadLength + input.safetyDistance - (data.axialPasses * axialMove), 3);
-    const startZ = getFanucThreadStartDepth(input, data.radialPasses, travelPerPass);
+    const startZ = getFanucThreadStartDepth(input, passCount, travelPerPass);
     const passDiameters = getFanucRadialPassDiameters(input, passCount);
     const interPassCompensations = getFanucInterPassCompensations(passDiameters, input);
+    const cycleCompensation = interPassCompensations.reduce((sum, value) => sum + value, 0);
+    // Each loop must advance exactly axialMove, including the flank-infeed offsets.
+    const lastAxialRetract = round(axialMove + cycleCompensation
+      + (isLeftHandThread(input) ? travelPerPass : -travelPerPass), 3);
+    const finalAxialRetract = round(startZ - (data.axialPasses * axialMove), 3);
     const builder = beginHeidenhainMillingProgram(result, startZ);
 
     builder.add(`FN 0: Q1 =${formatHeidenhainForcedPlus(data.axialPasses, 0)}`);
@@ -1152,20 +1154,17 @@
     const input = result.input;
     const pitch = getProgramPitch(input);
     const leadZ = round(pitch / 8, 3);
-    const travelPerPass = (2 * leadZ) + pitch;
-    const startZ = getFanucThreadStartDepth(input, data.radialPasses, travelPerPass);
+    const travelPerPass = (2 * leadZ) + (4 * round(pitch / 4, 3));
+    const startZ = getFanucThreadStartDepth(input, passCount, travelPerPass);
     const finalRetract = getFanucFinalRetract(input, travelPerPass);
     const passDiameters = getFanucRadialPassDiameters(input, passCount);
-    const interPassRetract = getFanucInterPassRetract(
-      input,
-      travelPerPass,
-      getFanucStartCompensation(input, data.radialPasses)
-    );
+    const interPassCompensations = getFanucInterPassCompensations(passDiameters, input);
     const builder = beginHeidenhainMillingProgram(result, startZ);
 
     passDiameters.forEach((diameter, index) => {
       appendHeidenhainMillingTaperedPass(builder, input, result.tool, data, diameter);
       if (index < passDiameters.length - 1) {
+        const interPassRetract = getFanucInterPassRetract(input, travelPerPass, interPassCompensations[index]);
         builder.add(`L ${formatHeidenhainAxis("IZ", interPassRetract)} FMAX`);
       }
     });
@@ -1282,6 +1281,29 @@
         cncProgram,
         programAnalysis: analyzeCncProgram(cncProgram)
       };
+    }
+
+    const templatePattern = controlSystem.id === "heidenhain"
+      ? /^milling-(?:normal|axial|micro|tapered)-([123])-pass$/
+      : /^(?:milling|lathe)-(?:normal|axial|micro|tapered)-([123])-pass$/;
+    const templatePasses = String(result.input.programVariant || "").match(templatePattern);
+    const passCount = templatePasses ? Number(templatePasses[1]) : result.cuttingData.radialPasses;
+    for (const diameter of getFanucRadialPassDiameters(result.input, passCount)) {
+      const leadRadius = round((diameter - result.tool.cutterDiameter) / 4, 3);
+      const feed = Math.round(result.cuttingData.feedAtThreadDiameter
+        * (diameter - result.tool.cutterDiameter) / diameter);
+      if (!(leadRadius > 0) || !(feed > 0) || !(Math.round(feed * 0.5) > 0)) {
+        result.errors.push("A radial pass is too small for this cutter or produces zero feed. Use fewer radial passes, a smaller cutter, or suitable cutting data.");
+        return { controlSystem, postProcessor: post, canGenerateCncProgram: false,
+          cncProgram: ["The program doesn't accept your choice.", "Please, test with other values."],
+          programAnalysis: analyzeCncProgram([]) };
+      }
+    }
+    if (!(result.cuttingData.spindleSpeed > 0)) {
+      result.errors.push("The selected cutting data produces zero spindle speed. Increase the cutting speed.");
+      return { controlSystem, postProcessor: post, canGenerateCncProgram: false,
+        cncProgram: ["The program doesn't accept your choice.", "Please, test with other values."],
+        programAnalysis: analyzeCncProgram([]) };
     }
 
     const cncProgram = post.buildProgram(result);

@@ -988,6 +988,11 @@
     };
   }
 
+  function formatHeidenhainHelixZ(input, value) {
+    // Same downward, counterclockwise left-hand strategy as the Fanuc post.
+    return formatHeidenhainAxis("IZ", value * (isLeftHandThread(input) ? -1 : 1));
+  }
+
   function appendHeidenhainMillingPass(builder, input, tool, data, diameter) {
     const pitch = getProgramPitch(input);
     const leadZ = round(pitch / 8, 3);
@@ -999,11 +1004,11 @@
 
     builder.add(`L ${formatHeidenhainAxis("IX", k)} ${formatHeidenhainAxis("IY", -k)} RL F${leadFeed}`);
     builder.add(`CC ${formatHeidenhainAxis("IX", 0)} ${formatHeidenhainAxis("IY", k)}`);
-    builder.add(`CP IPA+90 ${formatHeidenhainAxis("IZ", leadZ)} DR+`);
+    builder.add(`CP IPA+90 ${formatHeidenhainHelixZ(input, leadZ)} DR+`);
     builder.add(`CC ${formatHeidenhainAxis("IX", -radius)} ${formatHeidenhainAxis("IY", 0)}`);
-    builder.add(`CP IPA+360 ${formatHeidenhainAxis("IZ", pitch)} DR+ F${passFeed}`);
+    builder.add(`CP IPA+360 ${formatHeidenhainHelixZ(input, pitch)} DR+ F${passFeed}`);
     builder.add(`CC ${formatHeidenhainAxis("IX", -k)} ${formatHeidenhainAxis("IY", 0)}`);
-    builder.add(`CP IPA+90 ${formatHeidenhainAxis("IZ", leadZ)} DR+ F${exitFeed}`);
+    builder.add(`CP IPA+90 ${formatHeidenhainHelixZ(input, leadZ)} DR+ F${exitFeed}`);
     builder.add(`L ${formatHeidenhainAxis("IX", -k)} ${formatHeidenhainAxis("IY", -k)} R0`);
   }
 
@@ -1024,17 +1029,17 @@
 
     builder.add(`L ${formatHeidenhainAxis("IX", k)} ${formatHeidenhainAxis("IY", -k)} RL F${leadFeed}`);
     builder.add(`CC ${formatHeidenhainAxis("IX", 0)} ${formatHeidenhainAxis("IY", k)}`);
-    builder.add(`CP IPA+90 ${formatHeidenhainAxis("IZ", leadZ)} DR+`);
+    builder.add(`CP IPA+90 ${formatHeidenhainHelixZ(input, leadZ)} DR+`);
     builder.add(`CC ${formatHeidenhainAxis("IX", -r1)} ${formatHeidenhainAxis("IY", taperStep)}`);
-    builder.add(`CP IPA+90 ${formatHeidenhainAxis("IZ", quarterZ)} DR+ F${passFeed}`);
+    builder.add(`CP IPA+90 ${formatHeidenhainHelixZ(input, quarterZ)} DR+ F${passFeed}`);
     builder.add(`CC ${formatHeidenhainAxis("IX", -taperStep)} ${formatHeidenhainAxis("IY", -rPlusStep)}`);
-    builder.add(`CP IPA+90 ${formatHeidenhainAxis("IZ", quarterZ)} DR+`);
+    builder.add(`CP IPA+90 ${formatHeidenhainHelixZ(input, quarterZ)} DR+`);
     builder.add(`CC ${formatHeidenhainAxis("IX", r2)} ${formatHeidenhainAxis("IY", -taperStep)}`);
-    builder.add(`CP IPA+90 ${formatHeidenhainAxis("IZ", quarterZ)} DR+`);
+    builder.add(`CP IPA+90 ${formatHeidenhainHelixZ(input, quarterZ)} DR+`);
     builder.add(`CC ${formatHeidenhainAxis("IX", taperStep)} ${formatHeidenhainAxis("IY", r3)}`);
-    builder.add(`CP IPA+90 ${formatHeidenhainAxis("IZ", quarterZ)} DR+`);
+    builder.add(`CP IPA+90 ${formatHeidenhainHelixZ(input, quarterZ)} DR+`);
     builder.add(`CC ${formatHeidenhainAxis("IX", -k)} ${formatHeidenhainAxis("IY", 0)}`);
-    builder.add(`CP IPA+90 ${formatHeidenhainAxis("IZ", leadZ)} DR+ F${exitFeed}`);
+    builder.add(`CP IPA+90 ${formatHeidenhainHelixZ(input, leadZ)} DR+ F${exitFeed}`);
     builder.add(`L ${formatHeidenhainAxis("IX", -round(k + (4 * taperStep), 3))} ${formatHeidenhainAxis("IY", -k)} R0`);
   }
 
@@ -1116,9 +1121,10 @@
     const passDiameters = getFanucRadialPassDiameters(input, passCount);
     const startCompensation = getFanucStartCompensation(input, data.radialPasses);
     const startAbs = round(input.threadLength + input.safetyDistance - startCompensation, 3);
-    const firstRetract = -axialTravel;
-    const finalRetract = round(startAbs - axialTravel, 3);
-    const builder = beginHeidenhainMillingProgram(result, startAbs);
+    const firstRetract = isLeftHandThread(input) ? axialTravel : -axialTravel;
+    const finalRetract = isLeftHandThread(input) ? startAbs : round(startAbs - axialTravel, 3);
+    const startDepth = isLeftHandThread(input) ? round(startAbs - axialTravel, 3) : startAbs;
+    const builder = beginHeidenhainMillingProgram(result, startDepth);
 
     passDiameters.forEach((diameter, index) => {
       const passNumber = index + 1;
@@ -1130,18 +1136,18 @@
 
       builder.add(`L ${formatHeidenhainAxis("IX", k)} ${formatHeidenhainAxis("IY", -k)} RL F${leadFeed}`);
       builder.add(`CC ${formatHeidenhainAxis("IX", 0)} ${formatHeidenhainAxis("IY", k)}`);
-      builder.add(`CP IPA+90 ${formatHeidenhainAxis("IZ", leadZ)} DR+`);
+      builder.add(`CP IPA+90 ${formatHeidenhainHelixZ(input, leadZ)} DR+`);
       if (index === 0) {
         builder.add(`FN 0: Q1 =${formatHeidenhainForcedPlus(data.axialPasses, 0)}`);
       }
       builder.add("FN 0: Q2 =+0");
       builder.add(`LBL 10${passNumber}`);
       builder.add(`CC ${formatHeidenhainAxis("IX", -radius)} ${formatHeidenhainAxis("IY", 0)}`);
-      builder.add(`CP IPA+360 ${formatHeidenhainAxis("IZ", pitch)} DR+ F${passFeed}`);
+      builder.add(`CP IPA+360 ${formatHeidenhainHelixZ(input, pitch)} DR+ F${passFeed}`);
       builder.add("FN 1: Q2 =+Q2 + +1");
       builder.add(`FN 12: IF +Q2 LT +Q1 GOTO LBL 10${passNumber}`);
       builder.add(`CC ${formatHeidenhainAxis("IX", -k)} ${formatHeidenhainAxis("IY", 0)}`);
-      builder.add(`CP IPA+90 ${formatHeidenhainAxis("IZ", leadZ)} DR+ F${exitFeed}`);
+      builder.add(`CP IPA+90 ${formatHeidenhainHelixZ(input, leadZ)} DR+ F${exitFeed}`);
       builder.add(`L ${formatHeidenhainAxis("IX", -k)} ${formatHeidenhainAxis("IY", -k)} R0`);
       builder.add(`L ${formatHeidenhainAxis("IZ", index < passDiameters.length - 1 ? firstRetract : finalRetract)} FMAX`);
     });
@@ -1180,10 +1186,6 @@
 
     if (result.input.processId !== "machining-center") {
       return ["Heidenhain Klartext is currently implemented for machining-center milling only."];
-    }
-
-    if (isLeftHandThread(result.input)) {
-      return ["Heidenhain left-hand thread milling is not verified yet."];
     }
 
     const data = result.cuttingData;
@@ -1307,8 +1309,7 @@
     }
 
     const cncProgram = post.buildProgram(result);
-    const supportedOperation = controlSystem.machineTypes.includes(result.input.processId)
-      && !(controlSystem.id === "heidenhain" && isLeftHandThread(result.input));
+    const supportedOperation = controlSystem.machineTypes.includes(result.input.processId);
     return {
       controlSystem,
       postProcessor: post,

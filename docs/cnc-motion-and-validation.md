@@ -5,8 +5,7 @@
 The 2026-10-12 corrections cover axial and tapered **machining-center milling**
 in the Heidenhain Klartext and Fanuc / ISO IJK posts. Radial geometry/feed
 validation applies to both posts, including explicitly selected templates.
-Heidenhain remains available for right-hand vertical milling only; left-hand
-and lathe requests are blocked. Its release metadata remains `internal`.
+Heidenhain supports right- and left-hand vertical milling; lathe requests are blocked. Its release metadata remains `internal`.
 Fanuc lathe motion formulas are outside this correction's scope.
 
 ## Axial loops and flank infeed
@@ -21,7 +20,7 @@ actual rounded CNC increments, in mm.
   rounded to 0.001 mm, with the final shift taking the remainder so the shifts
   sum to the rounded total `C`.
 - Initial depth: `D = round(L + S - C, 3)` for right-hand milling;
-  Fanuc left-hand uses `D = round(L + S - C - T, 3)`.
+  Both posts use left-hand depth `D = round(L + S - C - T, 3)`.
 - Between radial passes: `-T - c[i]` for right-hand, `+T - c[i]` for left-hand.
 - At the end of each axial cycle: `A + C - T` for right-hand,
   `A + C + T` for left-hand.
@@ -80,8 +79,8 @@ and radii, compensation state, bore-center rapids and return to the initial Z.
 It is **not** a controller emulator, physical tool-radius compensation model,
 collision check or machine certification.
 
-The catalogue matrix contains 21,926 inputs: 21,850 accepted programs and 76
-rejected boundary combinations. It spans 519 catalogue tools, custom tools,
+The catalogue matrix runs 21,926 inputs for each thread hand: 43,852 cases,
+43,700 accepted programs and 152 rejected boundary combinations. It spans 519 catalogue tools, custom tools,
 30 materials and eight thread profiles. All accepted programs close nominal Z
 within 0.001 mm; these are software checks, not newly calculated Excel results.
 An independent Fanuc loop reader checks the affected axial scenarios for both
@@ -94,3 +93,34 @@ keyed by full reference-program SHA-256 and exact before/after blocks. The
 comparison allows only those listed changes plus the existing display fixes;
 there is no general tolerance for changed CNC motion. `npm test` runs both
 reference comparisons and independent motion regression tests.
+
+
+## Heidenhain left-hand milling (v0.1.2)
+
+Left-hand output follows the established Fanuc milling strategy: M3 spindle,
+counterclockwise arcs (`IPA+`, `DR+`), `RL` radius compensation and negative
+incremental Z during each helical cut. This is the downward/climb-milling
+strategy for a right-hand cutter, not the alternative upward/clockwise strategy.
+The internal-thread helix table in the [HEIDENHAIN iTNC 530 manual, section 6.5](https://content.heidenhain.de/doku/tnc_guide/pdf_files/iTNC530/340490-01/en/533_190-20.pdf)
+identifies the combination Z− / DR+ / RL as left-hand.
+
+Normal, axial and tapered programs use the same start depth, inter-pass offsets
+and final retract formulas as Fanuc. In micro programs, let `T = 2h + N × P`
+and `B = round(L + S - C, 3)`. Left-hand initial depth is `B - T`, inter-pass
+retraction is `+T`, and the final retract is `+B`; all helix increments are
+negative. Tapered output retains the existing Fanuc quarter-arc center offsets
+and feed strategy; this change does not redesign or independently certify the
+underlying tapered machining strategy.
+
+Tests compare all twelve left-hand templates (normal, axial, micro, tapered;
+one, two and three radial passes) against Fanuc's programmed Z increments,
+relative arc-center offsets, feeds, compensation and loop controls. The
+independent Klartext reader executes both hands and checks signed helicity,
+loop termination, positive radii/feeds, center returns and Z closure. Browser
+tests cover selecting left-hand, rendered CNC, copying and switching back to
+right-hand on desktop and mobile.
+
+Existing right-hand Excel references are unchanged. There is no newly captured
+native Excel oracle for Heidenhain left-hand output. Software test coverage is
+not controller or physical tool-compensation verification; the post keeps its
+`internal` development status.

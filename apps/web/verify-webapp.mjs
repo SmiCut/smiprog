@@ -523,6 +523,26 @@ for (const width of [1440, 390]) {
     || (await page.locator("#spg-note-message").textContent()).includes("radial pass")) {
     radialValidationMismatches.push(`Valid single-pass geometry must recover CNC at width ${width}.`);
   }
+  await page.selectOption("#spg-thread-hand", "left");
+  const leftProgram = await page.locator("#spg-cnc-program").inputValue();
+  if (!/CP IPA\+360 IZ-.*DR\+/.test(leftProgram) || !/\bRL\b/.test(leftProgram)
+    || /CP .*IZ\+|\bRR\b/.test(leftProgram)) {
+    radialValidationMismatches.push(`Heidenhain left-hand must use the downward Fanuc strategy at width ${width}.`);
+  }
+  await page.evaluate(() => {
+    Object.defineProperty(navigator, "clipboard", { configurable: true,
+      value: { writeText: async text => { window.leftHandCopiedText = text; } } });
+  });
+  await page.click("#spg-copy-cnc");
+  const copied = await page.evaluate(() => window.leftHandCopiedText);
+  if (!copied?.includes(leftProgram) || !copied.includes("Left-hand")) {
+    radialValidationMismatches.push(`Left-hand CNC copy must match the displayed program at width ${width}.`);
+  }
+  await page.screenshot({ path: path.resolve(`tmp/smiprog-heidenhain-left-${width}.png`), fullPage: true });
+  await page.selectOption("#spg-thread-hand", "right");
+  if (!/CP IPA\+360 IZ\+/.test(await page.locator("#spg-cnc-program").inputValue())) {
+    radialValidationMismatches.push(`Switching back to right-hand must restore upward motion at width ${width}.`);
+  }
 }
 
 await browser.close();

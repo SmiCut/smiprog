@@ -54,7 +54,7 @@ test("the real core only marks supported, valid CNC output as available", () => 
   for (const control of data.controlSystems.filter(control => !control.uiVisible)) {
     assert.equal(core.calculate({ ...input, controlSystemId: control.id }, data).canGenerateCncProgram, false);
   }
-  for (const change of [{ threadHand: "left" }, { processId: "lathe-live-tool" }]) {
+  for (const change of [{ processId: "lathe-live-tool" }]) {
     const result = core.calculate({ ...input, controlSystemId: "heidenhain", ...change }, data, { includeInternalPosts: true });
     assert.equal(result.canGenerateCncProgram, false);
     assert.equal(result.cncProgram.some(line => /\b(?:CP IPA|G0[123])\b/.test(line)), false);

@@ -63,7 +63,7 @@ window.SmiProgData = {
       "notes": [
         "Internal implementation for vertical machining-center thread milling only.",
         "Uses Heidenhain Klartext/TNC-style L, CC, CP IPA, FN and LBL blocks.",
-        "Left-hand Heidenhain output and lathe live-tool output are not verified."
+        "Right- and left-hand vertical milling are software-tested. Left-hand uses the downward Fanuc strategy. Lathe live-tool output is not supported."
       ],
       "machineTypes": [
         "machining-center"

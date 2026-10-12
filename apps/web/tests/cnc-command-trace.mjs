@@ -1,6 +1,6 @@
 // A deliberately small independent reader for only the emitted Klartext subset.
 // This traces commanded coordinates, not controller compensation or machine physics.
-export function inspectKlartext(lines) {
+export function inspectKlartext(lines, threadHand = "right") {
   const commands = lines.map((line, i) => {
     const m = line.match(/^(\d+) (.*)$/);
     if (!m || Number(m[1]) !== i + 1) throw Error('Incorrect block number: ' + line);
@@ -26,8 +26,8 @@ export function inspectKlartext(lines) {
       if (Number(line.match(/S(\d+)$/)[1]) <= 0) issues.add('zero-spindle');
     } else if (line === 'L M3') {
       // Spindle direction only.
-    } else if (/^L (?:I[XYZ][+-]\d+(?:\.\d+)?\s*)+(?:(?:RL|R0)\s*)?(?:F(?:MAX|-?\d+))?$/.test(line)) {
-      const comp = line.match(/\b(RL|R0)\b/);
+    } else if (/^L (?:I[XYZ][+-]\d+(?:\.\d+)?\s*)+(?:(?:RL|RR|R0)\s*)?(?:F(?:MAX|-?\d+))?$/.test(line)) {
+      const comp = line.match(/\b(RL|RR|R0)\b/);
       if (comp) compensation = comp[1];
       for (const m of line.matchAll(/I([XYZ])([+-]\d+(?:\.\d+)?)/g)) point['XYZ'.indexOf(m[1])] += Number(m[2]);
       if (line.includes('FMAX') && (Math.hypot(point[0], point[1]) > 0.002 || compensation !== 'R0')) issues.add('rapid-away-from-center');
@@ -39,8 +39,8 @@ export function inspectKlartext(lines) {
       if (!center) throw Error('Arc without center');
       const angle = Number(m[1]), dz = Number(m[2]);
       if ((angle > 0 ? '+' : '-') !== m[3]) issues.add('angle-direction-mismatch');
-      if (dz <= 0) issues.add('nonpositive-right-hand-rise');
-      if (compensation !== 'RL') issues.add('arc-without-RL');
+      if (angle <= 0 || (threadHand === 'left' ? dz >= 0 : dz <= 0)) issues.add('incorrect-thread-hand');
+      if (compensation !== 'RL') issues.add('incorrect-radius-compensation');
       const dx = point[0] - center[0], dy = point[1] - center[1];
       const radius = Math.hypot(dx, dy);
       if (radius <= 0) issues.add('zero-radius');
@@ -48,7 +48,7 @@ export function inspectKlartext(lines) {
       point[0] = center[0] + dx * Math.cos(radians) - dy * Math.sin(radians);
       point[1] = center[1] + dx * Math.sin(radians) + dy * Math.cos(radians);
       point[2] += dz;
-      arcs.push({ angle, dz, radius, z: point[2] });
+      arcs.push({ angle, dz, radius, x: point[0], y: point[1], z: point[2] });
     } else if (/^FN 0: Q\d+ =[+-]\d+$/.test(line)) {
       const m = line.match(/^FN 0: Q(\d+) =([+-]\d+)$/);
       q[m[1]] = Number(m[2]);

@@ -46,8 +46,10 @@ URL. The existing short-term limit is 30 requests per minute per IP address.
 
 Keep widget CSS scoped under `#smiprog-app`; see the embedding guide at the root.
 Changes to calculations require updated technical documentation, relevant tests
-and a review of the controller/post scope. Experimental Heidenhain output keeps
-its `internal` release metadata; public source availability does not expand scope.
+and a review of the controller/post scope. Heidenhain has `released` status for right- and left-hand vertical milling.
+Its machine scope excludes lathe live-tool output, which remains blocked.
+`released` denotes product availability; it does not assert a named person
+reviewed it or that it was tested on a physical machine.
 
 ## Independent language distributions
 

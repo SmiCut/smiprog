@@ -128,7 +128,7 @@ for (const controlSystem of data.controlSystems || []) {
     ...gateFixture.input,
     controlSystemId: controlSystem.id
   }, data);
-  const visible = controlSystem.uiVisible === true || ["timoApproved", "machineProven"].includes(controlSystem.releaseStatus);
+  const visible = controlSystem.uiVisible === true || ["released", "timoApproved", "machineProven"].includes(controlSystem.releaseStatus);
   if (visible && controlSystem.postId && !result.canGenerateCncProgram) {
     releaseGateFailures.push(`${controlSystem.id} is visible but has no program post.`);
   }

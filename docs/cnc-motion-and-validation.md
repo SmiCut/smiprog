@@ -5,7 +5,7 @@
 The 2026-10-12 corrections cover axial and tapered **machining-center milling**
 in the Heidenhain Klartext and Fanuc / ISO IJK posts. Radial geometry/feed
 validation applies to both posts, including explicitly selected templates.
-Heidenhain supports right- and left-hand vertical milling; lathe requests are blocked. Its release metadata remains `internal`.
+Heidenhain supports right- and left-hand vertical milling; lathe requests are blocked. Its release metadata is `released` for this scope.
 Fanuc lathe motion formulas are outside this correction's scope.
 
 ## Axial loops and flank infeed
@@ -122,5 +122,5 @@ right-hand on desktop and mobile.
 
 Existing right-hand Excel references are unchanged. There is no newly captured
 native Excel oracle for Heidenhain left-hand output. Software test coverage is
-not controller or physical tool-compensation verification; the post keeps its
-`internal` development status.
+not controller or physical tool-compensation verification; the `released` status describes product availability within the supported
+vertical-milling scope, not physical machine certification.

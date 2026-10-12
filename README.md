@@ -14,9 +14,8 @@ widget, or be adapted by distributors under their own brand.
 - A WordPress shortcode package
 
 The current Fanuc / ISO IJK post supports milling and selected lathe live-tool
-variants. Heidenhain Klartext vertical milling remains experimental (`internal`
-release metadata), although visible in the current interface. It supports right- and left-hand vertical milling; lathe requests remain
-blocked. Left-hand milling follows the Fanuc strategy: downward helix, counterclockwise
+variants. Heidenhain Klartext is released for right- and left-hand vertical
+milling. Thread milling in a lathe is not supported and those requests are blocked. Left-hand milling follows the Fanuc strategy: downward helix, counterclockwise
 arcs and left radius compensation. Software checks cover Excel reference comparisons
 and 43,852 catalogue/boundary cases across both thread hands. Axial/tapered Z corrections intentionally differ from the
 original Excel output; [test scope and formulas](docs/cnc-motion-and-validation.md)

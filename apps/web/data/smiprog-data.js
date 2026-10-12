@@ -55,13 +55,13 @@ window.SmiProgData = {
       "excelId": 2,
       "label": "Heidenhain Klartext (vertical milling)",
       "postId": "heidenhain-klartext-vertical",
-      "releaseStatus": "internal",
+      "releaseStatus": "released",
       "uiVisible": true,
       "syntaxFamily": "klartext",
       "arcMode": "heidenhain-cp",
       "macroMode": "q-parameters-when-required",
       "notes": [
-        "Internal implementation for vertical machining-center thread milling only.",
+        "Released for right- and left-hand vertical machining-center thread milling only.",
         "Uses Heidenhain Klartext/TNC-style L, CC, CP IPA, FN and LBL blocks.",
         "Right- and left-hand vertical milling are software-tested. Left-hand uses the downward Fanuc strategy. Lathe live-tool output is not supported."
       ],

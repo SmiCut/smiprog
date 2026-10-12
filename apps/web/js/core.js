@@ -240,7 +240,7 @@
   }
 
   function isReleasedControlSystem(control) {
-    return Boolean(control && ["timoApproved", "machineProven"].includes(control.releaseStatus));
+    return Boolean(control && ["released", "timoApproved", "machineProven"].includes(control.releaseStatus));
   }
 
   function isVisibleControlSystem(control) {

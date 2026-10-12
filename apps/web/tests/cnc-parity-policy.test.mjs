@@ -50,6 +50,7 @@ test("the real core only marks supported, valid CNC output as available", () => 
   const { SmiProgCore: core, SmiProgData: data } = context.window;
   const manifest = JSON.parse(fs.readFileSync(new URL("./excel-parity-cases.json", import.meta.url), "utf8"));
   const input = manifest.cases[0].input;
+  assert.ok(core.getReleasedControlSystems(data).some(control => control.id === "heidenhain"));
   assert.equal(core.calculate(input, data).canGenerateCncProgram, true);
   for (const control of data.controlSystems.filter(control => !control.uiVisible)) {
     assert.equal(core.calculate({ ...input, controlSystemId: control.id }, data).canGenerateCncProgram, false);

@@ -2013,7 +2013,7 @@
       if (nextId !== diameterToolId) {
         diameterToolId = nextId;
         catalogueDiameter = selected ? formatNumberInput(selected.cutterDiameter, 2) : "";
-        elements.markedDiameter.value = catalogueDiameter;
+        elements.markedDiameter.value = catalogueDiameter.replace(".", ",");
         requestedToolId = nextId;
       }
       elements.markedDiameter.disabled = !selected;
@@ -2199,7 +2199,7 @@
   function bindEvents() {
     bindRecalculateEvents(elements.markedDiameter);
     elements.resetDiameter.addEventListener("click", () => {
-      elements.markedDiameter.value = catalogueDiameter;
+      elements.markedDiameter.value = catalogueDiameter.replace(".", ",");
       recalculate({ keepTool: true });
     });
     const compareOwnValueInputs = [

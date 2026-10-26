@@ -1358,6 +1358,12 @@
     const candidates = filterTools(data, normalizedInput);
     const tool = getEffectiveTool(candidates, normalizedInput.selectedToolId, normalizedInput.overrides);
     const errors = [];
+    const catalogueTool = getSelectedTool(candidates, normalizedInput.selectedToolId);
+    if (catalogueTool && !hasCustomTool(normalizedInput.overrides) &&
+        normalizedInput.overrides.cutterDiameter > catalogueTool.cutterDiameter) {
+      const maximum = String(catalogueTool.cutterDiameter).replace(".", ",");
+      errors.push(`The laser-marked diameter cannot exceed the catalogue cutter diameter (${maximum} mm). Enter the marked value or reset to the catalogue diameter.`);
+    }
 
     if (
       !isPositiveFiniteNumber(normalizedInput.diameter) ||

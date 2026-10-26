@@ -132,6 +132,8 @@ laser-marked diameter overrides only cutter diameter: article, cutting length,
 flutes and tool link remain those of the selected catalogue tool. The effective
 diameter is used in spindle speed, feed, path-radius and CNC calculations for
 both posts and thread hands. Comma and point decimal separators are accepted.
-Empty, nonnumeric and nonpositive entries block CNC output. Tool changes
+Empty, nonnumeric, nonpositive and above-catalogue entries block CNC output.
+The upper limit applies only to the catalogue diameter field, not custom tools.
+Initial and reset values are displayed with a decimal comma. Tool changes
 (including automatic selection after thread changes) and Reset restore the
 catalogue diameter. Custom tools retain their separate dimension inputs.

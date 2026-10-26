@@ -11,7 +11,7 @@ try {
   await page.locator('#spg-thread-length').fill('12');
   const field = page.locator('#spg-marked-diameter');
   const program = page.locator('#spg-cnc-program');
-  assert.equal(await field.inputValue(), '7.50');
+  assert.equal(await field.inputValue(), '7,50');
   const tool = await page.locator('#spg-tool').inputValue();
   const link = await page.locator('#spg-tool-link').getAttribute('href');
   for (const post of ['fanuc', 'heidenhain']) {
@@ -28,7 +28,10 @@ try {
       assert.equal(await page.locator('#spg-tool-link').getAttribute('href'), link);
       await field.fill('7.42');
       assert.equal(await program.inputValue(), changed);
-      for (const invalid of ['', 'abc', 'Infinity', '0', '-2', '10']) {
+      await field.fill('7,51');
+      assert.match(await page.locator('#spg-note-message').innerText(), /cannot exceed.*7,5 mm/);
+      assert.doesNotMatch(await program.inputValue(), /G03|CP IPA/);
+      for (const invalid of ['7.51', '', 'abc', 'Infinity', '0', '-2', '10']) {
         await field.fill(invalid);
         assert.doesNotMatch(await program.inputValue(), /G03|CP IPA/);
       }
@@ -38,7 +41,7 @@ try {
   }
   await field.fill('7.42');
   await page.locator('#spg-tool').selectOption({index: 1});
-  assert.equal(await field.inputValue(), '7.50');
+  assert.equal(await field.inputValue(), '7,50');
   await field.fill('7.42');
   await page.locator('#spg-thread-size').selectOption({label: 'M12'});
   assert.notEqual(await field.inputValue(), '7.42');
@@ -49,7 +52,7 @@ try {
   assert.equal(await field.isVisible(), true);
   for (const width of [1440, 390]) {
     await page.setViewportSize({width, height: 1100});
-    await field.fill('9,85');
+    await field.fill('7,85');
     assert.equal(await field.isVisible(), true);
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     await page.screenshot({path: `${tmpdir()}/smiprog-diameter-${width}.png`, fullPage: true});

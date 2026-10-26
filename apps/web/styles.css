@@ -2494,6 +2494,6 @@
 
 #smiprog-app .spg-marked-diameter-field { grid-column: 1 / -1; min-width: 0; margin-top: 4px; }
 #smiprog-app .spg-marked-diameter-controls { display: flex; gap: 8px; align-items: center; }
-#smiprog-app .spg-marked-diameter-controls input { min-width: 0; flex: 1; }
-#smiprog-app .spg-marked-diameter-controls button { padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #604d42; cursor: pointer; }
-#smiprog-app #spg-marked-diameter-help { display: block; margin-top: 5px; font-size: 12px; }
+#smiprog-app .spg-marked-diameter-controls input { width: 7ch; min-width: 7ch; max-width: 7ch; flex: 0 0 7ch; padding: 8px !important; text-align: center; }
+#smiprog-app .spg-marked-diameter-controls button { flex: 0 0 32px; width: 32px; min-height: 40px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #604d42; font-size: 24px; cursor: pointer; }
+#smiprog-app #spg-marked-diameter-help { display: block; min-width: 0; margin: 0; font-size: 12px; line-height: 1.4; }

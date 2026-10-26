@@ -42,6 +42,9 @@
     pitch: document.getElementById("spg-pitch"),
     threadLength: document.getElementById("spg-thread-length"),
     safetyDistance: document.getElementById("spg-safety-distance"),
+    markedDiameter: document.getElementById("spg-marked-diameter"),
+    markedDiameterField: document.getElementById("spg-marked-diameter-field"),
+    resetDiameter: document.getElementById("spg-reset-diameter"),
     overrideCutterDiameter: document.getElementById("spg-override-cutter-diameter"),
     overrideEdgeLength: document.getElementById("spg-override-edge-length"),
     overrideFlutes: document.getElementById("spg-override-flutes"),
@@ -114,6 +117,8 @@
   let currentComparePitchMode = "mm";
   let requestedToolId = "";
   let customBaseToolId = "";
+  let diameterToolId = "";
+  let catalogueDiameter = "";
   let compareToolAId = "";
   let compareToolBId = "";
   let compareToolACustomBaseId = "";
@@ -998,6 +1003,7 @@
   function updateCustomToolVisibility() {
     const customSelected = isCustomToolSelected();
     elements.customToolFields.hidden = !customSelected;
+    elements.markedDiameterField.hidden = customSelected;
     elements.tool.closest("#spg-tool-field")?.classList.toggle("spg-tool-field-custom", customSelected);
     elements.toolSummary.hidden = false;
   }
@@ -1055,6 +1061,12 @@
     return hasPositiveValue(elements.compareThreadLength.value);
   }
 
+  function getMarkedDiameter() {
+    const value = Number(elements.markedDiameter.value.trim().replace(",", "."));
+    if (value > 0 && value === Number(catalogueDiameter)) return "";
+    return Number.isFinite(value) ? value : 0;
+  }
+
   function getInput() {
     const customToolSelected = isCustomToolSelected();
     return {
@@ -1070,7 +1082,7 @@
       safetyDistance: elements.safetyDistance.value,
       selectedToolId: customToolSelected ? customBaseToolId : (requestedToolId || elements.tool.value),
       overrides: {
-        cutterDiameter: customToolSelected ? elements.overrideCutterDiameter.value : "",
+        cutterDiameter: customToolSelected ? elements.overrideCutterDiameter.value : getMarkedDiameter(),
         cuttingEdgeLength: customToolSelected ? elements.overrideEdgeLength.value : "",
         flutes: customToolSelected ? elements.overrideFlutes.value : "",
         cuttingSpeed: elements.overrideCuttingSpeed.value,
@@ -1137,7 +1149,7 @@
 
     const metricGrid = document.createElement("div");
     metricGrid.className = "spg-tool-metric-grid";
-    metricGrid.appendChild(resultRow("Cutter diameter", hasTool ? `${formatDimension(result.tool.cutterDiameter)} mm` : "-"));
+
     metricGrid.appendChild(resultRow("Cutting length", hasTool ? `${formatDimension(result.tool.cuttingEdgeLength)} mm` : "-"));
     metricGrid.appendChild(resultRow("Flutes", hasTool ? String(result.tool.flutes) : "-"));
 
@@ -1995,6 +2007,20 @@
     if (!options || !options.keepTool) {
       updateToolOptions(preCandidates, input.selectedToolId, { needsThreadLength });
     }
+    if (!isCustomToolSelected()) {
+      const selected = preCandidates.find(tool => String(tool.id) === elements.tool.value);
+      const nextId = selected ? String(selected.id) : "";
+      if (nextId !== diameterToolId) {
+        diameterToolId = nextId;
+        catalogueDiameter = selected ? formatNumberInput(selected.cutterDiameter, 2) : "";
+        elements.markedDiameter.value = catalogueDiameter.replace(".", ",");
+        requestedToolId = nextId;
+      }
+      elements.markedDiameter.disabled = !selected;
+      elements.resetDiameter.disabled = !selected;
+    } else {
+      diameterToolId = "";
+    }
     const result = core.calculate(getInput(), data);
     currentResult = result;
     renderTool(result);
@@ -2171,6 +2197,11 @@
   }
 
   function bindEvents() {
+    bindRecalculateEvents(elements.markedDiameter);
+    elements.resetDiameter.addEventListener("click", () => {
+      elements.markedDiameter.value = catalogueDiameter.replace(".", ",");
+      recalculate({ keepTool: true });
+    });
     const compareOwnValueInputs = [
       elements.compareToolAPrice,
       elements.compareToolALife,

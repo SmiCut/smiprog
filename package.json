@@ -12,7 +12,7 @@
     "test:golden": "cd apps/web && node run-golden-tests.mjs",
     "test:parity-policy": "node --test apps/web/tests/cnc-parity-policy.test.mjs",
     "test:excel-parity": "node apps/web/tools/compare-excel-parity.mjs",
-    "test:browser": "cd apps/web && node verify-webapp.mjs && node verify-material-selector.mjs && node verify-excel-parity.mjs && node verify-compare-cost.mjs",
+    "test:browser": "cd apps/web && node verify-webapp.mjs && node verify-marked-diameter.mjs && node verify-material-selector.mjs && node verify-excel-parity.mjs && node verify-compare-cost.mjs",
     "build:languages": "node tools/build-language-packages.mjs",
     "test:languages": "node --test tests/language-packages.test.mjs",
     "verify:languages": "node tools/verify-language-packages.mjs",

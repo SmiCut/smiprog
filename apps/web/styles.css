@@ -203,7 +203,8 @@
 #smiprog-app .spg-start-content {
   display: grid;
   gap: 18px;
-  max-width: 1080px;
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
   padding: 16px 0 8px;
   color: #424248 !important;
@@ -691,7 +692,7 @@
 
 #smiprog-app .spg-tool-metric-grid {
   display: grid;
-  grid-template-columns: minmax(145px, 1fr) minmax(145px, 1fr) minmax(78px, 0.58fr);
+  grid-template-columns: minmax(145px, 1fr) minmax(78px, 0.58fr);
   gap: 8px;
 }
 
@@ -2491,3 +2492,9 @@
     font-size: 26px;
   }
 }
+
+#smiprog-app .spg-marked-diameter-field { grid-column: 1 / -1; min-width: 0; margin-top: 4px; }
+#smiprog-app .spg-marked-diameter-controls { display: flex; gap: 8px; align-items: center; }
+#smiprog-app .spg-marked-diameter-controls input { width: 7ch; min-width: 7ch; max-width: 7ch; flex: 0 0 7ch; padding: 8px !important; text-align: center; }
+#smiprog-app .spg-marked-diameter-controls button { flex: 0 0 32px; width: 32px; min-height: 40px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #604d42; font-size: 24px; cursor: pointer; }
+#smiprog-app #spg-marked-diameter-help { display: block; min-width: 0; margin: 0; font-size: 12px; line-height: 1.4; }

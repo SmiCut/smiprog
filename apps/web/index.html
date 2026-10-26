@@ -129,6 +129,14 @@
               <div id="spg-tool-field" class="spg-field">
                 <label for="spg-tool" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.tool">Tool</span></label>
                 <select id="spg-tool" class="spg-control"></select>
+                <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
+                  <label for="spg-marked-diameter" class="spg-field-label">Cutter diameter (mm)</label>
+                  <div class="spg-marked-diameter-controls">
+                    <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
+                    <button id="spg-reset-diameter" type="button" aria-label="Reset to catalogue diameter" title="Reset to catalogue diameter">↺</button>
+                    <small id="spg-marked-diameter-help">Enter the laser-marked diameter on your cutter.</small>
+                  </div>
+                </div>
                 <div id="spg-custom-tool-fields" class="spg-custom-tool-fields" hidden>
                   <div class="spg-tool-custom-input">
                     <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cutterDiameter">Cutter diameter (mm)</span></label>

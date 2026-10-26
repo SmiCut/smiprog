@@ -124,3 +124,14 @@ Existing right-hand Excel references are unchanged. There is no newly captured
 native Excel oracle for Heidenhain left-hand output. Software test coverage is
 not controller or physical tool-compensation verification; the `released` status describes product availability within the supported
 vertical-milling scope, not physical machine certification.
+
+## Laser-marked cutter diameter
+
+Step 8 starts with the selected tool's catalogue diameter. Entering the
+laser-marked diameter overrides only cutter diameter: article, cutting length,
+flutes and tool link remain those of the selected catalogue tool. The effective
+diameter is used in spindle speed, feed, path-radius and CNC calculations for
+both posts and thread hands. Comma and point decimal separators are accepted.
+Empty, nonnumeric and nonpositive entries block CNC output. Tool changes
+(including automatic selection after thread changes) and Reset restore the
+catalogue diameter. Custom tools retain their separate dimension inputs.

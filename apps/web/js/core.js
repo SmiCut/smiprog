@@ -288,6 +288,10 @@
   function getEffectiveTool(candidates, selectedToolId, overrides) {
     const selectedTool = getSelectedTool(candidates, selectedToolId);
     if (!hasCustomTool(overrides)) {
+      // A measured diameter adjusts the catalogue tool without replacing its identity.
+      if (selectedTool && overrides.cutterDiameter !== null) {
+        return { ...selectedTool, cutterDiameter: overrides.cutterDiameter };
+      }
       return selectedTool;
     }
 

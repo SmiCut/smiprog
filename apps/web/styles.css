@@ -203,7 +203,8 @@
 #smiprog-app .spg-start-content {
   display: grid;
   gap: 18px;
-  max-width: 1080px;
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
   padding: 16px 0 8px;
   color: #424248 !important;

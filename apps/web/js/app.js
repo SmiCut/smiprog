@@ -1136,6 +1136,13 @@
       return;
     }
     const hasTool = Boolean(result.input.threadLength && result.tool);
+    const article = normalizeArticleCode(result.tool && result.tool.description).toUpperCase();
+    const unmarkedDiameter = hasTool && (
+      [4, 5, 6].includes(Number(result.tool.threadProfileCode)) || article.startsWith("NS")
+    );
+    document.getElementById("spg-marked-diameter-help").textContent = unmarkedDiameter
+      ? "Adjustment of the cutter diameter."
+      : "Enter the laser-marked diameter on your cutter.";
     const threadMillType = hasTool ? getThreadMillType(result.tool) : "-";
     const summaryLayout = document.createElement("div");
     summaryLayout.className = "spg-tool-summary-layout";

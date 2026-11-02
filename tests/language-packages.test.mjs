@@ -4,22 +4,17 @@ import vm from 'node:vm';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { parse } from 'parse5';
-import PHPParser from 'php-parser';
 import { createLanguagePackages, locales } from '../tools/build-language-packages.mjs';
-import { repositoryRoot } from '../tools/build-wordpress-plugin.mjs';
+import { repositoryRoot } from '../tools/build-app-files.mjs';
 
 const packages = await createLanguagePackages();
 
-test('every available locale has an independent static and WordPress package', () => {
+test('every available locale has an independent static package', () => {
   assert.deepEqual(packages.map(p => p.locale), locales);
   for (const p of packages) {
     assert.match(p.standalone.get('index.html').toString(), new RegExp(`<html lang="${p.locale}"`));
     assert.match(p.standalone.get('LICENSE').toString(), /MIT License/);
-    assert.match(p.wordpress.get('LICENSE').toString(), /MIT License/);
-    const parser = new PHPParser({ parser: { suppressErrors: false, version: '8.0' } });
-    const php = p.wordpress.get('smiprog-widget.php').toString();
-    assert.doesNotThrow(() => parser.parseCode(php, 'smiprog-widget.php'));
-    assert.ok(php.includes(`array('locale' => '${p.locale}')`));
+
   }
 });
 

@@ -45,14 +45,19 @@ The code is not protection for confidential prices: the program's data are publi
 
 ## Use SmiProg on your website
 
-Ask your website manager to upload the complete HTML file and link to it, or
-embed that hosted file in a page. Test the actual website on a computer and phone.
-For WordPress, your website manager can embed the hosted file; inserting the entire
-HTML document into a normal text block is not an installation method.
+Download the HTML file for your language and open it in a plain-text editor.
+Copy the complete contents into your page builder's **Raw HTML / Custom HTML**
+block that preserves styles and scripts. Publish one copy of the app per page.
+The app runs directly inside the page; no iframe or app-specific plugin is needed.
+The same file also opens independently in a browser.
 
-You may [adapt the app for your company](../REBRANDING.md). To enable the optional
-AI Material Selector, [request approval for the exact website address](../MATERIAL_SELECTOR.md).
-The calculators work with manual material selection without AI approval.
+Your editor must allow inline JavaScript and CSS. A normal visual text block may
+rewrite the code. See [the website embedding guide](website-embedding.md) for
+installation, updates and checks on desktop and mobile.
+
+You may [adapt the app for your company](../REBRANDING.md). The optional hosted
+AI service requires [approval for your website](../MATERIAL_SELECTOR.md).
+Manual material selection and calculations work without that approval.
 
 ## Updates and help
 

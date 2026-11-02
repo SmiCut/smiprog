@@ -3,9 +3,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
-import {parse, serialize, parseFragment} from 'parse5';
+import {parse, serializeOuter, parseFragment} from 'parse5';
 import {createLanguagePackages} from './build-language-packages.mjs';
-import {repositoryRoot} from './build-wordpress-plugin.mjs';
+import {repositoryRoot} from './build-app-files.mjs';
 
 function walk(node, visit) { visit(node); for (const child of [...(node.childNodes || [])]) walk(child, visit); }
 const safeScript = text => text.replace(/<\/script/gi, '<\\/script');
@@ -51,7 +51,21 @@ export async function createSingleHtmlDownloads() {
     });
     const notices = files.get('LICENSE').toString()+'\n\n'+files.get('THIRD_PARTY_NOTICES').toString();
     if (notices.includes('-->')) throw new Error('Unsafe license comment');
-    const html = serialize(doc).replace('<head>', `<head>\n<!--\n${notices}\n-->`);
+    // A fragment can be opened as a file and pasted directly into an existing page.
+    // Keep document metadata out of the host page; scope language to the widget.
+    const parts = [];
+    walk(doc, node => {
+      if (node.attrs?.some(a => a.name === 'id' && a.value === 'smiprog-app')) {
+        node.attrs.push({name:'lang', value:locale});
+      }
+      if (node.tagName === 'head') {
+        for (const child of node.childNodes || []) if (child.tagName === 'style') parts.push(serializeOuter(child));
+      }
+      if (node.tagName === 'body') {
+        for (const child of node.childNodes || []) parts.push(serializeOuter(child));
+      }
+    });
+    const html = `<!--\n${notices}\n-->\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1">\n` + parts.join('\n');
     downloads.push({locale, name:`smiprog-${locale}.html`, bytes:Buffer.from(html)});
   }
   return downloads;

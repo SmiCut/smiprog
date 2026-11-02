@@ -10,7 +10,7 @@
 ## Developing and embedding
 
 - [Development, builds and tests](development.md)
-- [WordPress embedding guide](wordpress-embed-design-guide.md)
+- [Website embedding guide](website-embedding.md)
 - [Contributing](../.github/CONTRIBUTING.md)
 - [Report a security issue privately](../.github/SECURITY.md)
 

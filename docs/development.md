@@ -70,3 +70,49 @@ See [CNC motion calculations and verification](cnc-motion-and-validation.md) for
 the axial/tapered milling corrections, pass rejection rules, independent command
 checks and exact reviewed deviations from the immutable Excel references.
 `npm run test:cnc-motion` is included in `npm test`.
+
+## Tool images
+
+Runtime tool images use optimized WebP files; original PNGs are kept outside the
+app package. See [image settings, Retina sizing and rebuild instructions](tool-images.md).
+
+## Complete HTML downloads
+
+`npm run build:html` creates `dist/downloads/smiprog-en.html` and checksums.
+The builder uses the released locales and shared minified sources. Scripts and
+styles are inline; each WebP/SVG is stored once in an embedded asset dictionary.
+Static and dynamically selected tool images use that dictionary. The external
+Material Selector contract and endpoint remain unchanged. Full MIT and icon
+notices are embedded. Original source files remain the place for development.
+
+`npm run verify:html` opens a copy in an isolated temporary folder with networking
+disabled. It verifies all embedded images, desktop/mobile layouts, CNC parity with
+the source for both controllers and thread hands, diameter overrides, copying,
+input validation and Compare. It also mocks the external Material Selector request.
+
+Publish the complete HTML and `SMIPROG-SHA256SUMS` as release assets. The public
+README links to the latest HTML. Ordinary users do not need the WordPress or
+multi-file ZIP packages. Keep the internal WordPress build available for existing
+SmiCut deployment workflows; older release assets remain historical downloads.
+
+## Developer setup and editable prices
+
+Use Node.js 20 or later:
+
+```bash
+npm ci --ignore-scripts
+npx playwright install chromium
+npm test
+npm run test:browser
+npm run verify:html
+```
+
+Reference prices are editable in `apps/web/data/tool-prices.csv`. After editing:
+
+```bash
+cd apps/web
+node tools/update-tool-prices.mjs --import
+```
+
+Rebuild and test the app after price changes. Prices are public reference values,
+not confidential distributor information or current quotations.

@@ -38,8 +38,7 @@ Use in other applications requires separate agreement with SmiCut.
 
 ## 2. Publish the app and wait for confirmation
 
-Install the downloaded app on the website addresses you requested. Follow this
-project's README for standalone hosting or WordPress installation.
+Install the downloaded app on the website addresses you requested. Follow the [website installation guide](docs/getting-started.md#use-smiprog-on-your-website).
 
 SmiCut will confirm by email when the addresses are enabled. The published apps
 already connect to SmiCut's material service, so no API key needs to be inserted

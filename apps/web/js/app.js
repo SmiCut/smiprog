@@ -126,9 +126,9 @@
   let currentCompareResults = null;
   const THREAD_SIZE_CUSTOM = "custom";
   const CUSTOM_TOOL_ID = "__custom_tool__";
-  const DEFAULT_THREAD_MILL_IMAGE = "NB08075D21_1.5ISO_AC.png";
-  const CUSTOM_SINGLE_TOOTH_IMAGE = "NS06045D16_P60_AC.png";
-  const CUSTOM_TWO_TEETH_IMAGE = "NM06045E16_1.0ISO_AC.png";
+  const DEFAULT_THREAD_MILL_IMAGE = "NB08075D21_1.5ISO_AC.webp";
+  const CUSTOM_SINGLE_TOOTH_IMAGE = "NS06045D16_P60_AC.webp";
+  const CUSTOM_TWO_TEETH_IMAGE = "NM06045E16_1.0ISO_AC.webp";
   const widgetConfig = global.SmiProgConfig || {};
   const ASSET_BASE = String(widgetConfig.assetBase || global.SmiProgAssetBase || "./assets/").replace(/\/?$/, "/");
   const THREAD_MILL_IMAGE_BASE = `${ASSET_BASE}thread-mills/`;
@@ -927,6 +927,8 @@
   }
 
   function getThreadMillImageUrl(imageTarget) {
+    const embedded = widgetConfig.embeddedAssets;
+    if (embedded && embedded[`thread-mills/${imageTarget}`]) return embedded[`thread-mills/${imageTarget}`];
     if (/^https?:\/\//i.test(imageTarget)) return imageTarget;
     if (/^(?:\.\/|\.\.\/|\/)/.test(imageTarget)) return imageTarget;
     return `${THREAD_MILL_IMAGE_BASE}${encodeURIComponent(imageTarget)}`;
@@ -941,8 +943,8 @@
     image.alt = altText || "Solid carbide thread mill";
     image.loading = "lazy";
     image.addEventListener("error", () => {
-      const fallbackSrc = `${THREAD_MILL_IMAGE_BASE}${DEFAULT_THREAD_MILL_IMAGE}`;
-      if (image.src.endsWith(DEFAULT_THREAD_MILL_IMAGE)) return;
+      const fallbackSrc = getThreadMillImageUrl(DEFAULT_THREAD_MILL_IMAGE);
+      if (image.src === fallbackSrc) return;
       image.src = fallbackSrc;
     });
     imageFrame.appendChild(image);

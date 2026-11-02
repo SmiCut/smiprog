@@ -1,98 +1,71 @@
 # SmiProg
 
-Thread-milling cutting data and CNC program generation by [SmiCut](https://smicut.com).
-This initial development source release is MIT-licensed. The static web app can run locally, be installed as a WordPress
-widget, or be adapted by distributors under their own brand.
+**Free thread-milling software. Calculate cutting data, select a tool and generate a CNC program.**
 
-## Features
+[**Use online**](https://smicut.com/en/smiprog-online/) · [**Download SmiProg**](#download-smiprog) · [**Adapt for your company**](REBRANDING.md)
 
-- Thread, material and tool selection, including custom tool values
-- Cutting data, machining-time estimates and CNC program output
-- Tool-cost comparison with editable SmiCut reference prices in EUR
-- English interface (additional translations are being prepared)
-- Optional shared AI-assisted Material Selector
-- A WordPress shortcode package
+![SmiProg start screen with thread milling, tool comparison and material selection](docs/images/smiprog-preview.png)
 
-The current Fanuc / ISO IJK post supports milling and selected lathe live-tool
-variants. Heidenhain Klartext is released for right- and left-hand vertical
-milling. Thread milling in a lathe is not supported and those requests are blocked. Left-hand milling follows the Fanuc strategy: downward helix, counterclockwise
-arcs and left radius compensation. Software checks cover Excel reference comparisons
-and 43,852 catalogue/boundary cases across both thread hands. Axial/tapered Z corrections intentionally differ from the
-original Excel output; [test scope and formulas](docs/cnc-motion-and-validation.md)
-explain the corrections and limits of these checks.
-Verify generated CNC for your actual controller, machine and setup before use.
-Publishing the source is not certification of every machining scenario.
+Made by [SmiCut](https://smicut.com). Free to use and adapt, including commercial use.
+SmiProg helps you choose thread mills, calculate cutting data and machining time,
+generate CNC programs, and compare tooling costs.
 
-## Quick start
+## Download SmiProg
 
-The first source release provides English downloads. Further language packages
-will be added when their translations are ready:
+**One HTML file contains the app, tool data and all images.** No installation,
+ZIP extraction, image folders or GitHub account is needed.
 
-| Language | Standalone web app | WordPress plugin |
+| Language | Use online | Download complete app |
 |---|---|---|
-| English | [smiprog-en.zip](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-en.zip) | [smiprog-widget-en.zip](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-widget-en.zip) |
+| English | [Open SmiProg](https://smicut.com/en/smiprog-online/) | [Download smiprog-en.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-en.html) |
 
-Unzip the standalone package and open its `index.html`, or install the WordPress
-plugin and use `[smiprog]`. The current packages start in English and contain the needed scripts and images. Download one
-WordPress variant per site. All variants are generated from this shared source.
+English is the currently released language. Further language editions will be
+added when their translations are ready and checked.
 
-Open `apps/web/index.html` directly, or serve it locally:
+## Open your download in three steps
 
-```bash
-cd apps/web
-python3 -m http.server 4173 --bind 127.0.0.1
-```
+1. Click **Download smiprog-en.html** above.
+2. Find the file in your Downloads folder.
+3. Double-click it to open SmiProg in your web browser. If asked, choose a browser.
 
-Then open `http://127.0.0.1:4173/`. Calculations and Compare run in the browser.
-Material Selector requires internet access to a separately hosted service.
-The Compare interface currently opens with `XL` (case-insensitive). This is a
-UI convenience, not a security mechanism; all prices and calculations are public.
+The calculators, CNC generation, tool comparison and images work offline.
+Choose a material category manually when working offline. External product links
+need internet. The **AI Material Selector needs internet and an approved website**;
+opening the downloaded file on your computer does not enable the hosted AI service.
+Use the online version for AI-assisted selection.
 
-## Your brand and your prices
+[Help opening the file and using it on your website](docs/getting-started.md) · [Latest release and changes](https://github.com/SmiCut/smiprog/releases/latest)
 
-MIT permits commercial reuse, private modifications and your own name/logo with
-no visible SmiCut attribution. Retain the copyright and MIT license with distributed
-copies; see [REBRANDING.md](REBRANDING.md). Do not imply endorsement of your changes.
+## What can I do?
 
-Reference prices are editable in `apps/web/data/tool-prices.csv`. They are supplied
-for comparison, not as a current quotation or a promise of distributor pricing.
-You may replace or remove them. Import edited values with:
+- Select thread dimensions, workpiece material and a suggested SmiCut tool.
+- Enter custom tool dimensions or the laser-marked diameter on a catalogue tool.
+- Calculate cutting data and machining time.
+- Generate CNC programs for supported Fanuc / ISO and Heidenhain configurations.
+- Compare two tools, machining times and costs. Open **Compare** with `XL`.
 
-```bash
-cd apps/web
-node tools/update-tool-prices.mjs --import
-```
+Compare is intended for SmiCut and distributors. Its unlock code is a convenience,
+not a security feature. Reference prices are editable and are not a current quotation.
 
-## Development and WordPress
+**Verify the CNC program for your controller, machine and setup before machining.**
+Heidenhain supports right- and left-hand vertical milling; Heidenhain lathe thread
+milling is not supported. See [supported configurations and verification limits](docs/cnc-motion-and-validation.md).
 
-Use Node.js 20 or later:
+## Make it your own
 
-```bash
-npm ci --ignore-scripts
-npx playwright install chromium
-npm test
-npm run test:browser
-npm run build:wordpress
-npm run verify:wordpress
-npm run build:languages
-npm run verify:languages
-```
+Use your own company name, logo, colours, product links and reference prices.
+You may change the software, offer it commercially and keep your changes private.
 
-Install `dist/wordpress/smiprog-widget.zip`, activate it and add `[smiprog]` to a
-WordPress page. The current release uses English. Test the actual
-theme and shortcode: the automated package verifier uses a simulated WordPress
-page. Distribution packages include LICENSE.
+There is no built-in branding editor. A web developer can help edit the app.
+Keep the included copyright, MIT license and third-party icon notices; these are
+already embedded in the HTML and do not require visible branding in your interface.
 
-See [docs/development.md](docs/development.md) for architecture and test scope.
-## Material Selector on your website
+[**Read the customization guide**](REBRANDING.md) · [**Use SmiProg on your website**](docs/getting-started.md#use-smiprog-on-your-website)
 
-Email [oliver@smicut.se](mailto:oliver@smicut.se?subject=Material%20Selector%20website%20access)
-with your company name, website address(es), program and language to request access
-to SmiCut's optional AI material service. Once SmiCut confirms the approved website,
-the app connects automatically. **No API key is needed.** The existing limit of
-30 requests per minute per IP address remains.
+## Help and further information
 
-Follow the [three-step Material Selector guide](MATERIAL_SELECTOR.md).
-The calculators also work without AI access by selecting materials manually.
-Hosted service access is separate from the MIT software license.
-SmiCalc is maintained at [SmiCut/smicalc](https://github.com/SmiCut/smicalc).
+- **Using SmiProg:** email [info@smicut.se](mailto:info@smicut.se).
+- **AI access for your own website:** follow the [Material Selector guide](MATERIAL_SELECTOR.md).
+- **Report a problem:** [open an issue](https://github.com/SmiCut/smiprog/issues).
+- **For developers:** [source files, tests and builds](docs/development.md), [contributing](CONTRIBUTING.md), and [MIT license](LICENSE).
+- **Tapping, thread turning, grooving, milling and drilling:** see [SmiCalc](https://github.com/SmiCut/smicalc).

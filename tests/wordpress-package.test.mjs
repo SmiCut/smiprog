@@ -25,7 +25,7 @@ test("WordPress package contains only static runtime assets and its plugin adapt
   assert.equal(files.size, 27);
   for (const name of files.keys()) {
     if (["LICENSE", "THIRD_PARTY_NOTICES"].includes(name)) continue;
-    assert.match(name, /^(?:app\/(?:index\.html|(?:styles|material-selector)\.css|(?:data|js|i18n)\/[a-z0-9-]+\.(?:js|json)|assets\/(?:thread-mills|info)\/[a-zA-Z0-9_.-]+\.(?:png|svg))|templates\/smiprog\.html|manifest\.json|smiprog-widget\.php)$/);
+    assert.match(name, /^(?:app\/(?:index\.html|(?:styles|material-selector)\.css|(?:data|js|i18n)\/[a-z0-9-]+\.(?:js|json)|assets\/(?:thread-mills|info)\/[a-zA-Z0-9_.-]+\.(?:webp|svg))|templates\/smiprog\.html|manifest\.json|smiprog-widget\.php)$/);
     assert.doesNotMatch(name, /server|test|\.env|\.xlsx|\.csv|\.map/);
   }
   assert.equal(manifest.materialSelectorApiUrl, apiUrl);

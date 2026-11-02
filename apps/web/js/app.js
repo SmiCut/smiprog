@@ -126,9 +126,9 @@
   let currentCompareResults = null;
   const THREAD_SIZE_CUSTOM = "custom";
   const CUSTOM_TOOL_ID = "__custom_tool__";
-  const DEFAULT_THREAD_MILL_IMAGE = "NB08075D21_1.5ISO_AC.png";
-  const CUSTOM_SINGLE_TOOTH_IMAGE = "NS06045D16_P60_AC.png";
-  const CUSTOM_TWO_TEETH_IMAGE = "NM06045E16_1.0ISO_AC.png";
+  const DEFAULT_THREAD_MILL_IMAGE = "NB08075D21_1.5ISO_AC.webp";
+  const CUSTOM_SINGLE_TOOTH_IMAGE = "NS06045D16_P60_AC.webp";
+  const CUSTOM_TWO_TEETH_IMAGE = "NM06045E16_1.0ISO_AC.webp";
   const widgetConfig = global.SmiProgConfig || {};
   const ASSET_BASE = String(widgetConfig.assetBase || global.SmiProgAssetBase || "./assets/").replace(/\/?$/, "/");
   const THREAD_MILL_IMAGE_BASE = `${ASSET_BASE}thread-mills/`;

@@ -70,3 +70,8 @@ See [CNC motion calculations and verification](cnc-motion-and-validation.md) for
 the axial/tapered milling corrections, pass rejection rules, independent command
 checks and exact reviewed deviations from the immutable Excel references.
 `npm run test:cnc-motion` is included in `npm test`.
+
+## Tool images
+
+Runtime tool images use optimized WebP files; original PNGs are kept outside the
+app package. See [image settings, Retina sizing and rebuild instructions](tool-images.md).

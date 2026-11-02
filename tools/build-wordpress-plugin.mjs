@@ -36,7 +36,7 @@ export async function createWordPressFiles() {
   }
   for (const directory of ["info", "thread-mills"]) {
     for (const name of (await fs.readdir(path.join(sourceRoot, "assets", directory))).sort()) {
-      if (!/^[a-zA-Z0-9_.-]+\.(png|svg)$/.test(name)) continue;
+      if (!/^[a-zA-Z0-9_.-]+\.(webp|svg)$/.test(name)) continue;
       const relative = `assets/${directory}/${name}`;
       files.set(`app/${relative}`, await fs.readFile(path.join(sourceRoot, relative)));
     }

@@ -13,7 +13,7 @@ const manifest = JSON.parse(await fs.readFile(path.join(root, "manifest.json"), 
 const prefix = "/wp-content/plugins/smiprog-widget/app/";
 const fragment = (await fs.readFile(path.join(root, "templates/smiprog.html"), "utf8"))
   .replaceAll("__SMIPROG_ASSET_BASE__", prefix + "assets/");
-const mime = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".json": "application/json", ".png": "image/png", ".svg": "image/svg+xml" };
+const mime = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".json": "application/json", ".webp": "image/webp", ".svg": "image/svg+xml" };
 const requests = [];
 const server = http.createServer(async (request, response) => {
   const url = new URL(request.url, "http://localhost");

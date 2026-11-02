@@ -1,0 +1,91 @@
+{
+  "encoder": "libwebp 1.6.0",
+  "quality": 95,
+  "method": 6,
+  "alpha_quality": 100,
+  "resized": false,
+  "images": [
+    {
+      "source": "tools/image-sources/thread-mills/NB06038C10_0.8ISO_AC.png",
+      "output": "apps/web/assets/thread-mills/NB06038C10_0.8ISO_AC.webp",
+      "original_bytes": 59731,
+      "optimized_bytes": 14910,
+      "source_sha256": "5bc91270dd7b8571cda18fab22205131d07ad1eb6bc4996710d24a35bcb275a5",
+      "output_sha256": "65d356009a7c39713c4698914488bcd35ee09798cd53587966ddf4d6bac51c48"
+    },
+    {
+      "source": "tools/image-sources/thread-mills/NB08075D21_1.5ISO_AC.png",
+      "output": "apps/web/assets/thread-mills/NB08075D21_1.5ISO_AC.webp",
+      "original_bytes": 86907,
+      "optimized_bytes": 19498,
+      "source_sha256": "9b2dcc010beafe4e14133a8791d30adae385bd5faee0d39642463f1d62b54502",
+      "output_sha256": "12a679c5e4b4041e09fb8a3c19b8e7a6d46f3240a922b0e8c166a5543b3bac67"
+    },
+    {
+      "source": "tools/image-sources/thread-mills/NBK06045C13_1.0ISO_AC.png",
+      "output": "apps/web/assets/thread-mills/NBK06045C13_1.0ISO_AC.webp",
+      "original_bytes": 62151,
+      "optimized_bytes": 16600,
+      "source_sha256": "81cada39b047d44b9365fb760ca396546de791196a8a64fc52f0cbd900726bfd",
+      "output_sha256": "e6aa393b82263f4d745cfec815dc96bc13f856751623587217fb7328b0f0a5f3"
+    },
+    {
+      "source": "tools/image-sources/thread-mills/NBK08075D21_1.5ISO_AC.png",
+      "output": "apps/web/assets/thread-mills/NBK08075D21_1.5ISO_AC.webp",
+      "original_bytes": 98124,
+      "optimized_bytes": 23718,
+      "source_sha256": "65d1b75eca6cf36796b5571a0491081d14d79d5695203a50ea447ca5a1fbd841",
+      "output_sha256": "fb109aa1ae86e72db07e95b7b7d826c727a55198fa10c37b55234cd7626c3c64"
+    },
+    {
+      "source": "tools/image-sources/thread-mills/NBT08075D21_1.5ISO_AC.png",
+      "output": "apps/web/assets/thread-mills/NBT08075D21_1.5ISO_AC.webp",
+      "original_bytes": 91685,
+      "optimized_bytes": 21086,
+      "source_sha256": "7948d7d93d59dfa232101967c1ac6058cfea65b6404e971d2aa1b83a52d3eeb3",
+      "output_sha256": "1e1ce80cd85fa6e51163563c15817569afba14b30133c924a025eab3b67f6d52"
+    },
+    {
+      "source": "tools/image-sources/thread-mills/NF06038C10_0.8ISO_AC.png",
+      "output": "apps/web/assets/thread-mills/NF06038C10_0.8ISO_AC.webp",
+      "original_bytes": 69766,
+      "optimized_bytes": 14838,
+      "source_sha256": "6638b6f044fa589ed8fc4716c48e411293b2f52df1bdf39eba71d16b636599ba",
+      "output_sha256": "45ee0ddf35d328c7a24f73e10db36fd0f2567b0194e59bb541f99005fed6d2c3"
+    },
+    {
+      "source": "tools/image-sources/thread-mills/NM06045E16_1.0ISO_AC.png",
+      "output": "apps/web/assets/thread-mills/NM06045E16_1.0ISO_AC.webp",
+      "original_bytes": 58535,
+      "optimized_bytes": 8486,
+      "source_sha256": "721d0ec0df792ca9b73ec2cd20ba60253dc01fe581857425080a3601e4b47b12",
+      "output_sha256": "30eea5f3fba0c01141f932e0837eafec34d1baf53d3d1c132ec58016dace9e28"
+    },
+    {
+      "source": "tools/image-sources/thread-mills/NS04021D6_P60_LC.png",
+      "output": "apps/web/assets/thread-mills/NS04021D6_P60_LC.webp",
+      "original_bytes": 39649,
+      "optimized_bytes": 7026,
+      "source_sha256": "c883b860f29631d6b3637960f921d275590a232802dd4c6b9927851886b14bfa",
+      "output_sha256": "51a22b58e63c189c82d7abb1ecc60beed4390160378134c30e2d03d0c174ee06"
+    },
+    {
+      "source": "tools/image-sources/thread-mills/NS06045D16_P60_AC.png",
+      "output": "apps/web/assets/thread-mills/NS06045D16_P60_AC.webp",
+      "original_bytes": 49051,
+      "optimized_bytes": 7088,
+      "source_sha256": "7474af66c3274277384d8ab26f4564268d9dbd9c7d615bbca2fbc1bea8d46d10",
+      "output_sha256": "1b2b03b426adad724a4fca056d10e397bbc10b30b5e06eefe6732aed0df81103"
+    },
+    {
+      "source": "tools/image-sources/thread-mills/XB1212D22_14NPT_AC.png",
+      "output": "apps/web/assets/thread-mills/XB1212D22_14NPT_AC.webp",
+      "original_bytes": 145841,
+      "optimized_bytes": 24852,
+      "source_sha256": "306efccbf46ac72d09faa99ad3b4738067b6180b8dfd9dd86abafaa34211e1a6",
+      "output_sha256": "6123538eef44912d95f55eec14c43488b777ed7232425d6b90e791620217a3e5"
+    }
+  ],
+  "original_bytes": 761440,
+  "optimized_bytes": 158102
+}

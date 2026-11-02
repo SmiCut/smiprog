@@ -927,6 +927,8 @@
   }
 
   function getThreadMillImageUrl(imageTarget) {
+    const embedded = widgetConfig.embeddedAssets;
+    if (embedded && embedded[`thread-mills/${imageTarget}`]) return embedded[`thread-mills/${imageTarget}`];
     if (/^https?:\/\//i.test(imageTarget)) return imageTarget;
     if (/^(?:\.\/|\.\.\/|\/)/.test(imageTarget)) return imageTarget;
     return `${THREAD_MILL_IMAGE_BASE}${encodeURIComponent(imageTarget)}`;
@@ -941,8 +943,8 @@
     image.alt = altText || "Solid carbide thread mill";
     image.loading = "lazy";
     image.addEventListener("error", () => {
-      const fallbackSrc = `${THREAD_MILL_IMAGE_BASE}${DEFAULT_THREAD_MILL_IMAGE}`;
-      if (image.src.endsWith(DEFAULT_THREAD_MILL_IMAGE)) return;
+      const fallbackSrc = getThreadMillImageUrl(DEFAULT_THREAD_MILL_IMAGE);
+      if (image.src === fallbackSrc) return;
       image.src = fallbackSrc;
     });
     imageFrame.appendChild(image);

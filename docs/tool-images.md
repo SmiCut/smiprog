@@ -49,5 +49,5 @@ Ordinary app/package builds use the checked-in WebP files and do not need cwebp.
   image loading. Packaging checks also verify the existing calculator reference cases.
 
 The assets remain local to the app. No external image host or Railway change is
-needed. This change prepares optimized assets; it does not yet create the planned
-single-file HTML distribution or deploy a production website.
+needed. The complete HTML builder embeds these optimized assets. Production website
+deployment remains a separate step.

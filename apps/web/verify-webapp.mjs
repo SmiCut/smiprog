@@ -161,10 +161,10 @@ await page.selectOption("#spg-tool", "__custom_tool__");
 await page.fill("#spg-override-cutter-diameter", "7");
 await page.fill("#spg-override-edge-length", "1.5");
 await page.fill("#spg-override-flutes", "3");
-await page.waitForFunction(() => document.querySelector("#spg-tool-summary .spg-thread-mill-image")?.getAttribute("src")?.includes("NS06045D16_P60_AC.png"));
+await page.waitForFunction(() => document.querySelector("#spg-tool-summary .spg-thread-mill-image")?.getAttribute("src")?.includes("NS06045D16_P60_AC.webp"));
 const customSingleToothImageSrc = await page.locator("#spg-tool-summary .spg-thread-mill-image").getAttribute("src");
 await page.fill("#spg-override-edge-length", "3");
-await page.waitForFunction(() => document.querySelector("#spg-tool-summary .spg-thread-mill-image")?.getAttribute("src")?.includes("NM06045E16_1.0ISO_AC.png"));
+await page.waitForFunction(() => document.querySelector("#spg-tool-summary .spg-thread-mill-image")?.getAttribute("src")?.includes("NM06045E16_1.0ISO_AC.webp"));
 const customTwoTeethImageSrc = await page.locator("#spg-tool-summary .spg-thread-mill-image").getAttribute("src");
 const customToolImageUi = {
   singleToothImageSrc: customSingleToothImageSrc || "",
@@ -410,16 +410,16 @@ if (!/^https:\/\/id\.smicut\.com\/0\d{13}$/.test(selectedToolLinkUi.toolLinkHref
 if (selectedToolLinkUi.toolLinkDisabled) {
   toolNoteMismatches.push("Selected standard tool link must be enabled.");
 }
-if (!selectedToolLinkUi.toolImageSrc.includes("NB08075D21_1.5ISO_AC.png") || !selectedToolLinkUi.toolImageLoaded) {
+if (!selectedToolLinkUi.toolImageSrc.includes("NB08075D21_1.5ISO_AC.webp") || !selectedToolLinkUi.toolImageLoaded) {
   toolNoteMismatches.push("Selected standard tool must show the linked thread mill image.");
 }
 if (selectedToolLinkUi.toolTypeText !== "Solid Carbide Thread Mill, ThreadBurr") {
   toolNoteMismatches.push("Selected NB tool must show the Solid Carbide Thread Mill, ThreadBurr type.");
 }
-if (!customToolImageUi.singleToothImageSrc.includes("NS06045D16_P60_AC.png")) {
+if (!customToolImageUi.singleToothImageSrc.includes("NS06045D16_P60_AC.webp")) {
   toolNoteMismatches.push("Custom tool image must switch to NS when cutting length equals pitch.");
 }
-if (!customToolImageUi.twoTeethImageSrc.includes("NM06045E16_1.0ISO_AC.png")) {
+if (!customToolImageUi.twoTeethImageSrc.includes("NM06045E16_1.0ISO_AC.webp")) {
   toolNoteMismatches.push("Custom tool image must switch to NM when cutting length is double pitch.");
 }
 if (Math.abs(selectedToolLinkUi.toolFieldHeight - initialThreadLengthUi.toolFieldHeight) > 2) {

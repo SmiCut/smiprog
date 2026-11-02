@@ -64,8 +64,10 @@ already embedded in the HTML and do not require visible branding in your interfa
 
 ## Help and further information
 
+[Browse the documentation](docs/README.md)
+
 - **Using SmiProg:** email [info@smicut.se](mailto:info@smicut.se).
 - **AI access for your own website:** follow the [Material Selector guide](MATERIAL_SELECTOR.md).
 - **Report a problem:** [open an issue](https://github.com/SmiCut/smiprog/issues).
-- **For developers:** [source files, tests and builds](docs/development.md), [contributing](CONTRIBUTING.md), and [MIT license](LICENSE).
+- **For developers:** [source files, tests and builds](docs/development.md), [contributing](.github/CONTRIBUTING.md), and [MIT license](LICENSE).
 - **Tapping, thread turning, grooving, milling and drilling:** see [SmiCalc](https://github.com/SmiCut/smicalc).

@@ -116,3 +116,9 @@ node tools/update-tool-prices.mjs --import
 
 Rebuild and test the app after price changes. Prices are public reference values,
 not confidential distributor information or current quotations.
+
+## Documentation map
+
+See [the documentation index](README.md) for user guides and technical references.
+Contribution and private security-reporting instructions are in `.github/`.
+The [WordPress embedding guide](wordpress-embed-design-guide.md) is in `docs/`.

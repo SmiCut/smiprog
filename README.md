@@ -10,6 +10,9 @@ Made by [SmiCut](https://smicut.com). Free to use and adapt, including commercia
 SmiProg helps you choose thread mills, calculate cutting data and machining time,
 generate CNC programs, and compare tooling costs.
 
+Use the same complete HTML file on your own website: paste its contents into a
+Raw HTML block. [Website installation guide](docs/website-embedding.md).
+
 ## Download SmiProg
 
 **One HTML file contains the app, tool data and all images.** No installation,

@@ -5,7 +5,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright';
 import { buildLanguagePackages, locales } from './build-language-packages.mjs';
-import { repositoryRoot } from './build-wordpress-plugin.mjs';
+import { repositoryRoot } from './build-app-files.mjs';
 
 await buildLanguagePackages();
 const browser = await chromium.launch({headless:true, ...(process.env.CHROME_PATH ? {executablePath:process.env.CHROME_PATH} : {})});

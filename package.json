@@ -4,10 +4,9 @@
   "private": true,
   "description": "SmiCut thread-milling calculator and CNC programming widget.",
   "scripts": {
-    "build:wordpress": "node tools/build-wordpress-plugin.mjs",
-    "test:wordpress": "node --test tests/wordpress-package.test.mjs",
-    "verify:wordpress": "node tools/verify-wordpress-package.mjs",
-    "test": "npm run test:golden && npm run test:excel-parity && npm run test:parity-policy && npm run test:compare-cost && npm run test:wordpress && npm run test:languages && npm run test:cnc-motion",
+    "build:wordpress": "npm run build:html",
+    "verify:wordpress": "npm run verify:html",
+    "test": "npm run test:golden && npm run test:excel-parity && npm run test:parity-policy && npm run test:compare-cost && npm run test:languages && npm run test:cnc-motion",
     "test:compare-cost": "node --test apps/web/tests/compare-cost.test.mjs",
     "test:golden": "cd apps/web && node run-golden-tests.mjs",
     "test:parity-policy": "node --test apps/web/tests/cnc-parity-policy.test.mjs",
@@ -27,7 +26,6 @@
     "esbuild": "^0.28.2",
     "fflate": "^0.8.3",
     "parse5": "^8.0.1",
-    "php-parser": "^3.7.0",
     "playwright": "1.62.1"
   },
   "license": "MIT"

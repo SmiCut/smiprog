@@ -8,11 +8,11 @@
 - `apps/web/data/tool-prices.csv`: editable reference prices
 - `apps/web/i18n/translations.csv`: English text source (other language drafts remain private)
 - `apps/web/tools/build-translations.mjs`: generates language JSON and bundled dictionaries
-- `wordpress/smiprog-widget.php`: shortcode adapter
-- `tools/build-wordpress-plugin.mjs`: static WordPress package generation
+- `tools/build-app-files.mjs`: shared static source preparation
+- `tools/build-single-html.mjs`: complete HTML distribution
 
 Use `npm test` for the preserved golden fixtures, native Excel parity cases,
-comparison-policy tests, native Excel cost scenarios and WordPress packaging.
+comparison-policy tests, native Excel cost scenarios and language packaging.
 Use `npm run test:browser` for the UI, material selector mocks, Excel parity in the
 browser and comparison cost UI. No live AI calls are needed for these checks.
 
@@ -28,7 +28,7 @@ use local Playwright and its bundled Chromium. Set `CHROME_PATH` to an installed
 Chrome executable if needed; no developer-specific absolute paths are required.
 Screenshots and temporary reports stay in ignored `tmp/` directories.
 
-## WordPress and Material Selector
+## Website embedding and Material Selector
 
 All calculations, price data and CNC generation run client-side. The package
 includes the English locale and an MIT license copy. There is no SmiProg
@@ -44,7 +44,7 @@ For SmiCut-hosted access, follow [the website approval guide](../MATERIAL_SELECT
 Website approval requires no browser API key and no changes to the default service
 URL. The existing short-term limit is 30 requests per minute per IP address.
 
-Keep widget CSS scoped under `#smiprog-app`; see the embedding guide at the root.
+Keep widget CSS scoped under `#smiprog-app`; see [the embedding guide](website-embedding.md).
 Changes to calculations require updated technical documentation, relevant tests
 and a review of the controller/post scope. Heidenhain has `released` status for right- and left-hand vertical milling.
 Its machine scope excludes lathe live-tool output, which remains blocked.
@@ -53,11 +53,10 @@ reviewed it or that it was tested on a physical machine.
 
 ## Independent language distributions
 
-`npm run build:languages` generates standalone and WordPress ZIP files for each
-of the released locales under `dist/languages` (currently only `en`). Each includes its chosen
-dictionary plus an English fallback. Shared calculations, prices and assets come
-from the same source as the multilingual app. The standalone HTML language and
-the WordPress shortcode's default locale are set during generation.
+`npm run build:html` generates one complete HTML file for each released locale
+(currently only `en`). `npm run build:languages` also generates developer multi-file
+static packages. There is no PHP adapter or app-specific plugin. Each locale
+includes its selected dictionary and English fallback from the shared source.
 
 Use `npm run test:languages` for package integrity and `npm run verify:languages`
 for desktop/mobile loading, selected locale, Material Selector language, image
@@ -91,9 +90,13 @@ the source for both controllers and thread hands, diameter overrides, copying,
 input validation and Compare. It also mocks the external Material Selector request.
 
 Publish the complete HTML and `SMIPROG-SHA256SUMS` as release assets. The public
-README links to the latest HTML. Ordinary users do not need the WordPress or
-multi-file ZIP packages. Keep the internal WordPress build available for existing
-SmiCut deployment workflows; older release assets remain historical downloads.
+README links to the latest HTML. Paste the exact file contents into a raw HTML
+block for direct embedding, or open it as a standalone file. The artifact contains
+scoped styles, widget markup, inline scripts, images and license notices.
+
+The legacy `build:wordpress` and `verify:wordpress` script names are compatibility
+aliases for the existing CI workflow only: they build/test the complete HTML and
+never create a plugin. Historical release assets remain historical downloads.
 
 ## Developer setup and editable prices
 
@@ -121,4 +124,4 @@ not confidential distributor information or current quotations.
 
 See [the documentation index](README.md) for user guides and technical references.
 Contribution and private security-reporting instructions are in `.github/`.
-The [WordPress embedding guide](wordpress-embed-design-guide.md) is in `docs/`.
+The [Website embedding guide](website-embedding.md) is in `docs/`.

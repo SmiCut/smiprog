@@ -6,13 +6,13 @@ import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { transform } from 'esbuild';
 import { zipSync } from 'fflate';
-import { createWordPressFiles, createWordPressArchive, repositoryRoot } from './build-wordpress-plugin.mjs';
+import { createAppFiles, repositoryRoot } from './build-app-files.mjs';
 
 export const locales = ['en'];
 const hash = data => createHash('sha256').update(data).digest('hex').slice(0, 16);
 
 export async function createLanguagePackages() {
-  const base = await createWordPressFiles();
+  const base = await createAppFiles();
   const english = JSON.parse(await fs.readFile(path.join(repositoryRoot, 'apps/web/i18n/en.json'), 'utf8'));
   const packages = [];
   for (const locale of locales) {
@@ -31,19 +31,6 @@ export async function createLanguagePackages() {
     html = html.replace(/<html lang="[^"]*"/, `<html lang="${locale}"`)
       .replace(/(\.\/i18n\/en\.js\?v=)[a-f0-9]+/, `$1${scriptHash}`);
     files.set('app/index.html', Buffer.from(html));
-    const manifest = structuredClone(base.manifest);
-    manifest.version = `${base.manifest.version}-${locale}`;
-    manifest.scripts.find(script => script.file === 'i18n/en.js').hash = scriptHash;
-    files.set('manifest.json', Buffer.from(JSON.stringify(manifest, null, 2) + '\n'));
-    const php = files.get('smiprog-widget.php').toString()
-      .replaceAll(base.manifest.version, manifest.version)
-      .replace("array('locale' => get_locale())", `array('locale' => '${locale}')`);
-    files.set('smiprog-widget.php', Buffer.from(php));
-    files.set('README.txt', Buffer.from(`SmiProg (${locale}) — MIT licensed, copyright 2026 SmiCut AB.\n`
-      + `Install this WordPress plugin and add [smiprog] to a page. Default language: ${locale}.\n`
-      + 'Use shortcode locale="en" for the included English fallback if needed.\n'
-      + 'Reference prices can be replaced in your own source version.\n'
-      + 'Hosted AI service access is separate from the software license.\n'));
     const standalone = new Map();
     for (const [name, bytes] of files) {
       if (name.startsWith('app/')) standalone.set(name.slice(4), bytes);
@@ -55,7 +42,7 @@ export async function createLanguagePackages() {
       + 'Keep the complete folder together so local scripts and images resolve.\n'
       + 'See https://github.com/SmiCut/smiprog for source, price editing and branding instructions.\n'
       + 'Hosted AI service access is separate from the software license.\n'));
-    packages.push({ locale, wordpress: files, standalone });
+    packages.push({ locale, standalone });
   }
   return packages;
 }
@@ -65,7 +52,7 @@ export async function buildLanguagePackages() {
   await fs.rm(output, { recursive: true, force: true });
   await fs.mkdir(output, { recursive: true });
   const packages = await createLanguagePackages();
-  for (const { locale, wordpress, standalone } of packages) {
+  for (const { locale, standalone } of packages) {
     const folder = path.join(output, `smiprog-${locale}`);
     await fs.rm(folder, { recursive: true, force: true });
     for (const [name, bytes] of standalone) {
@@ -76,9 +63,8 @@ export async function buildLanguagePackages() {
     const entries = Object.fromEntries([...standalone].map(([name, bytes]) =>
       [`smiprog-${locale}/${name}`, [new Uint8Array(bytes), { mtime: new Date('2026-01-01T00:00:00Z') }]]));
     await fs.writeFile(path.join(output, `smiprog-${locale}.zip`), zipSync(entries, { level: 9 }));
-    await fs.writeFile(path.join(output, `smiprog-widget-${locale}.zip`), createWordPressArchive(wordpress));
   }
-  console.log(JSON.stringify({ output, locales: packages.map(p => p.locale), archives: packages.length * 2 }, null, 2));
+  console.log(JSON.stringify({ output, locales: packages.map(p => p.locale), archives: packages.length }, null, 2));
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] || '').href) await buildLanguagePackages();

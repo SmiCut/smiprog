@@ -45,7 +45,7 @@ Ordinary app/package builds use the checked-in WebP files and do not need cwebp.
 - Measured all ten images in Start, Calculator and Compare at viewport widths
   320, 390, 768, 1440 and 1920, with device pixel ratio 2. The smallest measured
   source-to-display ratio after the width cap was 2.22.
-- Reviewed desktop/mobile screenshots and checked standalone and WordPress package
+- Reviewed desktop/mobile screenshots and checked standalone and embedded HTML
   image loading. Packaging checks also verify the existing calculator reference cases.
 
 The assets remain local to the app. No external image host or Railway change is

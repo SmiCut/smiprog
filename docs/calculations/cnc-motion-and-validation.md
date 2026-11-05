@@ -1,6 +1,20 @@
 # CNC motion calculations and verification
 
-## Scope
+Reviewed against SmiProg v1.0.0, source commit `283519f`, on 2026-11-05.
+English is the only released locale. See the [reference map](README.md).
+
+## Released scope and historical corrections
+
+Fanuc / ISO IJK covers the implemented machining-center and lathe live-tool
+templates. Heidenhain Klartext covers right- and left-hand vertical milling only;
+lathe output is blocked. Template availability is not universal compatibility
+with every controller or machine option. Validate the actual generated program
+for the setup. The dates/version labels below record when behavior changed;
+these corrections are included in v1.0.0.
+
+For shared speed/feed, diameter overrides and timing, see
+[cutting data](cutting-data.md) and [time and cost estimates](time-and-cost.md).
+
 
 The 2026-10-12 corrections cover axial and tapered **machining-center milling**
 in the Heidenhain Klartext and Fanuc / ISO IJK posts. Radial geometry/feed

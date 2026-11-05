@@ -681,6 +681,10 @@
     return Number.isFinite(numericValue) ? numericValue.toFixed(decimals) : "";
   }
 
+  function formatSpindleSpeed(value) {
+    return Number.isFinite(value) ? String(Math.round(value)) : "-";
+  }
+
   function formatDecimal(value, decimals) {
     const numericValue = Number(value);
     if (!Number.isFinite(numericValue)) return "-";
@@ -1207,7 +1211,7 @@
     setText(elements.finalRadialPassesNote, "");
     setReferenceValueState(elements.finalRadialPasses, Boolean(overrides.radialPasses));
     setText(elements.finalAxialPasses, String(c.axialPasses));
-    setText(elements.finalSpindleSpeed, `${core.fmt(c.spindleSpeed, 0)} rpm`);
+    setText(elements.finalSpindleSpeed, `${formatSpindleSpeed(c.spindleSpeed)} rpm`);
     setText(elements.finalFeedThread, `${core.fmt(c.feedAtThreadDiameter, 0)} mm/min`);
     setText(elements.finalFeedCenter, `${core.fmt(c.centerFeed, 0)} mm/min`);
     setText(elements.finalMachiningTime, `${formatMachiningSeconds(c.machiningTime)} seconds`);
@@ -1638,7 +1642,7 @@
       ["Feed/tooth", valueOrDash(cA.calculatedFeedPerTooth, 3, " mm/tooth"), valueOrDash(cB.calculatedFeedPerTooth, 3, " mm/tooth"), controlsA.feed, controlsB.feed],
       ["Radial passes (max 3)", valueOrDash(cA.calculatedRadialPasses, 0), valueOrDash(cB.calculatedRadialPasses, 0), controlsA.passes, controlsB.passes],
       ["Axial passes", valueOrDash(cA.axialPasses, 0), valueOrDash(cB.axialPasses, 0)],
-      ["Spindle speed", valueOrDash(cA.spindleSpeed, 0, " rpm"), valueOrDash(cB.spindleSpeed, 0, " rpm")],
+      ["Spindle speed", Number.isFinite(cA.spindleSpeed) ? `${formatSpindleSpeed(cA.spindleSpeed)} rpm` : "-", Number.isFinite(cB.spindleSpeed) ? `${formatSpindleSpeed(cB.spindleSpeed)} rpm` : "-"],
       ["Feed at thread diameter", valueOrDash(cA.feedAtThreadDiameter, 0, " mm/min"), valueOrDash(cB.feedAtThreadDiameter, 0, " mm/min")],
       ["Feed in center of mill", valueOrDash(cA.centerFeed, 0, " mm/min"), valueOrDash(cB.centerFeed, 0, " mm/min")],
       ["Time to mill thread", valueOrDash(cA.machiningTime, 1, " seconds"), valueOrDash(cB.machiningTime, 1, " seconds"), null, null, diffOrNull(cB.machiningTime, cA.machiningTime), diffOrNull(cA.machiningTime, cB.machiningTime)],
@@ -2076,7 +2080,7 @@
       `Feed per tooth fz: ${formatDecimal(c.feedPerTooth, 3)} mm/tooth`,
       `Radial passes: ${c.radialPasses}`,
       `Axial passes: ${c.axialPasses}`,
-      `Spindle speed n: ${core.fmt(c.spindleSpeed, 0)} rpm`,
+      `Spindle speed n: ${formatSpindleSpeed(c.spindleSpeed)} rpm`,
       `Feed at thread diameter FD: ${core.fmt(c.feedAtThreadDiameter, 0)} mm/min`,
       `Feed in center of mill Fd: ${core.fmt(c.centerFeed, 0)} mm/min`,
       `Machining time: ${formatMachiningSeconds(c.machiningTime)} seconds`

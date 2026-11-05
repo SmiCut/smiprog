@@ -1334,12 +1334,16 @@
 
 #smiprog-app .spg-compare-tool-metric-grid {
   display: grid;
+  flex: 0 0 auto;
+  align-content: start;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr) minmax(82px, 0.56fr);
   gap: 8px;
 }
 
 #smiprog-app .spg-compare-tool-metric {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   gap: 4px;
   min-height: 53px;
   padding: 8px 10px !important;

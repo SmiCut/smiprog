@@ -1,4 +1,4 @@
-# SmiProg
+<h1><img src="docs/images/smiprog-icon.png" alt="SmiProg app icon" width="64" height="64" align="absmiddle"> SmiProg</h1>
 
 **Free thread-milling software. Calculate cutting data, select a tool and generate a CNC program.**
 

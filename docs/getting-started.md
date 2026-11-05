@@ -66,5 +66,5 @@ Downloads do not update automatically. Get the newest file from
 your own edits are not automatically carried into a new download.
 
 Email [info@smicut.se](mailto:info@smicut.se) with your browser, language and a short
-problem description. See [the CNC verification notes](cnc-motion-and-validation.md)
+problem description. See [the CNC verification notes](calculations/cnc-motion-and-validation.md)
 for controller support and test scope.

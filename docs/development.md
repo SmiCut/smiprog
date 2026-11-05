@@ -65,7 +65,7 @@ codes to `tools/build-language-packages.mjs`.
 
 ## CNC motion regression checks
 
-See [CNC motion calculations and verification](cnc-motion-and-validation.md) for
+See [CNC motion calculations and verification](calculations/cnc-motion-and-validation.md) for
 the axial/tapered milling corrections, pass rejection rules, independent command
 checks and exact reviewed deviations from the immutable Excel references.
 `npm run test:cnc-motion` is included in `npm test`.
@@ -125,3 +125,20 @@ not confidential distributor information or current quotations.
 See [the documentation index](README.md) for user guides and technical references.
 Contribution and private security-reporting instructions are in `.github/`.
 The [Website embedding guide](website-embedding.md) is in `docs/`.
+
+## Reference maintenance and publication
+
+Use the [calculation reference map](calculations/README.md) when changing formulas,
+CNC templates, overrides, timing or Compare. Update affected examples and the
+reviewed release/date together with code. Preserve immutable reference fixtures
+and list intentional CNC deviations explicitly.
+
+Follow the [publication policy](publication-policy.md) for source, workbooks,
+fixtures and release assets. Public branches are not a confidential review area.
+The original Excel workbooks and audit working files remain private; the selected
+public fixtures and image originals support reproducible tests and builds.
+
+The current release baseline is v1.0.0 (English only). It uses complete HTML
+for both downloads and direct embedding; the standalone and embedded checks run
+at desktop/mobile widths. Historical version labels in technical documents record
+when a change was introduced, not an unreleased controller status.

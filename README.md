@@ -52,7 +52,7 @@ not a security feature. Reference prices are editable and are not a current quot
 
 **Verify the CNC program for your controller, machine and setup before machining.**
 Heidenhain supports right- and left-hand vertical milling; Heidenhain lathe thread
-milling is not supported. See [supported configurations and verification limits](docs/cnc-motion-and-validation.md).
+milling is not supported. See [supported configurations and verification limits](docs/calculations/cnc-motion-and-validation.md).
 
 ## Make it your own
 
@@ -74,3 +74,5 @@ already embedded in the HTML and do not require visible branding in your interfa
 - **Report a problem:** [open an issue](https://github.com/SmiCut/smiprog/issues).
 - **For developers:** [source files, tests and builds](docs/development.md), [contributing](.github/CONTRIBUTING.md), and [MIT license](LICENSE).
 - **Tapping, thread turning, grooving, milling and drilling:** see [SmiCalc](https://github.com/SmiCut/smicalc).
+
+For contributors: [what belongs in this public project](docs/publication-policy.md).

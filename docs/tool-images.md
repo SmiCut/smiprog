@@ -1,4 +1,7 @@
-# Tool image optimization
+# Tool image optimization and distribution
+
+Reviewed against v1.0.0 on 2026-11-05. Original image measurements below were
+recorded on 2026-11-02; they are not new measurements from this documentation review.
 
 The ten runtime tool images use WebP at quality 95 with full-quality alpha.
 Original PNGs are preserved in `tools/image-sources/thread-mills/`; they are not
@@ -50,4 +53,9 @@ Ordinary app/package builds use the checked-in WebP files and do not need cwebp.
 
 The assets remain local to the app. No external image host or Railway change is
 needed. The complete HTML builder embeds these optimized assets. Production website
-deployment remains a separate step.
+deployment remains a separate step for future updates. The complete HTML was
+published directly on smicut.com on 2026-11-02.
+
+The PNG originals are intentionally public rebuild inputs, not unpublished tool
+research. Keep their usage rights and notices with derived distributions; do not
+place confidential supplier drawings or unreleased-product imagery in this folder.

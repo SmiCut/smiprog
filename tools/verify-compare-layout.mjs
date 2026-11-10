@@ -22,8 +22,11 @@ try {
     const context = await browser.newContext({ viewport: { width: 877, height: 1000 }, offline: true });
     const page = await context.newPage();
     const html = await fs.readFile(path.join(repositoryRoot, 'dist/downloads', file.name), 'utf8');
+    await page.evaluate(() => { navigator.share = async () => {}; });
     await page.setContent(`<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0}#host{max-width:100%;margin:auto}</style><article id="host">${html}</article>`);
     await page.locator('[data-spg-tab="compare"]').click();
+    assert.equal(await page.locator('.spg-compare-result-copy-group button').count(), 1, `${file.locale}: only Copy in Results, even with Web Share available`);
+    assert.equal(await page.locator('#spg-copy-compare-results').isVisible(), true, `${file.locale}: Copy remains available`);
     if (file.locale !== 'sv') {
       await page.locator('#spg-compare-password').fill('XL');
       await page.locator('#spg-unlock-compare').click();

@@ -1,6 +1,6 @@
 {
   "name": "smiprog",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "description": "SmiCut thread-milling calculator and CNC programming widget.",
   "scripts": {
@@ -11,7 +11,8 @@
     "test:golden": "cd apps/web && node run-golden-tests.mjs",
     "test:parity-policy": "node --test apps/web/tests/cnc-parity-policy.test.mjs",
     "test:excel-parity": "node apps/web/tools/compare-excel-parity.mjs",
-    "test:browser": "cd apps/web && node verify-webapp.mjs && node verify-marked-diameter.mjs && node verify-material-selector.mjs && node verify-excel-parity.mjs && node verify-compare-cost.mjs && cd ../.. && npm run verify:html",
+    "test:browser": "cd apps/web && node verify-webapp.mjs && node verify-marked-diameter.mjs && node verify-material-selector.mjs && node verify-excel-parity.mjs && node verify-compare-cost.mjs && cd ../.. && npm run verify:html && npm run verify:compare-layout",
+    "verify:compare-layout": "node tools/verify-compare-layout.mjs",
     "build:languages": "node apps/web/tools/build-translations.mjs && node tools/build-language-packages.mjs && npm run build:html",
     "test:languages": "node --test tests/language-packages.test.mjs tests/languages.test.mjs",
     "verify:languages": "node tools/verify-language-packages.mjs && node tools/verify-languages.mjs",

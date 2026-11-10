@@ -30,7 +30,7 @@ function readData() {
 
 function writeData(data) {
   const json = JSON.stringify(data, null, 2);
-  fs.writeFileSync(dataPath, `window.SmiProgData = ${json};\n`);
+  fs.writeFileSync(dataPath, `/* Copyright (c) 2026 SmiCut AB. Licensed under the MIT License; see LICENSE. */\nwindow.SmiProgData = ${json};\n`);
 }
 
 function csvEscape(value) {
@@ -109,7 +109,7 @@ function readPriceCsv(csvPath) {
     const article = (columns[articleIndex] || "").trim();
     if (!article) continue;
     const price = parsePrice(columns[priceIndex]);
-    if (price === null) throw new Error(`Invalid price for ${article}: ${columns[priceIndex]}`);
+    if (price === null || price < 0 || prices.has(article)) throw new Error(`Invalid or duplicate price for ${article}`);
     prices.set(article, price);
   }
   return prices;
@@ -131,22 +131,17 @@ function exportPrices(csvPath) {
 function importPrices(csvPath) {
   const data = readData();
   const prices = readPriceCsv(csvPath);
-  const normalizedPrices = new Map();
-  for (const [article, price] of prices.entries()) {
-    const key = normalizeArticle(article);
-    if (!normalizedPrices.has(key)) normalizedPrices.set(key, price);
-  }
   let updated = 0;
   const missing = [];
 
   data.tools.forEach((tool) => {
     const hasExactPrice = prices.has(tool.description);
-    const normalizedPrice = normalizedPrices.get(normalizeArticle(tool.description));
-    if (!hasExactPrice && normalizedPrice === undefined) {
+    if (!hasExactPrice) {
       missing.push(tool.description);
+      tool.priceEur = null;
       return;
     }
-    const nextPrice = hasExactPrice ? prices.get(tool.description) : normalizedPrice;
+    const nextPrice = prices.get(tool.description);
     if (tool.priceEur !== nextPrice) updated += 1;
     tool.priceEur = nextPrice;
   });
@@ -155,7 +150,7 @@ function importPrices(csvPath) {
   console.log(`Imported ${prices.size} price rows from ${csvPath}`);
   console.log(`Updated ${updated} tools in ${dataPath}`);
   if (missing.length) {
-    console.log(`No price row for ${missing.length} tools. Existing prices were kept.`);
+    console.log(`No exact price row for ${missing.length} tools. Prices cleared.`);
   }
 }
 

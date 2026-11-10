@@ -18,7 +18,7 @@ export async function createAppFiles() {
     files.set(`app/${file}`, Buffer.from(result.code));
   }
   for (const name of (await fs.readdir(path.join(sourceRoot, "i18n"))).sort()) {
-    if (/^[a-z]{2}\.json$/.test(name)) {
+    if (/^[a-z]{2}(?:-[a-z]{2})?\.json$/.test(name)) {
       const data = JSON.parse(await fs.readFile(path.join(sourceRoot, "i18n", name), "utf8"));
       files.set(`app/i18n/${name}`, Buffer.from(JSON.stringify(data)));
     }

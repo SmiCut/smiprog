@@ -28,7 +28,9 @@ length, then choose a suitable tool. Check the cutting data and select the inten
 control system and thread direction. Use **Copy** to copy results or the CNC program.
 Verify the program for your actual machine and setup before machining.
 
-**Compare** opens with `XL`. It compares two tools and their estimated costs.
+In this review version, **Compare** opens directly and accepts your own prices.
+`XL` reveals EUR catalogue prices; Swedish SEK prices are visible without a code.
+It compares two tools and their estimated costs.
 Its prices are reference values and may be changed; they are not a sales quotation.
 The code is not protection for confidential prices: the program's data are public.
 

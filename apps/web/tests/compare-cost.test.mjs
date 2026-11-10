@@ -48,3 +48,29 @@ test("cost overrides distinguish zero from empty and reject invalid values", () 
     assert.equal(result.costData, null);
   }
 });
+
+test("Compare with no allowed reference keeps time and machine cost without a catalogue-price fallback", () => {
+  const input = timings.cases[0].input;
+  const locked = { comparePricing: { referencePrice: null } };
+  const result = core.calculate({ ...input, overrides: {} }, data, locked);
+  assert.equal(result.errors.length, 0);
+  assert.ok(result.cuttingData.machiningTime > 0);
+  assert.ok(result.costData.machineCostPerThread > 0);
+  assert.equal(result.costData.toolPrice, null);
+  assert.equal(result.costData.toolingCostPerThread, null);
+  assert.equal(result.costData.totalCostPerThread, null);
+  const zero = core.calculate({ ...input, overrides: { toolPrice: 0 } }, data, locked);
+  assert.equal(zero.costData.totalCostPerThread, zero.costData.machineCostPerThread);
+  const priced = core.calculate({ ...input, overrides: {} }, data, { comparePricing: { referencePrice: 2460 } });
+  assert.equal(priced.costData.toolPrice, 2460);
+  const custom = core.calculate({ ...input, overrides: { cutterDiameter: 5, cuttingEdgeLength: 10, flutes: 3 } }, data,
+    { comparePricing: { referencePrice: 2460 } });
+  assert.equal(custom.tool.isCustom, true);
+  assert.equal(custom.costData.toolPrice, null);
+  for (const price of ["NaN", "Infinity", -1]) {
+    const invalid = core.calculate({ ...input, overrides: { toolPrice: price } }, data,
+      { comparePricing: { referencePrice: 227.8 } });
+    assert.ok(invalid.errors.length);
+    assert.equal(invalid.costData, null);
+  }
+});

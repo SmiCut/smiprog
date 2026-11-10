@@ -1,0 +1,544 @@
+<!DOCTYPE html><html lang="nl"><head><script>window.SmiProgConfig={"locale":"nl","assetBase":"../assets/"};</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmiProg - Draadfrezen</title>
+  <!-- Copyright (c) 2026 SmiCut AB. Licensed under the MIT License; see LICENSE. -->
+  <meta name="description" content="SmiCut SmiProg thread milling calculator for cutting data, tool selection and Fanuc CNC program generation.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../styles.css?v=20261110-8">
+  <link rel="stylesheet" href="../material-selector.css?v=20261005-1">
+</head>
+<body>
+  <main id="smiprog-app" class="spg-app">
+    <section class="spg-shell" aria-label="SmiProg - Draadfrezen" data-i18n-aria-label="aria.calculator">
+      <div class="spg-tabs" role="tablist" aria-label="SmiProg" data-i18n-aria-label="aria.sections">
+        <button type="button" class="spg-tab spg-tab-active" data-spg-tab="start" role="tab" aria-selected="true" data-i18n-html="tabs.start">Startpagina</button>
+        <button type="button" class="spg-tab" data-spg-tab="materialselector" role="tab" aria-selected="false" data-i18n-html="tabs.materialSelector">SmiCut-materiaalselector</button>
+        <button type="button" class="spg-tab" data-spg-tab="main" role="tab" aria-selected="false" data-i18n="tabs.threadMilling">Inwendig draadfrezen</button>
+        <button type="button" class="spg-tab" data-spg-tab="compare" role="tab" aria-selected="false" data-i18n="tabs.compare">Vergelijken</button>
+        <button type="button" class="spg-tab" data-spg-tab="information" role="tab" aria-selected="false" data-i18n="tabs.information">Informatie</button>
+      </div>
+
+      <section id="spg-start-panel" class="spg-panel spg-panel-active" role="tabpanel">
+        <div class="spg-start-content">
+          <!-- Lucide icons (arrow-left-right, book-open): ISC License.
+          Copyright (c) 2026 Lucide Icons and Contributors.
+          Permission to use, copy, modify, and/or distribute this software for any purpose
+          with or without fee is hereby granted, provided that the above copyright notice
+          and this permission notice appear in all copies.
+          THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+          REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+          AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+          INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+          LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+          OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+          PERFORMANCE OF THIS SOFTWARE. -->
+          <div class="spg-start-grid">
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-main" data-spg-start-tab="main">
+              <strong><span data-i18n="start.threadMilling.title">Inwendig draadfrezen</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.threadMilling.description">Vind uw gereedschap, bereken snijgegevens en maak een CNC-programma.</span>
+              <span class="spg-start-card-visual" aria-hidden="true"><img src="../assets/thread-mills/NB08075D21_1.5ISO_AC.webp" alt=""></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-compare" data-spg-start-tab="compare">
+              <strong><span data-i18n="start.compare.title">Vergelijken</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.compare.description">Vergelijk twee gereedschappen, beweringstijd en kost per schroefdraad.</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="arrow-left-right" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"></path><path d="M4 7h16"></path><path d="m16 21 4-4-4-4"></path><path d="M20 17H4"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-information" data-spg-start-tab="information">
+              <strong><span data-i18n="start.information.title">Informatie</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.information.description">Hoe SmiProg te gebruiken</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="book-open" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16"></path><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-materialselector" data-spg-start-tab="materialselector">
+              <span class="spg-start-card-materialselector-icon" aria-hidden="true"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><circle cx="21" cy="21" r="12" style="fill:none; stroke:#676d72; stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round;"></circle><path d="M30.2,30.2l10.2,10.2" style="fill:none; stroke:#676d72; stroke-width:4.6; stroke-linecap:round; stroke-linejoin:round;"></path></svg></span>
+              <strong><span data-i18n="start.materialSelector.title">SmiCut-materiaalselector</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.materialSelector.description">Vind de juiste SmiCut-categorie op basis van een materiaalnaam of -aanduiding.</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-material-selector-panel" class="spg-panel spg-material-selector-panel" role="tabpanel" hidden="">
+        <div id="spg-material-selector-widget">
+          <div class="sms-panel">
+            <div class="sms-header"><span>SmiCut Material Selector</span></div>
+            <div class="sms-welcome" id="spg-material-selector-welcome" data-sms-role="welcome">
+              <div class="sms-welcome-title" data-sms-i18n="welcomeTitle" role="heading" aria-level="2">Which material will you machine?</div>
+              <div data-sms-i18n="welcomeDescription">Enter the material designation or name, and we’ll help you find the right material category.</div>
+            </div>
+            <div id="spg-material-selector-messages" data-sms-role="messages" class="sms-messages" role="log" aria-label="Material conversation" aria-live="polite" hidden=""></div>
+            <div class="sms-composer">
+              <label id="spg-material-selector-label" data-sms-role="label" for="spg-material-selector-input"><svg class="sms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"></path></svg> <span data-sms-i18n="enterLabel">Enter your material</span></label>
+              <div class="sms-input-row">
+                <textarea id="spg-material-selector-input" data-sms-role="input" rows="1" maxlength="4000" placeholder="E.g. AISI 1045 or EN 1.4301"></textarea>
+                <button id="spg-material-selector-send" data-sms-role="send" type="button" aria-label="Find material category" disabled="">Find material category</button>
+              </div>
+              <div id="spg-material-selector-status" data-sms-role="status" role="status"></div>
+              <button id="spg-material-selector-retry" data-sms-role="retry" type="button" hidden="" data-sms-i18n="retry">Try again</button>
+            </div>
+            <button id="spg-material-selector-apply" data-sms-role="apply" class="sms-apply-material" type="button" hidden="">Use in SmiProg</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-main-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-layout">
+          <form class="spg-form-stack" id="spg-form">
+            <section class="spg-inputs-card">
+              <div class="spg-field">
+                <label for="spg-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Te bewerken materiaal</span></label>
+                <select id="spg-material" class="spg-control"></select>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Schroefdraadprofiel</span></label>
+                  <select id="spg-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Schroefdraadmaat</span></label>
+                  <select id="spg-thread-size" class="spg-control"></select>
+                </div>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Schroefdraaddiameter (mm)</span></label>
+                  <input id="spg-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label id="spg-pitch-label" for="spg-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Spoed (mm)</span></label>
+                  <input id="spg-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Schroefdraadlengte (mm)</span></label>
+                  <input id="spg-thread-length" class="spg-control" type="number" min="0" step="0.001" placeholder="Schroefdraadlengte" data-i18n-placeholder="placeholder.enterLength">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-safety-distance" class="spg-field-label"><span class="spg-step">7</span><span data-i18n="field.safetyDistance">Veiligheidsafstand (mm)</span></label>
+                  <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2">
+                </div>
+              </div>
+
+              <div id="spg-tool-field" class="spg-field">
+                <label for="spg-tool" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.tool">Draadfrees</span></label>
+                <select id="spg-tool" class="spg-control"></select>
+                <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
+                  <label for="spg-marked-diameter" class="spg-field-label" data-i18n="field.cutterDiameter">Freesdiameter (mm)</label>
+                  <div class="spg-marked-diameter-controls">
+                    <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
+                    <button id="spg-reset-diameter" type="button" aria-label="Herstellen" data-i18n-aria-label="action.reset" title="Reset">↺</button>
+                    <small id="spg-marked-diameter-help" data-i18n="tool.markedHelp">Voer de laser-gegraveerde diameter van uw frees in om het CNC-programma aan te passen en de schroefdraad binnen tolerantie te krijgen.</small>
+                  </div>
+                </div>
+                <div id="spg-custom-tool-fields" class="spg-custom-tool-fields" hidden="">
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cutterDiameter">Freesdiameter (mm)</span></label>
+                    <input id="spg-override-cutter-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-edge-length" class="spg-field-label"><span class="spg-step">10</span><span data-i18n="field.cuttingLength">Snijlengte (mm)</span></label>
+                    <input id="spg-override-edge-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-flutes" class="spg-field-label"><span class="spg-step">11</span><span data-i18n="field.flutes">Aantal tanden</span></label>
+                    <input id="spg-override-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                </div>
+                <div id="spg-tool-summary" class="spg-tool-inline-summary"></div>
+                <a id="spg-tool-link" class="spg-tool-link spg-tool-link-disabled" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">&nbsp;</a>
+              </div>
+
+              <div class="spg-note" role="status" aria-live="polite">
+                <div class="spg-note-title" data-i18n="note.title">OPMERKING:</div>
+                <div id="spg-note-message" class="spg-note-text" data-i18n="note.enterThreadLength">Voer de draadlengte in om een passend gereedschap te selecteren.</div>
+              </div>
+            </section>
+          </form>
+
+          <div class="spg-results">
+            <section class="spg-card spg-final-card">
+              <div class="spg-card-head">
+                <div class="spg-section-title" data-i18n="section.cuttingData">Snijgegevens</div>
+                <div id="spg-cutting-data-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cutting-data" class="spg-button" data-i18n="button.copy">Kopiëren</button>
+              </div>
+              <div id="spg-cutting-data" class="spg-final-calculations">
+                <div class="spg-final-summary-frame">
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.cuttingSpeed">Snijsnelheid</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-cutting-speed" class="spg-result-value">-</span>
+                      <input id="spg-override-cutting-speed" class="spg-adjustable-input" type="number" min="0" step="1">
+                      <span id="spg-final-cutting-speed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.feedTooth">Voeding per tand</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-feed" class="spg-result-value">-</span>
+                      <input id="spg-override-feed" class="spg-adjustable-input" type="number" min="0" step="0.001">
+                      <span id="spg-final-feed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label"><span data-i18n="result.radialPasses">Radiale gangen</span> <span class="spg-label-note" data-i18n="result.max3">(≤ 3)</span></span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-radial-passes" class="spg-result-value">-</span>
+                      <input id="spg-override-radial-passes" class="spg-adjustable-input" type="number" min="1" max="3" step="1">
+                      <span id="spg-final-radial-passes-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.axialPasses">Axiale gangen</span>
+                    <span id="spg-final-axial-passes" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.spindleSpeed">Spiltoerental</span>
+                    <span id="spg-final-spindle-speed" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedThreadDiameter">Voeding aan de draaddiameter</span>
+                    <span id="spg-final-feed-thread" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedCenter">Voeding in het centrum v/d frees</span>
+                    <span id="spg-final-feed-center" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.timeToMillThread">Tijd om schroefdraad te frezen</span>
+                    <span id="spg-final-machining-time" class="spg-result-value">-</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="spg-card spg-cnc-card">
+              <div class="spg-cnc-head">
+                <div class="spg-section-title" data-i18n="section.cncProgram">CNC-programma</div>
+                <div id="spg-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cnc" class="spg-button" data-i18n="button.copy">Kopiëren</button>
+              </div>
+              <div class="spg-cnc-settings spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-process" class="spg-field-label spg-visually-hidden"><span data-i18n="field.manufacturingProcess">Productieproces</span></label>
+                  <select id="spg-process" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-control-system" class="spg-field-label spg-visually-hidden"><span data-i18n="field.controlSystem">Controle systeem</span></label>
+                  <select id="spg-control-system" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-thread-hand" class="spg-field-label spg-visually-hidden"><span data-i18n="field.threadHand">Draadrichting</span></label>
+                  <select id="spg-thread-hand" class="spg-control">
+                    <option value="right" data-i18n="option.rightHandThread">Rechtse draad</option>
+                    <option value="left" data-i18n="option.leftHandThread">Linkse draad</option>
+                  </select>
+                </div>
+
+                <div class="spg-field spg-dev-only">
+                  <label for="spg-program-template" data-i18n="field.programTemplate">Fanuc - CNC-programma</label>
+                  <select id="spg-program-template" class="spg-control">
+                    <option value="" data-i18n="option.auto">Auto</option>
+                    <option value="milling-normal-1-pass" data-i18n="option.millingNormal1">Inwendig draadfrezen op een bewerkingscentrum - Normaal (1)</option>
+                    <option value="milling-normal-2-pass" data-i18n="option.millingNormal2">Inwendig draadfrezen op een bewerkingscentrum - Normaal (2)</option>
+                    <option value="milling-normal-3-pass" data-i18n="option.millingNormal3">Inwendig draadfrezen op een bewerkingscentrum - Normaal (3)</option>
+                    <option value="milling-axial-1-pass" data-i18n="option.millingAxial1">Inwendig draadfrezen op een bewerkingscentrum - Axiaal (1)</option>
+                    <option value="milling-axial-2-pass" data-i18n="option.millingAxial2">Inwendig draadfrezen op een bewerkingscentrum - Axiaal (2)</option>
+                    <option value="milling-axial-3-pass" data-i18n="option.millingAxial3">Inwendig draadfrezen op een bewerkingscentrum - Axiaal (3)</option>
+                    <option value="milling-micro-1-pass" data-i18n="option.millingMicro1">Inwendig draadfrezen op een bewerkingscentrum - Micro (1)</option>
+                    <option value="milling-micro-2-pass" data-i18n="option.millingMicro2">Inwendig draadfrezen op een bewerkingscentrum - Micro (2)</option>
+                    <option value="milling-micro-3-pass" data-i18n="option.millingMicro3">Inwendig draadfrezen op een bewerkingscentrum - Micro (3)</option>
+                    <option value="milling-tapered-1-pass" data-i18n="option.millingTapered1">Inwendig draadfrezen op een bewerkingscentrum - Conisch (1)</option>
+                    <option value="milling-tapered-2-pass" data-i18n="option.millingTapered2">Inwendig draadfrezen op een bewerkingscentrum - Conisch (2)</option>
+                    <option value="milling-tapered-3-pass" data-i18n="option.millingTapered3">Inwendig draadfrezen op een bewerkingscentrum - Conisch (3)</option>
+                    <option value="lathe-normal-1-pass" data-i18n="option.latheNormal1">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Normaal (1)</option>
+                    <option value="lathe-normal-2-pass" data-i18n="option.latheNormal2">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Normaal (2)</option>
+                    <option value="lathe-normal-3-pass" data-i18n="option.latheNormal3">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Normaal (3)</option>
+                    <option value="lathe-axial-1-pass" data-i18n="option.latheAxial1">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Axiaal (1)</option>
+                    <option value="lathe-axial-2-pass" data-i18n="option.latheAxial2">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Axiaal (2)</option>
+                    <option value="lathe-axial-3-pass" data-i18n="option.latheAxial3">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Axiaal (3)</option>
+                    <option value="lathe-micro-1-pass" data-i18n="option.latheMicro1">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Micro (1)</option>
+                    <option value="lathe-micro-2-pass" data-i18n="option.latheMicro2">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Micro (2)</option>
+                    <option value="lathe-micro-3-pass" data-i18n="option.latheMicro3">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Micro (3)</option>
+                    <option value="lathe-tapered-1-pass" data-i18n="option.latheTapered1">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Conisch (1)</option>
+                    <option value="lathe-tapered-2-pass" data-i18n="option.latheTapered2">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Conisch (2)</option>
+                    <option value="lathe-tapered-3-pass" data-i18n="option.latheTapered3">Inwendig draadfrezen op een draaibank met aangedreven gereedschap - Conisch (3)</option>
+                  </select>
+                </div>
+              </div>
+              <textarea id="spg-cnc-program" class="spg-copy-text" readonly="" spellcheck="false" placeholder="Corrigeer de invoer om een CNC-programma te genereren." data-i18n-placeholder="placeholder.cncProgram"></textarea>
+              <div id="spg-cnc-disclaimer" class="spg-help-text" data-i18n="cnc.disclaimer">Controleer het CNC-programma vóór het bewerken via simulatie of in enkelblokbedrijf. Machinespecifieke opties en postprocessorinstellingen kunnen aanpassing vereisen.</div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div id="spg-compare-access" class="spg-compare-access">
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Voer uw eigen gereedschapsprijzen in. SmiCut-dealers kunnen bij SmiCut het wachtwoord aanvragen om de catalogusprijzen te bekijken.</p>
+          <div id="spg-compare-lock" class="spg-compare-password-row">
+            <label for="spg-compare-password" data-i18n="compare.password">Wachtwoord</label>
+            <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">Catalogusprijzen ontgrendelen</button>
+          </div>
+          <div id="spg-compare-unlock-message" class="spg-help-text" role="status"></div>
+        </div>
+
+        <div id="spg-compare-content" class="spg-compare-content">
+          <div class="spg-compare-workspace">
+            <section class="spg-compare-thread-card">
+              <div class="spg-compare-thread-input-grid">
+                <div class="spg-field spg-compare-thread-material-field">
+                  <label for="spg-compare-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Te bewerken materiaal</span></label>
+                  <select id="spg-compare-material" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-compare-thread-profile-field">
+                  <label for="spg-compare-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Schroefdraadprofiel</span></label>
+                  <select id="spg-compare-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-size-field">
+                  <label for="spg-compare-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Schroefdraadmaat</span></label>
+                  <select id="spg-compare-thread-size" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-diameter-field">
+                  <label for="spg-compare-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Schroefdraaddiameter (mm)</span></label>
+                  <input id="spg-compare-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-pitch-field">
+                  <label id="spg-compare-pitch-label" for="spg-compare-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Spoed (mm)</span></label>
+                  <input id="spg-compare-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-length-field">
+                  <label for="spg-compare-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Schroefdraadlengte (mm)</span></label>
+                  <input id="spg-compare-thread-length" class="spg-control" type="number" min="0" step="0.001" value="12">
+                </div>
+
+                <div class="spg-field spg-compare-machine-cost-field">
+                  <label for="spg-machine-cost" class="spg-field-label"><span data-i18n="field.machineCostPerHour">Machinekosten per uur (€)</span></label>
+                  <input id="spg-machine-cost" class="spg-control" type="number" min="0" step="0.01" value="80">
+                </div>
+              </div>
+            </section>
+
+            <div class="spg-compare-tool-grid">
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-a-card">
+                <div id="spg-compare-tool-a-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-a" data-i18n="field.toolA">Gereedschap A</label>
+                  <select id="spg-compare-tool-a" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-a-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-price" data-i18n="field.toolingCost">Gereedschapskost (€)</label>
+                  <input id="spg-compare-tool-a-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-life" data-i18n="field.toolLife">Gereedschapslevensduur (minuten)</label>
+                  <input id="spg-compare-tool-a-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-diameter" data-i18n="field.cutterDiameter">Freesdiameter (mm)</label>
+                  <input id="spg-compare-tool-a-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-length" data-i18n="field.cuttingLength">Snijlengte (mm)</label>
+                  <input id="spg-compare-tool-a-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-flutes" data-i18n="field.flutes">Aantal tanden</label>
+                  <input id="spg-compare-tool-a-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-speed" data-i18n="field.cuttingSpeed">Snijsnelheid (m/min)</label>
+                  <input id="spg-compare-tool-a-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-feed" data-i18n="field.feedPerTooth">Voeding per tand (mm/tand)</label>
+                  <input id="spg-compare-tool-a-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-passes" data-i18n="field.radialPassesMax">Radiale gangen (max. 3)</label>
+                  <input id="spg-compare-tool-a-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-b-card">
+                <div id="spg-compare-tool-b-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-b" data-i18n="field.toolB">Gereedschap B</label>
+                  <select id="spg-compare-tool-b" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-b-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-price" data-i18n="field.toolingCost">Gereedschapskost (€)</label>
+                  <input id="spg-compare-tool-b-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-life" data-i18n="field.toolLife">Gereedschapslevensduur (minuten)</label>
+                  <input id="spg-compare-tool-b-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-diameter" data-i18n="field.cutterDiameter">Freesdiameter (mm)</label>
+                  <input id="spg-compare-tool-b-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-length" data-i18n="field.cuttingLength">Snijlengte (mm)</label>
+                  <input id="spg-compare-tool-b-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-flutes" data-i18n="field.flutes">Aantal tanden</label>
+                  <input id="spg-compare-tool-b-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-speed" data-i18n="field.cuttingSpeed">Snijsnelheid (m/min)</label>
+                  <input id="spg-compare-tool-b-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-feed" data-i18n="field.feedPerTooth">Voeding per tand (mm/tand)</label>
+                  <input id="spg-compare-tool-b-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-passes" data-i18n="field.radialPassesMax">Radiale gangen (max. 3)</label>
+                  <input id="spg-compare-tool-b-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="spg-compare-note-row">
+            <div class="spg-note spg-compare-note" role="status" aria-live="polite">
+              <div class="spg-note-title" data-i18n="note.title">OPMERKING:</div>
+              <div id="spg-compare-summary" class="spg-note-text"></div>
+            </div>
+            <button id="spg-use-current-setup" type="button" class="spg-button" data-i18n="compare.useCurrent">Huidige opstelling gebruiken</button>
+          </div>
+
+          <section class="spg-card spg-final-card spg-compare-results-card">
+            <div id="spg-cost-data" class="spg-compare-result-table"></div>
+            <p class="spg-help-text" data-i18n="compare.referencePrices">De standtijd wordt uitgedrukt in snijminuten en de machinekosten per uur.</p>
+          </section>
+        </div>
+      </section>
+
+      <section id="spg-information-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-info-page">
+          <article class="spg-info-card spg-info-overview-card">
+            <div class="spg-info-hero-head">
+              <h2 data-i18n="info.howToUse">Hoe SmiProg te gebruiken</h2>
+            </div>
+            <div class="spg-info-overview-copy">
+              <div class="spg-info-workflow">
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definieer de schroefdraad</strong><p data-i18n="info.step1.body">Selecteer materiaal, schroefdraadprofiel en maat, schroefdraadlengte en veilige afstand. M gebruikt millimeters voor de spoed; andere profielen gebruiken threads per inch (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Selecteer de draadfrees</strong><p data-i18n="info.step2.body">Gebruik een voorgesteld SmiCut-gereedschap of voer aangepaste gereedschafsmaten in bij de gereedschapsselectie.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Controleer de uitvoer</strong><p data-i18n="info.step3.body">Selecteer het productieproces, controlesysteem en schroefdraadrichting in het CNC-programma. Controleer de snijgegevens, bewerkingstijd en het CNC-programma voordat u begint met bewerken.</p></div></div>
+              </div>
+              <div class="spg-info-check-strip">
+                <strong data-i18n="info.beforeMachining.title">Voorafgaand aan het bewerken</strong>
+                <p data-i18n="info.beforeMachining.body">Controleer of de geselecteerde draadfrezer de schroefdraaddiameter, spoed en schroefdraadlengte kan bewerken. Bevestig het programma in simulatie of enkelblok voordat u de productie start.</p>
+              </div>
+            </div>
+
+            <div class="spg-info-overview-figure">
+              <figure class="spg-info-figure">
+                <img src="../assets/info/smiprog-nb.svg" alt="Referentie voor schroefdraadafmetingen bij draadfrezen, met weergave van schroefdraaddiameter, spoed, snijlengte, veilige afstand en freesdiameter." data-i18n-alt="info.figureAlt">
+                <figcaption>
+                  <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Schroefdraaddiameter</span></span>
+                  <span><strong>P</strong><span data-i18n="info.figure.pitch">Spoed</span></span>
+                  <span><strong>L</strong><span data-i18n="info.figure.threadLength">Schroefdraadlengte</span></span>
+                  <span><strong>S</strong><span data-i18n="info.figure.safetyDistance">Veiligheidsafstand</span></span>
+                  <span><strong>d</strong><span data-i18n="info.figure.cutterDiameter">Freesdiameter</span></span>
+                  <span><strong>l</strong><span data-i18n="info.figure.cuttingLength">Snijlengte</span></span>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <section class="spg-info-section" aria-label="Bewerkingsnotities" data-i18n-aria-label="aria.machiningNotes">
+            <div class="spg-info-section-head">
+              <h2 data-i18n="info.machiningNotes">Bewerkingsnotities</h2>
+            </div>
+            <div class="spg-info-notes-grid">
+              <article class="spg-info-card">
+                <h2 data-i18n="info.toolCompensation.title">Gereedschap compensatie</h2>
+                <p data-i18n="info.toolCompensation.body">Compensatie van gereedschap is normaal gesproken alleen nodig voor kleine aanpassingen. Grote compensatiewaarden kunnen problemen veroorzaken. Gebruik een waarde dicht bij nul voor de compensatie van de freesdiameter in de gereedschapsbibliotheek van het controlesysteem.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.correctThreadDiameter.title">Correcte schroefdraaddiameter</h2>
+                <p data-i18n="info.correctThreadDiameter.body">Controleer de flankdiameter van de schroefdraad met een plugkaliber voor inwendige schroefdraad of een andere erkende meetmethode. Voer zo nodig een correctie uit in de machinebesturing en behoud de genormaliseerde schroefdraadmaten.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.customTools.title">Speciaalgereedschap</h2>
+                <p data-i18n="info.customTools.body">Als uw gereedschap niet in de lijst staat, kies dan voor aangepaste gereedschapsafmetingen in de gereedschapsselectie en voer freesdiameter, snijlengte en aantal snijtanden in. Controleer het gegenereerde programma zorgvuldig bij gebruik van aangepast gereedschap.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
+                <p data-i18n="info.threadBurr.body">Vul de volledige snijlengte van de gekozen volhardmetalen draadfrees van SmiCut in bij de draadlengte. Met ThreadBurr worden draadfrezen en ontbramen zo in één bewerking uitgevoerd.</p>
+                <p><a href="https://smicut.com/nl/threadburr-volhardmetalen-draadfrezen-van-smicut/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">ThreadBurr – volhardmetalen draadfrezen van SmiCut</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.oneTwoRows.title">Draadfrezen met een tand / twee tanden (axiaal)</h2>
+                <p data-i18n="info.oneTwoRows.body">SmiProg compenseert standaard SmiCut-frezen met één of twee rijen snijtanden. Gebruikt u een niet-standaard frees, controleer dan de relatie tussen snijlengte en spoed voordat u begint met bewerken.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.flankInfeed.title">Flanktoevoer</h2>
+                <p data-i18n="info.flankInfeed.body">SmiProg gebruikt flanktoevoer bij het programmeren van meerdere radiale passes. Dit helpt trillingen te verminderen en verbetert de bewerkingsstabiliteit.</p>
+                <p><a href="https://smicut.com/nl/vibratievrij-draadfrezen-voor-hogere-productiviteit/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Vibratievrij draadfrezen voor hogere productiviteit</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.shortCuttingLength.title">Korte snijlengte</h2>
+                <p data-i18n="info.shortCuttingLength.body">Als het geselecteerde gereedschap een kortere snijlengte heeft dan de gevraagde schroefdraadlengte, deelt SmiProg de bewerking in meerdere axiale passes op, mits het gereedschapstype dit ondersteunt.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.inserts.title">Draadfrezen met wisselplaten</h2>
+                <p data-i18n="info.inserts.body">Kies aangepaste gereedschapsafmetingen in de gereedschapslijst voor de snijgegevens van draadfrezen met wisselplaten. Voer de werkelijke freesdiameter, de snijlengte en het aantal wisselplaten of tanden in. Controleer het gegenereerde programma vóór de bewerking.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.taperedThreads.title">Conische schroefdraad</h2>
+                <p data-i18n="info.taperedThreads.body">Bij conische schroefdraad heeft de freesdiameter betrekking op de laatste volledige draadgang het dichtst bij de schacht. Voer de draaddiameter op die positie in voor een correct CNC-programma.</p>
+              </article>
+
+              <article class="spg-info-warning" aria-label="Waarschuwing" data-i18n-aria-label="aria.warning">
+                <div class="spg-info-kicker" data-i18n="info.warning.title">Waarschuwing</div>
+                <p data-i18n="info.warning.body">De snijgegevens in SmiProg zijn aanbevolen startwaarden. Veel factoren kunnen aanpassingen vereisen, waaronder werkstukmateriaal, machine-stabiliteit, spanmiddelen, gereedschapsopstelling, koelmiddel en spaanafvoer. SmiCut aanvaardt geen aansprakelijkheid voor schade veroorzaakt door het gebruik van het CNC-programma of de door de software aanbevolen snijgegevens.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../i18n/en.js?v=20261110-1"></script>
+  <script src="../js/i18n.js?v=20261110-1"></script>
+  <script src="../data/smiprog-data.js?v=20261110-1"></script>
+  <script src="../data/tool-web-links.js?v=20261110-1"></script>
+  <script src="../js/core.js?v=20261110-1"></script>
+  <script src="../js/material-selector.js?v=20261005-1"></script>
+  <script src="../js/app.js?v=20261110-8"></script>
+
+
+</body></html>

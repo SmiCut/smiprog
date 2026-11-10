@@ -96,7 +96,9 @@ async function fillFixtureInput(fixture) {
 }
 
 function collectCncMismatches(fixture, cncText) {
-  return compareCncPrograms(cncText.split("\n"), fixture.expectedCncProgram, fixture.input.controlSystemId).differences;
+  const messages = {"The program doesn't accept your choice.": "Correct the inputs to generate a CNC program.", "Please, test with other values.": "Check your inputs."};
+  const expected = fixture.expectedCncProgram.map(line => messages[line] || line);
+  return compareCncPrograms(cncText.split("\n"), expected, fixture.input.controlSystemId).differences;
 }
 
 await page.goto(appUrl, { waitUntil: "networkidle" });
@@ -254,7 +256,8 @@ await page.selectOption("#spg-compare-tool-a", "__custom_tool__");
 const compareCustomMissingUi = await page.evaluate(() => ({
   diameterInSummary: Boolean(document.querySelector("#spg-compare-tool-a-summary #spg-compare-tool-a-diameter")),
   noteText: document.querySelector("#spg-compare-summary")?.textContent || "",
-  resultText: document.querySelector("#spg-cost-data")?.textContent || ""
+  resultText: document.querySelector("#spg-cost-data")?.textContent || "",
+  seededDimensions: ['diameter','length','flutes'].every(field => Number(document.querySelector(`#spg-compare-tool-a-${field}`).value) > 0)
 }));
 await page.fill("#spg-compare-tool-a-diameter", "7");
 await page.fill("#spg-compare-tool-a-length", "18");
@@ -265,6 +268,7 @@ const compareCustomFilledUi = await page.evaluate(() => ({
   resultText: document.querySelector("#spg-cost-data")?.textContent || ""
 }));
 
+await page.selectOption("#spg-compare-tool-a", "415");
 await page.click("#spg-compare-tool-a-price");
 await page.keyboard.type("9");
 const compareInputFocusUi = await page.evaluate(() => ({
@@ -358,8 +362,8 @@ if (standardThreadUi.hasCustomSize) {
 if (!standardThreadUi.diameterReadonly || !standardThreadUi.pitchReadonly) {
   threadSelectorMismatches.push("Standard thread profiles must lock diameter and pitch/TPI inputs.");
 }
-if (manualThreadUi.threadSizeText !== "Manual size" || !manualThreadUi.threadSizeDisabled) {
-  threadSelectorMismatches.push("Manual thread profiles must show a disabled Manual size selector.");
+if (manualThreadUi.threadSizeText !== "Own dimensions" || !manualThreadUi.threadSizeDisabled) {
+  threadSelectorMismatches.push("Manual thread profiles must show a disabled Own dimensions selector.");
 }
 if (manualThreadUi.diameterReadonly || manualThreadUi.pitchReadonly) {
   threadSelectorMismatches.push("Manual thread profiles must allow diameter and pitch/TPI editing.");
@@ -466,8 +470,8 @@ if (!controlSystemOptions.some((option) => option.value === "heidenhain" && opti
 if (!cncDisclaimerText.includes("simulation") || !cncDisclaimerText.includes("single block")) {
   controlSystemMismatches.push("CNC program view must include the phase 1 verification disclaimer.");
 }
-if (!mainCuttingDataUi.machiningTimeText.includes("9,5 seconds")) {
-  mainCuttingDataMismatches.push("Main cutting data must show decimal machining time with comma formatting.");
+if (!mainCuttingDataUi.machiningTimeText.includes("9.5 seconds")) {
+  mainCuttingDataMismatches.push("Main cutting data must use the English decimal separator.");
 }
 if (leftHandUi.selectedText !== "Left-hand thread") {
   threadHandMismatches.push("Thread hand selector must expose Left-hand thread.");
@@ -482,7 +486,7 @@ const goldenMachiningTimeText = String(goldenFixture.expectedCuttingData.machini
 if (!leftHandUi.machiningTimeText.includes(`${goldenMachiningTimeText} seconds`)) {
   threadHandMismatches.push("Thread hand must not change cutting data or machining time.");
 }
-if (!compareNsCustomTimingUi.timeText.includes("9,5") || !compareNsCustomTimingUi.timeText.includes("4,8")) {
+if (!compareNsCustomTimingUi.timeText.includes("9.5") || !compareNsCustomTimingUi.timeText.includes("4.8")) {
   compareMismatches.push("Compare custom tool dimensions must preserve the selected NS base tool type for machining time.");
 }
 if (compareInputFocusUi.activeId !== "spg-compare-tool-a-price" || compareInputFocusUi.value !== "9") {
@@ -494,8 +498,8 @@ if (!compareOwnValueDraftReferenceUi.referenceText.includes("€") || compareOwn
 if (!compareOwnValueReferenceUi.referenceText.includes("€") || compareOwnValueReferenceUi.referenceText === "-" || !compareOwnValueReferenceUi.referenceMuted || compareOwnValueReferenceUi.inputValue !== "9") {
   compareMismatches.push("Compare own-value rows must keep the recommended value visible and muted after confirmation.");
 }
-if (!compareCustomMissingUi.diameterInSummary || !compareCustomMissingUi.noteText.includes("custom tool dimensions")) {
-  compareMismatches.push("Compare custom tool dimensions must move dimension inputs into the Tool A card and request missing dimensions.");
+if (!compareCustomMissingUi.diameterInSummary || !compareCustomMissingUi.seededDimensions || compareCustomMissingUi.noteText) {
+  compareMismatches.push("Compare custom tools must seed editable dimensions from the selected catalogue tool.");
 }
 if (!compareCustomFilledUi.diameterInSummary || !compareCustomFilledUi.resultText.includes("Total cost per thread")) {
   compareMismatches.push("Compare custom tool dimensions must produce results after entering cutter diameter, cutting length and flutes.");

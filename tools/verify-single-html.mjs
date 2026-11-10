@@ -9,7 +9,7 @@ import {repositoryRoot} from './build-app-files.mjs';
 const downloads=await buildSingleHtmlDownloads();
 const isolated=await fs.mkdtemp(path.join(os.tmpdir(),'smiprog-single-'));
 const screenshotDir=path.join(repositoryRoot,'tmp/single-html');await fs.mkdir(screenshotDir,{recursive:true});
-const browser=await chromium.launch();
+const browser=await chromium.launch({...(process.env.CHROME_PATH ? {executablePath:process.env.CHROME_PATH} : {})});
 try {
  for(const file of downloads){
   const bytes=await fs.readFile(path.join(repositoryRoot,'dist/downloads',file.name));
@@ -38,7 +38,7 @@ try {
    await p.locator('#spg-copy-cnc').click();assert((await p.evaluate(()=>window.__copied)).endsWith(await p.locator('#spg-cnc-program').inputValue()));
    await p.screenshot({path:path.join(screenshotDir,`${mode}-calculator-${width}.png`),fullPage:true});
    await p.locator('#spg-thread-length').fill('0');assert.equal(await p.locator('#spg-cnc-program').inputValue(),'');
-   await p.locator('[data-spg-tab="compare"]').click();await p.locator('#spg-compare-password').fill('XL');await p.locator('#spg-unlock-compare').click();assert(await p.locator('#spg-compare-content').isVisible());
+   await p.locator('[data-spg-tab="compare"]').click();if(file.locale!=='sv'){await p.locator('#spg-compare-password').fill('XL');await p.locator('#spg-unlock-compare').click();}assert(await p.locator('#spg-compare-content').isVisible());
    await p.locator('[data-spg-tab="information"]').click();
    await p.waitForFunction(()=>Array.from(document.images).filter(i=>i.offsetWidth).every(i=>i.complete&&i.naturalWidth>0));
    assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));

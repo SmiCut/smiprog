@@ -99,8 +99,8 @@ try {
       assert.ok(copy.includes(dictionary['compare.totalCost']));
       assert.ok(copy.includes(summary));
       assert.ok(copy.includes(locale === 'sv' ? 'SWE/shop/productinfo/' : 'id.smicut.com/'));
-      await page.getByRole('button', {name:dictionary['button.share'],exact:true}).click();
-      assert.equal(await page.evaluate(()=>window.sharedText), copy);
+      assert.equal(await page.getByRole('button', {name:dictionary['button.share'],exact:true}).count(), 0);
+      assert.equal(await page.evaluate(()=>window.sharedText), undefined);
       await input.fill('-1'); await input.blur();
       assert.ok((await page.locator('#spg-compare-summary').textContent()).includes(dictionary['compare.priceError']));
       await page.locator('#spg-use-current-setup').click();
@@ -122,7 +122,7 @@ try {
       assert.ok((await page.locator('.sms-category-result-value').textContent()).includes(dictionary['materialDescriptor.steel-medium-carbon']));
       assert.ok(requests.every(request=>request.language===locale));
       assert.deepEqual(errors,[],locale);
-      report.push({locale, passed:true, screenshots:6, checks:['all views','layout','prices','copy','share','validation','CNC parity','material key','greeting fallback']});
+      report.push({locale, passed:true, screenshots:6, checks:['all views','layout','prices','copy','no share button','validation','CNC parity','material key','greeting fallback']});
       console.log(`${locale}: passed`);
     } finally { await context.close(); }
   }

@@ -1968,22 +1968,6 @@
     button.addEventListener("click", copyCompareResults);
     copyGroup.appendChild(button);
 
-    if (typeof navigator.share === "function") {
-      const share = document.createElement("button");
-      share.type = "button";
-      share.className = "spg-button spg-compare-copy-button";
-      share.textContent = uiText("button.share");
-      share.addEventListener("click", async () => {
-        const text = buildCompareResultsCopyText();
-        if (!text) return;
-        try { await navigator.share({ title: `SmiProg ${uiText("compare.title")}`, text }); }
-        catch (error) {
-          if (error.name !== "AbortError") document.getElementById("spg-compare-copy-message").textContent = uiText("share.failed");
-        }
-      });
-      copyGroup.appendChild(share);
-    }
-
     const message = document.createElement("span");
     message.id = "spg-compare-copy-message";
     message.className = "spg-copy-message spg-compare-copy-message";

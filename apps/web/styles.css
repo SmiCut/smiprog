@@ -1159,6 +1159,8 @@
 
 #smiprog-app .spg-compare-content {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  container: smiprog-compare / inline-size;
   gap: 14px;
   margin-top: 0;
 }
@@ -1204,7 +1206,8 @@
 
 #smiprog-app .spg-compare-workspace {
   display: grid;
-  grid-template-columns: minmax(330px, 0.42fr) minmax(0, 0.58fr);
+  /* Keep filling the row when the first track reaches its minimum width. */
+  grid-template-columns: minmax(330px, 42fr) minmax(0, 58fr);
   gap: 14px;
   align-items: stretch;
   background: transparent !important;
@@ -1372,7 +1375,7 @@
   font-weight: 850;
   line-height: 1.18 !important;
   margin: 3px 0 4px 0;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 #smiprog-app .spg-compare-tool-metric-grid {
@@ -2283,7 +2286,7 @@
   }
 }
 
-@media (max-width: 860px) {
+@container smiprog-compare (max-width: 860px) {
   #smiprog-app .spg-compare-workspace {
     grid-template-columns: 1fr;
   }
@@ -2291,6 +2294,13 @@
   #smiprog-app .spg-compare-tool-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: auto;
+  }
+}
+
+@container smiprog-compare (max-width: 680px) {
+  #smiprog-app .spg-compare-tool-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
   }
 }
 

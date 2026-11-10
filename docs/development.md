@@ -15,6 +15,10 @@ Use `npm test` for the preserved golden fixtures, native Excel parity cases,
 comparison-policy tests, native Excel cost scenarios and language packaging.
 Use `npm run test:browser` for the UI, material selector mocks, Excel parity in the
 browser and comparison cost UI. No live AI calls are needed for these checks.
+`npm run verify:compare-layout` checks all 16 languages at desktop, tablet and
+phone sizes, including narrow WordPress columns inside wider browser windows.
+Compare's workspace responds to its available container width; its setup button
+stays beside the note except on portrait phones up to 560 px.
 
 The fixture set contains 57 golden cases, a 153-case native Excel matrix and 18
 native Excel A/B cost scenarios. Those reference results are preserved, not
@@ -142,7 +146,7 @@ fixtures and release assets. Public branches are not a confidential review area.
 The original Excel workbooks and audit working files remain private; the selected
 public fixtures and image originals support reproducible tests and builds.
 
-The current release baseline is v1.1.0 (all 16 languages). It uses complete HTML
+The current release baseline is v1.1.1 (all 16 languages). It uses complete HTML
 for both downloads and direct embedding; the standalone and embedded checks run
 at desktop/mobile widths. Historical version labels in technical documents record
 when a change was introduced, not an unreleased controller status.

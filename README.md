@@ -22,8 +22,9 @@ ZIP extraction, image folders or GitHub account is needed.
 |---|---|---|
 | English | [Open SmiProg](https://smicut.com/en/smiprog-online/) | [Download smiprog-en.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-en.html) |
 
-English is the currently released language. Further language editions will be
-added when their translations are ready and checked.
+English is the currently released language. This branch prepares 16 language
+editions and the updated Compare workflow for review; it does not publish a new
+release or update the website. See [language review](docs/languages.md).
 
 ## Open your download in three steps
 
@@ -45,10 +46,11 @@ Use the online version for AI-assisted selection.
 - Enter custom tool dimensions or the laser-marked diameter on a catalogue tool.
 - Calculate cutting data and machining time.
 - Generate CNC programs for supported Fanuc / ISO and Heidenhain configurations.
-- Compare two tools, machining times and costs. Open **Compare** with `XL`.
+- Compare two tools, machining times and costs using your own prices.
 
-Compare is intended for SmiCut and distributors. Its unlock code is a convenience,
-not a security feature. Reference prices are editable and are not a current quotation.
+In this review version, Compare is open to everyone. `XL` reveals EUR catalogue
+prices; Swedish SEK reference prices are visible directly. The code is a display
+convenience, not a security feature. Prices are editable and are not a quotation.
 
 **Verify the CNC program for your controller, machine and setup before machining.**
 Heidenhain supports right- and left-hand vertical milling; Heidenhain lathe thread

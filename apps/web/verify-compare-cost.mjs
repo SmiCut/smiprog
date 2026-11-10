@@ -61,18 +61,18 @@ try {
     for (const [label, field] of Object.entries(fields)) {
       const row = rows.find(row => row.label === label);
       assert.ok(row, label);
-      const format = value => value.toLocaleString("sv-SE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
+      const format = value => value.toLocaleString("en", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
       assert.deepEqual(row.values, [format(scenario.expectedA[field]), format(scenario.expectedB[field])], scenario.id + " " + field);
       const expectedDifferences = [scenario.expectedB[field] === 0 ? "" : Math.round((scenario.expectedA[field] / scenario.expectedB[field] - 1) * 100) + "%",
         scenario.expectedA[field] === 0 ? "" : Math.round((scenario.expectedB[field] / scenario.expectedA[field] - 1) * 100) + "%"].filter(Boolean);
-      assert.deepEqual(row.differences, expectedDifferences, scenario.id + " " + field + " percentages");
+      assert.deepEqual(row.differences, expectedDifferences.map(value => Number.parseInt(value) > 0 ? "+" + value : value), scenario.id + " " + field + " percentages");
     }
     const summary = await page.locator("#spg-compare-summary").textContent();
     const difference = scenario.expectedB.totalCostPerThread - scenario.expectedA.totalCostPerThread;
-    if (difference === 0) assert.equal(summary, "Both tools have the same calculated total cost per thread.");
+    if (difference === 0) assert.equal(summary, "Both tools have the same total cost per thread.");
     else {
       const winner = difference < 0 ? "Tool B:" : "Tool A:";
-      const saving = Math.abs(difference).toLocaleString("sv-SE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const saving = Math.abs(difference).toLocaleString("en", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const baseline = difference < 0 ? scenario.expectedA.totalCostPerThread : scenario.expectedB.totalCostPerThread;
       const percent = Math.round(Math.abs(difference) / baseline * 100);
       assert.ok(summary.startsWith(winner));
@@ -86,9 +86,9 @@ try {
   await page.click("#spg-copy-compare-results");
   await page.waitForFunction(() => Boolean(window.compareCopiedText));
   const copied = await page.evaluate(() => window.compareCopiedText);
-  assert.ok(copied.includes("SmiCut Internal Thread Milling Compare"));
+  assert.ok(copied.includes("SmiCut Internal Thread Milling - Compare"));
   assert.ok(copied.includes("Total cost per thread"));
-  assert.ok(copied.includes("123,45"));
+  assert.ok(copied.includes("123.45"));
   await page.setViewportSize({ width: 390, height: 844 });
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   fs.mkdirSync(path.join(root, "tmp"), { recursive: true });
@@ -96,7 +96,7 @@ try {
   await page.setViewportSize({ width: 1440, height: 1100 });
   await page.fill("#spg-compare-tool-a-life", "0");
   await page.locator("#spg-compare-tool-a-life").press("Tab");
-  assert.match(await page.locator("#spg-compare-summary").textContent(), /valid tool life/);
+  assert.match(await page.locator("#spg-compare-summary").textContent(), /tool life greater than zero/);
   const invalidRow = page.locator("#spg-cost-data > .spg-compare-result-row").filter({ has: page.locator(".spg-result-label", { hasText: "Total cost per thread" }) });
   assert.equal(await invalidRow.locator(".spg-compare-cell-value").first().textContent(), "-");
   assert.deepEqual(errors, []);

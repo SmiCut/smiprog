@@ -210,6 +210,16 @@
   color: #424248 !important;
 }
 
+#smiprog-app .spg-compare-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  min-height: 24px !important;
+  padding: 0 !important;
+  margin-left: 4px !important;
+}
+
 #smiprog-app .spg-start-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -328,18 +338,12 @@
   object-fit: contain;
 }
 
-#smiprog-app .spg-start-card-compare {
-  --spg-start-accent: #4d8c68;
-  --spg-start-ink: #2f6247;
-  --spg-start-border: #c8ddd0;
-  --spg-start-surface: #edf6f1;
-}
-
+#smiprog-app .spg-start-card-compare,
 #smiprog-app .spg-start-card-information {
-  --spg-start-accent: #557fa3;
-  --spg-start-ink: #3f6f94;
-  --spg-start-border: #c9d8e5;
-  --spg-start-surface: #eef5fa;
+  --spg-start-accent: #7b7d83;
+  --spg-start-ink: #4f5158;
+  --spg-start-border: #d7d7dc;
+  --spg-start-surface: #fafafa;
 }
 
 #smiprog-app .spg-start-card-symbol {
@@ -1159,6 +1163,45 @@
   margin-top: 0;
 }
 
+#smiprog-app input.spg-compare-price-input {
+  min-width: 64px !important;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  font-size: 12px !important;
+}
+
+#smiprog-app .spg-compare-access {
+  margin-bottom: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dedede;
+}
+
+#smiprog-app #spg-compare-price-help {
+  margin: 0 0 8px !important;
+}
+
+#smiprog-app #spg-compare-unlock-message:empty {
+  display: none;
+}
+
+#smiprog-app .spg-compare-password-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+#smiprog-app #spg-compare-password {
+  width: 200px !important;
+  max-width: 100%;
+}
+
+#smiprog-app .spg-compare-password-row label {
+  margin: 0 !important;
+  font-size: 13px;
+  font-weight: 800;
+}
+
 #smiprog-app .spg-compare-workspace {
   display: grid;
   grid-template-columns: minmax(330px, 0.42fr) minmax(0, 0.58fr);
@@ -1436,8 +1479,27 @@
   display: none;
 }
 
+#smiprog-app .spg-compare-note-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+}
+
+#smiprog-app .spg-result-label,
+#smiprog-app .spg-field-label,
+#smiprog-app .spg-start-card strong {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
 #smiprog-app .spg-compare-note {
   margin: 0;
+}
+
+#smiprog-app .spg-compare-note .spg-note-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 #smiprog-app .spg-compare-result-table {
@@ -2262,6 +2324,17 @@
   }
 }
 
+@media (max-width: 560px) and (orientation: portrait) {
+  #smiprog-app .spg-compare-note-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #smiprog-app #spg-use-current-setup {
+    grid-row: 1;
+    justify-self: stretch;
+  }
+}
+
 @media (max-width: 560px) {
   #smiprog-app .spg-start-content {
     gap: 14px;
@@ -2517,7 +2590,7 @@
     margin-bottom: 3px;
     font-size: 11px;
     text-align: center;
-    white-space: nowrap;
+    white-space: normal;
   }
 
   #smiprog-app h1 {

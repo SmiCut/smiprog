@@ -6,7 +6,7 @@
 - `apps/web/js/core.js`: calculation and CNC program logic
 - `apps/web/data/smiprog-data.js`: tool, material, thread, post and price data
 - `apps/web/data/tool-prices.csv`: editable reference prices
-- `apps/web/i18n/translations.csv`: English text source (other language drafts remain private)
+- `apps/web/i18n/translations.csv`: text source for all 16 review languages
 - `apps/web/tools/build-translations.mjs`: generates language JSON and bundled dictionaries
 - `tools/build-app-files.mjs`: shared static source preparation
 - `tools/build-single-html.mjs`: complete HTML distribution
@@ -31,7 +31,7 @@ Screenshots and temporary reports stay in ignored `tmp/` directories.
 ## Website embedding and Material Selector
 
 All calculations, price data and CNC generation run client-side. The package
-includes the English locale and an MIT license copy. There is no SmiProg
+includes its selected locale and an MIT license copy. There is no SmiProg
 server or API key required for the calculators.
 
 The optional Material Selector calls SmiCut's separately hosted service at
@@ -53,15 +53,19 @@ reviewed it or that it was tested on a physical machine.
 
 ## Independent language distributions
 
-`npm run build:html` generates one complete HTML file for each released locale
-(currently only `en`). `npm run build:languages` also generates developer multi-file
-static packages. There is no PHP adapter or app-specific plugin. Each locale
+`npm run build:html` generates one complete HTML file for each of the 16 configured
+locales. `npm run build:languages` first generates dictionaries from the CSV and
+also generates developer multi-file static packages and local review pages.
+These commands do not publish a release. There is no PHP adapter or app-specific plugin. Each locale
 includes its selected dictionary and English fallback from the shared source.
 
 Use `npm run test:languages` for package integrity and `npm run verify:languages`
 for desktop/mobile loading, selected locale, Material Selector language, image
 loading and CNC output. Add translated dictionaries before adding new locale
 codes to `tools/build-language-packages.mjs`.
+
+See [language maintenance and review](languages.md) for the complete workflow,
+regional codes, material-category rules and Compare currency behavior.
 
 ## CNC motion regression checks
 

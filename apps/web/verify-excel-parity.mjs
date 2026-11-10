@@ -90,7 +90,11 @@ try {
     const validNumbers = Object.values(oracle.cuttingData).every(value => typeof value === "number" && Number.isFinite(value));
     const acceptedChanges = [];
     if (test.group === "invalid-inputs") {
-      const errorDisplay = observed.renderedProgram === observed.result.cncProgram.join("\n")
+      const translated = observed.result.cncProgram.map(line => ({
+        "The program doesn't accept your choice.": "Correct the inputs to generate a CNC program.",
+        "Please, test with other values.": "Check your inputs."
+      })[line] || line).join("\n");
+      const errorDisplay = observed.renderedProgram === translated
         || (observed.result.input.threadLength === 0 && observed.renderedProgram === "");
       if (!rejectsInputSafely(observed.result) || !errorDisplay) differences.push({ field: "safeInputRejection", web: observed });
       else acceptedChanges.push({ kind: "invalid-input-rejection" });

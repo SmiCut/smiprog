@@ -1,0 +1,544 @@
+<!DOCTYPE html><html lang="ko"><head><script>window.SmiProgConfig={"locale":"ko","assetBase":"../assets/"};</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmiProg - 나사 밀링</title>
+  <!-- Copyright (c) 2026 SmiCut AB. Licensed under the MIT License; see LICENSE. -->
+  <meta name="description" content="SmiCut SmiProg thread milling calculator for cutting data, tool selection and Fanuc CNC program generation.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../styles.css?v=20261110-8">
+  <link rel="stylesheet" href="../material-selector.css?v=20261005-1">
+</head>
+<body>
+  <main id="smiprog-app" class="spg-app">
+    <section class="spg-shell" aria-label="SmiProg - 나사 밀링" data-i18n-aria-label="aria.calculator">
+      <div class="spg-tabs" role="tablist" aria-label="SmiProg" data-i18n-aria-label="aria.sections">
+        <button type="button" class="spg-tab spg-tab-active" data-spg-tab="start" role="tab" aria-selected="true" data-i18n-html="tabs.start">시작 페이지</button>
+        <button type="button" class="spg-tab" data-spg-tab="materialselector" role="tab" aria-selected="false" data-i18n-html="tabs.materialSelector">SmiCut 재료 선택기</button>
+        <button type="button" class="spg-tab" data-spg-tab="main" role="tab" aria-selected="false" data-i18n="tabs.threadMilling">암나사 밀링</button>
+        <button type="button" class="spg-tab" data-spg-tab="compare" role="tab" aria-selected="false" data-i18n="tabs.compare">비교하다</button>
+        <button type="button" class="spg-tab" data-spg-tab="information" role="tab" aria-selected="false" data-i18n="tabs.information">정보</button>
+      </div>
+
+      <section id="spg-start-panel" class="spg-panel spg-panel-active" role="tabpanel">
+        <div class="spg-start-content">
+          <!-- Lucide icons (arrow-left-right, book-open): ISC License.
+          Copyright (c) 2026 Lucide Icons and Contributors.
+          Permission to use, copy, modify, and/or distribute this software for any purpose
+          with or without fee is hereby granted, provided that the above copyright notice
+          and this permission notice appear in all copies.
+          THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+          REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+          AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+          INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+          LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+          OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+          PERFORMANCE OF THIS SOFTWARE. -->
+          <div class="spg-start-grid">
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-main" data-spg-start-tab="main">
+              <strong><span data-i18n="start.threadMilling.title">암나사 밀링</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.threadMilling.description">공구를 선택하고, 절삭 데이터를 계산하며, CNC 프로그램을 생성하세요.</span>
+              <span class="spg-start-card-visual" aria-hidden="true"><img src="../assets/thread-mills/NB08075D21_1.5ISO_AC.webp" alt=""></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-compare" data-spg-start-tab="compare">
+              <strong><span data-i18n="start.compare.title">비교하다</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.compare.description">두 공구, 나사가공 시간 및 개당 비용을 비교합니다.</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="arrow-left-right" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"></path><path d="M4 7h16"></path><path d="m16 21 4-4-4-4"></path><path d="M20 17H4"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-information" data-spg-start-tab="information">
+              <strong><span data-i18n="start.information.title">정보</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.information.description">SmiProg 사용 방법</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="book-open" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16"></path><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-materialselector" data-spg-start-tab="materialselector">
+              <span class="spg-start-card-materialselector-icon" aria-hidden="true"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><circle cx="21" cy="21" r="12" style="fill:none; stroke:#676d72; stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round;"></circle><path d="M30.2,30.2l10.2,10.2" style="fill:none; stroke:#676d72; stroke-width:4.6; stroke-linecap:round; stroke-linejoin:round;"></path></svg></span>
+              <strong><span data-i18n="start.materialSelector.title">SmiCut 재료 선택기</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.materialSelector.description">소재명 또는 규격명에서 올바른 SmiCut 범주를 찾으세요.</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-material-selector-panel" class="spg-panel spg-material-selector-panel" role="tabpanel" hidden="">
+        <div id="spg-material-selector-widget">
+          <div class="sms-panel">
+            <div class="sms-header"><span>SmiCut Material Selector</span></div>
+            <div class="sms-welcome" id="spg-material-selector-welcome" data-sms-role="welcome">
+              <div class="sms-welcome-title" data-sms-i18n="welcomeTitle" role="heading" aria-level="2">Which material will you machine?</div>
+              <div data-sms-i18n="welcomeDescription">Enter the material designation or name, and we’ll help you find the right material category.</div>
+            </div>
+            <div id="spg-material-selector-messages" data-sms-role="messages" class="sms-messages" role="log" aria-label="Material conversation" aria-live="polite" hidden=""></div>
+            <div class="sms-composer">
+              <label id="spg-material-selector-label" data-sms-role="label" for="spg-material-selector-input"><svg class="sms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"></path></svg> <span data-sms-i18n="enterLabel">Enter your material</span></label>
+              <div class="sms-input-row">
+                <textarea id="spg-material-selector-input" data-sms-role="input" rows="1" maxlength="4000" placeholder="E.g. AISI 1045 or EN 1.4301"></textarea>
+                <button id="spg-material-selector-send" data-sms-role="send" type="button" aria-label="Find material category" disabled="">Find material category</button>
+              </div>
+              <div id="spg-material-selector-status" data-sms-role="status" role="status"></div>
+              <button id="spg-material-selector-retry" data-sms-role="retry" type="button" hidden="" data-sms-i18n="retry">Try again</button>
+            </div>
+            <button id="spg-material-selector-apply" data-sms-role="apply" class="sms-apply-material" type="button" hidden="">Use in SmiProg</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-main-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-layout">
+          <form class="spg-form-stack" id="spg-form">
+            <section class="spg-inputs-card">
+              <div class="spg-field">
+                <label for="spg-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">가공할 소재</span></label>
+                <select id="spg-material" class="spg-control"></select>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">나사 프로파일</span></label>
+                  <select id="spg-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">나사 크기</span></label>
+                  <select id="spg-thread-size" class="spg-control"></select>
+                </div>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">나사 직경 (mm)</span></label>
+                  <input id="spg-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label id="spg-pitch-label" for="spg-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">피치 (mm)</span></label>
+                  <input id="spg-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">나사 길이 (mm)</span></label>
+                  <input id="spg-thread-length" class="spg-control" type="number" min="0" step="0.001" placeholder="나사 길이" data-i18n-placeholder="placeholder.enterLength">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-safety-distance" class="spg-field-label"><span class="spg-step">7</span><span data-i18n="field.safetyDistance">안전 거리 (mm)</span></label>
+                  <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2">
+                </div>
+              </div>
+
+              <div id="spg-tool-field" class="spg-field">
+                <label for="spg-tool" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.tool">스레드 밀</span></label>
+                <select id="spg-tool" class="spg-control"></select>
+                <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
+                  <label for="spg-marked-diameter" class="spg-field-label" data-i18n="field.cutterDiameter">커터 직경 (mm)</label>
+                  <div class="spg-marked-diameter-controls">
+                    <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
+                    <button id="spg-reset-diameter" type="button" aria-label="재설정" data-i18n-aria-label="action.reset" title="Reset">↺</button>
+                    <small id="spg-marked-diameter-help" data-i18n="tool.markedHelp">커터에 레이저로 각인된 직경을 입력하면 CNC 프로그램이 보정되어 공차 범위 내에서 나사를 가공할 수 있습니다.</small>
+                  </div>
+                </div>
+                <div id="spg-custom-tool-fields" class="spg-custom-tool-fields" hidden="">
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cutterDiameter">커터 직경 (mm)</span></label>
+                    <input id="spg-override-cutter-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-edge-length" class="spg-field-label"><span class="spg-step">10</span><span data-i18n="field.cuttingLength">날 길이 (mm)</span></label>
+                    <input id="spg-override-edge-length" class="spg-control" type="number" min="0" step="0.01" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-flutes" class="spg-field-label"><span class="spg-step">11</span><span data-i18n="field.flutes">날 수</span></label>
+                    <input id="spg-override-flutes" class="spg-control" type="number" min="0" step="1" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                </div>
+                <div id="spg-tool-summary" class="spg-tool-inline-summary"></div>
+                <a id="spg-tool-link" class="spg-tool-link spg-tool-link-disabled" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">&nbsp;</a>
+              </div>
+
+              <div class="spg-note" role="status" aria-live="polite">
+                <div class="spg-note-title" data-i18n="note.title">참고:</div>
+                <div id="spg-note-message" class="spg-note-text" data-i18n="note.enterThreadLength">적합한 공구를 선택하려면 나사 길이를 입력하세요.</div>
+              </div>
+            </section>
+          </form>
+
+          <div class="spg-results">
+            <section class="spg-card spg-final-card">
+              <div class="spg-card-head">
+                <div class="spg-section-title" data-i18n="section.cuttingData">절삭 데이터</div>
+                <div id="spg-cutting-data-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cutting-data" class="spg-button" data-i18n="button.copy">복사</button>
+              </div>
+              <div id="spg-cutting-data" class="spg-final-calculations">
+                <div class="spg-final-summary-frame">
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.cuttingSpeed">절삭 속도</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-cutting-speed" class="spg-result-value">-</span>
+                      <input id="spg-override-cutting-speed" class="spg-adjustable-input" type="number" min="0" step="1">
+                      <span id="spg-final-cutting-speed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.feedTooth">날당 이송</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-feed" class="spg-result-value">-</span>
+                      <input id="spg-override-feed" class="spg-adjustable-input" type="number" min="0" step="0.001">
+                      <span id="spg-final-feed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label"><span data-i18n="result.radialPasses">반경 방향 패스 수</span> <span class="spg-label-note" data-i18n="result.max3">(≤ 3)</span></span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-radial-passes" class="spg-result-value">-</span>
+                      <input id="spg-override-radial-passes" class="spg-adjustable-input" type="number" min="1" max="3" step="1">
+                      <span id="spg-final-radial-passes-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.axialPasses">축 방향 패스 수</span>
+                    <span id="spg-final-axial-passes" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.spindleSpeed">스핀들 속도</span>
+                    <span id="spg-final-spindle-speed" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedThreadDiameter">나사 외경에서의 이송</span>
+                    <span id="spg-final-feed-thread" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedCenter">공구 중심에서의 이송</span>
+                    <span id="spg-final-feed-center" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.timeToMillThread">나사 밀링 시간</span>
+                    <span id="spg-final-machining-time" class="spg-result-value">-</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="spg-card spg-cnc-card">
+              <div class="spg-cnc-head">
+                <div class="spg-section-title" data-i18n="section.cncProgram">CNC 프로그램</div>
+                <div id="spg-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cnc" class="spg-button" data-i18n="button.copy">복사</button>
+              </div>
+              <div class="spg-cnc-settings spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-process" class="spg-field-label spg-visually-hidden"><span data-i18n="field.manufacturingProcess">제조 공정</span></label>
+                  <select id="spg-process" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-control-system" class="spg-field-label spg-visually-hidden"><span data-i18n="field.controlSystem">제어 시스템</span></label>
+                  <select id="spg-control-system" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-thread-hand" class="spg-field-label spg-visually-hidden"><span data-i18n="field.threadHand">나사 방향</span></label>
+                  <select id="spg-thread-hand" class="spg-control">
+                    <option value="right" data-i18n="option.rightHandThread">오른나사</option>
+                    <option value="left" data-i18n="option.leftHandThread">왼나사</option>
+                  </select>
+                </div>
+
+                <div class="spg-field spg-dev-only">
+                  <label for="spg-program-template" data-i18n="field.programTemplate">Fanuc - CNC 프로그램</label>
+                  <select id="spg-program-template" class="spg-control">
+                    <option value="" data-i18n="option.auto">자동</option>
+                    <option value="milling-normal-1-pass" data-i18n="option.millingNormal1">머시닝 센터에서의 암나사 밀링 - 일반 (1)</option>
+                    <option value="milling-normal-2-pass" data-i18n="option.millingNormal2">머시닝 센터에서의 암나사 밀링 - 일반 (2)</option>
+                    <option value="milling-normal-3-pass" data-i18n="option.millingNormal3">머시닝 센터에서의 암나사 밀링 - 일반 (3)</option>
+                    <option value="milling-axial-1-pass" data-i18n="option.millingAxial1">머시닝 센터에서의 암나사 밀링 - 축방향 (1)</option>
+                    <option value="milling-axial-2-pass" data-i18n="option.millingAxial2">머시닝 센터에서의 암나사 밀링 - 축방향 (2)</option>
+                    <option value="milling-axial-3-pass" data-i18n="option.millingAxial3">머시닝 센터에서의 암나사 밀링 - 축방향 (3)</option>
+                    <option value="milling-micro-1-pass" data-i18n="option.millingMicro1">머시닝 센터에서의 암나사 밀링 - 마이크로 (1)</option>
+                    <option value="milling-micro-2-pass" data-i18n="option.millingMicro2">머시닝 센터에서의 암나사 밀링 - 마이크로 (2)</option>
+                    <option value="milling-micro-3-pass" data-i18n="option.millingMicro3">머시닝 센터에서의 암나사 밀링 - 마이크로 (3)</option>
+                    <option value="milling-tapered-1-pass" data-i18n="option.millingTapered1">머시닝 센터에서의 암나사 밀링 - 테이퍼 (1)</option>
+                    <option value="milling-tapered-2-pass" data-i18n="option.millingTapered2">머시닝 센터에서의 암나사 밀링 - 테이퍼 (2)</option>
+                    <option value="milling-tapered-3-pass" data-i18n="option.millingTapered3">머시닝 센터에서의 암나사 밀링 - 테이퍼 (3)</option>
+                    <option value="lathe-normal-1-pass" data-i18n="option.latheNormal1">회전 공구를 사용하는 선반에서의 암나사 밀링 - 일반 (1)</option>
+                    <option value="lathe-normal-2-pass" data-i18n="option.latheNormal2">회전 공구를 사용하는 선반에서의 암나사 밀링 - 일반 (2)</option>
+                    <option value="lathe-normal-3-pass" data-i18n="option.latheNormal3">회전 공구를 사용하는 선반에서의 암나사 밀링 - 일반 (3)</option>
+                    <option value="lathe-axial-1-pass" data-i18n="option.latheAxial1">회전 공구를 사용하는 선반에서의 암나사 밀링 - 축방향 (1)</option>
+                    <option value="lathe-axial-2-pass" data-i18n="option.latheAxial2">회전 공구를 사용하는 선반에서의 암나사 밀링 - 축방향 (2)</option>
+                    <option value="lathe-axial-3-pass" data-i18n="option.latheAxial3">회전 공구를 사용하는 선반에서의 암나사 밀링 - 축방향 (3)</option>
+                    <option value="lathe-micro-1-pass" data-i18n="option.latheMicro1">회전 공구를 사용하는 선반에서의 암나사 밀링 - 마이크로 (1)</option>
+                    <option value="lathe-micro-2-pass" data-i18n="option.latheMicro2">회전 공구를 사용하는 선반에서의 암나사 밀링 - 마이크로 (2)</option>
+                    <option value="lathe-micro-3-pass" data-i18n="option.latheMicro3">회전 공구를 사용하는 선반에서의 암나사 밀링 - 마이크로 (3)</option>
+                    <option value="lathe-tapered-1-pass" data-i18n="option.latheTapered1">회전 공구를 사용하는 선반에서의 암나사 밀링 - 테이퍼 (1)</option>
+                    <option value="lathe-tapered-2-pass" data-i18n="option.latheTapered2">회전 공구를 사용하는 선반에서의 암나사 밀링 - 테이퍼 (2)</option>
+                    <option value="lathe-tapered-3-pass" data-i18n="option.latheTapered3">회전 공구를 사용하는 선반에서의 암나사 밀링 - 테이퍼 (3)</option>
+                  </select>
+                </div>
+              </div>
+              <textarea id="spg-cnc-program" class="spg-copy-text" readonly="" spellcheck="false" placeholder="CNC 프로그램을 생성하려면 입력값을 수정하십시오." data-i18n-placeholder="placeholder.cncProgram"></textarea>
+              <div id="spg-cnc-disclaimer" class="spg-help-text" data-i18n="cnc.disclaimer">가공 전에 시뮬레이션 또는 싱글 블록 운전으로 CNC 프로그램을 확인하십시오. 기계별 옵션과 포스트프로세서 설정을 조정해야 할 수 있습니다.</div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div id="spg-compare-access" class="spg-compare-access">
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">사용할 공구 가격을 입력하세요. SmiCut 대리점은 카탈로그 가격을 확인하기 위한 비밀번호를 SmiCut에 요청할 수 있습니다.</p>
+          <div id="spg-compare-lock" class="spg-compare-password-row">
+            <label for="spg-compare-password" data-i18n="compare.password">비밀번호</label>
+            <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">카탈로그 가격 잠금 해제</button>
+          </div>
+          <div id="spg-compare-unlock-message" class="spg-help-text" role="status"></div>
+        </div>
+
+        <div id="spg-compare-content" class="spg-compare-content">
+          <div class="spg-compare-workspace">
+            <section class="spg-compare-thread-card">
+              <div class="spg-compare-thread-input-grid">
+                <div class="spg-field spg-compare-thread-material-field">
+                  <label for="spg-compare-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">가공할 소재</span></label>
+                  <select id="spg-compare-material" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-compare-thread-profile-field">
+                  <label for="spg-compare-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">나사 프로파일</span></label>
+                  <select id="spg-compare-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-size-field">
+                  <label for="spg-compare-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">나사 크기</span></label>
+                  <select id="spg-compare-thread-size" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-diameter-field">
+                  <label for="spg-compare-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">나사 직경 (mm)</span></label>
+                  <input id="spg-compare-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-pitch-field">
+                  <label id="spg-compare-pitch-label" for="spg-compare-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">피치 (mm)</span></label>
+                  <input id="spg-compare-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-length-field">
+                  <label for="spg-compare-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">나사 길이 (mm)</span></label>
+                  <input id="spg-compare-thread-length" class="spg-control" type="number" min="0" step="0.001" value="12">
+                </div>
+
+                <div class="spg-field spg-compare-machine-cost-field">
+                  <label for="spg-machine-cost" class="spg-field-label"><span data-i18n="field.machineCostPerHour">시간당 기계 비용 (€)</span></label>
+                  <input id="spg-machine-cost" class="spg-control" type="number" min="0" step="0.01" value="80">
+                </div>
+              </div>
+            </section>
+
+            <div class="spg-compare-tool-grid">
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-a-card">
+                <div id="spg-compare-tool-a-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-a" data-i18n="field.toolA">공구 A</label>
+                  <select id="spg-compare-tool-a" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-a-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-price" data-i18n="field.toolingCost">공구비용 (€)</label>
+                  <input id="spg-compare-tool-a-price" class="spg-control" type="number" min="0" step="0.01" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-life" data-i18n="field.toolLife">공구 수명 (분)</label>
+                  <input id="spg-compare-tool-a-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-diameter" data-i18n="field.cutterDiameter">커터 직경 (mm)</label>
+                  <input id="spg-compare-tool-a-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-length" data-i18n="field.cuttingLength">날 길이 (mm)</label>
+                  <input id="spg-compare-tool-a-length" class="spg-control" type="number" min="0" step="0.01" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-flutes" data-i18n="field.flutes">날 수</label>
+                  <input id="spg-compare-tool-a-flutes" class="spg-control" type="number" min="0" step="1" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-speed" data-i18n="field.cuttingSpeed">절삭 속도 (m/min)</label>
+                  <input id="spg-compare-tool-a-speed" class="spg-control" type="number" min="0" step="1" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-feed" data-i18n="field.feedPerTooth">날당 이송 (mm/날)</label>
+                  <input id="spg-compare-tool-a-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-passes" data-i18n="field.radialPassesMax">반경 방향 패스 수(최대 3회)</label>
+                  <input id="spg-compare-tool-a-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-b-card">
+                <div id="spg-compare-tool-b-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-b" data-i18n="field.toolB">공구 B</label>
+                  <select id="spg-compare-tool-b" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-b-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-price" data-i18n="field.toolingCost">공구비용 (€)</label>
+                  <input id="spg-compare-tool-b-price" class="spg-control" type="number" min="0" step="0.01" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-life" data-i18n="field.toolLife">공구 수명 (분)</label>
+                  <input id="spg-compare-tool-b-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-diameter" data-i18n="field.cutterDiameter">커터 직경 (mm)</label>
+                  <input id="spg-compare-tool-b-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-length" data-i18n="field.cuttingLength">날 길이 (mm)</label>
+                  <input id="spg-compare-tool-b-length" class="spg-control" type="number" min="0" step="0.01" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-flutes" data-i18n="field.flutes">날 수</label>
+                  <input id="spg-compare-tool-b-flutes" class="spg-control" type="number" min="0" step="1" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-speed" data-i18n="field.cuttingSpeed">절삭 속도 (m/min)</label>
+                  <input id="spg-compare-tool-b-speed" class="spg-control" type="number" min="0" step="1" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-feed" data-i18n="field.feedPerTooth">날당 이송 (mm/날)</label>
+                  <input id="spg-compare-tool-b-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-passes" data-i18n="field.radialPassesMax">반경 방향 패스 수(최대 3회)</label>
+                  <input id="spg-compare-tool-b-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="자동" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="spg-compare-note-row">
+            <div class="spg-note spg-compare-note" role="status" aria-live="polite">
+              <div class="spg-note-title" data-i18n="note.title">참고:</div>
+              <div id="spg-compare-summary" class="spg-note-text"></div>
+            </div>
+            <button id="spg-use-current-setup" type="button" class="spg-button" data-i18n="compare.useCurrent">현재 설정 사용</button>
+          </div>
+
+          <section class="spg-card spg-final-card spg-compare-results-card">
+            <div id="spg-cost-data" class="spg-compare-result-table"></div>
+            <p class="spg-help-text" data-i18n="compare.referencePrices">공구 수명은 절삭 시간(분)으로, 기계 비용은 시간당 금액으로 입력합니다.</p>
+          </section>
+        </div>
+      </section>
+
+      <section id="spg-information-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-info-page">
+          <article class="spg-info-card spg-info-overview-card">
+            <div class="spg-info-hero-head">
+              <h2 data-i18n="info.howToUse">SmiProg 사용 방법</h2>
+            </div>
+            <div class="spg-info-overview-copy">
+              <div class="spg-info-workflow">
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">나사 정의</strong><p data-i18n="info.step1.body">소재, 나사 형상 및 크기, 나사 길이 및 안전 거리를 선택하십시오. M은 피치에 대해 밀리미터를 사용합니다. 다른 형상은 인치당 나사 수(TPI)를 사용합니다.</p></div></div>
+                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">나사 밀링 선택</strong><p data-i18n="info.step2.body">권장 SmiCut 공구를 사용하거나 공구 선택에서 사용자 지정 공구 치수를 입력하십시오.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">출력 확인</strong><p data-i18n="info.step3.body">CNC 프로그램에서 제조 공정, 제어 시스템 및 나사 방향을 선택하십시오. 가공 전에 절삭 데이터, 가공 시간 및 CNC 프로그램을 확인하십시오.</p></div></div>
+              </div>
+              <div class="spg-info-check-strip">
+                <strong data-i18n="info.beforeMachining.title">가공 전</strong>
+                <p data-i18n="info.beforeMachining.body">선택한 쓰레드 밀러가 나사 직경, 피치 및 나사 길이를 가공할 수 있는지 확인하세요. 생산 실행 전 시뮬레이션 또는 단일 블록에서 프로그램을 확인하세요.</p>
+              </div>
+            </div>
+
+            <div class="spg-info-overview-figure">
+              <figure class="spg-info-figure">
+                <img src="../assets/info/smiprog-nb.svg" alt="나사 직경, 피치, 절삭날 길이, 안전 거리 및 커터 직경을 표시하는 나사 밀링 치수 참조." data-i18n-alt="info.figureAlt">
+                <figcaption>
+                  <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">나사 직경</span></span>
+                  <span><strong>P</strong><span data-i18n="info.figure.pitch">피치</span></span>
+                  <span><strong>L</strong><span data-i18n="info.figure.threadLength">나사 길이</span></span>
+                  <span><strong>S</strong><span data-i18n="info.figure.safetyDistance">안전 거리</span></span>
+                  <span><strong>d</strong><span data-i18n="info.figure.cutterDiameter">커터 직경</span></span>
+                  <span><strong>l</strong><span data-i18n="info.figure.cuttingLength">날 길이</span></span>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <section class="spg-info-section" aria-label="가공 참고 사항" data-i18n-aria-label="aria.machiningNotes">
+            <div class="spg-info-section-head">
+              <h2 data-i18n="info.machiningNotes">가공 참고 사항</h2>
+            </div>
+            <div class="spg-info-notes-grid">
+              <article class="spg-info-card">
+                <h2 data-i18n="info.toolCompensation.title">툴링의 보정</h2>
+                <p data-i18n="info.toolCompensation.body">공구 보정은 일반적으로 작은 조정에만 필요합니다. 큰 보정 값은 문제를 일으킬 수 있습니다. 제어 시스템의 공구 라이브러리에서 커터 직경 보정에 대해 0에 가까운 값을 사용하십시오.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.correctThreadDiameter.title">정확한 나사 직경</h2>
+                <p data-i18n="info.correctThreadDiameter.body">나사의 유효 지름은 일반적으로 나사 플러그 게이지 또는 공인된 다른 나사 측정 방법으로 확인합니다. 조정이 필요한 경우 표준 나사 치수는 유지하고 공작 기계의 제어기에서 보정하십시오.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.customTools.title">목록에 없는 스페셜 툴링</h2>
+                <p data-i18n="info.customTools.body">공구가 목록에 없는 경우, 공구 선택에서 사용자 정의 공구 치수를 선택하고 커터 직경, 절삭날 길이 및 플루트 수를 입력하세요. 사용자 정의 공구를 사용할 때 생성된 프로그램을 주의 깊게 검증하세요.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
+                <p data-i18n="info.threadBurr.body">나사 길이 칸에 선택한 SmiCut 초경 솔리드 스레드 밀의 전체 날 길이를 입력하십시오. ThreadBurr로 나사 가공과 버 제거를 한 공정에서 수행할 수 있습니다.</p>
+                <p><a href="https://smicut.com/ko/smicut-솔리드-타입-초경-쓰레드밀-threadburr/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">SmiCut 솔리드 타입 초경 쓰레드밀 – ThreadBurr</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.oneTwoRows.title">절삭날당 하나 또는 두개의 이를 가진 쓰레드 밀</h2>
+                <p data-i18n="info.oneTwoRows.body">SmiProg은 한 줄 또는 두 줄의 날을 가진 표준 SmiCut 커터를 보정합니다. 비표준 커터를 사용할 경우, 가공 전에 절삭 길이와 피치 관계를 확인하십시오.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.flankInfeed.title">측면 이송</h2>
+                <p data-i18n="info.flankInfeed.body">SmiProg는 여러 방사면 이송을 프로그래밍할 때 측면 이송을 사용합니다. 이는 진동을 줄이고 가공 안정성을 향상시킵니다.</p>
+                <p><a href="https://smicut.com/en/vibration-free-thread-milling-improving-productivity-and-economy/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Vibration-Free Thread Milling: Improving Productivity and Economy</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.shortCuttingLength.title">짧은 절삭 길이</h2>
+                <p data-i18n="info.shortCuttingLength.body">선택된 공구의 절삭 길이가 요청된 나사 길이보다 짧은 경우, SmiProg은 공구 유형이 허용할 때 여러 축 이송으로 작업을 분할합니다.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.inserts.title">교환용 인서트를 사용하는 쓰레드 밀링 커터</h2>
+                <p data-i18n="info.inserts.body">인서트식 나사 밀링의 절삭 데이터를 얻으려면 공구 선택에서 사용자 지정 공구 치수를 사용하십시오. 실제 커터 직경, 절삭 길이 및 인서트 또는 날 수를 입력한 후, 가공 전에 생성된 프로그램을 확인하십시오.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.taperedThreads.title">테이퍼 나사</h2>
+                <p data-i18n="info.taperedThreads.body">테이퍼 나사의 공구 직경은 생크에 가장 가까운 마지막 완전 나사산을 기준으로 합니다. 올바른 CNC 프로그램을 위해 해당 위치의 나사 직경을 입력하세요.</p>
+              </article>
+
+              <article class="spg-info-warning" aria-label="경고" data-i18n-aria-label="aria.warning">
+                <div class="spg-info-kicker" data-i18n="info.warning.title">경고</div>
+                <p data-i18n="info.warning.body">SmiProg의 절삭 데이터는 권장 시작 데이터입니다. 작업물 소재, 기계 안정성, 고정구, 공구 설정, 냉각 및 칩 배출 등 여러 요인으로 인해 조정이 필요할 수 있습니다. SmiCut은 이 소프트웨어가 권장하는 CNC 프로그램 또는 절삭 데이터 사용으로 인한 손상에 대해 책임지지 않습니다.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../i18n/en.js?v=20261110-1"></script>
+  <script src="../js/i18n.js?v=20261110-1"></script>
+  <script src="../data/smiprog-data.js?v=20261110-1"></script>
+  <script src="../data/tool-web-links.js?v=20261110-1"></script>
+  <script src="../js/core.js?v=20261110-1"></script>
+  <script src="../js/material-selector.js?v=20261005-1"></script>
+  <script src="../js/app.js?v=20261110-8"></script>
+
+
+</body></html>

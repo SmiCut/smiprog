@@ -1,0 +1,544 @@
+<!DOCTYPE html><html lang="es"><head><script>window.SmiProgConfig={"locale":"es","assetBase":"../assets/"};</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmiProg - Fresado de roscas</title>
+  <!-- Copyright (c) 2026 SmiCut AB. Licensed under the MIT License; see LICENSE. -->
+  <meta name="description" content="SmiCut SmiProg thread milling calculator for cutting data, tool selection and Fanuc CNC program generation.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../styles.css?v=20261110-8">
+  <link rel="stylesheet" href="../material-selector.css?v=20261005-1">
+</head>
+<body>
+  <main id="smiprog-app" class="spg-app">
+    <section class="spg-shell" aria-label="SmiProg - Fresado de roscas" data-i18n-aria-label="aria.calculator">
+      <div class="spg-tabs" role="tablist" aria-label="SmiProg" data-i18n-aria-label="aria.sections">
+        <button type="button" class="spg-tab spg-tab-active" data-spg-tab="start" role="tab" aria-selected="true" data-i18n-html="tabs.start">Inicio</button>
+        <button type="button" class="spg-tab" data-spg-tab="materialselector" role="tab" aria-selected="false" data-i18n-html="tabs.materialSelector">Selector de Material de SmiCut</button>
+        <button type="button" class="spg-tab" data-spg-tab="main" role="tab" aria-selected="false" data-i18n="tabs.threadMilling">Fresado de roscas interiores</button>
+        <button type="button" class="spg-tab" data-spg-tab="compare" role="tab" aria-selected="false" data-i18n="tabs.compare">Comparar</button>
+        <button type="button" class="spg-tab" data-spg-tab="information" role="tab" aria-selected="false" data-i18n="tabs.information">Información</button>
+      </div>
+
+      <section id="spg-start-panel" class="spg-panel spg-panel-active" role="tabpanel">
+        <div class="spg-start-content">
+          <!-- Lucide icons (arrow-left-right, book-open): ISC License.
+          Copyright (c) 2026 Lucide Icons and Contributors.
+          Permission to use, copy, modify, and/or distribute this software for any purpose
+          with or without fee is hereby granted, provided that the above copyright notice
+          and this permission notice appear in all copies.
+          THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+          REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+          AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+          INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+          LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+          OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+          PERFORMANCE OF THIS SOFTWARE. -->
+          <div class="spg-start-grid">
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-main" data-spg-start-tab="main">
+              <strong><span data-i18n="start.threadMilling.title">Fresado de roscas interiores</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.threadMilling.description">Encuentra tu herramienta, calcula los datos de corte y crea un programa CNC.</span>
+              <span class="spg-start-card-visual" aria-hidden="true"><img src="../assets/thread-mills/NB08075D21_1.5ISO_AC.webp" alt=""></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-compare" data-spg-start-tab="compare">
+              <strong><span data-i18n="start.compare.title">Comparar</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.compare.description">Compara dos herramientas, tiempo de mecanizado y coste por rosca.</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="arrow-left-right" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"></path><path d="M4 7h16"></path><path d="m16 21 4-4-4-4"></path><path d="M20 17H4"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-information" data-spg-start-tab="information">
+              <strong><span data-i18n="start.information.title">Información</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.information.description">Cómo usar SmiProg</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="book-open" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16"></path><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-materialselector" data-spg-start-tab="materialselector">
+              <span class="spg-start-card-materialselector-icon" aria-hidden="true"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><circle cx="21" cy="21" r="12" style="fill:none; stroke:#676d72; stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round;"></circle><path d="M30.2,30.2l10.2,10.2" style="fill:none; stroke:#676d72; stroke-width:4.6; stroke-linecap:round; stroke-linejoin:round;"></path></svg></span>
+              <strong><span data-i18n="start.materialSelector.title">Selector de Material de SmiCut</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.materialSelector.description">Encuentra la categoría SmiCut adecuada a partir de un nombre o designación de material.</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-material-selector-panel" class="spg-panel spg-material-selector-panel" role="tabpanel" hidden="">
+        <div id="spg-material-selector-widget">
+          <div class="sms-panel">
+            <div class="sms-header"><span>SmiCut Material Selector</span></div>
+            <div class="sms-welcome" id="spg-material-selector-welcome" data-sms-role="welcome">
+              <div class="sms-welcome-title" data-sms-i18n="welcomeTitle" role="heading" aria-level="2">Which material will you machine?</div>
+              <div data-sms-i18n="welcomeDescription">Enter the material designation or name, and we’ll help you find the right material category.</div>
+            </div>
+            <div id="spg-material-selector-messages" data-sms-role="messages" class="sms-messages" role="log" aria-label="Material conversation" aria-live="polite" hidden=""></div>
+            <div class="sms-composer">
+              <label id="spg-material-selector-label" data-sms-role="label" for="spg-material-selector-input"><svg class="sms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"></path></svg> <span data-sms-i18n="enterLabel">Enter your material</span></label>
+              <div class="sms-input-row">
+                <textarea id="spg-material-selector-input" data-sms-role="input" rows="1" maxlength="4000" placeholder="E.g. AISI 1045 or EN 1.4301"></textarea>
+                <button id="spg-material-selector-send" data-sms-role="send" type="button" aria-label="Find material category" disabled="">Find material category</button>
+              </div>
+              <div id="spg-material-selector-status" data-sms-role="status" role="status"></div>
+              <button id="spg-material-selector-retry" data-sms-role="retry" type="button" hidden="" data-sms-i18n="retry">Try again</button>
+            </div>
+            <button id="spg-material-selector-apply" data-sms-role="apply" class="sms-apply-material" type="button" hidden="">Use in SmiProg</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-main-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-layout">
+          <form class="spg-form-stack" id="spg-form">
+            <section class="spg-inputs-card">
+              <div class="spg-field">
+                <label for="spg-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Material a mecanizar</span></label>
+                <select id="spg-material" class="spg-control"></select>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Perfil de rosca</span></label>
+                  <select id="spg-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Dimensión de rosca</span></label>
+                  <select id="spg-thread-size" class="spg-control"></select>
+                </div>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Diámetro de la rosca (mm)</span></label>
+                  <input id="spg-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label id="spg-pitch-label" for="spg-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Paso (mm)</span></label>
+                  <input id="spg-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Longitud de rosca (mm)</span></label>
+                  <input id="spg-thread-length" class="spg-control" type="number" min="0" step="0.001" placeholder="Longitud de rosca" data-i18n-placeholder="placeholder.enterLength">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-safety-distance" class="spg-field-label"><span class="spg-step">7</span><span data-i18n="field.safetyDistance">Distancia de seguridad (mm)</span></label>
+                  <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2">
+                </div>
+              </div>
+
+              <div id="spg-tool-field" class="spg-field">
+                <label for="spg-tool" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.tool">Fresa de roscar</span></label>
+                <select id="spg-tool" class="spg-control"></select>
+                <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
+                  <label for="spg-marked-diameter" class="spg-field-label" data-i18n="field.cutterDiameter">Diámetro de la fresa (mm)</label>
+                  <div class="spg-marked-diameter-controls">
+                    <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
+                    <button id="spg-reset-diameter" type="button" aria-label="Restablecer" data-i18n-aria-label="action.reset" title="Reset">↺</button>
+                    <small id="spg-marked-diameter-help" data-i18n="tool.markedHelp">Introduce el diámetro grabado con láser en tu fresa para ajustar el programa CNC y obtener la rosca dentro de la tolerancia.</small>
+                  </div>
+                </div>
+                <div id="spg-custom-tool-fields" class="spg-custom-tool-fields" hidden="">
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cutterDiameter">Diámetro de la fresa (mm)</span></label>
+                    <input id="spg-override-cutter-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-edge-length" class="spg-field-label"><span class="spg-step">10</span><span data-i18n="field.cuttingLength">Longitud de corte (mm)</span></label>
+                    <input id="spg-override-edge-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-flutes" class="spg-field-label"><span class="spg-step">11</span><span data-i18n="field.flutes">Número de filos</span></label>
+                    <input id="spg-override-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                </div>
+                <div id="spg-tool-summary" class="spg-tool-inline-summary"></div>
+                <a id="spg-tool-link" class="spg-tool-link spg-tool-link-disabled" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">&nbsp;</a>
+              </div>
+
+              <div class="spg-note" role="status" aria-live="polite">
+                <div class="spg-note-title" data-i18n="note.title">NOTA:</div>
+                <div id="spg-note-message" class="spg-note-text" data-i18n="note.enterThreadLength">Introduzca la longitud de rosca para seleccionar una herramienta adecuada.</div>
+              </div>
+            </section>
+          </form>
+
+          <div class="spg-results">
+            <section class="spg-card spg-final-card">
+              <div class="spg-card-head">
+                <div class="spg-section-title" data-i18n="section.cuttingData">Datos de corte</div>
+                <div id="spg-cutting-data-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cutting-data" class="spg-button" data-i18n="button.copy">Copiar</button>
+              </div>
+              <div id="spg-cutting-data" class="spg-final-calculations">
+                <div class="spg-final-summary-frame">
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.cuttingSpeed">Velocidad de corte</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-cutting-speed" class="spg-result-value">-</span>
+                      <input id="spg-override-cutting-speed" class="spg-adjustable-input" type="number" min="0" step="1">
+                      <span id="spg-final-cutting-speed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.feedTooth">Avance por filo</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-feed" class="spg-result-value">-</span>
+                      <input id="spg-override-feed" class="spg-adjustable-input" type="number" min="0" step="0.001">
+                      <span id="spg-final-feed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label"><span data-i18n="result.radialPasses">Pasadas radiales</span> <span class="spg-label-note" data-i18n="result.max3">(≤ 3)</span></span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-radial-passes" class="spg-result-value">-</span>
+                      <input id="spg-override-radial-passes" class="spg-adjustable-input" type="number" min="1" max="3" step="1">
+                      <span id="spg-final-radial-passes-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.axialPasses">Pasadas axiales</span>
+                    <span id="spg-final-axial-passes" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.spindleSpeed">Velocidad del husillo</span>
+                    <span id="spg-final-spindle-speed" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedThreadDiameter">Avance en Ø de la rosca</span>
+                    <span id="spg-final-feed-thread" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedCenter">Avance centro fresa</span>
+                    <span id="spg-final-feed-center" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.timeToMillThread">Tiempo para roscar</span>
+                    <span id="spg-final-machining-time" class="spg-result-value">-</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="spg-card spg-cnc-card">
+              <div class="spg-cnc-head">
+                <div class="spg-section-title" data-i18n="section.cncProgram">Programa CNC</div>
+                <div id="spg-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cnc" class="spg-button" data-i18n="button.copy">Copiar</button>
+              </div>
+              <div class="spg-cnc-settings spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-process" class="spg-field-label spg-visually-hidden"><span data-i18n="field.manufacturingProcess">Proceso de manufactura</span></label>
+                  <select id="spg-process" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-control-system" class="spg-field-label spg-visually-hidden"><span data-i18n="field.controlSystem">Sistema de control</span></label>
+                  <select id="spg-control-system" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-thread-hand" class="spg-field-label spg-visually-hidden"><span data-i18n="field.threadHand">Sentido de la rosca</span></label>
+                  <select id="spg-thread-hand" class="spg-control">
+                    <option value="right" data-i18n="option.rightHandThread">Rosca a derechas</option>
+                    <option value="left" data-i18n="option.leftHandThread">Rosca a izquierdas</option>
+                  </select>
+                </div>
+
+                <div class="spg-field spg-dev-only">
+                  <label for="spg-program-template" data-i18n="field.programTemplate">Fanuc - Programa CNC</label>
+                  <select id="spg-program-template" class="spg-control">
+                    <option value="" data-i18n="option.auto">Auto</option>
+                    <option value="milling-normal-1-pass" data-i18n="option.millingNormal1">Fresado de roscas interiores en fresadora - Normal (1)</option>
+                    <option value="milling-normal-2-pass" data-i18n="option.millingNormal2">Fresado de roscas interiores en fresadora - Normal (2)</option>
+                    <option value="milling-normal-3-pass" data-i18n="option.millingNormal3">Fresado de roscas interiores en fresadora - Normal (3)</option>
+                    <option value="milling-axial-1-pass" data-i18n="option.millingAxial1">Fresado de roscas interiores en fresadora - Axial (1)</option>
+                    <option value="milling-axial-2-pass" data-i18n="option.millingAxial2">Fresado de roscas interiores en fresadora - Axial (2)</option>
+                    <option value="milling-axial-3-pass" data-i18n="option.millingAxial3">Fresado de roscas interiores en fresadora - Axial (3)</option>
+                    <option value="milling-micro-1-pass" data-i18n="option.millingMicro1">Fresado de roscas interiores en fresadora - Micro (1)</option>
+                    <option value="milling-micro-2-pass" data-i18n="option.millingMicro2">Fresado de roscas interiores en fresadora - Micro (2)</option>
+                    <option value="milling-micro-3-pass" data-i18n="option.millingMicro3">Fresado de roscas interiores en fresadora - Micro (3)</option>
+                    <option value="milling-tapered-1-pass" data-i18n="option.millingTapered1">Fresado de roscas interiores en fresadora - Cónico (1)</option>
+                    <option value="milling-tapered-2-pass" data-i18n="option.millingTapered2">Fresado de roscas interiores en fresadora - Cónico (2)</option>
+                    <option value="milling-tapered-3-pass" data-i18n="option.millingTapered3">Fresado de roscas interiores en fresadora - Cónico (3)</option>
+                    <option value="lathe-normal-1-pass" data-i18n="option.latheNormal1">Fresado de roscas interiores en torno con herramienta motorizada - Normal (1)</option>
+                    <option value="lathe-normal-2-pass" data-i18n="option.latheNormal2">Fresado de roscas interiores en torno con herramienta motorizada - Normal (2)</option>
+                    <option value="lathe-normal-3-pass" data-i18n="option.latheNormal3">Fresado de roscas interiores en torno con herramienta motorizada - Normal (3)</option>
+                    <option value="lathe-axial-1-pass" data-i18n="option.latheAxial1">Fresado de roscas interiores en torno con herramienta motorizada - Axial (1)</option>
+                    <option value="lathe-axial-2-pass" data-i18n="option.latheAxial2">Fresado de roscas interiores en torno con herramienta motorizada - Axial (2)</option>
+                    <option value="lathe-axial-3-pass" data-i18n="option.latheAxial3">Fresado de roscas interiores en torno con herramienta motorizada - Axial (3)</option>
+                    <option value="lathe-micro-1-pass" data-i18n="option.latheMicro1">Fresado de roscas interiores en torno con herramienta motorizada - Micro (1)</option>
+                    <option value="lathe-micro-2-pass" data-i18n="option.latheMicro2">Fresado de roscas interiores en torno con herramienta motorizada - Micro (2)</option>
+                    <option value="lathe-micro-3-pass" data-i18n="option.latheMicro3">Fresado de roscas interiores en torno con herramienta motorizada - Micro (3)</option>
+                    <option value="lathe-tapered-1-pass" data-i18n="option.latheTapered1">Fresado de roscas interiores en torno con herramienta motorizada - Cónico (1)</option>
+                    <option value="lathe-tapered-2-pass" data-i18n="option.latheTapered2">Fresado de roscas interiores en torno con herramienta motorizada - Cónico (2)</option>
+                    <option value="lathe-tapered-3-pass" data-i18n="option.latheTapered3">Fresado de roscas interiores en torno con herramienta motorizada - Cónico (3)</option>
+                  </select>
+                </div>
+              </div>
+              <textarea id="spg-cnc-program" class="spg-copy-text" readonly="" spellcheck="false" placeholder="Corrige las entradas para generar un programa CNC." data-i18n-placeholder="placeholder.cncProgram"></textarea>
+              <div id="spg-cnc-disclaimer" class="spg-help-text" data-i18n="cnc.disclaimer">Compruebe el programa CNC mediante simulación o en modo bloque a bloque antes de mecanizar. Puede ser necesario ajustar las opciones de la máquina y la configuración del posprocesador.</div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div id="spg-compare-access" class="spg-compare-access">
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Introduzca sus propios precios de herramienta. Los distribuidores de SmiCut pueden solicitar a SmiCut la contraseña para consultar los precios de catálogo.</p>
+          <div id="spg-compare-lock" class="spg-compare-password-row">
+            <label for="spg-compare-password" data-i18n="compare.password">Contraseña</label>
+            <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">Desbloquear precios de catálogo</button>
+          </div>
+          <div id="spg-compare-unlock-message" class="spg-help-text" role="status"></div>
+        </div>
+
+        <div id="spg-compare-content" class="spg-compare-content">
+          <div class="spg-compare-workspace">
+            <section class="spg-compare-thread-card">
+              <div class="spg-compare-thread-input-grid">
+                <div class="spg-field spg-compare-thread-material-field">
+                  <label for="spg-compare-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Material a mecanizar</span></label>
+                  <select id="spg-compare-material" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-compare-thread-profile-field">
+                  <label for="spg-compare-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Perfil de rosca</span></label>
+                  <select id="spg-compare-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-size-field">
+                  <label for="spg-compare-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Dimensión de rosca</span></label>
+                  <select id="spg-compare-thread-size" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-diameter-field">
+                  <label for="spg-compare-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Diámetro de la rosca (mm)</span></label>
+                  <input id="spg-compare-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-pitch-field">
+                  <label id="spg-compare-pitch-label" for="spg-compare-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Paso (mm)</span></label>
+                  <input id="spg-compare-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-length-field">
+                  <label for="spg-compare-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Longitud de rosca (mm)</span></label>
+                  <input id="spg-compare-thread-length" class="spg-control" type="number" min="0" step="0.001" value="12">
+                </div>
+
+                <div class="spg-field spg-compare-machine-cost-field">
+                  <label for="spg-machine-cost" class="spg-field-label"><span data-i18n="field.machineCostPerHour">Coste de máquina por hora (€)</span></label>
+                  <input id="spg-machine-cost" class="spg-control" type="number" min="0" step="0.01" value="80">
+                </div>
+              </div>
+            </section>
+
+            <div class="spg-compare-tool-grid">
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-a-card">
+                <div id="spg-compare-tool-a-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-a" data-i18n="field.toolA">Herramienta A</label>
+                  <select id="spg-compare-tool-a" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-a-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-price" data-i18n="field.toolingCost">Costo de la herramienta (€)</label>
+                  <input id="spg-compare-tool-a-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-life" data-i18n="field.toolLife">Vida útil de la herramienta (minutos)</label>
+                  <input id="spg-compare-tool-a-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-diameter" data-i18n="field.cutterDiameter">Diámetro de la fresa (mm)</label>
+                  <input id="spg-compare-tool-a-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-length" data-i18n="field.cuttingLength">Longitud de corte (mm)</label>
+                  <input id="spg-compare-tool-a-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-flutes" data-i18n="field.flutes">Número de filos</label>
+                  <input id="spg-compare-tool-a-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-speed" data-i18n="field.cuttingSpeed">Velocidad de corte (m/min)</label>
+                  <input id="spg-compare-tool-a-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-feed" data-i18n="field.feedPerTooth">Avance por filo (mm/diente)</label>
+                  <input id="spg-compare-tool-a-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-passes" data-i18n="field.radialPassesMax">Pasadas radiales (máx. 3)</label>
+                  <input id="spg-compare-tool-a-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-b-card">
+                <div id="spg-compare-tool-b-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-b" data-i18n="field.toolB">Herramienta B</label>
+                  <select id="spg-compare-tool-b" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-b-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-price" data-i18n="field.toolingCost">Costo de la herramienta (€)</label>
+                  <input id="spg-compare-tool-b-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-life" data-i18n="field.toolLife">Vida útil de la herramienta (minutos)</label>
+                  <input id="spg-compare-tool-b-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-diameter" data-i18n="field.cutterDiameter">Diámetro de la fresa (mm)</label>
+                  <input id="spg-compare-tool-b-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-length" data-i18n="field.cuttingLength">Longitud de corte (mm)</label>
+                  <input id="spg-compare-tool-b-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-flutes" data-i18n="field.flutes">Número de filos</label>
+                  <input id="spg-compare-tool-b-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-speed" data-i18n="field.cuttingSpeed">Velocidad de corte (m/min)</label>
+                  <input id="spg-compare-tool-b-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-feed" data-i18n="field.feedPerTooth">Avance por filo (mm/diente)</label>
+                  <input id="spg-compare-tool-b-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-passes" data-i18n="field.radialPassesMax">Pasadas radiales (máx. 3)</label>
+                  <input id="spg-compare-tool-b-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="spg-compare-note-row">
+            <div class="spg-note spg-compare-note" role="status" aria-live="polite">
+              <div class="spg-note-title" data-i18n="note.title">NOTA:</div>
+              <div id="spg-compare-summary" class="spg-note-text"></div>
+            </div>
+            <button id="spg-use-current-setup" type="button" class="spg-button" data-i18n="compare.useCurrent">Usar configuración actual</button>
+          </div>
+
+          <section class="spg-card spg-final-card spg-compare-results-card">
+            <div id="spg-cost-data" class="spg-compare-result-table"></div>
+            <p class="spg-help-text" data-i18n="compare.referencePrices">La vida de la herramienta se mide en minutos de corte. El coste de máquina se indica por hora.</p>
+          </section>
+        </div>
+      </section>
+
+      <section id="spg-information-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-info-page">
+          <article class="spg-info-card spg-info-overview-card">
+            <div class="spg-info-hero-head">
+              <h2 data-i18n="info.howToUse">Cómo usar SmiProg</h2>
+            </div>
+            <div class="spg-info-overview-copy">
+              <div class="spg-info-workflow">
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Defina la rosca</strong><p data-i18n="info.step1.body">Seleccione el material, el perfil de rosca y el tamaño, la longitud de rosca y la distancia de seguridad. M utiliza milímetros para el paso; otros perfiles utilizan hilos por pulgada (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Seleccione la fresa de roscar</strong><p data-i18n="info.step2.body">Utilice una herramienta SmiCut sugerida o introduzca dimensiones de herramienta personalizadas en la selección de herramientas.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Verificar salida</strong><p data-i18n="info.step3.body">Seleccione el proceso de manufactura, el sistema de control y el sentido de la rosca en el programa CNC. Revise los datos de corte, el tiempo de mecanizado y el programa CNC antes del mecanizado.</p></div></div>
+              </div>
+              <div class="spg-info-check-strip">
+                <strong data-i18n="info.beforeMachining.title">Antes del mecanizado</strong>
+                <p data-i18n="info.beforeMachining.body">Verifica que la fresa de roscas seleccionada pueda mecanizar el diámetro de rosca, el paso y la longitud de rosca. Confirma el programa en simulación o bloque único antes de ejecutar la producción.</p>
+              </div>
+            </div>
+
+            <div class="spg-info-overview-figure">
+              <figure class="spg-info-figure">
+                <img src="../assets/info/smiprog-nb.svg" alt="Referencia de dimensiones de fresado de roscas que muestra el diámetro de rosca, el paso, la longitud de corte, la distancia de seguridad y el diámetro de la fresa." data-i18n-alt="info.figureAlt">
+                <figcaption>
+                  <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Diámetro de la rosca</span></span>
+                  <span><strong>P</strong><span data-i18n="info.figure.pitch">Paso</span></span>
+                  <span><strong>L</strong><span data-i18n="info.figure.threadLength">Longitud de rosca</span></span>
+                  <span><strong>S</strong><span data-i18n="info.figure.safetyDistance">Distancia de seguridad</span></span>
+                  <span><strong>d</strong><span data-i18n="info.figure.cutterDiameter">Diámetro de la fresa</span></span>
+                  <span><strong>l</strong><span data-i18n="info.figure.cuttingLength">Longitud de corte</span></span>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <section class="spg-info-section" aria-label="Notas de mecanizado" data-i18n-aria-label="aria.machiningNotes">
+            <div class="spg-info-section-head">
+              <h2 data-i18n="info.machiningNotes">Notas de mecanizado</h2>
+            </div>
+            <div class="spg-info-notes-grid">
+              <article class="spg-info-card">
+                <h2 data-i18n="info.toolCompensation.title">Compensación de la herramienta</h2>
+                <p data-i18n="info.toolCompensation.body">La compensación de herramientas normalmente solo es necesaria para ajustes pequeños. Los valores de compensación grandes pueden causar problemas. Utilice un valor cercano a cero para la compensación del diámetro de la fresa en la biblioteca de herramientas del sistema de control.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.correctThreadDiameter.title">Diámetro de rosca correcto</h2>
+                <p data-i18n="info.correctThreadDiameter.body">El diámetro de paso se suele comprobar con un calibre tapón roscado u otro método aceptado de medición de roscas. Si hace falta un ajuste, aplique la compensación en el control de la máquina y mantenga los datos normalizados de la rosca.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.customTools.title">Herramientas especiales</h2>
+                <p data-i18n="info.customTools.body">Si tu herramienta no está en la lista, selecciona dimensiones de herramienta personalizadas en la selección de herramientas e introduce el diámetro de la fresa, la longitud de corte y el número de flautas. Verifica cuidadosamente el programa generado al utilizar herramientas personalizadas.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
+                <p data-i18n="info.threadBurr.body">Introduzca la longitud de corte completa de la fresa de roscar de metal duro integral SmiCut en el campo de longitud de rosca. Así, ThreadBurr fresa y desbarba la rosca en la misma operación.</p>
+                <p><a href="https://smicut.com/es-gl/threadburr-fresas-de-roscar-de-carburo-solido/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">ThreadBurr – Fresas de Roscar de Carburo Sólido</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.oneTwoRows.title">Herramientas con uno o dos dientes (axial)</h2>
+                <p data-i18n="info.oneTwoRows.body">SmiCut compensa las fresas estándar de SmiCut con una o dos filas de dientes. Al utilizar una fresa no estándar, verifique la relación entre la longitud del corte y el paso antes del mecanizado.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.flankInfeed.title">Avance de flanco</h2>
+                <p data-i18n="info.flankInfeed.body">SmiProg utiliza el avance de flanco al programar varias pasadas radiales. Esto reduce las vibraciones y mejora la estabilidad del mecanizado.</p>
+                <p><a href="https://smicut.com/es-gl/fresado-de-roscas-sin-vibraciones-mejorando-la-productividad-y-la-economia-2/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Fresado de Roscas Sin Vibraciones: Mejorando la Productividad y la Economía</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.shortCuttingLength.title">Longitud de corte corta</h2>
+                <p data-i18n="info.shortCuttingLength.body">Si la herramienta seleccionada tiene una longitud de corte más corta que la longitud de rosca solicitada, SmiProg divide la operación en varias pasadas axiales cuando el tipo de herramienta lo permite.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.inserts.title">Herramientas con plaquitas</h2>
+                <p data-i18n="info.inserts.body">Utilice dimensiones de herramienta personalizadas en la selección de herramientas para obtener datos de corte para fresas de roscar de insertos. Introduzca el diámetro real de la fresa, la longitud del corte y el número de insertos o flautas, y verifique el programa generado antes del mecanizado.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.taperedThreads.title">Roscas cónicas</h2>
+                <p data-i18n="info.taperedThreads.body">En las roscas cónicas, el diámetro de la fresa corresponde al último filete completo más próximo al mango. Introduzca el diámetro de rosca en esa posición para obtener un programa CNC correcto.</p>
+              </article>
+
+              <article class="spg-info-warning" aria-label="Advertencia" data-i18n-aria-label="aria.warning">
+                <div class="spg-info-kicker" data-i18n="info.warning.title">Advertencia</div>
+                <p data-i18n="info.warning.body">Los datos de corte en SmiProg son datos iniciales recomendados. Muchos factores pueden requerir ajustes, incluyendo el material de la pieza, la estabilidad de la máquina, la fijación, la configuración de la herramienta, el refrigerante y la evacuación de virutas. SmiCut no se hace responsable de los daños causados por el uso del programa CNC o de los datos de corte recomendados por el software.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../i18n/en.js?v=20261110-1"></script>
+  <script src="../js/i18n.js?v=20261110-1"></script>
+  <script src="../data/smiprog-data.js?v=20261110-1"></script>
+  <script src="../data/tool-web-links.js?v=20261110-1"></script>
+  <script src="../js/core.js?v=20261110-1"></script>
+  <script src="../js/material-selector.js?v=20261005-1"></script>
+  <script src="../js/app.js?v=20261110-8"></script>
+
+
+</body></html>

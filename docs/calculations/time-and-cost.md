@@ -38,8 +38,9 @@ speed/feed overrides when describing a tool advantage.
 
 ## Cost model
 
-Let t be core machining time (seconds), price the effective tool price in EUR,
-life tool life in minutes, and rate the machine cost in EUR/hour:
+Let t be core machining time (seconds), price the effective tool price in the
+selected currency, life tool life in minutes, and rate the machine cost per hour
+in that same currency:
 
 ```
 threadsPerTool = life × 60 / t
@@ -50,10 +51,20 @@ totalCostPerThread = toolingCostPerThread + machineCostPerThread
 
 Core defaults are 120 minutes tool life and EUR 80/hour machine cost when omitted.
 Life must be positive; price and rate must be nonnegative. Zero price is a valid
-explicit override; an empty price falls back to the catalogue reference price.
+explicit override. In Compare, an empty price falls back to an available catalogue
+reference only. Locked EUR prices, missing references and custom tools have no
+fallback price: tooling and total costs stay unavailable, but time and machine
+cost can still be compared. Never treat an unavailable price as zero.
 These are scenario inputs, not measured tool life or a quotation. No extra setup,
 scrap or tool-change cost term is added; a user's hourly rate may include their
 own overhead allocation.
+
+The Swedish UI uses SEK and defaults to 900 kr/hour; other languages use EUR and
+80 EUR/hour. Swedish reference prices follow the supplied catalogue conversion:
+round the EUR price to cents, then `floor((cents * 108 + 500) / 1000)` gives whole
+SEK. This is a fixed catalogue rule, not a live exchange rate. Own prices and
+machine rates are stored separately by currency. `XL` reveals EUR references;
+Swedish references are visible directly. All of these values remain public data.
 
 ### Preserved reference example
 

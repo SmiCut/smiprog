@@ -568,7 +568,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 40.41,
       "overallLength": 100,
       "minThreadDiameter": 20.5,
-      "priceEur": 583.9
+      "priceEur": 677.3
     },
     {
       "id": 2,
@@ -583,7 +583,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 28.12,
       "overallLength": 100,
       "minThreadDiameter": 15.5,
-      "priceEur": 431.3
+      "priceEur": 483.1
     },
     {
       "id": 3,
@@ -598,7 +598,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22.06,
       "overallLength": 100,
       "minThreadDiameter": 12.7,
-      "priceEur": 327.9
+      "priceEur": 360.7
     },
     {
       "id": 4,
@@ -613,7 +613,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.43,
       "overallLength": 76,
       "minThreadDiameter": 7.8,
-      "priceEur": 196.3
+      "priceEur": 208.1
     },
     {
       "id": 5,
@@ -628,7 +628,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 49.65,
       "overallLength": 120,
       "minThreadDiameter": 25,
-      "priceEur": 643.9
+      "priceEur": 772.7
     },
     {
       "id": 6,
@@ -643,7 +643,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 42.86,
       "overallLength": 100,
       "minThreadDiameter": 26,
-      "priceEur": 695.6
+      "priceEur": 834.7
     },
     {
       "id": 7,
@@ -658,7 +658,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 42.86,
       "overallLength": 100,
       "minThreadDiameter": 26,
-      "priceEur": 695.6
+      "priceEur": 834.7
     },
     {
       "id": 8,
@@ -673,7 +673,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 28.12,
       "overallLength": 89,
       "minThreadDiameter": 19.7,
-      "priceEur": 535.6
+      "priceEur": 621.3
     },
     {
       "id": 9,
@@ -688,7 +688,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 29.82,
       "overallLength": 89,
       "minThreadDiameter": 20,
-      "priceEur": 588.7
+      "priceEur": 682.9
     },
     {
       "id": 10,
@@ -703,7 +703,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 28.12,
       "overallLength": 89,
       "minThreadDiameter": 19.7,
-      "priceEur": 486.7
+      "priceEur": 564.6
     },
     {
       "id": 11,
@@ -718,7 +718,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22.86,
       "overallLength": 89,
       "minThreadDiameter": 19.4,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 12,
@@ -733,7 +733,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 40.41,
       "overallLength": 100,
       "minThreadDiameter": 20.5,
-      "priceEur": 486.7
+      "priceEur": 564.6
     },
     {
       "id": 13,
@@ -748,7 +748,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 31.17,
       "overallLength": 89,
       "minThreadDiameter": 20.5,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 14,
@@ -763,7 +763,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 29.82,
       "overallLength": 89,
       "minThreadDiameter": 20,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 15,
@@ -778,7 +778,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 29.82,
       "overallLength": 89,
       "minThreadDiameter": 20,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 16,
@@ -793,7 +793,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 29.82,
       "overallLength": 89,
       "minThreadDiameter": 20,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 17,
@@ -808,7 +808,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.86,
       "overallLength": 83,
       "minThreadDiameter": 15.5,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 18,
@@ -823,7 +823,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22.68,
       "overallLength": 83,
       "minThreadDiameter": 15.2,
-      "priceEur": 395.5
+      "priceEur": 443
     },
     {
       "id": 19,
@@ -838,7 +838,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 26.55,
       "overallLength": 83,
       "minThreadDiameter": 15.476,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 20,
@@ -853,7 +853,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 30.96,
       "overallLength": 83,
       "minThreadDiameter": 14.1,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 21,
@@ -868,7 +868,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 28.12,
       "overallLength": 83,
       "minThreadDiameter": 15.5,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 22,
@@ -883,7 +883,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22.68,
       "overallLength": 83,
       "minThreadDiameter": 15.2,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 23,
@@ -898,7 +898,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22.68,
       "overallLength": 83,
       "minThreadDiameter": 15.2,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 24,
@@ -913,7 +913,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22.68,
       "overallLength": 83,
       "minThreadDiameter": 15.2,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 25,
@@ -928,7 +928,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.86,
       "overallLength": 83,
       "minThreadDiameter": 15.5,
-      "priceEur": 326.6
+      "priceEur": 365.8
     },
     {
       "id": 26,
@@ -943,7 +943,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.86,
       "overallLength": 83,
       "minThreadDiameter": 15.5,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 27,
@@ -958,7 +958,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 26.55,
       "overallLength": 83,
       "minThreadDiameter": 15.476,
-      "priceEur": 326.6
+      "priceEur": 365.8
     },
     {
       "id": 28,
@@ -973,7 +973,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22.06,
       "overallLength": 76,
       "minThreadDiameter": 12.7,
-      "priceEur": 300.6
+      "priceEur": 330.7
     },
     {
       "id": 29,
@@ -988,7 +988,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22.06,
       "overallLength": 76,
       "minThreadDiameter": 12.7,
-      "priceEur": 273.4
+      "priceEur": 300.7
     },
     {
       "id": 30,
@@ -1003,7 +1003,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22.06,
       "overallLength": 76,
       "minThreadDiameter": 12.7,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 31,
@@ -1018,7 +1018,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.23,
       "overallLength": 76,
       "minThreadDiameter": 13.3,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 32,
@@ -1033,7 +1033,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.52,
       "overallLength": 76,
       "minThreadDiameter": 11.9,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 33,
@@ -1048,7 +1048,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.06,
       "overallLength": 63,
       "minThreadDiameter": 9.4,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 34,
@@ -1063,7 +1063,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.23,
       "overallLength": 63,
       "minThreadDiameter": 10.5,
-      "priceEur": 255.3
+      "priceEur": 275.7
     },
     {
       "id": 35,
@@ -1078,7 +1078,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 15.37,
       "overallLength": 63,
       "minThreadDiameter": 10.6,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 36,
@@ -1093,7 +1093,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.06,
       "overallLength": 63,
       "minThreadDiameter": 9.4,
-      "priceEur": 210.9
+      "priceEur": 227.8
     },
     {
       "id": 37,
@@ -1108,7 +1108,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.06,
       "overallLength": 63,
       "minThreadDiameter": 9.4,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 38,
@@ -1123,7 +1123,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.96,
       "overallLength": 63,
       "minThreadDiameter": 9.7,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 39,
@@ -1138,7 +1138,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.23,
       "overallLength": 63,
       "minThreadDiameter": 10.5,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 40,
@@ -1153,7 +1153,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.23,
       "overallLength": 63,
       "minThreadDiameter": 10.5,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 41,
@@ -1168,7 +1168,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.23,
       "overallLength": 63,
       "minThreadDiameter": 10.5,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 42,
@@ -1183,7 +1183,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 15.37,
       "overallLength": 63,
       "minThreadDiameter": 10.6,
-      "priceEur": 210.9
+      "priceEur": 227.8
     },
     {
       "id": 43,
@@ -1198,7 +1198,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 15.37,
       "overallLength": 63,
       "minThreadDiameter": 10.6,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 44,
@@ -1213,7 +1213,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.43,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 179.9
+      "priceEur": 190.7
     },
     {
       "id": 45,
@@ -1228,7 +1228,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.82,
       "overallLength": 63,
       "minThreadDiameter": 7,
-      "priceEur": 198
+      "priceEur": 209.9
     },
     {
       "id": 46,
@@ -1243,7 +1243,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 12.7,
       "overallLength": 63,
       "minThreadDiameter": 7,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 47,
@@ -1258,7 +1258,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.43,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 48,
@@ -1273,7 +1273,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.43,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 49,
@@ -1288,7 +1288,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.82,
       "overallLength": 63,
       "minThreadDiameter": 7,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 50,
@@ -1303,7 +1303,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.82,
       "overallLength": 63,
       "minThreadDiameter": 7,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 51,
@@ -1318,7 +1318,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 50,
       "overallLength": 100,
       "minThreadDiameter": 15.475,
-      "priceEur": 230.6
+      "priceEur": 258.3
     },
     {
       "id": 52,
@@ -1333,7 +1333,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 50,
       "overallLength": 100,
       "minThreadDiameter": 15.475,
-      "priceEur": 230.6
+      "priceEur": 258.3
     },
     {
       "id": 53,
@@ -1348,7 +1348,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 50,
       "overallLength": 100,
       "minThreadDiameter": 15.475,
-      "priceEur": 230.6
+      "priceEur": 258.3
     },
     {
       "id": 54,
@@ -1363,7 +1363,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 34,
       "overallLength": 83,
       "minThreadDiameter": 15.475,
-      "priceEur": 209.7
+      "priceEur": 234.9
     },
     {
       "id": 55,
@@ -1378,7 +1378,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 34,
       "overallLength": 83,
       "minThreadDiameter": 15.475,
-      "priceEur": 209.7
+      "priceEur": 234.9
     },
     {
       "id": 56,
@@ -1393,7 +1393,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 34,
       "overallLength": 83,
       "minThreadDiameter": 15.475,
-      "priceEur": 209.7
+      "priceEur": 234.9
     },
     {
       "id": 57,
@@ -1408,7 +1408,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 44,
       "overallLength": 100,
       "minThreadDiameter": 13.6,
-      "priceEur": 192.8
+      "priceEur": 212.1
     },
     {
       "id": 58,
@@ -1423,7 +1423,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 44,
       "overallLength": 100,
       "minThreadDiameter": 13.6,
-      "priceEur": 192.8
+      "priceEur": 212.1
     },
     {
       "id": 59,
@@ -1438,7 +1438,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 30,
       "overallLength": 76,
       "minThreadDiameter": 13.6,
-      "priceEur": 175.3
+      "priceEur": 192.8
     },
     {
       "id": 60,
@@ -1453,7 +1453,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 30,
       "overallLength": 76,
       "minThreadDiameter": 13.6,
-      "priceEur": 175.3
+      "priceEur": 192.8
     },
     {
       "id": 61,
@@ -1468,7 +1468,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 38,
       "overallLength": 100,
       "minThreadDiameter": 10.812,
-      "priceEur": 192.8
+      "priceEur": 212.1
     },
     {
       "id": 62,
@@ -1483,7 +1483,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 38,
       "overallLength": 100,
       "minThreadDiameter": 10.812,
-      "priceEur": 192.8
+      "priceEur": 212.1
     },
     {
       "id": 63,
@@ -1498,7 +1498,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 38,
       "overallLength": 100,
       "minThreadDiameter": 10.812,
-      "priceEur": 192.8
+      "priceEur": 212.1
     },
     {
       "id": 64,
@@ -1513,7 +1513,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 26,
       "overallLength": 76,
       "minThreadDiameter": 10.812,
-      "priceEur": 175.3
+      "priceEur": 192.8
     },
     {
       "id": 65,
@@ -1528,7 +1528,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 26,
       "overallLength": 76,
       "minThreadDiameter": 10.812,
-      "priceEur": 175.3
+      "priceEur": 192.8
     },
     {
       "id": 66,
@@ -1543,7 +1543,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 26,
       "overallLength": 76,
       "minThreadDiameter": 10.812,
-      "priceEur": 175.3
+      "priceEur": 192.8
     },
     {
       "id": 67,
@@ -1558,7 +1558,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 32,
       "overallLength": 76,
       "minThreadDiameter": 9.225,
-      "priceEur": 148.9
+      "priceEur": 160.8
     },
     {
       "id": 68,
@@ -1573,7 +1573,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 32,
       "overallLength": 76,
       "minThreadDiameter": 9.225,
-      "priceEur": 148.9
+      "priceEur": 160.8
     },
     {
       "id": 69,
@@ -1588,7 +1588,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 32,
       "overallLength": 76,
       "minThreadDiameter": 9.225,
-      "priceEur": 148.9
+      "priceEur": 160.8
     },
     {
       "id": 70,
@@ -1603,7 +1603,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22,
       "overallLength": 63,
       "minThreadDiameter": 9.225,
-      "priceEur": 135.3
+      "priceEur": 146.1
     },
     {
       "id": 71,
@@ -1618,7 +1618,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22,
       "overallLength": 63,
       "minThreadDiameter": 9.225,
-      "priceEur": 135.3
+      "priceEur": 146.1
     },
     {
       "id": 72,
@@ -1633,7 +1633,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22,
       "overallLength": 63,
       "minThreadDiameter": 9.225,
-      "priceEur": 135.3
+      "priceEur": 146.1
     },
     {
       "id": 73,
@@ -1648,7 +1648,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 25.3,
       "overallLength": 76,
       "minThreadDiameter": 7.737,
-      "priceEur": 115.5
+      "priceEur": 122.4
     },
     {
       "id": 74,
@@ -1663,7 +1663,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 25.3,
       "overallLength": 76,
       "minThreadDiameter": 7.737,
-      "priceEur": 115.5
+      "priceEur": 122.4
     },
     {
       "id": 75,
@@ -1678,7 +1678,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 25.3,
       "overallLength": 76,
       "minThreadDiameter": 7.737,
-      "priceEur": 115.5
+      "priceEur": 122.4
     },
     {
       "id": 76,
@@ -1693,7 +1693,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.3,
       "overallLength": 63,
       "minThreadDiameter": 7.737,
-      "priceEur": 105
+      "priceEur": 111.3
     },
     {
       "id": 77,
@@ -1708,7 +1708,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.3,
       "overallLength": 63,
       "minThreadDiameter": 7.737,
-      "priceEur": 105
+      "priceEur": 111.3
     },
     {
       "id": 78,
@@ -1723,7 +1723,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.3,
       "overallLength": 63,
       "minThreadDiameter": 7.737,
-      "priceEur": 105
+      "priceEur": 111.3
     },
     {
       "id": 79,
@@ -1738,7 +1738,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 19,
       "overallLength": 76,
       "minThreadDiameter": 5.8,
-      "priceEur": 115.5
+      "priceEur": 122.4
     },
     {
       "id": 80,
@@ -1753,7 +1753,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 19,
       "overallLength": 76,
       "minThreadDiameter": 5.8,
-      "priceEur": 115.5
+      "priceEur": 122.4
     },
     {
       "id": 81,
@@ -1768,7 +1768,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 19,
       "overallLength": 76,
       "minThreadDiameter": 5.8,
-      "priceEur": 115.5
+      "priceEur": 122.4
     },
     {
       "id": 82,
@@ -1783,7 +1783,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 19,
       "overallLength": 76,
       "minThreadDiameter": 5.8,
-      "priceEur": 115.5
+      "priceEur": 122.4
     },
     {
       "id": 83,
@@ -1798,7 +1798,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 105
+      "priceEur": 111.3
     },
     {
       "id": 84,
@@ -1813,7 +1813,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 105
+      "priceEur": 111.3
     },
     {
       "id": 85,
@@ -1828,7 +1828,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 105
+      "priceEur": 111.3
     },
     {
       "id": 86,
@@ -1843,7 +1843,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 105
+      "priceEur": 111.3
     },
     {
       "id": 87,
@@ -1858,7 +1858,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 88,
@@ -1873,7 +1873,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 89,
@@ -1888,7 +1888,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 90,
@@ -1903,7 +1903,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 91,
@@ -1918,7 +1918,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 92,
@@ -1933,7 +1933,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 93,
@@ -1948,7 +1948,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 94,
@@ -1963,7 +1963,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 95,
@@ -1978,7 +1978,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 96,
@@ -1993,7 +1993,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 97,
@@ -2008,7 +2008,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 98,
@@ -2023,7 +2023,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 99,
@@ -2038,7 +2038,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 100,
@@ -2053,7 +2053,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 101,
@@ -2068,7 +2068,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 102,
@@ -2083,7 +2083,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 103,
@@ -2098,7 +2098,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 104,
@@ -2113,7 +2113,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 105,
@@ -2128,7 +2128,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 106,
@@ -2143,7 +2143,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 107,
@@ -2158,7 +2158,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.3,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 108,
@@ -2173,7 +2173,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.3,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 109,
@@ -2188,7 +2188,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.3,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 110,
@@ -2203,7 +2203,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.3,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 111,
@@ -2218,7 +2218,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.3,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 112,
@@ -2233,7 +2233,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.3,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 113,
@@ -2248,7 +2248,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 114,
@@ -2263,7 +2263,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 115,
@@ -2278,7 +2278,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 116,
@@ -2293,7 +2293,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 117,
@@ -2308,7 +2308,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 118,
@@ -2323,7 +2323,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 119,
@@ -2338,7 +2338,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.6,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 120,
@@ -2353,7 +2353,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.6,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 121,
@@ -2368,7 +2368,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.6,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 122,
@@ -2383,7 +2383,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.6,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 123,
@@ -2398,7 +2398,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.6,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 124,
@@ -2413,7 +2413,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.6,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 125,
@@ -2428,7 +2428,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.6,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 126,
@@ -2443,7 +2443,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11.1,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 127,
@@ -2458,7 +2458,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11.1,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 128,
@@ -2473,7 +2473,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11.1,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 129,
@@ -2488,7 +2488,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11.1,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 130,
@@ -2503,7 +2503,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11.1,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 131,
@@ -2518,7 +2518,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11.1,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 132,
@@ -2533,7 +2533,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11.1,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 133,
@@ -2548,7 +2548,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9.5,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 134,
@@ -2563,7 +2563,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9.5,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 135,
@@ -2578,7 +2578,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9.5,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 136,
@@ -2593,7 +2593,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9.5,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 137,
@@ -2608,7 +2608,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.5,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 138,
@@ -2623,7 +2623,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.5,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 139,
@@ -2638,7 +2638,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.5,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 140,
@@ -2653,7 +2653,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.5,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 141,
@@ -2668,7 +2668,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9.2,
       "overallLength": 50,
       "minThreadDiameter": 2.645,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 142,
@@ -2683,7 +2683,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.4,
       "overallLength": 50,
       "minThreadDiameter": 2.645,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 143,
@@ -2698,7 +2698,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 144,
@@ -2713,7 +2713,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 145,
@@ -2728,7 +2728,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 146,
@@ -2743,7 +2743,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 147,
@@ -2758,7 +2758,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.5,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 148,
@@ -2773,7 +2773,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.5,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 149,
@@ -2788,7 +2788,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.5,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 150,
@@ -2803,7 +2803,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.5,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 151,
@@ -2818,7 +2818,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.1,
       "overallLength": 50,
       "minThreadDiameter": 1.984,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 152,
@@ -2833,7 +2833,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.1,
       "overallLength": 50,
       "minThreadDiameter": 1.984,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 153,
@@ -2848,7 +2848,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5,
       "overallLength": 50,
       "minThreadDiameter": 1.984,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 154,
@@ -2863,7 +2863,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5,
       "overallLength": 50,
       "minThreadDiameter": 1.984,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 155,
@@ -2878,7 +2878,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.4,
       "overallLength": 50,
       "minThreadDiameter": 1.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 156,
@@ -2893,7 +2893,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.4,
       "overallLength": 50,
       "minThreadDiameter": 1.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 157,
@@ -2908,7 +2908,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.4,
       "overallLength": 50,
       "minThreadDiameter": 1.8,
-      "priceEur": 97.6
+      "priceEur": 101.5
     },
     {
       "id": 158,
@@ -2923,7 +2923,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.4,
       "overallLength": 50,
       "minThreadDiameter": 1.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 159,
@@ -2938,7 +2938,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.4,
       "overallLength": 50,
       "minThreadDiameter": 1.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 160,
@@ -2953,7 +2953,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.4,
       "overallLength": 50,
       "minThreadDiameter": 1.8,
-      "priceEur": 88.7
+      "priceEur": 92.2
     },
     {
       "id": 161,
@@ -2968,7 +2968,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.2,
       "overallLength": 39,
       "minThreadDiameter": 1.8,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 162,
@@ -2983,7 +2983,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.2,
       "overallLength": 39,
       "minThreadDiameter": 1.8,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 163,
@@ -2998,7 +2998,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.2,
       "overallLength": 39,
       "minThreadDiameter": 1.8,
-      "priceEur": 115.9
+      "priceEur": 119.4
     },
     {
       "id": 164,
@@ -3013,7 +3013,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.6,
       "overallLength": 39,
       "minThreadDiameter": 1.8,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 165,
@@ -3028,7 +3028,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.6,
       "overallLength": 39,
       "minThreadDiameter": 1.8,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 166,
@@ -3043,7 +3043,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.7,
       "overallLength": 39,
       "minThreadDiameter": 1.8,
-      "priceEur": 105.4
+      "priceEur": 108.6
     },
     {
       "id": 167,
@@ -3058,7 +3058,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.6,
       "overallLength": 39,
       "minThreadDiameter": 1.6,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 168,
@@ -3073,7 +3073,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.6,
       "overallLength": 39,
       "minThreadDiameter": 1.6,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 169,
@@ -3088,7 +3088,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.6,
       "overallLength": 39,
       "minThreadDiameter": 1.6,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 170,
@@ -3103,7 +3103,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.6,
       "overallLength": 39,
       "minThreadDiameter": 1.6,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 171,
@@ -3118,7 +3118,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.6,
       "overallLength": 39,
       "minThreadDiameter": 1.6,
-      "priceEur": 115.9
+      "priceEur": 119.4
     },
     {
       "id": 172,
@@ -3133,7 +3133,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.2,
       "overallLength": 39,
       "minThreadDiameter": 1.6,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 173,
@@ -3148,7 +3148,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.2,
       "overallLength": 39,
       "minThreadDiameter": 1.6,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 174,
@@ -3163,7 +3163,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.2,
       "overallLength": 39,
       "minThreadDiameter": 1.6,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 175,
@@ -3178,7 +3178,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.2,
       "overallLength": 39,
       "minThreadDiameter": 1.6,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 176,
@@ -3193,7 +3193,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.2,
       "overallLength": 39,
       "minThreadDiameter": 1.6,
-      "priceEur": 105.4
+      "priceEur": 108.6
     },
     {
       "id": 177,
@@ -3208,7 +3208,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.1,
       "overallLength": 39,
       "minThreadDiameter": 1.4,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 178,
@@ -3223,7 +3223,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.1,
       "overallLength": 39,
       "minThreadDiameter": 1.4,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 179,
@@ -3238,7 +3238,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.1,
       "overallLength": 39,
       "minThreadDiameter": 1.4,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 180,
@@ -3253,7 +3253,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.1,
       "overallLength": 39,
       "minThreadDiameter": 1.4,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 181,
@@ -3268,7 +3268,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.1,
       "overallLength": 39,
       "minThreadDiameter": 1.4,
-      "priceEur": 115.9
+      "priceEur": 119.4
     },
     {
       "id": 182,
@@ -3283,7 +3283,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.6,
       "overallLength": 39,
       "minThreadDiameter": 1.4,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 183,
@@ -3298,7 +3298,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.6,
       "overallLength": 39,
       "minThreadDiameter": 1.4,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 184,
@@ -3313,7 +3313,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.6,
       "overallLength": 39,
       "minThreadDiameter": 1.4,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 185,
@@ -3328,7 +3328,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.6,
       "overallLength": 39,
       "minThreadDiameter": 1.4,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 186,
@@ -3343,7 +3343,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.6,
       "overallLength": 39,
       "minThreadDiameter": 1.4,
-      "priceEur": 105.4
+      "priceEur": 108.6
     },
     {
       "id": 187,
@@ -3358,7 +3358,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.4,
       "overallLength": 39,
       "minThreadDiameter": 1.25,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 188,
@@ -3373,7 +3373,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.4,
       "overallLength": 39,
       "minThreadDiameter": 1.25,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 189,
@@ -3388,7 +3388,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.4,
       "overallLength": 39,
       "minThreadDiameter": 1.25,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 190,
@@ -3403,7 +3403,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.4,
       "overallLength": 39,
       "minThreadDiameter": 1.25,
-      "priceEur": 115.9
+      "priceEur": 119.4
     },
     {
       "id": 191,
@@ -3418,7 +3418,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.3,
       "overallLength": 39,
       "minThreadDiameter": 1.25,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 192,
@@ -3433,7 +3433,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.3,
       "overallLength": 39,
       "minThreadDiameter": 1.25,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 193,
@@ -3448,7 +3448,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.3,
       "overallLength": 39,
       "minThreadDiameter": 1.25,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 194,
@@ -3463,7 +3463,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.3,
       "overallLength": 39,
       "minThreadDiameter": 1.25,
-      "priceEur": 105.4
+      "priceEur": 108.6
     },
     {
       "id": 195,
@@ -3478,7 +3478,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.9,
       "overallLength": 39,
       "minThreadDiameter": 1.05,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 196,
@@ -3493,7 +3493,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.9,
       "overallLength": 39,
       "minThreadDiameter": 1.05,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 197,
@@ -3508,7 +3508,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.9,
       "overallLength": 39,
       "minThreadDiameter": 1.05,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 198,
@@ -3523,7 +3523,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.9,
       "overallLength": 39,
       "minThreadDiameter": 1.05,
-      "priceEur": 115.9
+      "priceEur": 119.4
     },
     {
       "id": 199,
@@ -3538,7 +3538,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 2.9,
       "overallLength": 39,
       "minThreadDiameter": 1.05,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 200,
@@ -3553,7 +3553,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 2.9,
       "overallLength": 39,
       "minThreadDiameter": 1.05,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 201,
@@ -3568,7 +3568,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 2.9,
       "overallLength": 39,
       "minThreadDiameter": 1.05,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 202,
@@ -3583,7 +3583,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 2.9,
       "overallLength": 39,
       "minThreadDiameter": 1.05,
-      "priceEur": 105.4
+      "priceEur": 108.6
     },
     {
       "id": 203,
@@ -3598,7 +3598,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.2,
       "overallLength": 39,
       "minThreadDiameter": 0.85,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 204,
@@ -3613,7 +3613,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.2,
       "overallLength": 39,
       "minThreadDiameter": 0.85,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 205,
@@ -3628,7 +3628,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.5,
       "overallLength": 39,
       "minThreadDiameter": 0.85,
-      "priceEur": 115.9
+      "priceEur": 119.4
     },
     {
       "id": 206,
@@ -3643,7 +3643,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 2.5,
       "overallLength": 39,
       "minThreadDiameter": 0.85,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 207,
@@ -3658,7 +3658,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 2.5,
       "overallLength": 39,
       "minThreadDiameter": 0.85,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 208,
@@ -3673,7 +3673,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 2.5,
       "overallLength": 39,
       "minThreadDiameter": 0.85,
-      "priceEur": 105.4
+      "priceEur": 108.6
     },
     {
       "id": 209,
@@ -3688,7 +3688,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 2.7,
       "overallLength": 39,
       "minThreadDiameter": 0.7,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 210,
@@ -3703,7 +3703,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 2.7,
       "overallLength": 39,
       "minThreadDiameter": 0.7,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 211,
@@ -3718,7 +3718,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 2,
       "overallLength": 39,
       "minThreadDiameter": 0.7,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 212,
@@ -3733,7 +3733,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 2,
       "overallLength": 39,
       "minThreadDiameter": 0.7,
-      "priceEur": 87.9
+      "priceEur": 90.5
     },
     {
       "id": 213,
@@ -3748,7 +3748,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 1.5,
       "overallLength": 39,
       "minThreadDiameter": 0.5,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 214,
@@ -3763,7 +3763,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 1.3,
       "overallLength": 39,
       "minThreadDiameter": 0.4,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 215,
@@ -3778,7 +3778,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 1.3,
       "overallLength": 39,
       "minThreadDiameter": 0.4,
-      "priceEur": 96.6
+      "priceEur": 99.5
     },
     {
       "id": 216,
@@ -3793,7 +3793,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 50,
       "overallLength": 100,
       "minThreadDiameter": 15.6,
-      "priceEur": 276.8
+      "priceEur": 310
     },
     {
       "id": 217,
@@ -3808,7 +3808,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 34,
       "overallLength": 83,
       "minThreadDiameter": 15.6,
-      "priceEur": 251.6
+      "priceEur": 281.8
     },
     {
       "id": 218,
@@ -3823,7 +3823,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 44,
       "overallLength": 100,
       "minThreadDiameter": 13.6,
-      "priceEur": 231.4
+      "priceEur": 254.5
     },
     {
       "id": 219,
@@ -3838,7 +3838,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 30,
       "overallLength": 76,
       "minThreadDiameter": 13.6,
-      "priceEur": 210.4
+      "priceEur": 231.4
     },
     {
       "id": 220,
@@ -3853,7 +3853,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 38,
       "overallLength": 100,
       "minThreadDiameter": 11.6,
-      "priceEur": 231.4
+      "priceEur": 254.5
     },
     {
       "id": 221,
@@ -3868,7 +3868,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 26,
       "overallLength": 76,
       "minThreadDiameter": 11.6,
-      "priceEur": 210.4
+      "priceEur": 231.4
     },
     {
       "id": 222,
@@ -3883,7 +3883,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 32,
       "overallLength": 76,
       "minThreadDiameter": 9.6,
-      "priceEur": 178.7
+      "priceEur": 193
     },
     {
       "id": 223,
@@ -3898,7 +3898,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22,
       "overallLength": 63,
       "minThreadDiameter": 9.6,
-      "priceEur": 162.4
+      "priceEur": 175.4
     },
     {
       "id": 224,
@@ -3913,7 +3913,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 25.3,
       "overallLength": 76,
       "minThreadDiameter": 7.8,
-      "priceEur": 138.5
+      "priceEur": 146.8
     },
     {
       "id": 225,
@@ -3928,7 +3928,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.3,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 126
+      "priceEur": 133.6
     },
     {
       "id": 226,
@@ -3943,7 +3943,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 19,
       "overallLength": 76,
       "minThreadDiameter": 5.8,
-      "priceEur": 138.5
+      "priceEur": 146.8
     },
     {
       "id": 227,
@@ -3958,7 +3958,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 126
+      "priceEur": 133.6
     },
     {
       "id": 228,
@@ -3973,7 +3973,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 106.4
+      "priceEur": 110.7
     },
     {
       "id": 229,
@@ -3988,7 +3988,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 117
+      "priceEur": 121.7
     },
     {
       "id": 230,
@@ -4003,7 +4003,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 117
+      "priceEur": 121.7
     },
     {
       "id": 231,
@@ -4018,7 +4018,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 106.4
+      "priceEur": 110.7
     },
     {
       "id": 232,
@@ -4033,7 +4033,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.3,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 117
+      "priceEur": 121.7
     },
     {
       "id": 233,
@@ -4048,7 +4048,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 106.4
+      "priceEur": 110.7
     },
     {
       "id": 234,
@@ -4063,7 +4063,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.6,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 106.4
+      "priceEur": 110.7
     },
     {
       "id": 235,
@@ -4078,7 +4078,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11.1,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 117
+      "priceEur": 121.7
     },
     {
       "id": 236,
@@ -4093,7 +4093,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9.5,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 117
+      "priceEur": 121.7
     },
     {
       "id": 237,
@@ -4108,7 +4108,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.5,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 106.4
+      "priceEur": 110.7
     },
     {
       "id": 238,
@@ -4123,7 +4123,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 117
+      "priceEur": 121.7
     },
     {
       "id": 239,
@@ -4138,7 +4138,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.5,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 106.4
+      "priceEur": 110.7
     },
     {
       "id": 240,
@@ -4153,7 +4153,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.1,
       "overallLength": 50,
       "minThreadDiameter": 2,
-      "priceEur": 117
+      "priceEur": 121.7
     },
     {
       "id": 241,
@@ -4168,7 +4168,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5,
       "overallLength": 50,
       "minThreadDiameter": 2,
-      "priceEur": 106.4
+      "priceEur": 110.7
     },
     {
       "id": 242,
@@ -4183,7 +4183,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.4,
       "overallLength": 50,
       "minThreadDiameter": 1.8,
-      "priceEur": 117
+      "priceEur": 121.7
     },
     {
       "id": 243,
@@ -4198,7 +4198,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.4,
       "overallLength": 50,
       "minThreadDiameter": 1.8,
-      "priceEur": 106.4
+      "priceEur": 110.7
     },
     {
       "id": 244,
@@ -4213,7 +4213,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 32.37,
       "overallLength": 89,
       "minThreadDiameter": 11.6,
-      "priceEur": 383.3
+      "priceEur": 437
     },
     {
       "id": 245,
@@ -4228,7 +4228,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.12,
       "overallLength": 89,
       "minThreadDiameter": 11.6,
-      "priceEur": 348.8
+      "priceEur": 397.6
     },
     {
       "id": 246,
@@ -4243,7 +4243,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.12,
       "overallLength": 89,
       "minThreadDiameter": 11.6,
-      "priceEur": 317
+      "priceEur": 361.4
     },
     {
       "id": 247,
@@ -4258,7 +4258,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.75,
       "overallLength": 83,
       "minThreadDiameter": 9.6,
-      "priceEur": 316.2
+      "priceEur": 354.1
     },
     {
       "id": 248,
@@ -4273,7 +4273,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.75,
       "overallLength": 83,
       "minThreadDiameter": 9.6,
-      "priceEur": 287.6
+      "priceEur": 322.1
     },
     {
       "id": 249,
@@ -4288,7 +4288,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.25,
       "overallLength": 83,
       "minThreadDiameter": 9.6,
-      "priceEur": 261.2
+      "priceEur": 292.5
     },
     {
       "id": 250,
@@ -4303,7 +4303,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.87,
       "overallLength": 76,
       "minThreadDiameter": 7.8,
-      "priceEur": 281.1
+      "priceEur": 309.2
     },
     {
       "id": 251,
@@ -4318,7 +4318,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 18.12,
       "overallLength": 76,
       "minThreadDiameter": 7.8,
-      "priceEur": 255.3
+      "priceEur": 280.8
     },
     {
       "id": 252,
@@ -4333,7 +4333,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.37,
       "overallLength": 76,
       "minThreadDiameter": 7.8,
-      "priceEur": 232.2
+      "priceEur": 255.4
     },
     {
       "id": 253,
@@ -4348,7 +4348,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 238.4
+      "priceEur": 257.5
     },
     {
       "id": 254,
@@ -4363,7 +4363,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 216.6
+      "priceEur": 233.9
     },
     {
       "id": 255,
@@ -4378,7 +4378,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 196.8
+      "priceEur": 212.5
     },
     {
       "id": 256,
@@ -4393,7 +4393,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.75,
       "overallLength": 63,
       "minThreadDiameter": 3.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 257,
@@ -4408,7 +4408,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.35,
       "overallLength": 63,
       "minThreadDiameter": 3.8,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 258,
@@ -4423,7 +4423,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 12.95,
       "overallLength": 63,
       "minThreadDiameter": 3.8,
-      "priceEur": 217.7
+      "priceEur": 230.8
     },
     {
       "id": 259,
@@ -4438,7 +4438,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.85,
       "overallLength": 63,
       "minThreadDiameter": 3.8,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 260,
@@ -4453,7 +4453,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.4,
       "overallLength": 63,
       "minThreadDiameter": 4.8,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 261,
@@ -4468,7 +4468,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.4,
       "overallLength": 63,
       "minThreadDiameter": 4.8,
-      "priceEur": 217.7
+      "priceEur": 230.8
     },
     {
       "id": 262,
@@ -4483,7 +4483,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.2,
       "overallLength": 63,
       "minThreadDiameter": 4.8,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 263,
@@ -4498,7 +4498,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.8,
       "overallLength": 63,
       "minThreadDiameter": 4.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 264,
@@ -4513,7 +4513,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9.75,
       "overallLength": 63,
       "minThreadDiameter": 2.8,
-      "priceEur": 217.7
+      "priceEur": 230.8
     },
     {
       "id": 265,
@@ -4528,7 +4528,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.25,
       "overallLength": 63,
       "minThreadDiameter": 2.8,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 266,
@@ -4543,7 +4543,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.75,
       "overallLength": 63,
       "minThreadDiameter": 2.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 267,
@@ -4558,7 +4558,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.25,
       "overallLength": 63,
       "minThreadDiameter": 2.8,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 268,
@@ -4573,7 +4573,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 39,
       "overallLength": 100,
       "minThreadDiameter": 19.6,
-      "priceEur": 642.3
+      "priceEur": 745.1
     },
     {
       "id": 269,
@@ -4588,7 +4588,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 29.25,
       "overallLength": 100,
       "minThreadDiameter": 15.6,
-      "priceEur": 431.1
+      "priceEur": 482.9
     },
     {
       "id": 270,
@@ -4603,7 +4603,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 35,
       "overallLength": 100,
       "minThreadDiameter": 15.6,
-      "priceEur": 431.2
+      "priceEur": 482.9
     },
     {
       "id": 271,
@@ -4618,7 +4618,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 31,
       "overallLength": 100,
       "minThreadDiameter": 13.6,
-      "priceEur": 360.7
+      "priceEur": 396.8
     },
     {
       "id": 272,
@@ -4633,7 +4633,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.12,
       "overallLength": 100,
       "minThreadDiameter": 11.6,
-      "priceEur": 360.7
+      "priceEur": 396.8
     },
     {
       "id": 273,
@@ -4648,7 +4648,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.5,
       "overallLength": 76,
       "minThreadDiameter": 9.8,
-      "priceEur": 278.2
+      "priceEur": 300.3
     },
     {
       "id": 274,
@@ -4663,7 +4663,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.12,
       "overallLength": 76,
       "minThreadDiameter": 10.6,
-      "priceEur": 278.1
+      "priceEur": 300.3
     },
     {
       "id": 275,
@@ -4678,7 +4678,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.75,
       "overallLength": 76,
       "minThreadDiameter": 9.6,
-      "priceEur": 278.1
+      "priceEur": 300.3
     },
     {
       "id": 276,
@@ -4693,7 +4693,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 18.12,
       "overallLength": 76,
       "minThreadDiameter": 7.8,
-      "priceEur": 215.9
+      "priceEur": 228.9
     },
     {
       "id": 277,
@@ -4708,7 +4708,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 64.75,
       "overallLength": 150,
       "minThreadDiameter": 29.6,
-      "priceEur": 841.7
+      "priceEur": 1010
     },
     {
       "id": 278,
@@ -4723,7 +4723,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 50.75,
       "overallLength": 150,
       "minThreadDiameter": 29.6,
-      "priceEur": 765.1
+      "priceEur": 918.1
     },
     {
       "id": 279,
@@ -4738,7 +4738,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 35.25,
       "overallLength": 120,
       "minThreadDiameter": 19.6,
-      "priceEur": 588.7
+      "priceEur": 683
     },
     {
       "id": 280,
@@ -4753,7 +4753,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 39,
       "overallLength": 120,
       "minThreadDiameter": 19.6,
-      "priceEur": 588.7
+      "priceEur": 683
     },
     {
       "id": 281,
@@ -4768,7 +4768,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 52.5,
       "overallLength": 120,
       "minThreadDiameter": 23.6,
-      "priceEur": 588.7
+      "priceEur": 682.9
     },
     {
       "id": 282,
@@ -4783,7 +4783,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 40.5,
       "overallLength": 120,
       "minThreadDiameter": 23.6,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 283,
@@ -4798,7 +4798,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 53.75,
       "overallLength": 120,
       "minThreadDiameter": 19.6,
-      "priceEur": 588.7
+      "priceEur": 682.9
     },
     {
       "id": 284,
@@ -4813,7 +4813,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 43.75,
       "overallLength": 100,
       "minThreadDiameter": 19.6,
-      "priceEur": 500.1
+      "priceEur": 570.1
     },
     {
       "id": 285,
@@ -4828,7 +4828,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 33.75,
       "overallLength": 100,
       "minThreadDiameter": 19.6,
-      "priceEur": 454.4
+      "priceEur": 518
     },
     {
       "id": 286,
@@ -4843,7 +4843,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 29.25,
       "overallLength": 100,
       "minThreadDiameter": 15.6,
-      "priceEur": 395.5
+      "priceEur": 442.5
     },
     {
       "id": 287,
@@ -4858,7 +4858,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 43,
       "overallLength": 100,
       "minThreadDiameter": 15.6,
-      "priceEur": 434.8
+      "priceEur": 487
     },
     {
       "id": 288,
@@ -4873,7 +4873,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 35,
       "overallLength": 100,
       "minThreadDiameter": 15.6,
-      "priceEur": 395.1
+      "priceEur": 442.5
     },
     {
       "id": 289,
@@ -4888,7 +4888,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27,
       "overallLength": 100,
       "minThreadDiameter": 15.6,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 290,
@@ -4903,7 +4903,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 51,
       "overallLength": 100,
       "minThreadDiameter": 15.6,
-      "priceEur": 478.4
+      "priceEur": 535.8
     },
     {
       "id": 291,
@@ -4918,7 +4918,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 31,
       "overallLength": 100,
       "minThreadDiameter": 13.6,
-      "priceEur": 330.4
+      "priceEur": 363.4
     },
     {
       "id": 292,
@@ -4933,7 +4933,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 23,
       "overallLength": 100,
       "minThreadDiameter": 13.6,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 293,
@@ -4948,7 +4948,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 37.62,
       "overallLength": 100,
       "minThreadDiameter": 11.6,
-      "priceEur": 400
+      "priceEur": 440
     },
     {
       "id": 294,
@@ -4963,7 +4963,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 32.37,
       "overallLength": 100,
       "minThreadDiameter": 11.6,
-      "priceEur": 363.6
+      "priceEur": 400
     },
     {
       "id": 295,
@@ -4978,7 +4978,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.12,
       "overallLength": 100,
       "minThreadDiameter": 11.6,
-      "priceEur": 330.4
+      "priceEur": 363.4
     },
     {
       "id": 296,
@@ -4993,7 +4993,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.12,
       "overallLength": 100,
       "minThreadDiameter": 11.6,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 297,
@@ -5008,7 +5008,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.5,
       "overallLength": 76,
       "minThreadDiameter": 9.8,
-      "priceEur": 255.2
+      "priceEur": 275.4
     },
     {
       "id": 298,
@@ -5023,7 +5023,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.12,
       "overallLength": 76,
       "minThreadDiameter": 11.6,
-      "priceEur": 255
+      "priceEur": 275.4
     },
     {
       "id": 299,
@@ -5038,7 +5038,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.12,
       "overallLength": 76,
       "minThreadDiameter": 11.6,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 300,
@@ -5053,7 +5053,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 32.25,
       "overallLength": 76,
       "minThreadDiameter": 9.6,
-      "priceEur": 308.9
+      "priceEur": 333.6
     },
     {
       "id": 301,
@@ -5068,7 +5068,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.75,
       "overallLength": 76,
       "minThreadDiameter": 9.6,
-      "priceEur": 280.7
+      "priceEur": 303.2
     },
     {
       "id": 302,
@@ -5083,7 +5083,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.75,
       "overallLength": 76,
       "minThreadDiameter": 9.6,
-      "priceEur": 255
+      "priceEur": 275.4
     },
     {
       "id": 303,
@@ -5098,7 +5098,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.25,
       "overallLength": 76,
       "minThreadDiameter": 9.6,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 304,
@@ -5113,7 +5113,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.87,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 217.7
+      "priceEur": 230.8
     },
     {
       "id": 305,
@@ -5128,7 +5128,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 18.12,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 306,
@@ -5143,7 +5143,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.37,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 307,
@@ -5158,7 +5158,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 217.7
+      "priceEur": 230.8
     },
     {
       "id": 308,
@@ -5173,7 +5173,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 309,
@@ -5188,7 +5188,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 310,
@@ -5203,7 +5203,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.4,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 311,
@@ -5218,7 +5218,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.2,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 183.9
+      "priceEur": 191.3
     },
     {
       "id": 312,
@@ -5233,7 +5233,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.8,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 313,
@@ -5248,7 +5248,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 61.38,
       "overallLength": 130,
       "minThreadDiameter": 34.525,
-      "priceEur": 988.1
+      "priceEur": 1235.1
     },
     {
       "id": 314,
@@ -5263,7 +5263,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 57,
       "overallLength": 120,
       "minThreadDiameter": 23.6,
-      "priceEur": 765.1
+      "priceEur": 918.1
     },
     {
       "id": 315,
@@ -5278,7 +5278,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 43,
       "overallLength": 100,
       "minThreadDiameter": 23.6,
-      "priceEur": 695.6
+      "priceEur": 834.7
     },
     {
       "id": 316,
@@ -5293,7 +5293,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 61.5,
       "overallLength": 150,
       "minThreadDiameter": 26.6,
-      "priceEur": 765.1
+      "priceEur": 918.1
     },
     {
       "id": 317,
@@ -5308,7 +5308,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 49.21,
       "overallLength": 120,
       "minThreadDiameter": 26,
-      "priceEur": 695.6
+      "priceEur": 834.7
     },
     {
       "id": 318,
@@ -5323,7 +5323,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 46.5,
       "overallLength": 120,
       "minThreadDiameter": 26.6,
-      "priceEur": 643.9
+      "priceEur": 772.7
     },
     {
       "id": 319,
@@ -5338,7 +5338,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 78.75,
       "overallLength": 150,
       "minThreadDiameter": 29.6,
-      "priceEur": 841.7
+      "priceEur": 1010
     },
     {
       "id": 320,
@@ -5353,7 +5353,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 64.75,
       "overallLength": 150,
       "minThreadDiameter": 29.6,
-      "priceEur": 765.1
+      "priceEur": 918.1
     },
     {
       "id": 321,
@@ -5368,7 +5368,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 58,
       "overallLength": 150,
       "minThreadDiameter": 29.6,
-      "priceEur": 765.1
+      "priceEur": 918.1
     },
     {
       "id": 322,
@@ -5383,7 +5383,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 52.61,
       "overallLength": 120,
       "minThreadDiameter": 28.175,
-      "priceEur": 695.6
+      "priceEur": 834.7
     },
     {
       "id": 323,
@@ -5398,7 +5398,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 50.75,
       "overallLength": 120,
       "minThreadDiameter": 29.6,
-      "priceEur": 695.6
+      "priceEur": 834.7
     },
     {
       "id": 324,
@@ -5413,7 +5413,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 64.5,
       "overallLength": 130,
       "minThreadDiameter": 23.6,
-      "priceEur": 633.2
+      "priceEur": 747.2
     },
     {
       "id": 325,
@@ -5428,7 +5428,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 24.75,
       "overallLength": 89,
       "minThreadDiameter": 19.6,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 326,
@@ -5443,7 +5443,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 35.25,
       "overallLength": 100,
       "minThreadDiameter": 19.6,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 327,
@@ -5458,7 +5458,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 26.25,
       "overallLength": 89,
       "minThreadDiameter": 19.6,
-      "priceEur": 486.7
+      "priceEur": 564.6
     },
     {
       "id": 328,
@@ -5473,7 +5473,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 18.75,
       "overallLength": 89,
       "minThreadDiameter": 19.6,
-      "priceEur": 442.5
+      "priceEur": 513.3
     },
     {
       "id": 329,
@@ -5488,7 +5488,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 46.26,
       "overallLength": 120,
       "minThreadDiameter": 21.825,
-      "priceEur": 588.8
+      "priceEur": 683
     },
     {
       "id": 330,
@@ -5503,7 +5503,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 43.39,
       "overallLength": 100,
       "minThreadDiameter": 25,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 331,
@@ -5518,7 +5518,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 39,
       "overallLength": 100,
       "minThreadDiameter": 19.6,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 332,
@@ -5533,7 +5533,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 35.72,
       "overallLength": 100,
       "minThreadDiameter": 19,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 333,
@@ -5548,7 +5548,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 35.38,
       "overallLength": 100,
       "minThreadDiameter": 21.825,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 334,
@@ -5563,7 +5563,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 29,
       "overallLength": 89,
       "minThreadDiameter": 19.6,
-      "priceEur": 486.7
+      "priceEur": 564.6
     },
     {
       "id": 335,
@@ -5578,7 +5578,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 55.56,
       "overallLength": 120,
       "minThreadDiameter": 25,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 336,
@@ -5593,7 +5593,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 52.5,
       "overallLength": 120,
       "minThreadDiameter": 23.6,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 337,
@@ -5608,7 +5608,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 49.39,
       "overallLength": 120,
       "minThreadDiameter": 21.825,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 338,
@@ -5623,7 +5623,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 42.86,
       "overallLength": 100,
       "minThreadDiameter": 25,
-      "priceEur": 486.7
+      "priceEur": 564.6
     },
     {
       "id": 339,
@@ -5638,7 +5638,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 40.5,
       "overallLength": 100,
       "minThreadDiameter": 23.6,
-      "priceEur": 486.7
+      "priceEur": 564.6
     },
     {
       "id": 340,
@@ -5653,7 +5653,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 38.1,
       "overallLength": 100,
       "minThreadDiameter": 21.825,
-      "priceEur": 486.7
+      "priceEur": 564.6
     },
     {
       "id": 341,
@@ -5668,7 +5668,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 53.75,
       "overallLength": 120,
       "minThreadDiameter": 19.6,
-      "priceEur": 535.1
+      "priceEur": 620.7
     },
     {
       "id": 342,
@@ -5683,7 +5683,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 63.75,
       "overallLength": 120,
       "minThreadDiameter": 19.6,
-      "priceEur": 588.7
+      "priceEur": 682.9
     },
     {
       "id": 343,
@@ -5698,7 +5698,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 33.75,
       "overallLength": 89,
       "minThreadDiameter": 19.6,
-      "priceEur": 454.4
+      "priceEur": 518
     },
     {
       "id": 344,
@@ -5713,7 +5713,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 43.75,
       "overallLength": 100,
       "minThreadDiameter": 19.6,
-      "priceEur": 454.4
+      "priceEur": 518
     },
     {
       "id": 345,
@@ -5728,7 +5728,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 33.75,
       "overallLength": 89,
       "minThreadDiameter": 19.6,
-      "priceEur": 413.3
+      "priceEur": 471.2
     },
     {
       "id": 346,
@@ -5743,7 +5743,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 18.5,
       "overallLength": 83,
       "minThreadDiameter": 13.6,
-      "priceEur": 395.5
+      "priceEur": 443
     },
     {
       "id": 347,
@@ -5758,7 +5758,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.75,
       "overallLength": 83,
       "minThreadDiameter": 15.6,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 348,
@@ -5773,7 +5773,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.5,
       "overallLength": 83,
       "minThreadDiameter": 13.6,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 349,
@@ -5788,7 +5788,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 15.5,
       "overallLength": 83,
       "minThreadDiameter": 13.6,
-      "priceEur": 326.6
+      "priceEur": 365.8
     },
     {
       "id": 350,
@@ -5803,7 +5803,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 29.25,
       "overallLength": 83,
       "minThreadDiameter": 15.6,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 351,
@@ -5818,7 +5818,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 28.57,
       "overallLength": 83,
       "minThreadDiameter": 14.4,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 352,
@@ -5833,7 +5833,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27,
       "overallLength": 83,
       "minThreadDiameter": 15.6,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 353,
@@ -5848,7 +5848,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.75,
       "overallLength": 83,
       "minThreadDiameter": 15.6,
-      "priceEur": 326.6
+      "priceEur": 365.8
     },
     {
       "id": 354,
@@ -5863,7 +5863,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 15.75,
       "overallLength": 83,
       "minThreadDiameter": 15.6,
-      "priceEur": 296.8
+      "priceEur": 332.4
     },
     {
       "id": 355,
@@ -5878,7 +5878,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 43,
       "overallLength": 100,
       "minThreadDiameter": 15.6,
-      "priceEur": 395.1
+      "priceEur": 442.5
     },
     {
       "id": 356,
@@ -5893,7 +5893,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 40.48,
       "overallLength": 100,
       "minThreadDiameter": 18.65,
-      "priceEur": 395.1
+      "priceEur": 442.5
     },
     {
       "id": 357,
@@ -5908,7 +5908,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 35,
       "overallLength": 100,
       "minThreadDiameter": 15.6,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 358,
@@ -5923,7 +5923,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 33.16,
       "overallLength": 100,
       "minThreadDiameter": 15.475,
-      "priceEur": 395.1
+      "priceEur": 442.5
     },
     {
       "id": 359,
@@ -5938,7 +5938,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 30.96,
       "overallLength": 100,
       "minThreadDiameter": 18.65,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 360,
@@ -5953,7 +5953,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27,
       "overallLength": 83,
       "minThreadDiameter": 15.6,
-      "priceEur": 326.6
+      "priceEur": 365.8
     },
     {
       "id": 361,
@@ -5968,7 +5968,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 26.11,
       "overallLength": 83,
       "minThreadDiameter": 15.475,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 362,
@@ -5983,7 +5983,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 51,
       "overallLength": 100,
       "minThreadDiameter": 15.6,
-      "priceEur": 434.8
+      "priceEur": 487
     },
     {
       "id": 363,
@@ -5998,7 +5998,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 48.75,
       "overallLength": 100,
       "minThreadDiameter": 17.6,
-      "priceEur": 434.8
+      "priceEur": 487
     },
     {
       "id": 364,
@@ -6013,7 +6013,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 41.91,
       "overallLength": 100,
       "minThreadDiameter": 18.65,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 365,
@@ -6028,7 +6028,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 38.75,
       "overallLength": 100,
       "minThreadDiameter": 17.6,
-      "priceEur": 395.1
+      "priceEur": 442.5
     },
     {
       "id": 366,
@@ -6043,7 +6043,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 31.25,
       "overallLength": 100,
       "minThreadDiameter": 17.6,
-      "priceEur": 359.4
+      "priceEur": 402.5
     },
     {
       "id": 367,
@@ -6058,7 +6058,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 31.75,
       "overallLength": 100,
       "minThreadDiameter": 18.65,
-      "priceEur": 326.6
+      "priceEur": 365.8
     },
     {
       "id": 368,
@@ -6073,7 +6073,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 42.72,
       "overallLength": 100,
       "minThreadDiameter": 15.475,
-      "priceEur": 395.1
+      "priceEur": 442.5
     },
     {
       "id": 369,
@@ -6088,7 +6088,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.5,
       "overallLength": 76,
       "minThreadDiameter": 11.7,
-      "priceEur": 330.7
+      "priceEur": 363.8
     },
     {
       "id": 370,
@@ -6103,7 +6103,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.25,
       "overallLength": 76,
       "minThreadDiameter": 13.6,
-      "priceEur": 330.7
+      "priceEur": 363.8
     },
     {
       "id": 371,
@@ -6118,7 +6118,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 19.5,
       "overallLength": 76,
       "minThreadDiameter": 11.7,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 372,
@@ -6133,7 +6133,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.5,
       "overallLength": 76,
       "minThreadDiameter": 11.7,
-      "priceEur": 273.4
+      "priceEur": 300.7
     },
     {
       "id": 373,
@@ -6148,7 +6148,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 30.34,
       "overallLength": 100,
       "minThreadDiameter": 13.888,
-      "priceEur": 330.4
+      "priceEur": 363.4
     },
     {
       "id": 374,
@@ -6163,7 +6163,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.31,
       "overallLength": 76,
       "minThreadDiameter": 12.3,
-      "priceEur": 330.4
+      "priceEur": 363.4
     },
     {
       "id": 375,
@@ -6178,7 +6178,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 23.28,
       "overallLength": 76,
       "minThreadDiameter": 13.888,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 376,
@@ -6193,7 +6193,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 23.25,
       "overallLength": 76,
       "minThreadDiameter": 13.6,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 377,
@@ -6208,7 +6208,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.96,
       "overallLength": 76,
       "minThreadDiameter": 12.3,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 378,
@@ -6223,7 +6223,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.25,
       "overallLength": 76,
       "minThreadDiameter": 13.6,
-      "priceEur": 273.4
+      "priceEur": 300.7
     },
     {
       "id": 379,
@@ -6238,7 +6238,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 37,
       "overallLength": 100,
       "minThreadDiameter": 13.6,
-      "priceEur": 330.4
+      "priceEur": 363.4
     },
     {
       "id": 380,
@@ -6253,7 +6253,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 35.79,
       "overallLength": 100,
       "minThreadDiameter": 15.475,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 381,
@@ -6268,7 +6268,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 31,
       "overallLength": 100,
       "minThreadDiameter": 13.6,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 382,
@@ -6283,7 +6283,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 30.69,
       "overallLength": 100,
       "minThreadDiameter": 13.888,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 383,
@@ -6298,7 +6298,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 26.55,
       "overallLength": 76,
       "minThreadDiameter": 15.475,
-      "priceEur": 273.4
+      "priceEur": 300.7
     },
     {
       "id": 384,
@@ -6313,7 +6313,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 24.34,
       "overallLength": 76,
       "minThreadDiameter": 13.888,
-      "priceEur": 273.4
+      "priceEur": 300.7
     },
     {
       "id": 385,
@@ -6328,7 +6328,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 23,
       "overallLength": 76,
       "minThreadDiameter": 13.6,
-      "priceEur": 273.4
+      "priceEur": 300.7
     },
     {
       "id": 386,
@@ -6343,7 +6343,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.12,
       "overallLength": 76,
       "minThreadDiameter": 11.6,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 387,
@@ -6358,7 +6358,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.12,
       "overallLength": 76,
       "minThreadDiameter": 11.6,
-      "priceEur": 315.2
+      "priceEur": 346.7
     },
     {
       "id": 388,
@@ -6373,7 +6373,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 37.62,
       "overallLength": 100,
       "minThreadDiameter": 11.6,
-      "priceEur": 363.6
+      "priceEur": 400
     },
     {
       "id": 389,
@@ -6388,7 +6388,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 32.37,
       "overallLength": 100,
       "minThreadDiameter": 11.6,
-      "priceEur": 330.4
+      "priceEur": 363.4
     },
     {
       "id": 390,
@@ -6403,7 +6403,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.12,
       "overallLength": 76,
       "minThreadDiameter": 11.6,
-      "priceEur": 300.5
+      "priceEur": 330.6
     },
     {
       "id": 391,
@@ -6418,7 +6418,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.12,
       "overallLength": 76,
       "minThreadDiameter": 11.6,
-      "priceEur": 273.4
+      "priceEur": 300.7
     },
     {
       "id": 392,
@@ -6433,7 +6433,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 34.19,
       "overallLength": 100,
       "minThreadDiameter": 12.3,
-      "priceEur": 330.4
+      "priceEur": 363.4
     },
     {
       "id": 393,
@@ -6448,7 +6448,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.5,
       "overallLength": 63,
       "minThreadDiameter": 9.8,
-      "priceEur": 255.3
+      "priceEur": 275.7
     },
     {
       "id": 394,
@@ -6463,7 +6463,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.69,
       "overallLength": 63,
       "minThreadDiameter": 9.4,
-      "priceEur": 210.9
+      "priceEur": 227.8
     },
     {
       "id": 395,
@@ -6478,7 +6478,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.5,
       "overallLength": 63,
       "minThreadDiameter": 9.8,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 396,
@@ -6493,7 +6493,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.5,
       "overallLength": 63,
       "minThreadDiameter": 9.8,
-      "priceEur": 210.9
+      "priceEur": 227.8
     },
     {
       "id": 397,
@@ -6508,7 +6508,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.5,
       "overallLength": 63,
       "minThreadDiameter": 9.8,
-      "priceEur": 191.7
+      "priceEur": 207
     },
     {
       "id": 398,
@@ -6523,7 +6523,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 29.94,
       "overallLength": 76,
       "minThreadDiameter": 10.712,
-      "priceEur": 255
+      "priceEur": 275.4
     },
     {
       "id": 399,
@@ -6538,7 +6538,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 28.33,
       "overallLength": 76,
       "minThreadDiameter": 12.3,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 400,
@@ -6553,7 +6553,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.12,
       "overallLength": 76,
       "minThreadDiameter": 11.6,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 401,
@@ -6568,7 +6568,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 24.49,
       "overallLength": 76,
       "minThreadDiameter": 10.712,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 402,
@@ -6583,7 +6583,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 23.5,
       "overallLength": 76,
       "minThreadDiameter": 10.712,
-      "priceEur": 255
+      "priceEur": 275.4
     },
     {
       "id": 403,
@@ -6598,7 +6598,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 22.47,
       "overallLength": 76,
       "minThreadDiameter": 12.3,
-      "priceEur": 210.9
+      "priceEur": 227.8
     },
     {
       "id": 404,
@@ -6613,7 +6613,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.12,
       "overallLength": 76,
       "minThreadDiameter": 11.6,
-      "priceEur": 210.9
+      "priceEur": 227.8
     },
     {
       "id": 405,
@@ -6628,7 +6628,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 19.05,
       "overallLength": 63,
       "minThreadDiameter": 10.712,
-      "priceEur": 210.9
+      "priceEur": 227.8
     },
     {
       "id": 406,
@@ -6643,7 +6643,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 18.41,
       "overallLength": 63,
       "minThreadDiameter": 10.712,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 407,
@@ -6658,7 +6658,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 26.19,
       "overallLength": 76,
       "minThreadDiameter": 9.325,
-      "priceEur": 255
+      "priceEur": 275.4
     },
     {
       "id": 408,
@@ -6673,7 +6673,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 20.64,
       "overallLength": 76,
       "minThreadDiameter": 9.325,
-      "priceEur": 255
+      "priceEur": 275.4
     },
     {
       "id": 409,
@@ -6688,7 +6688,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 15.35,
       "overallLength": 63,
       "minThreadDiameter": 9.325,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 410,
@@ -6703,7 +6703,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.25,
       "overallLength": 63,
       "minThreadDiameter": 9.6,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 411,
@@ -6718,7 +6718,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.75,
       "overallLength": 76,
       "minThreadDiameter": 9.6,
-      "priceEur": 243.4
+      "priceEur": 262.9
     },
     {
       "id": 412,
@@ -6733,7 +6733,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 32.25,
       "overallLength": 76,
       "minThreadDiameter": 9.6,
-      "priceEur": 280.7
+      "priceEur": 303.2
     },
     {
       "id": 413,
@@ -6748,7 +6748,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 27.75,
       "overallLength": 76,
       "minThreadDiameter": 9.6,
-      "priceEur": 255
+      "priceEur": 275.4
     },
     {
       "id": 414,
@@ -6763,7 +6763,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.75,
       "overallLength": 76,
       "minThreadDiameter": 9.6,
-      "priceEur": 232.1
+      "priceEur": 250.7
     },
     {
       "id": 415,
@@ -6778,7 +6778,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.25,
       "overallLength": 63,
       "minThreadDiameter": 9.6,
-      "priceEur": 210.9
+      "priceEur": 227.8
     },
     {
       "id": 416,
@@ -6793,7 +6793,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.37,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 417,
@@ -6808,7 +6808,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.5,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 198
+      "priceEur": 209.9
     },
     {
       "id": 418,
@@ -6823,7 +6823,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 18.12,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 188.9
+      "priceEur": 200.2
     },
     {
       "id": 419,
@@ -6838,7 +6838,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.1,
       "overallLength": 63,
       "minThreadDiameter": 7.2,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 420,
@@ -6853,7 +6853,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 25.62,
       "overallLength": 76,
       "minThreadDiameter": 7.8,
-      "priceEur": 217.7
+      "priceEur": 230.8
     },
     {
       "id": 421,
@@ -6868,7 +6868,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.43,
       "overallLength": 63,
       "minThreadDiameter": 9.325,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 422,
@@ -6883,7 +6883,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.87,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 423,
@@ -6898,7 +6898,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 18.12,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 424,
@@ -6913,7 +6913,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.46,
       "overallLength": 63,
       "minThreadDiameter": 7.738,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 425,
@@ -6928,7 +6928,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.67,
       "overallLength": 63,
       "minThreadDiameter": 9.325,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 426,
@@ -6943,7 +6943,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.37,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 427,
@@ -6958,7 +6958,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.23,
       "overallLength": 63,
       "minThreadDiameter": 7.738,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 428,
@@ -6973,7 +6973,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.5,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 429,
@@ -6988,7 +6988,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.5,
       "overallLength": 63,
       "minThreadDiameter": 7.8,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 430,
@@ -7003,7 +7003,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.06,
       "overallLength": 63,
       "minThreadDiameter": 6.15,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 431,
@@ -7018,7 +7018,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.43,
       "overallLength": 63,
       "minThreadDiameter": 6.15,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 432,
@@ -7033,7 +7033,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.87,
       "overallLength": 63,
       "minThreadDiameter": 7.738,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 433,
@@ -7048,7 +7048,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.64,
       "overallLength": 63,
       "minThreadDiameter": 7.738,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 434,
@@ -7063,7 +7063,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.41,
       "overallLength": 63,
       "minThreadDiameter": 7.738,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 435,
@@ -7078,7 +7078,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.87,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 436,
@@ -7093,7 +7093,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 437,
@@ -7108,7 +7108,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 188.9
+      "priceEur": 200.2
     },
     {
       "id": 438,
@@ -7123,7 +7123,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 19.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 217.7
+      "priceEur": 230.8
     },
     {
       "id": 439,
@@ -7138,7 +7138,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 17.15,
       "overallLength": 63,
       "minThreadDiameter": 6.15,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 440,
@@ -7153,7 +7153,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 441,
@@ -7168,7 +7168,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 16.87,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 442,
@@ -7183,7 +7183,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 14.6,
       "overallLength": 63,
       "minThreadDiameter": 6.15,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 443,
@@ -7198,7 +7198,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 444,
@@ -7213,7 +7213,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.8,
       "overallLength": 63,
       "minThreadDiameter": 6.15,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 445,
@@ -7228,7 +7228,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.5,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 446,
@@ -7243,7 +7243,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.87,
       "overallLength": 63,
       "minThreadDiameter": 5.8,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 447,
@@ -7258,7 +7258,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.75,
       "overallLength": 63,
       "minThreadDiameter": 3.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 448,
@@ -7273,7 +7273,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.35,
       "overallLength": 63,
       "minThreadDiameter": 3.8,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 449,
@@ -7288,7 +7288,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.85,
       "overallLength": 63,
       "minThreadDiameter": 3.8,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 450,
@@ -7303,7 +7303,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.4,
       "overallLength": 63,
       "minThreadDiameter": 4.8,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 451,
@@ -7318,7 +7318,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.2,
       "overallLength": 63,
       "minThreadDiameter": 4.8,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 452,
@@ -7333,7 +7333,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.8,
       "overallLength": 63,
       "minThreadDiameter": 4.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 453,
@@ -7348,7 +7348,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.75,
       "overallLength": 63,
       "minThreadDiameter": 4.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 454,
@@ -7363,7 +7363,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.25,
       "overallLength": 63,
       "minThreadDiameter": 2.8,
-      "priceEur": 197.9
+      "priceEur": 209.8
     },
     {
       "id": 455,
@@ -7378,7 +7378,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.75,
       "overallLength": 63,
       "minThreadDiameter": 2.8,
-      "priceEur": 180
+      "priceEur": 190.8
     },
     {
       "id": 456,
@@ -7393,7 +7393,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.25,
       "overallLength": 63,
       "minThreadDiameter": 2.8,
-      "priceEur": 163.6
+      "priceEur": 173.4
     },
     {
       "id": 457,
@@ -7408,7 +7408,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9.52,
       "overallLength": 50,
       "minThreadDiameter": 5.286,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 458,
@@ -7423,7 +7423,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 15.35,
       "overallLength": 50,
       "minThreadDiameter": 5.286,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 459,
@@ -7438,7 +7438,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 12.25,
       "overallLength": 50,
       "minThreadDiameter": 5.286,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 460,
@@ -7453,7 +7453,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 12.17,
       "overallLength": 50,
       "minThreadDiameter": 5.286,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 461,
@@ -7468,7 +7468,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.05,
       "overallLength": 50,
       "minThreadDiameter": 5.286,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 462,
@@ -7483,7 +7483,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.35,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 463,
@@ -7498,7 +7498,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.75,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 159.4
+      "priceEur": 165.8
     },
     {
       "id": 464,
@@ -7513,7 +7513,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9.13,
       "overallLength": 50,
       "minThreadDiameter": 3.966,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 465,
@@ -7528,7 +7528,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.75,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 466,
@@ -7543,7 +7543,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.54,
       "overallLength": 50,
       "minThreadDiameter": 3.966,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 467,
@@ -7558,7 +7558,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.35,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 468,
@@ -7573,7 +7573,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11.51,
       "overallLength": 50,
       "minThreadDiameter": 3.966,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 469,
@@ -7588,7 +7588,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.85,
       "overallLength": 50,
       "minThreadDiameter": 3.8,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 470,
@@ -7603,7 +7603,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.4,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 471,
@@ -7618,7 +7618,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.8,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 159.4
+      "priceEur": 165.8
     },
     {
       "id": 472,
@@ -7633,7 +7633,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.4,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 473,
@@ -7648,7 +7648,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.2,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 474,
@@ -7663,7 +7663,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.8,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 475,
@@ -7678,7 +7678,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.75,
       "overallLength": 50,
       "minThreadDiameter": 4.8,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 476,
@@ -7693,7 +7693,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9,
       "overallLength": 50,
       "minThreadDiameter": 4.626,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 477,
@@ -7708,7 +7708,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.33,
       "overallLength": 50,
       "minThreadDiameter": 4.626,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 478,
@@ -7723,7 +7723,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 13.23,
       "overallLength": 50,
       "minThreadDiameter": 4.626,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 479,
@@ -7738,7 +7738,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 11.11,
       "overallLength": 50,
       "minThreadDiameter": 4.626,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 480,
@@ -7753,7 +7753,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.72,
       "overallLength": 50,
       "minThreadDiameter": 4.626,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 481,
@@ -7768,7 +7768,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.87,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 482,
@@ -7783,7 +7783,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 10.12,
       "overallLength": 50,
       "minThreadDiameter": 4.3,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 483,
@@ -7798,7 +7798,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9.53,
       "overallLength": 50,
       "minThreadDiameter": 3.966,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 484,
@@ -7813,7 +7813,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.41,
       "overallLength": 50,
       "minThreadDiameter": 3.966,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 485,
@@ -7828,7 +7828,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.94,
       "overallLength": 50,
       "minThreadDiameter": 3.305,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 486,
@@ -7843,7 +7843,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.1,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 487,
@@ -7858,7 +7858,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.03,
       "overallLength": 50,
       "minThreadDiameter": 3.305,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 488,
@@ -7873,7 +7873,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.3,
       "overallLength": 50,
       "minThreadDiameter": 3.3,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 489,
@@ -7888,7 +7888,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.33,
       "overallLength": 50,
       "minThreadDiameter": 3.305,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 490,
@@ -7903,7 +7903,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.75,
       "overallLength": 50,
       "minThreadDiameter": 3.305,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 491,
@@ -7918,7 +7918,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 9.92,
       "overallLength": 50,
       "minThreadDiameter": 3.305,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 492,
@@ -7933,7 +7933,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.22,
       "overallLength": 50,
       "minThreadDiameter": 2.975,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 493,
@@ -7948,7 +7948,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.48,
       "overallLength": 50,
       "minThreadDiameter": 2.975,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 494,
@@ -7963,7 +7963,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.25,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 495,
@@ -7978,7 +7978,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.75,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 159.4
+      "priceEur": 165.8
     },
     {
       "id": 496,
@@ -7993,7 +7993,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.57,
       "overallLength": 50,
       "minThreadDiameter": 2.975,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 497,
@@ -8008,7 +8008,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 8.25,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 498,
@@ -8023,7 +8023,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 7.3,
       "overallLength": 50,
       "minThreadDiameter": 2.975,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 499,
@@ -8038,7 +8038,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.75,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 500,
@@ -8053,7 +8053,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.4,
       "overallLength": 50,
       "minThreadDiameter": 2.975,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 501,
@@ -8068,7 +8068,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.25,
       "overallLength": 50,
       "minThreadDiameter": 2.8,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 502,
@@ -8083,7 +8083,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.61,
       "overallLength": 50,
       "minThreadDiameter": 2.645,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 503,
@@ -8098,7 +8098,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 6.67,
       "overallLength": 50,
       "minThreadDiameter": 2.645,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 504,
@@ -8113,7 +8113,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.03,
       "overallLength": 50,
       "minThreadDiameter": 2.645,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 505,
@@ -8128,7 +8128,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.4,
       "overallLength": 50,
       "minThreadDiameter": 2.645,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 506,
@@ -8143,7 +8143,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.67,
       "overallLength": 50,
       "minThreadDiameter": 2.315,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 507,
@@ -8158,7 +8158,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.56,
       "overallLength": 50,
       "minThreadDiameter": 2.315,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 508,
@@ -8173,7 +8173,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.62,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 509,
@@ -8188,7 +8188,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.31,
       "overallLength": 50,
       "minThreadDiameter": 2.315,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 510,
@@ -8203,7 +8203,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.5,
       "overallLength": 50,
       "minThreadDiameter": 2.315,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 511,
@@ -8218,7 +8218,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.27,
       "overallLength": 50,
       "minThreadDiameter": 2.3,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 512,
@@ -8233,7 +8233,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.96,
       "overallLength": 50,
       "minThreadDiameter": 1.984,
-      "priceEur": 167.1
+      "priceEur": 173.8
     },
     {
       "id": 513,
@@ -8248,7 +8248,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.77,
       "overallLength": 50,
       "minThreadDiameter": 1.984,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 514,
@@ -8263,7 +8263,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.22,
       "overallLength": 50,
       "minThreadDiameter": 1.984,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 515,
@@ -8278,7 +8278,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 5.17,
       "overallLength": 50,
       "minThreadDiameter": 2,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 516,
@@ -8293,7 +8293,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.86,
       "overallLength": 50,
       "minThreadDiameter": 1.984,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 517,
@@ -8308,7 +8308,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.82,
       "overallLength": 50,
       "minThreadDiameter": 2,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 518,
@@ -8323,7 +8323,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 4.6,
       "overallLength": 50,
       "minThreadDiameter": 1.8,
-      "priceEur": 151.9
+      "priceEur": 158
     },
     {
       "id": 519,
@@ -8338,7 +8338,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 3.4,
       "overallLength": 50,
       "minThreadDiameter": 1.8,
-      "priceEur": 138.1
+      "priceEur": 143.6
     },
     {
       "id": 520,
@@ -8353,7 +8353,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 35,
       "overallLength": 100,
       "minThreadDiameter": null,
-      "priceEur": 588.7
+      "priceEur": 682.9
     },
     {
       "id": 521,
@@ -8368,7 +8368,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 26.25,
       "overallLength": 83,
       "minThreadDiameter": null,
-      "priceEur": 395.1
+      "priceEur": 442.5
     },
     {
       "id": 522,
@@ -8383,7 +8383,7 @@ window.SmiProgData = {
       "cuttingEdgeLength": 21.5,
       "overallLength": 76,
       "minThreadDiameter": null,
-      "priceEur": 330.4
+      "priceEur": 363.4
     }
   ]
 };

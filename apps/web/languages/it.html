@@ -1,0 +1,544 @@
+<!DOCTYPE html><html lang="it"><head><script>window.SmiProgConfig={"locale":"it","assetBase":"../assets/"};</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmiProg - Fresatura di filetti</title>
+  <!-- Copyright (c) 2026 SmiCut AB. Licensed under the MIT License; see LICENSE. -->
+  <meta name="description" content="SmiCut SmiProg thread milling calculator for cutting data, tool selection and Fanuc CNC program generation.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../styles.css?v=20261110-8">
+  <link rel="stylesheet" href="../material-selector.css?v=20261005-1">
+</head>
+<body>
+  <main id="smiprog-app" class="spg-app">
+    <section class="spg-shell" aria-label="SmiProg - Fresatura di filetti" data-i18n-aria-label="aria.calculator">
+      <div class="spg-tabs" role="tablist" aria-label="SmiProg" data-i18n-aria-label="aria.sections">
+        <button type="button" class="spg-tab spg-tab-active" data-spg-tab="start" role="tab" aria-selected="true" data-i18n-html="tabs.start">Pagina iniziale</button>
+        <button type="button" class="spg-tab" data-spg-tab="materialselector" role="tab" aria-selected="false" data-i18n-html="tabs.materialSelector">Selettore materiale SmiCut</button>
+        <button type="button" class="spg-tab" data-spg-tab="main" role="tab" aria-selected="false" data-i18n="tabs.threadMilling">Fresatura di filetti interni</button>
+        <button type="button" class="spg-tab" data-spg-tab="compare" role="tab" aria-selected="false" data-i18n="tabs.compare">Confrontare</button>
+        <button type="button" class="spg-tab" data-spg-tab="information" role="tab" aria-selected="false" data-i18n="tabs.information">Informazioni</button>
+      </div>
+
+      <section id="spg-start-panel" class="spg-panel spg-panel-active" role="tabpanel">
+        <div class="spg-start-content">
+          <!-- Lucide icons (arrow-left-right, book-open): ISC License.
+          Copyright (c) 2026 Lucide Icons and Contributors.
+          Permission to use, copy, modify, and/or distribute this software for any purpose
+          with or without fee is hereby granted, provided that the above copyright notice
+          and this permission notice appear in all copies.
+          THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+          REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+          AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+          INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+          LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+          OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+          PERFORMANCE OF THIS SOFTWARE. -->
+          <div class="spg-start-grid">
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-main" data-spg-start-tab="main">
+              <strong><span data-i18n="start.threadMilling.title">Fresatura di filetti interni</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.threadMilling.description">Trova il tuo utensile, calcola i dati di taglio e crea un programma CNC.</span>
+              <span class="spg-start-card-visual" aria-hidden="true"><img src="../assets/thread-mills/NB08075D21_1.5ISO_AC.webp" alt=""></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-compare" data-spg-start-tab="compare">
+              <strong><span data-i18n="start.compare.title">Confrontare</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.compare.description">Confrontare due utensili, tempo di lavorazione e costo per filettatura.</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="arrow-left-right" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"></path><path d="M4 7h16"></path><path d="m16 21 4-4-4-4"></path><path d="M20 17H4"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-information" data-spg-start-tab="information">
+              <strong><span data-i18n="start.information.title">Informazioni</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.information.description">Come usare SmiProg</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="book-open" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16"></path><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-materialselector" data-spg-start-tab="materialselector">
+              <span class="spg-start-card-materialselector-icon" aria-hidden="true"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><circle cx="21" cy="21" r="12" style="fill:none; stroke:#676d72; stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round;"></circle><path d="M30.2,30.2l10.2,10.2" style="fill:none; stroke:#676d72; stroke-width:4.6; stroke-linecap:round; stroke-linejoin:round;"></path></svg></span>
+              <strong><span data-i18n="start.materialSelector.title">Selettore materiale SmiCut</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.materialSelector.description">Trova la categoria SmiCut corretta da un nome o una designazione del materiale.</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-material-selector-panel" class="spg-panel spg-material-selector-panel" role="tabpanel" hidden="">
+        <div id="spg-material-selector-widget">
+          <div class="sms-panel">
+            <div class="sms-header"><span>SmiCut Material Selector</span></div>
+            <div class="sms-welcome" id="spg-material-selector-welcome" data-sms-role="welcome">
+              <div class="sms-welcome-title" data-sms-i18n="welcomeTitle" role="heading" aria-level="2">Which material will you machine?</div>
+              <div data-sms-i18n="welcomeDescription">Enter the material designation or name, and we’ll help you find the right material category.</div>
+            </div>
+            <div id="spg-material-selector-messages" data-sms-role="messages" class="sms-messages" role="log" aria-label="Material conversation" aria-live="polite" hidden=""></div>
+            <div class="sms-composer">
+              <label id="spg-material-selector-label" data-sms-role="label" for="spg-material-selector-input"><svg class="sms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"></path></svg> <span data-sms-i18n="enterLabel">Enter your material</span></label>
+              <div class="sms-input-row">
+                <textarea id="spg-material-selector-input" data-sms-role="input" rows="1" maxlength="4000" placeholder="E.g. AISI 1045 or EN 1.4301"></textarea>
+                <button id="spg-material-selector-send" data-sms-role="send" type="button" aria-label="Find material category" disabled="">Find material category</button>
+              </div>
+              <div id="spg-material-selector-status" data-sms-role="status" role="status"></div>
+              <button id="spg-material-selector-retry" data-sms-role="retry" type="button" hidden="" data-sms-i18n="retry">Try again</button>
+            </div>
+            <button id="spg-material-selector-apply" data-sms-role="apply" class="sms-apply-material" type="button" hidden="">Use in SmiProg</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-main-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-layout">
+          <form class="spg-form-stack" id="spg-form">
+            <section class="spg-inputs-card">
+              <div class="spg-field">
+                <label for="spg-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Materiale da lavorare</span></label>
+                <select id="spg-material" class="spg-control"></select>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Profilo di filettatura</span></label>
+                  <select id="spg-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Dimensione filettatura</span></label>
+                  <select id="spg-thread-size" class="spg-control"></select>
+                </div>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Diametro filettatura (mm)</span></label>
+                  <input id="spg-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label id="spg-pitch-label" for="spg-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Passo (mm)</span></label>
+                  <input id="spg-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Lunghezza del filetto (mm)</span></label>
+                  <input id="spg-thread-length" class="spg-control" type="number" min="0" step="0.001" placeholder="Lunghezza del filetto" data-i18n-placeholder="placeholder.enterLength">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-safety-distance" class="spg-field-label"><span class="spg-step">7</span><span data-i18n="field.safetyDistance">Distanza di sicurezza (mm)</span></label>
+                  <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2">
+                </div>
+              </div>
+
+              <div id="spg-tool-field" class="spg-field">
+                <label for="spg-tool" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.tool">Fresa a filettare</span></label>
+                <select id="spg-tool" class="spg-control"></select>
+                <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
+                  <label for="spg-marked-diameter" class="spg-field-label" data-i18n="field.cutterDiameter">Diametro fresa (mm)</label>
+                  <div class="spg-marked-diameter-controls">
+                    <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
+                    <button id="spg-reset-diameter" type="button" aria-label="Ripristina" data-i18n-aria-label="action.reset" title="Reset">↺</button>
+                    <small id="spg-marked-diameter-help" data-i18n="tool.markedHelp">Inserire il diametro marcato a laser sulla fresa per regolare il programma CNC e ottenere la filettatura in tolleranza.</small>
+                  </div>
+                </div>
+                <div id="spg-custom-tool-fields" class="spg-custom-tool-fields" hidden="">
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cutterDiameter">Diametro fresa (mm)</span></label>
+                    <input id="spg-override-cutter-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-edge-length" class="spg-field-label"><span class="spg-step">10</span><span data-i18n="field.cuttingLength">Lunghezza di taglio (mm)</span></label>
+                    <input id="spg-override-edge-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-flutes" class="spg-field-label"><span class="spg-step">11</span><span data-i18n="field.flutes">Numero di taglienti</span></label>
+                    <input id="spg-override-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                </div>
+                <div id="spg-tool-summary" class="spg-tool-inline-summary"></div>
+                <a id="spg-tool-link" class="spg-tool-link spg-tool-link-disabled" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">&nbsp;</a>
+              </div>
+
+              <div class="spg-note" role="status" aria-live="polite">
+                <div class="spg-note-title" data-i18n="note.title">NOTA:</div>
+                <div id="spg-note-message" class="spg-note-text" data-i18n="note.enterThreadLength">Inserisci la lunghezza del filetto per selezionare un utensile adatto.</div>
+              </div>
+            </section>
+          </form>
+
+          <div class="spg-results">
+            <section class="spg-card spg-final-card">
+              <div class="spg-card-head">
+                <div class="spg-section-title" data-i18n="section.cuttingData">Dati di taglio</div>
+                <div id="spg-cutting-data-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cutting-data" class="spg-button" data-i18n="button.copy">Copia</button>
+              </div>
+              <div id="spg-cutting-data" class="spg-final-calculations">
+                <div class="spg-final-summary-frame">
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.cuttingSpeed">Velocità di taglio</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-cutting-speed" class="spg-result-value">-</span>
+                      <input id="spg-override-cutting-speed" class="spg-adjustable-input" type="number" min="0" step="1">
+                      <span id="spg-final-cutting-speed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.feedTooth">Avanzamento per dente</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-feed" class="spg-result-value">-</span>
+                      <input id="spg-override-feed" class="spg-adjustable-input" type="number" min="0" step="0.001">
+                      <span id="spg-final-feed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label"><span data-i18n="result.radialPasses">Passate radiali</span> <span class="spg-label-note" data-i18n="result.max3">(≤ 3)</span></span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-radial-passes" class="spg-result-value">-</span>
+                      <input id="spg-override-radial-passes" class="spg-adjustable-input" type="number" min="1" max="3" step="1">
+                      <span id="spg-final-radial-passes-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.axialPasses">Passate assiali</span>
+                    <span id="spg-final-axial-passes" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.spindleSpeed">Velocità del mandrino</span>
+                    <span id="spg-final-spindle-speed" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedThreadDiameter">Avanzamento al diametro di filettatura</span>
+                    <span id="spg-final-feed-thread" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedCenter">Avanzamento al centro della fresa</span>
+                    <span id="spg-final-feed-center" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.timeToMillThread">Tempo di fresatura del filetto</span>
+                    <span id="spg-final-machining-time" class="spg-result-value">-</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="spg-card spg-cnc-card">
+              <div class="spg-cnc-head">
+                <div class="spg-section-title" data-i18n="section.cncProgram">Programma CNC</div>
+                <div id="spg-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cnc" class="spg-button" data-i18n="button.copy">Copia</button>
+              </div>
+              <div class="spg-cnc-settings spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-process" class="spg-field-label spg-visually-hidden"><span data-i18n="field.manufacturingProcess">Processo di produzione</span></label>
+                  <select id="spg-process" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-control-system" class="spg-field-label spg-visually-hidden"><span data-i18n="field.controlSystem">Sistema di controllo</span></label>
+                  <select id="spg-control-system" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-thread-hand" class="spg-field-label spg-visually-hidden"><span data-i18n="field.threadHand">Senso della filettatura</span></label>
+                  <select id="spg-thread-hand" class="spg-control">
+                    <option value="right" data-i18n="option.rightHandThread">Filettatura destra</option>
+                    <option value="left" data-i18n="option.leftHandThread">Filettatura sinistra</option>
+                  </select>
+                </div>
+
+                <div class="spg-field spg-dev-only">
+                  <label for="spg-program-template" data-i18n="field.programTemplate">Fanuc - Programma CNC</label>
+                  <select id="spg-program-template" class="spg-control">
+                    <option value="" data-i18n="option.auto">Auto</option>
+                    <option value="milling-normal-1-pass" data-i18n="option.millingNormal1">Fresatura di filetti interni su centro di lavoro - Normale (1)</option>
+                    <option value="milling-normal-2-pass" data-i18n="option.millingNormal2">Fresatura di filetti interni su centro di lavoro - Normale (2)</option>
+                    <option value="milling-normal-3-pass" data-i18n="option.millingNormal3">Fresatura di filetti interni su centro di lavoro - Normale (3)</option>
+                    <option value="milling-axial-1-pass" data-i18n="option.millingAxial1">Fresatura di filetti interni su centro di lavoro - Assiale (1)</option>
+                    <option value="milling-axial-2-pass" data-i18n="option.millingAxial2">Fresatura di filetti interni su centro di lavoro - Assiale (2)</option>
+                    <option value="milling-axial-3-pass" data-i18n="option.millingAxial3">Fresatura di filetti interni su centro di lavoro - Assiale (3)</option>
+                    <option value="milling-micro-1-pass" data-i18n="option.millingMicro1">Fresatura di filetti interni su centro di lavoro - Micro (1)</option>
+                    <option value="milling-micro-2-pass" data-i18n="option.millingMicro2">Fresatura di filetti interni su centro di lavoro - Micro (2)</option>
+                    <option value="milling-micro-3-pass" data-i18n="option.millingMicro3">Fresatura di filetti interni su centro di lavoro - Micro (3)</option>
+                    <option value="milling-tapered-1-pass" data-i18n="option.millingTapered1">Fresatura di filetti interni su centro di lavoro - Conico (1)</option>
+                    <option value="milling-tapered-2-pass" data-i18n="option.millingTapered2">Fresatura di filetti interni su centro di lavoro - Conico (2)</option>
+                    <option value="milling-tapered-3-pass" data-i18n="option.millingTapered3">Fresatura di filetti interni su centro di lavoro - Conico (3)</option>
+                    <option value="lathe-normal-1-pass" data-i18n="option.latheNormal1">Fresatura di filetti interni su tornio con utensile motorizzato - Normale (1)</option>
+                    <option value="lathe-normal-2-pass" data-i18n="option.latheNormal2">Fresatura di filetti interni su tornio con utensile motorizzato - Normale (2)</option>
+                    <option value="lathe-normal-3-pass" data-i18n="option.latheNormal3">Fresatura di filetti interni su tornio con utensile motorizzato - Normale (3)</option>
+                    <option value="lathe-axial-1-pass" data-i18n="option.latheAxial1">Fresatura di filetti interni su tornio con utensile motorizzato - Assiale (1)</option>
+                    <option value="lathe-axial-2-pass" data-i18n="option.latheAxial2">Fresatura di filetti interni su tornio con utensile motorizzato - Assiale (2)</option>
+                    <option value="lathe-axial-3-pass" data-i18n="option.latheAxial3">Fresatura di filetti interni su tornio con utensile motorizzato - Assiale (3)</option>
+                    <option value="lathe-micro-1-pass" data-i18n="option.latheMicro1">Fresatura di filetti interni su tornio con utensile motorizzato - Micro (1)</option>
+                    <option value="lathe-micro-2-pass" data-i18n="option.latheMicro2">Fresatura di filetti interni su tornio con utensile motorizzato - Micro (2)</option>
+                    <option value="lathe-micro-3-pass" data-i18n="option.latheMicro3">Fresatura di filetti interni su tornio con utensile motorizzato - Micro (3)</option>
+                    <option value="lathe-tapered-1-pass" data-i18n="option.latheTapered1">Fresatura di filetti interni su tornio con utensile motorizzato - Conico (1)</option>
+                    <option value="lathe-tapered-2-pass" data-i18n="option.latheTapered2">Fresatura di filetti interni su tornio con utensile motorizzato - Conico (2)</option>
+                    <option value="lathe-tapered-3-pass" data-i18n="option.latheTapered3">Fresatura di filetti interni su tornio con utensile motorizzato - Conico (3)</option>
+                  </select>
+                </div>
+              </div>
+              <textarea id="spg-cnc-program" class="spg-copy-text" readonly="" spellcheck="false" placeholder="Correggere gli input per generare un programma CNC." data-i18n-placeholder="placeholder.cncProgram"></textarea>
+              <div id="spg-cnc-disclaimer" class="spg-help-text" data-i18n="cnc.disclaimer">Verificare il programma CNC in simulazione o in modalità blocco singolo prima della lavorazione. Le opzioni della macchina e le impostazioni del postprocessor possono richiedere adeguamenti.</div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div id="spg-compare-access" class="spg-compare-access">
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Inserisci i tuoi prezzi utensile. I rivenditori SmiCut possono richiedere a SmiCut la password per visualizzare i prezzi di listino.</p>
+          <div id="spg-compare-lock" class="spg-compare-password-row">
+            <label for="spg-compare-password" data-i18n="compare.password">Password</label>
+            <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">Sblocca i prezzi di listino</button>
+          </div>
+          <div id="spg-compare-unlock-message" class="spg-help-text" role="status"></div>
+        </div>
+
+        <div id="spg-compare-content" class="spg-compare-content">
+          <div class="spg-compare-workspace">
+            <section class="spg-compare-thread-card">
+              <div class="spg-compare-thread-input-grid">
+                <div class="spg-field spg-compare-thread-material-field">
+                  <label for="spg-compare-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Materiale da lavorare</span></label>
+                  <select id="spg-compare-material" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-compare-thread-profile-field">
+                  <label for="spg-compare-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Profilo di filettatura</span></label>
+                  <select id="spg-compare-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-size-field">
+                  <label for="spg-compare-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Dimensione filettatura</span></label>
+                  <select id="spg-compare-thread-size" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-diameter-field">
+                  <label for="spg-compare-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Diametro filettatura (mm)</span></label>
+                  <input id="spg-compare-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-pitch-field">
+                  <label id="spg-compare-pitch-label" for="spg-compare-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Passo (mm)</span></label>
+                  <input id="spg-compare-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-length-field">
+                  <label for="spg-compare-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Lunghezza del filetto (mm)</span></label>
+                  <input id="spg-compare-thread-length" class="spg-control" type="number" min="0" step="0.001" value="12">
+                </div>
+
+                <div class="spg-field spg-compare-machine-cost-field">
+                  <label for="spg-machine-cost" class="spg-field-label"><span data-i18n="field.machineCostPerHour">Costo macchina per ora (€)</span></label>
+                  <input id="spg-machine-cost" class="spg-control" type="number" min="0" step="0.01" value="80">
+                </div>
+              </div>
+            </section>
+
+            <div class="spg-compare-tool-grid">
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-a-card">
+                <div id="spg-compare-tool-a-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-a" data-i18n="field.toolA">Utensile A</label>
+                  <select id="spg-compare-tool-a" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-a-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-price" data-i18n="field.toolingCost">Costo utensile (€)</label>
+                  <input id="spg-compare-tool-a-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-life" data-i18n="field.toolLife">Vita dell'utensile (minuti)</label>
+                  <input id="spg-compare-tool-a-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-diameter" data-i18n="field.cutterDiameter">Diametro fresa (mm)</label>
+                  <input id="spg-compare-tool-a-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-length" data-i18n="field.cuttingLength">Lunghezza di taglio (mm)</label>
+                  <input id="spg-compare-tool-a-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-flutes" data-i18n="field.flutes">Numero di taglienti</label>
+                  <input id="spg-compare-tool-a-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-speed" data-i18n="field.cuttingSpeed">Velocità di taglio (m/min)</label>
+                  <input id="spg-compare-tool-a-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-feed" data-i18n="field.feedPerTooth">Avanzamento per dente (mm/dente)</label>
+                  <input id="spg-compare-tool-a-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-passes" data-i18n="field.radialPassesMax">Passate radiali (max 3)</label>
+                  <input id="spg-compare-tool-a-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-b-card">
+                <div id="spg-compare-tool-b-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-b" data-i18n="field.toolB">Utensile B</label>
+                  <select id="spg-compare-tool-b" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-b-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-price" data-i18n="field.toolingCost">Costo utensile (€)</label>
+                  <input id="spg-compare-tool-b-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-life" data-i18n="field.toolLife">Vita dell'utensile (minuti)</label>
+                  <input id="spg-compare-tool-b-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-diameter" data-i18n="field.cutterDiameter">Diametro fresa (mm)</label>
+                  <input id="spg-compare-tool-b-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-length" data-i18n="field.cuttingLength">Lunghezza di taglio (mm)</label>
+                  <input id="spg-compare-tool-b-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-flutes" data-i18n="field.flutes">Numero di taglienti</label>
+                  <input id="spg-compare-tool-b-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-speed" data-i18n="field.cuttingSpeed">Velocità di taglio (m/min)</label>
+                  <input id="spg-compare-tool-b-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-feed" data-i18n="field.feedPerTooth">Avanzamento per dente (mm/dente)</label>
+                  <input id="spg-compare-tool-b-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-passes" data-i18n="field.radialPassesMax">Passate radiali (max 3)</label>
+                  <input id="spg-compare-tool-b-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="spg-compare-note-row">
+            <div class="spg-note spg-compare-note" role="status" aria-live="polite">
+              <div class="spg-note-title" data-i18n="note.title">NOTA:</div>
+              <div id="spg-compare-summary" class="spg-note-text"></div>
+            </div>
+            <button id="spg-use-current-setup" type="button" class="spg-button" data-i18n="compare.useCurrent">Usa configurazione attuale</button>
+          </div>
+
+          <section class="spg-card spg-final-card spg-compare-results-card">
+            <div id="spg-cost-data" class="spg-compare-result-table"></div>
+            <p class="spg-help-text" data-i18n="compare.referencePrices">La durata utensile è espressa in minuti di taglio. Il costo macchina è indicato per ora.</p>
+          </section>
+        </div>
+      </section>
+
+      <section id="spg-information-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-info-page">
+          <article class="spg-info-card spg-info-overview-card">
+            <div class="spg-info-hero-head">
+              <h2 data-i18n="info.howToUse">Come usare SmiProg</h2>
+            </div>
+            <div class="spg-info-overview-copy">
+              <div class="spg-info-workflow">
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definire la filettatura</strong><p data-i18n="info.step1.body">Selezionare il materiale, il profilo della filettatura e la dimensione, la lunghezza della filettatura e la distanza di sicurezza. M utilizza millimetri per il passo; altri profili utilizzano filetti per pollice (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Selezionare la fresa a elica</strong><p data-i18n="info.step2.body">Utilizzare un utensile SmiCut suggerito o inserire le dimensioni personalizzate dell'utensile nella selezione dell'utensile.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Verificare l'output</strong><p data-i18n="info.step3.body">Selezionare il processo di produzione, il sistema di controllo e il senso della filettatura nel programma CNC. Rivedere i dati di taglio, il tempo di lavorazione e il programma CNC prima della lavorazione.</p></div></div>
+              </div>
+              <div class="spg-info-check-strip">
+                <strong data-i18n="info.beforeMachining.title">Prima della lavorazione</strong>
+                <p data-i18n="info.beforeMachining.body">Verifica che la fresa per filettare selezionata possa lavorare il diametro della filettatura, il passo e la lunghezza del filetto. Conferma il programma in simulazione o in blocco singolo prima di avviare la produzione.</p>
+              </div>
+            </div>
+
+            <div class="spg-info-overview-figure">
+              <figure class="spg-info-figure">
+                <img src="../assets/info/smiprog-nb.svg" alt="Riferimento alle dimensioni della fresatura a filettare che mostra il diametro della filettatura, il passo, la lunghezza tagliente, la distanza di sicurezza e il diametro della fresa." data-i18n-alt="info.figureAlt">
+                <figcaption>
+                  <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Diametro filettatura</span></span>
+                  <span><strong>P</strong><span data-i18n="info.figure.pitch">Passo</span></span>
+                  <span><strong>L</strong><span data-i18n="info.figure.threadLength">Lunghezza del filetto</span></span>
+                  <span><strong>S</strong><span data-i18n="info.figure.safetyDistance">Distanza di sicurezza</span></span>
+                  <span><strong>d</strong><span data-i18n="info.figure.cutterDiameter">Diametro fresa</span></span>
+                  <span><strong>l</strong><span data-i18n="info.figure.cuttingLength">Lunghezza di taglio</span></span>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <section class="spg-info-section" aria-label="Note di lavorazione" data-i18n-aria-label="aria.machiningNotes">
+            <div class="spg-info-section-head">
+              <h2 data-i18n="info.machiningNotes">Note di lavorazione</h2>
+            </div>
+            <div class="spg-info-notes-grid">
+              <article class="spg-info-card">
+                <h2 data-i18n="info.toolCompensation.title">Compensazione utensile</h2>
+                <p data-i18n="info.toolCompensation.body">La compensazione degli utensili è normalmente necessaria solo per piccole regolazioni. Valori di compensazione elevati possono causare problemi. Utilizzare un valore vicino allo zero per la compensazione del diametro della fresa nella libreria degli utensili del sistema di controllo.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.correctThreadDiameter.title">Correggi il diametro della filettatura</h2>
+                <p data-i18n="info.correctThreadDiameter.body">Il diametro medio del filetto si controlla normalmente con un calibro tampone filettato o con un altro metodo di misura riconosciuto. Se occorre una correzione, eseguirla nel controllo della macchina mantenendo i dati normalizzati del filetto.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.customTools.title">Utensili non in lista o speciali</h2>
+                <p data-i18n="info.customTools.body">Se il tuo utensile non è nell'elenco, scegli le dimensioni personalizzate dell'utensile nella selezione dell'utensile e inserisci il diametro della fresa, la lunghezza tagliente e il numero di taglienti. Verifica attentamente il programma generato quando si utilizzano utensili personalizzati.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
+                <p data-i18n="info.threadBurr.body">Inserire l’intera lunghezza di taglio della fresa a filettare SmiCut in metallo duro integrale nel campo della lunghezza del filetto. ThreadBurr esegue la fresatura e la sbavatura del filetto in un’unica operazione.</p>
+                <p><a href="https://smicut.com/it/threadburr-frese-a-filettare-in-metallo-duro/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">ThreadBurr – frese a filettare in metallo duro</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.oneTwoRows.title">Frese a filettare con solo uno o due denti</h2>
+                <p data-i18n="info.oneTwoRows.body">SmiProg compensa le frese a elica SmiCut standard con una o due file di taglienti. Quando si utilizza una fresa a elica non standard, verificare la relazione tra la lunghezza di taglio e il passo prima della lavorazione.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.flankInfeed.title">Avanzamento laterale</h2>
+                <p data-i18n="info.flankInfeed.body">SmiProg utilizza l'avanzamento laterale quando si programmano più passi radiali. Questo aiuta a ridurre le vibrazioni e migliora la stabilità di lavorazione.</p>
+                <p><a href="https://smicut.com/it/fresatura-dei-filetti-senza-vibrazioni-migliore-produttivita-e-ottimizzazione-dei-costi/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Fresatura dei filetti senza vibrazioni: migliore produttività e ottimizzazione dei costi</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.shortCuttingLength.title">Lunghezza di taglio ridotta</h2>
+                <p data-i18n="info.shortCuttingLength.body">Se l'utensile selezionato ha una lunghezza di taglio inferiore alla lunghezza della filettatura richiesta, SmiProg divide l'operazione in più passi assiali, a condizione che il tipo di utensile lo supporti.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.inserts.title">Frese a filettare ad inserti  intercambiabili</h2>
+                <p data-i18n="info.inserts.body">Per ottenere i dati di taglio per frese a filettare con inserti intercambiabili, selezionare le dimensioni personalizzate nell’elenco utensili. Inserire il diametro effettivo della fresa, la lunghezza di taglio e il numero di inserti o taglienti. Verificare il programma generato prima della lavorazione.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.taperedThreads.title">Filetti conici</h2>
+                <p data-i18n="info.taperedThreads.body">Per i filetti conici, il diametro della fresa si riferisce all’ultimo filetto completo più vicino al codolo. Inserisci il diametro del filetto in quella posizione per ottenere un programma CNC corretto.</p>
+              </article>
+
+              <article class="spg-info-warning" aria-label="Avviso" data-i18n-aria-label="aria.warning">
+                <div class="spg-info-kicker" data-i18n="info.warning.title">Avviso</div>
+                <p data-i18n="info.warning.body">I dati di taglio in SmiProg sono dati di avvio consigliati. Molti fattori possono richiedere regolazioni, tra cui il materiale del pezzo, la stabilità della macchina, il fissaggio, la configurazione dell'utensile, il refrigerante e l'evacuazione dei trucioli. SmiCut non si assume la responsabilità per danni causati dall'utilizzo del programma CNC o dei dati di taglio consigliati dal software.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../i18n/en.js?v=20261110-1"></script>
+  <script src="../js/i18n.js?v=20261110-1"></script>
+  <script src="../data/smiprog-data.js?v=20261110-1"></script>
+  <script src="../data/tool-web-links.js?v=20261110-1"></script>
+  <script src="../js/core.js?v=20261110-1"></script>
+  <script src="../js/material-selector.js?v=20261005-1"></script>
+  <script src="../js/app.js?v=20261110-8"></script>
+
+
+</body></html>

@@ -7,7 +7,7 @@
   <!-- Copyright (c) 2026 SmiCut AB. Licensed under the MIT License; see LICENSE. -->
   <meta name="description" content="SmiCut SmiProg thread milling calculator for cutting data, tool selection and Fanuc CNC program generation.">
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css?v=20261005-6">
+  <link rel="stylesheet" href="./styles.css?v=20261110-8">
   <link rel="stylesheet" href="./material-selector.css?v=20261005-1">
 </head>
 <body>
@@ -130,11 +130,11 @@
                 <label for="spg-tool" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.tool">Tool</span></label>
                 <select id="spg-tool" class="spg-control"></select>
                 <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
-                  <label for="spg-marked-diameter" class="spg-field-label">Cutter diameter (mm)</label>
+                  <label for="spg-marked-diameter" class="spg-field-label" data-i18n="field.cutterDiameter">Cutter diameter (mm)</label>
                   <div class="spg-marked-diameter-controls">
                     <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
-                    <button id="spg-reset-diameter" type="button" aria-label="Reset to catalogue diameter" title="Reset to catalogue diameter">↺</button>
-                    <small id="spg-marked-diameter-help">Enter the laser-marked diameter on your cutter.</small>
+                    <button id="spg-reset-diameter" type="button" aria-label="Reset" data-i18n-aria-label="action.reset" title="Reset">↺</button>
+                    <small id="spg-marked-diameter-help" data-i18n="tool.markedHelp">Enter the laser-marked diameter on your cutter.</small>
                   </div>
                 </div>
                 <div id="spg-custom-tool-fields" class="spg-custom-tool-fields" hidden>
@@ -283,17 +283,17 @@
       </section>
 
       <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden>
-        <div id="spg-compare-lock" class="spg-card spg-lock-card">
-          <div class="spg-section-title" data-i18n="section.compare">Compare</div>
-          <div class="spg-lock-row">
+        <div id="spg-compare-access" class="spg-compare-access">
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Enter your own tool prices. SmiCut dealers can ask SmiCut for the password to view catalogue prices.</p>
+          <div id="spg-compare-lock" class="spg-compare-password-row">
             <label for="spg-compare-password" data-i18n="compare.password">Password</label>
             <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
-            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="button.unlock">Unlock</button>
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">Unlock catalogue prices</button>
           </div>
-          <div class="spg-help-text" data-i18n="compare.lockHelp">This section is intended for SmiCut and distributors.</div>
+          <div id="spg-compare-unlock-message" class="spg-help-text" role="status"></div>
         </div>
 
-        <div id="spg-compare-content" class="spg-compare-content" hidden>
+        <div id="spg-compare-content" class="spg-compare-content">
           <div class="spg-compare-workspace">
             <section class="spg-compare-thread-card">
               <div class="spg-compare-thread-input-grid">
@@ -423,13 +423,17 @@
             </div>
           </div>
 
-          <div class="spg-note spg-compare-note" role="status" aria-live="polite">
-            <div class="spg-note-title" data-i18n="note.title">NOTE:</div>
-            <div id="spg-compare-summary" class="spg-note-text"></div>
+          <div class="spg-compare-note-row">
+            <div class="spg-note spg-compare-note" role="status" aria-live="polite">
+              <div class="spg-note-title" data-i18n="note.title">NOTE:</div>
+              <div id="spg-compare-summary" class="spg-note-text"></div>
+            </div>
+            <button id="spg-use-current-setup" type="button" class="spg-button" data-i18n="compare.useCurrent">Use current setup</button>
           </div>
 
           <section class="spg-card spg-final-card spg-compare-results-card">
             <div id="spg-cost-data" class="spg-compare-result-table"></div>
+            <p class="spg-help-text" data-i18n="compare.referencePrices">Tool life is measured in cutting minutes. Machine cost is the cost per hour.</p>
           </section>
         </div>
       </section>
@@ -490,7 +494,7 @@
               <article class="spg-info-card">
                 <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
                 <p data-i18n="info.threadBurr.body">To use the deburring feature of solid carbide thread mills from SmiCut, input the complete cutting length of the tool in the thread length box. That way the threading and deburring will be made in the same operation.</p>
-                <p><a href="https://smicut.com/en/threadburr-solid-carbide-thread-mills/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link">Read more in the article ThreadBurr Solid Carbide Thread Mills.</a></p>
+                <p><a href="https://smicut.com/en/threadburr-solid-carbide-thread-mills/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">Read more in the article ThreadBurr Solid Carbide Thread Mills.</a></p>
               </article>
 
               <article class="spg-info-card">
@@ -501,7 +505,7 @@
               <article class="spg-info-card">
                 <h2 data-i18n="info.flankInfeed.title">Flank Infeed</h2>
                 <p data-i18n="info.flankInfeed.body">SmiProg uses flank infeed when programming multiple radial passes. This helps reduce vibration and improves machining stability.</p>
-                <p><a href="https://smicut.com/en/vibration-free-thread-milling-improving-productivity-and-economy/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link">Read more in the article Vibration-Free Thread Milling.</a></p>
+                <p><a href="https://smicut.com/en/vibration-free-thread-milling-improving-productivity-and-economy/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Read more in the article Vibration-Free Thread Milling.</a></p>
               </article>
 
               <article class="spg-info-card">
@@ -530,12 +534,12 @@
     </section>
   </main>
 
-  <script src="./i18n/en.js?v=20261005-2"></script>
-  <script src="./js/i18n.js?v=20261005-1"></script>
-  <script src="./data/smiprog-data.js?v=20260604-1"></script>
-  <script src="./data/tool-web-links.js?v=20260604-1"></script>
-  <script src="./js/core.js?v=20261005-4"></script>
+  <script src="./i18n/en.js?v=20261110-1"></script>
+  <script src="./js/i18n.js?v=20261110-1"></script>
+  <script src="./data/smiprog-data.js?v=20261110-1"></script>
+  <script src="./data/tool-web-links.js?v=20261110-1"></script>
+  <script src="./js/core.js?v=20261110-1"></script>
   <script src="./js/material-selector.js?v=20261005-1"></script>
-  <script src="./js/app.js?v=20261005-2"></script>
+  <script src="./js/app.js?v=20261110-8"></script>
 </body>
 </html>

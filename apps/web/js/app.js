@@ -19,6 +19,34 @@
     return i18n.t(key, fallback);
   }
 
+  function translatedError(message) {
+    if (message.startsWith("The laser-marked diameter cannot exceed")) {
+      const limit = message.match(/\(([^)]+)\)/);
+      return uiText("error.marked") + (limit ? ` (${limit[1]})` : "");
+    }
+    const keys = {
+      "A radial pass is too small for this cutter or produces zero feed. Use fewer radial passes, a smaller cutter, or suitable cutting data.": "error.geometry",
+      "The selected cutting data produces zero spindle speed. Increase the cutting speed.": "error.cutting",
+      "Enter thread diameter, pitch and thread length.": "error.dimensions",
+      "Enter a valid safety distance.": "error.safety",
+      "Enter a valid machine cost.": "compare.rateError",
+      "Enter a valid tool life.": "compare.lifeError",
+      "Enter a valid cutter diameter.": "error.tool",
+      "Enter a valid cutting length.": "error.tool",
+      "Enter a valid number of flutes.": "error.wholeFlutes",
+      "Enter a valid tool price.": "compare.priceError",
+      "Enter a valid cutting speed.": "error.cutting",
+      "Enter a valid feed per tooth.": "error.cutting",
+      "No matching tool was found for the selected input.": "error.noTool",
+      "The cutter diameter must be smaller than the thread diameter.": "error.cutterSmaller",
+      "The program doesn't accept your choice.": "cnc.unavailable",
+      "Please, test with other values.": "error.generic",
+      "Heidenhain Klartext is currently implemented for machining-center milling only.": "cnc.unsupportedCombination",
+      "Heidenhain left-hand thread milling is not verified yet.": "cnc.leftHandUnverified"
+    };
+    return keys[message] ? uiText(keys[message], message) : message;
+  }
+
   const elements = {
     tabs: Array.from(document.querySelectorAll("#smiprog-app .spg-tab")),
     startButtons: Array.from(document.querySelectorAll("#smiprog-app [data-spg-start-tab]")),
@@ -113,6 +141,86 @@
 
   let currentResult = null;
   let compareUnlocked = false;
+  let compareInitialized = false;
+
+  function readCompareStorage(key, fallback) {
+    try { return JSON.parse(global.localStorage.getItem(key)) ?? fallback; } catch (_) { return fallback; }
+  }
+
+  function writeCompareStorage(key, value) {
+    try { global.localStorage.setItem(key, JSON.stringify(value)); } catch (_) { /* Session values remain usable. */ }
+  }
+
+  function compareCurrency() {
+    return (i18n.getLocale ? i18n.getLocale() : "en").split("-")[0] === "sv" ? "SEK" : "EUR";
+  }
+
+  function comparePriceAllowed() {
+    return compareCurrency() === "SEK" || compareUnlocked;
+  }
+
+  function compareReferencePrice(tool) {
+    if (!comparePriceAllowed() || !tool || tool.isCustom || !Number.isFinite(tool.priceEur)) return null;
+    const cents = Math.round(tool.priceEur * 100);
+    return compareCurrency() === "SEK" ? Math.floor((cents * 108 + 500) / 1000) : cents / 100;
+  }
+
+  function compareFieldValue(input) {
+    return input.validity.badInput ? "NaN" : input.value;
+  }
+
+  function persistComparePrices() {
+    writeCompareStorage(`smiprog.compare.money.${compareCurrency()}`, {
+      machine: compareFieldValue(elements.machineCost),
+      a: compareFieldValue(elements.compareToolAPrice), b: compareFieldValue(elements.compareToolBPrice)
+    });
+  }
+
+  function updateComparePriceAccess() {
+    elements.compareLock.hidden = comparePriceAllowed();
+    document.getElementById("spg-compare-price-help").hidden = comparePriceAllowed();
+    document.getElementById("spg-compare-access").hidden = comparePriceAllowed();
+    document.querySelector('label[for="spg-machine-cost"] span').textContent = `${uiText("compare.hourlyRate")} (${compareCurrency() === "SEK" ? "kr" : "EUR"})`;
+  }
+
+  function useCurrentCompareSetup() {
+    const firstVisit = !compareInitialized;
+    compareInitialized = true;
+    const main = getMainThreadControls();
+    const target = getCompareThreadControls();
+    elements.compareMaterial.value = elements.material.value;
+    target.threadProfile.value = main.threadProfile.value;
+    target.diameter.value = main.diameter.value;
+    target.pitch.value = main.pitch.value;
+    currentComparePitchMode = updatePitchField(target);
+    updateThreadSizeOptions(main.threadSize.value, target);
+    elements.compareThreadLength.value = elements.threadLength.value;
+    compareToolAId = elements.tool.value;
+    elements.compareToolA.value = compareToolAId;
+    compareToolACustomBaseId = customBaseToolId || elements.tool.value;
+    compareToolBId = "";
+    elements.compareToolB.value = "";
+    for (const side of ["a", "b"]) {
+      const controls = getCompareControls(side);
+      for (const key of ["price", "life", "diameter", "length", "flutes", "speed", "feed", "passes"]) controls[key].value = "";
+    }
+    const a = getCompareControls("a");
+    a.speed.value = elements.overrideCuttingSpeed.value;
+    a.feed.value = elements.overrideFeed.value;
+    a.passes.value = elements.overrideRadialPasses.value;
+    if (isCustomToolSelected()) {
+      a.diameter.value = elements.overrideCutterDiameter.value;
+      a.length.value = elements.overrideEdgeLength.value;
+      a.flutes.value = elements.overrideFlutes.value;
+    }
+    if (firstVisit) {
+      const saved = readCompareStorage(`smiprog.compare.money.${compareCurrency()}`, {});
+      elements.compareToolAPrice.value = saved.a ?? "";
+      elements.compareToolBPrice.value = saved.b ?? "";
+    }
+    renderCostData();
+    persistComparePrices();
+  }
   let currentPitchMode = "mm";
   let currentComparePitchMode = "mm";
   let requestedToolId = "";
@@ -503,7 +611,7 @@
     const sizes = getThreadSizes(profileId);
     controls.threadSize.innerHTML = "";
     if (!sizes.length) {
-      controls.threadSize.appendChild(option(THREAD_SIZE_CUSTOM, "Manual size", true));
+      controls.threadSize.appendChild(option(THREAD_SIZE_CUSTOM, uiText("option.manualSize"), true));
       controls.threadSize.value = THREAD_SIZE_CUSTOM;
       controls.threadSize.disabled = true;
       updateThreadDimensionLock(controls);
@@ -562,7 +670,19 @@
   function handleCompareThreadProfileChange() {
     const previousPitchMode = currentComparePitchMode;
     currentComparePitchMode = updatePitchField(getCompareThreadControls());
-    applyDefaultForThreadProfile(previousPitchMode, getCompareThreadControls());
+    const controls = getCompareThreadControls();
+    if (isManualThreadProfile(controls.threadProfile.value)) {
+      updateThreadSizeOptions(THREAD_SIZE_CUSTOM, controls);
+      const preferred = currentComparePitchMode === "mm" ? 1.5 : (getCoreThreadProfileId(controls.threadProfile.value) === "g" ? 19 : 20);
+      const oldPitch = Number(controls.pitch.value);
+      const profile = data.threadProfiles.find(profile => profile.id === getCoreThreadProfileId(controls.threadProfile.value));
+      const candidates = data.tools.filter(tool => Number(tool.threadProfileCode) === Number(profile.excelId)
+        && tool.minThreadDiameter <= Number(controls.diameter.value) && tool.cuttingEdgeLength >= Number(elements.compareThreadLength.value));
+      const pitches = [...new Set(candidates.map(tool => tool.pitch))];
+      if (previousPitchMode !== currentComparePitchMode || !pitches.includes(oldPitch)) controls.pitch.value = String(pitches.includes(preferred) || !pitches.length ? preferred : pitches[0]);
+    } else {
+      applyDefaultForThreadProfile(previousPitchMode, controls);
+    }
     recalculate({ keepTool: true });
   }
 
@@ -616,7 +736,7 @@
   function fillThreadProfileSelect(select, selectedValue) {
     select.innerHTML = "";
     threadProfileOptions.forEach((profile) => {
-      const optionElement = option(profile.id, profile.label, profile.id === selectedValue);
+      const optionElement = option(profile.id, uiText(`profile.${profile.id}`, profile.label), profile.id === selectedValue);
       if (profile.hidden) optionElement.hidden = true;
       select.appendChild(optionElement);
     });
@@ -659,7 +779,7 @@
   function formatDimension(value) {
     const numericValue = Number(value);
     if (!Number.isFinite(numericValue)) return "-";
-    return numericValue.toLocaleString("sv-SE", {
+    return numericValue.toLocaleString(i18n.getNumberLocale(), {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     });
@@ -669,7 +789,7 @@
     const numericValue = Number(tool && tool.pitch);
     if (!Number.isFinite(numericValue)) return "-";
     const pitchMode = getPitchMode(elements.threadProfile.value);
-    const formattedValue = numericValue.toLocaleString("sv-SE", {
+    const formattedValue = numericValue.toLocaleString(i18n.getNumberLocale(), {
       minimumFractionDigits: 0,
       maximumFractionDigits: 3
     });
@@ -688,7 +808,7 @@
   function formatDecimal(value, decimals) {
     const numericValue = Number(value);
     if (!Number.isFinite(numericValue)) return "-";
-    return numericValue.toLocaleString("sv-SE", {
+    return numericValue.toLocaleString(i18n.getNumberLocale(), {
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals
     });
@@ -698,7 +818,7 @@
     const numericValue = Number(value);
     if (!Number.isFinite(numericValue)) return "-";
     const decimals = Math.abs(numericValue - Math.round(numericValue)) < 0.000001 ? 0 : 1;
-    return numericValue.toLocaleString("sv-SE", {
+    return numericValue.toLocaleString(i18n.getNumberLocale(), {
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals
     });
@@ -707,7 +827,7 @@
   function formatCopyInputNumber(value, maxDecimals) {
     const numericValue = Number(value);
     if (!Number.isFinite(numericValue)) return String(value || "-");
-    return numericValue.toLocaleString("sv-SE", {
+    return numericValue.toLocaleString(i18n.getNumberLocale(), {
       minimumFractionDigits: 0,
       maximumFractionDigits: maxDecimals
     });
@@ -920,6 +1040,9 @@
     const entry = getToolWebEntry(tool);
     const linkTarget = entry && (entry.url || entry.href || entry.ean);
     if (!linkTarget) return "";
+    if (i18n.getLocaleKey() === "sv" && entry.shopProductID) {
+      return `https://webshop.smicut.hansahosting.se/SWE/shop/productinfo/${encodeURIComponent(entry.shopProductID)}`;
+    }
     if (/^https?:\/\//i.test(linkTarget)) return linkTarget;
     return `https://id.smicut.com/${linkTarget}`;
   }
@@ -944,7 +1067,7 @@
     const image = document.createElement("img");
     image.className = "spg-thread-mill-image";
     image.src = imageTarget ? getThreadMillImageUrl(imageTarget) : getToolImageUrl(tool);
-    image.alt = altText || "Solid carbide thread mill";
+    image.alt = altText || uiText("tool.description.standard");
     image.loading = "lazy";
     image.addEventListener("error", () => {
       const fallbackSrc = getThreadMillImageUrl(DEFAULT_THREAD_MILL_IMAGE);
@@ -976,17 +1099,17 @@
 
   function getThreadMillType(tool) {
     const article = normalizeArticleCode(tool && tool.description).toUpperCase();
-    if (article.startsWith("NBK")) return "Solid Carbide Thread Mill with Internal Axial Coolant, ThreadBurr";
-    if (article.startsWith("NBT") || article.startsWith("XBT")) return "Solid Carbide Thread Mill with Internal Radial Coolant, ThreadBurr";
+    if (article.startsWith("NBK")) return uiText("tool.description.axial");
+    if (article.startsWith("NBT") || article.startsWith("XBT")) return uiText("tool.description.radial");
     if (article.startsWith("NS")) {
       return article.includes("_P60_")
-        ? "Single Tooth Solid Carbide Thread Mill, Partial Profile"
-        : "Single Tooth Solid Carbide Thread Mill";
+        ? uiText("tool.description.partial")
+        : uiText("tool.description.single");
     }
-    if (article.startsWith("NM")) return "Two Teeth Solid Carbide Thread Mill";
-    if (article.startsWith("NF")) return "Solid Carbide Thread Mill with Chamfer";
-    if (article.startsWith("NB") || article.startsWith("XB")) return "Solid Carbide Thread Mill, ThreadBurr";
-    return "Solid Carbide Thread Mill";
+    if (article.startsWith("NM")) return uiText("tool.description.double");
+    if (article.startsWith("NF")) return uiText("tool.description.chamfer");
+    if (article.startsWith("NB") || article.startsWith("XB")) return uiText("tool.description.threadBurr");
+    return uiText("tool.description.standard");
   }
 
   function renderToolLink(tool) {
@@ -1031,12 +1154,12 @@
     const nextMode = getPitchMode(controls.threadProfile.value);
     if (nextMode === "tpi") {
       controls.pitchLabelText.textContent = uiText("field.threadsPerInch", "Threads per inch");
-      controls.pitch.placeholder = "e.g. 11, 14, 19";
+      controls.pitch.placeholder = "11 / 14 / 19";
       controls.pitch.step = "0.001";
       controls.pitch.setAttribute("aria-label", uiText("field.threadsPerInch", "Threads per inch"));
     } else {
       controls.pitchLabelText.textContent = uiText("field.pitch", "Pitch (mm)");
-      controls.pitch.placeholder = "e.g. 1.5";
+      controls.pitch.placeholder = formatDecimal(1.5, 1);
       controls.pitch.step = "0.001";
       controls.pitch.setAttribute("aria-label", uiText("field.pitchInMillimeters", "Pitch in millimeters"));
     }
@@ -1138,7 +1261,7 @@
     renderToolLink(null);
     updateCustomToolVisibility();
     if (isCustomToolSelected()) {
-      elements.toolSummary.appendChild(createThreadMillImage(null, "Custom solid carbide thread mill", getCustomThreadMillImage(result)));
+      elements.toolSummary.appendChild(createThreadMillImage(null, uiText("tool.customImage"), getCustomThreadMillImage(result)));
       return;
     }
     const hasTool = Boolean(result.input.threadLength && result.tool);
@@ -1147,24 +1270,23 @@
       [4, 5, 6].includes(Number(result.tool.threadProfileCode)) || article.startsWith("NS")
     );
     document.getElementById("spg-marked-diameter-help").textContent = unmarkedDiameter
-      ? "Adjustment of the cutter diameter."
-      : "Enter the laser-marked diameter on your cutter.";
+      ? uiText("tool.adjustDiameter")
+      : uiText("tool.markedHelp");
     const threadMillType = hasTool ? getThreadMillType(result.tool) : "-";
     const summaryLayout = document.createElement("div");
     summaryLayout.className = "spg-tool-summary-layout";
 
     const imageFrame = createThreadMillImage(hasTool ? result.tool : null, hasTool ? threadMillType : "");
 
-    const typeRow = resultRow("Type of thread mill", threadMillType);
+    const typeRow = resultRow(uiText("copy.type"), threadMillType);
     typeRow.classList.add("spg-tool-type-row");
     const visualGroup = document.createElement("div");
     visualGroup.className = "spg-tool-visual-group";
 
     const metricGrid = document.createElement("div");
     metricGrid.className = "spg-tool-metric-grid";
-
-    metricGrid.appendChild(resultRow("Cutting length", hasTool ? `${formatDimension(result.tool.cuttingEdgeLength)} mm` : "-"));
-    metricGrid.appendChild(resultRow("Flutes", hasTool ? String(result.tool.flutes) : "-"));
+    metricGrid.appendChild(resultRow(uiText("tool.length"), hasTool ? `${formatDimension(result.tool.cuttingEdgeLength)} mm` : "-"));
+    metricGrid.appendChild(resultRow(uiText("tool.flutes"), hasTool ? String(result.tool.flutes) : "-"));
 
     summaryLayout.appendChild(metricGrid);
     visualGroup.appendChild(typeRow);
@@ -1204,7 +1326,7 @@
     setText(elements.finalCuttingSpeed, `${core.fmt(c.recommendedCuttingSpeed, 0)} m/min`);
     setText(elements.finalCuttingSpeedNote, "");
     setReferenceValueState(elements.finalCuttingSpeed, Boolean(overrides.cuttingSpeed));
-    setText(elements.finalFeed, `${formatDecimal(c.calculatedFeedPerTooth, 3)} mm/tooth`);
+    setText(elements.finalFeed, `${formatDecimal(c.calculatedFeedPerTooth, 3)} ${uiText("unit.feed_per_tooth")}`);
     setText(elements.finalFeedNote, "");
     setReferenceValueState(elements.finalFeed, Boolean(overrides.feedPerTooth));
     setText(elements.finalRadialPasses, String(c.calculatedRadialPasses));
@@ -1214,7 +1336,7 @@
     setText(elements.finalSpindleSpeed, `${formatSpindleSpeed(c.spindleSpeed)} rpm`);
     setText(elements.finalFeedThread, `${core.fmt(c.feedAtThreadDiameter, 0)} mm/min`);
     setText(elements.finalFeedCenter, `${core.fmt(c.centerFeed, 0)} mm/min`);
-    setText(elements.finalMachiningTime, `${formatMachiningSeconds(c.machiningTime)} seconds`);
+    setText(elements.finalMachiningTime, `${formatMachiningSeconds(c.machiningTime)} ${uiText("compare.seconds")}`);
   }
 
   function getCompareControls(side) {
@@ -1245,7 +1367,7 @@
       pitch: elements.comparePitch.value,
       threadLength: elements.compareThreadLength.value,
       safetyDistance: "2",
-      machineCost: elements.machineCost.value
+      machineCost: compareFieldValue(elements.machineCost)
     };
   }
 
@@ -1267,7 +1389,7 @@
 
   function setInputPlaceholder(input, value, decimals) {
     const numericValue = Number(value);
-    input.placeholder = Number.isFinite(numericValue) ? formatDecimal(numericValue, decimals) : "Auto";
+    input.placeholder = Number.isFinite(numericValue) ? formatDecimal(numericValue, decimals) : uiText("placeholder.auto");
   }
 
   function getDefaultCompareToolId(side, candidates) {
@@ -1337,8 +1459,17 @@
     return Boolean(controls.diameter.value && controls.length.value && controls.flutes.value);
   }
 
+  function seedCompareCustomDimensions(side, toolId) {
+    const tool = data.tools.find(tool => String(tool.id) === String(toolId));
+    if (!tool) return;
+    const controls = getCompareControls(side);
+    for (const [key, property] of [["diameter", "cutterDiameter"], ["length", "cuttingEdgeLength"], ["flutes", "flutes"]]) {
+      if (controls[key].value === "") controls[key].value = String(tool[property]);
+    }
+  }
+
   function getCompareDimensionOverride(controls, selectedTool, key) {
-    const value = controls[key].value;
+    const value = compareFieldValue(controls[key]);
     if (value !== "") return value;
     if (controls.tool.value === CUSTOM_TOOL_ID) return "";
     if (!selectedTool) return "";
@@ -1357,15 +1488,15 @@
     return {
       ...operationInput,
       selectedToolId: dimensionOverride ? (selectedTool ? String(selectedTool.id) : "") : selectedToolId,
-      toolLife: controls.life.value || "120",
+      toolLife: compareFieldValue(controls.life) || "120",
       overrides: {
-        toolPrice: controls.price.value,
+        toolPrice: compareFieldValue(controls.price),
         cutterDiameter: dimensionOverride ? getCompareDimensionOverride(controls, selectedTool, "diameter") : "",
         cuttingEdgeLength: dimensionOverride ? getCompareDimensionOverride(controls, selectedTool, "length") : "",
         flutes: dimensionOverride ? getCompareDimensionOverride(controls, selectedTool, "flutes") : "",
-        cuttingSpeed: controls.speed.value,
-        feedPerTooth: controls.feed.value,
-        radialPasses: controls.passes.value
+        cuttingSpeed: compareFieldValue(controls.speed),
+        feedPerTooth: compareFieldValue(controls.feed),
+        radialPasses: compareFieldValue(controls.passes)
       }
     };
   }
@@ -1441,9 +1572,10 @@
     typeText.textContent = toolType;
 
     const imageAlt = customSelected
-      ? "Custom solid carbide thread mill"
+      ? uiText("tool.customImage")
       : (hasVisibleTool ? getThreadMillType(resultTool) : "Solid carbide thread mill");
-    const imageTarget = customSelected ? getCustomThreadMillImage(result) : undefined;
+    const imageTarget = customSelected ? getCustomThreadMillImage(result)
+      : (resultTool && resultTool.description.startsWith("XBT") ? "NBT08075D21_1.5ISO_AC.webp" : undefined);
     const visualRow = document.createElement("div");
     visualRow.className = "spg-compare-tool-visual-row";
     const imageFrame = createThreadMillImage(hasVisibleTool ? resultTool : null, imageAlt, imageTarget);
@@ -1456,6 +1588,7 @@
 
   function updateCompareToolMeta(side, candidates, result) {
     const controls = getCompareControls(side);
+    controls.price.classList.add("spg-compare-price-input");
     const selectedToolId = controls.tool.value;
     const selectedTool = selectedToolId === CUSTOM_TOOL_ID ? null : findCompareTool(candidates, selectedToolId);
     const resultTool = result && result.tool ? result.tool : selectedTool;
@@ -1466,15 +1599,17 @@
     renderCompareToolSummary(side, result, selectedTool);
 
     if (selectedTool) {
-      setInputPlaceholder(controls.price, selectedTool.priceEur, 2);
+      controls.price.placeholder = i18n.format("compare.pricePlaceholder", { currency: compareCurrency() === "SEK" ? "kr" : "€" });
+      controls.price.title = uiText("compare.ownPrice");
       setInputPlaceholder(controls.diameter, selectedTool.cutterDiameter, 2);
       setInputPlaceholder(controls.length, selectedTool.cuttingEdgeLength, 2);
       setInputPlaceholder(controls.flutes, selectedTool.flutes, 0);
     } else {
-      controls.price.placeholder = "Required";
-      controls.diameter.placeholder = "Required";
-      controls.length.placeholder = "Required";
-      controls.flutes.placeholder = "Required";
+      controls.price.placeholder = i18n.format("compare.pricePlaceholder", { currency: compareCurrency() === "SEK" ? "kr" : "€" });
+      controls.price.title = uiText("compare.ownPrice");
+      controls.diameter.placeholder = "mm";
+      controls.length.placeholder = "mm";
+      controls.flutes.placeholder = uiText("placeholder.required");
     }
 
     if (result && result.cuttingData) {
@@ -1482,9 +1617,9 @@
       setInputPlaceholder(controls.feed, result.cuttingData.calculatedFeedPerTooth, 3);
       setInputPlaceholder(controls.passes, result.cuttingData.calculatedRadialPasses, 0);
     } else {
-      controls.speed.placeholder = "Auto";
-      controls.feed.placeholder = "Auto";
-      controls.passes.placeholder = "Auto";
+      controls.speed.placeholder = uiText("placeholder.auto");
+      controls.feed.placeholder = uiText("placeholder.auto");
+      controls.passes.placeholder = uiText("placeholder.auto");
     }
   }
 
@@ -1493,7 +1628,8 @@
   }
 
   function formatCompareCurrency(value) {
-    return `€ ${formatDecimal(value, 2)}`;
+    if (!Number.isFinite(Number(value)) || value === null || value === "") return "-";
+    return compareCurrency() === "SEK" ? `${formatDecimal(value, 2)} kr` : `€ ${formatDecimal(value, 2)}`;
   }
 
   function formatComparePercent(leftValue, rightValue) {
@@ -1502,7 +1638,7 @@
     if (!Number.isFinite(left) || !Number.isFinite(right) || left === 0) return "";
     const percent = (right / left - 1) * 100;
     const rounded = Math.round(percent);
-    return `${rounded}%`;
+    return `${rounded > 0 ? "+" : ""}${rounded}%`;
   }
 
   function getCompareInputParking() {
@@ -1558,7 +1694,7 @@
   }
 
   function getCompareReferenceToolPrice(result) {
-    return result && result.tool ? result.tool.priceEur : "";
+    return compareReferencePrice(result && result.tool);
   }
 
   function getCompareReferenceToolLife() {
@@ -1579,9 +1715,13 @@
 
     if (input) {
       input.classList.add("spg-compare-row-input");
-      if (!input.value) input.placeholder = "";
+      const inputLabels = { price: "compare.toolPrice", life: "compare.toolLife", speed: "cutting.speed", feed: "compare.feedPerTooth", passes: "cutting.passesMaximum" };
+      input.setAttribute("aria-label", `${uiText(input.id.includes("-a-") ? "field.toolA" : "field.toolB")} ${uiText(inputLabels[input.id.split("-").at(-1)])}`);
+      if (!input.value && !input.id.endsWith("-price")) input.placeholder = "";
       cell.appendChild(input);
       syncCompareOwnInputReferenceState(input);
+      const reset = createCompareReset(input);
+      if (reset) valueElement.appendChild(reset);
     } else if (diffText) {
       const diffElement = document.createElement("span");
       diffElement.className = "spg-compare-cell-difference";
@@ -1598,6 +1738,21 @@
     const cell = input.closest(".spg-compare-value-cell");
     const valueElement = cell && cell.querySelector(".spg-compare-cell-value");
     if (valueElement) valueElement.classList.toggle("spg-result-value-muted", hasCompareOwnValue(input));
+  }
+
+  function createCompareReset(input) {
+    if (!input || !/-(speed|feed|passes)$/.test(input.id) || !hasCompareOwnValue(input)) return null;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "spg-button spg-compare-reset";
+    button.textContent = "↺";
+    button.title = uiText("compare.restore");
+    button.setAttribute("aria-label", `${uiText("compare.restore")}: ${input.getAttribute("aria-label")}`);
+    button.addEventListener("click", () => {
+      input.value = "";
+      input.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+    return button;
   }
 
   function createCompareResultRow(label, leftValue, rightValue, options) {
@@ -1626,6 +1781,8 @@
     const cB = !invalidB && resultB && resultB.cuttingData ? resultB.cuttingData : {};
     const costA = !invalidA && resultA && resultA.costData ? resultA.costData : {};
     const costB = !invalidB && resultB && resultB.costData ? resultB.costData : {};
+    const priceDecimals = compareCurrency() === "SEK" ? 0 : 2;
+    const currencySuffix = compareCurrency() === "SEK" ? " kr" : " €";
     const controlsA = getCompareControls("a");
     const controlsB = getCompareControls("b");
     const valueOrDash = (value, decimals, suffix = "") => (
@@ -1636,18 +1793,19 @@
     );
 
     return [
-      ["Tooling cost", invalidA ? "-" : valueOrDash(getCompareReferenceToolPrice(resultA), 2, " €"), invalidB ? "-" : valueOrDash(getCompareReferenceToolPrice(resultB), 2, " €"), controlsA.price, controlsB.price],
-      ["Tool life", invalidA ? "-" : `${formatDecimal(getCompareReferenceToolLife(), 0)} minutes`, invalidB ? "-" : `${formatDecimal(getCompareReferenceToolLife(), 0)} minutes`, controlsA.life, controlsB.life],
-      ["Cutting speed", valueOrDash(cA.recommendedCuttingSpeed, 0, " m/min"), valueOrDash(cB.recommendedCuttingSpeed, 0, " m/min"), controlsA.speed, controlsB.speed],
-      ["Feed/tooth", valueOrDash(cA.calculatedFeedPerTooth, 3, " mm/tooth"), valueOrDash(cB.calculatedFeedPerTooth, 3, " mm/tooth"), controlsA.feed, controlsB.feed],
-      ["Radial passes (max 3)", valueOrDash(cA.calculatedRadialPasses, 0), valueOrDash(cB.calculatedRadialPasses, 0), controlsA.passes, controlsB.passes],
-      ["Axial passes", valueOrDash(cA.axialPasses, 0), valueOrDash(cB.axialPasses, 0)],
-      ["Spindle speed", Number.isFinite(cA.spindleSpeed) ? `${formatSpindleSpeed(cA.spindleSpeed)} rpm` : "-", Number.isFinite(cB.spindleSpeed) ? `${formatSpindleSpeed(cB.spindleSpeed)} rpm` : "-"],
-      ["Feed at thread diameter", valueOrDash(cA.feedAtThreadDiameter, 0, " mm/min"), valueOrDash(cB.feedAtThreadDiameter, 0, " mm/min")],
-      ["Feed in center of mill", valueOrDash(cA.centerFeed, 0, " mm/min"), valueOrDash(cB.centerFeed, 0, " mm/min")],
-      ["Time to mill thread", valueOrDash(cA.machiningTime, 1, " seconds"), valueOrDash(cB.machiningTime, 1, " seconds"), null, null, diffOrNull(cB.machiningTime, cA.machiningTime), diffOrNull(cA.machiningTime, cB.machiningTime)],
-      ["Tooling cost per thread", valueOrDash(costA.toolingCostPerThread, 2, " €"), valueOrDash(costB.toolingCostPerThread, 2, " €"), null, null, diffOrNull(costB.toolingCostPerThread, costA.toolingCostPerThread), diffOrNull(costA.toolingCostPerThread, costB.toolingCostPerThread)],
-      ["Total cost per thread", valueOrDash(costA.totalCostPerThread, 2, " €"), valueOrDash(costB.totalCostPerThread, 2, " €"), null, null, diffOrNull(costB.totalCostPerThread, costA.totalCostPerThread), diffOrNull(costA.totalCostPerThread, costB.totalCostPerThread)]
+      [uiText("compare.toolPrice"), invalidA ? "-" : valueOrDash(getCompareReferenceToolPrice(resultA), priceDecimals, currencySuffix), invalidB ? "-" : valueOrDash(getCompareReferenceToolPrice(resultB), priceDecimals, currencySuffix), controlsA.price, controlsB.price],
+      [uiText("compare.toolLife"), invalidA ? "-" : `${formatDecimal(getCompareReferenceToolLife(), 0)} ${uiText("compare.minutes")}`, invalidB ? "-" : `${formatDecimal(getCompareReferenceToolLife(), 0)} ${uiText("compare.minutes")}`, controlsA.life, controlsB.life],
+      [uiText("cutting.speed"), valueOrDash(cA.recommendedCuttingSpeed, 0, " m/min"), valueOrDash(cB.recommendedCuttingSpeed, 0, " m/min"), controlsA.speed, controlsB.speed],
+      [uiText("compare.feedPerTooth"), valueOrDash(cA.calculatedFeedPerTooth, 3, ` ${uiText("unit.feed_per_tooth")}`), valueOrDash(cB.calculatedFeedPerTooth, 3, ` ${uiText("unit.feed_per_tooth")}`), controlsA.feed, controlsB.feed],
+      [uiText("cutting.passesMaximum"), valueOrDash(cA.calculatedRadialPasses, 0), valueOrDash(cB.calculatedRadialPasses, 0), controlsA.passes, controlsB.passes],
+      [uiText("results.axial"), valueOrDash(cA.axialPasses, 0), valueOrDash(cB.axialPasses, 0)],
+      [uiText("results.rpm"), Number.isFinite(cA.spindleSpeed) ? `${formatSpindleSpeed(cA.spindleSpeed)} rpm` : "-", Number.isFinite(cB.spindleSpeed) ? `${formatSpindleSpeed(cB.spindleSpeed)} rpm` : "-"],
+      [uiText("results.threadFeed"), valueOrDash(cA.feedAtThreadDiameter, 0, " mm/min"), valueOrDash(cB.feedAtThreadDiameter, 0, " mm/min")],
+      [uiText("results.center"), valueOrDash(cA.centerFeed, 0, " mm/min"), valueOrDash(cB.centerFeed, 0, " mm/min")],
+      [uiText("results.time"), valueOrDash(cA.machiningTime, 1, ` ${uiText("compare.seconds")}`), valueOrDash(cB.machiningTime, 1, ` ${uiText("compare.seconds")}`), null, null, diffOrNull(cB.machiningTime, cA.machiningTime), diffOrNull(cA.machiningTime, cB.machiningTime)],
+      [uiText("compare.toolingCost"), valueOrDash(costA.toolingCostPerThread, 2, currencySuffix), valueOrDash(costB.toolingCostPerThread, 2, currencySuffix), null, null, diffOrNull(costB.toolingCostPerThread, costA.toolingCostPerThread), diffOrNull(costA.toolingCostPerThread, costB.toolingCostPerThread)],
+      [uiText("compare.machinePerThread"), valueOrDash(costA.machineCostPerThread, 2, currencySuffix), valueOrDash(costB.machineCostPerThread, 2, currencySuffix), null, null, diffOrNull(costB.machineCostPerThread, costA.machineCostPerThread), diffOrNull(costA.machineCostPerThread, costB.machineCostPerThread)],
+      [uiText("compare.totalCost"), valueOrDash(costA.totalCostPerThread, 2, currencySuffix), valueOrDash(costB.totalCostPerThread, 2, currencySuffix), null, null, diffOrNull(costB.totalCostPerThread, costA.totalCostPerThread), diffOrNull(costA.totalCostPerThread, costB.totalCostPerThread)]
     ];
   }
 
@@ -1687,6 +1845,7 @@
       if (sourceInput) {
         const mobileInput = document.createElement("input");
         mobileInput.className = "spg-compare-mobile-row-input";
+        if (sourceInput.id.endsWith("-price")) mobileInput.classList.add("spg-compare-price-input");
         mobileInput.type = sourceInput.type || "number";
         mobileInput.min = sourceInput.min || "";
         mobileInput.max = sourceInput.max || "";
@@ -1702,6 +1861,8 @@
           sourceInput.dispatchEvent(new Event("change", { bubbles: true }));
         });
         valueElement.appendChild(mobileInput);
+        const reset = createCompareReset(sourceInput);
+        if (reset) referenceElement.appendChild(reset);
       }
       if (diffText) {
         const diffElement = document.createElement("span");
@@ -1727,12 +1888,12 @@
   }
 
   function renderCompareError(resultA, resultB) {
-    const errorsA = resultA && resultA.errors && resultA.errors.length ? resultA.errors.join(" ") : "";
-    const errorsB = resultB && resultB.errors && resultB.errors.length ? resultB.errors.join(" ") : "";
+    const errorsA = resultA && resultA.errors && resultA.errors.length ? resultA.errors.map(translatedError).join(" ") : "";
+    const errorsB = resultB && resultB.errors && resultB.errors.length ? resultB.errors.map(translatedError).join(" ") : "";
     if (!errorsA && !errorsB) return false;
     const messages = [];
-    if (errorsA) messages.push(`Tool A: ${errorsA}`);
-    if (errorsB) messages.push(`Tool B: ${errorsB}`);
+    if (errorsA) messages.push(`${uiText("field.toolA")}: ${errorsA}`);
+    if (errorsB) messages.push(`${uiText("field.toolB")}: ${errorsB}`);
     elements.compareSummary.textContent = messages.join(" ");
     return false;
   }
@@ -1742,18 +1903,19 @@
     if (!resultA.costData || !resultB.costData) return;
     const totalA = resultA.costData.totalCostPerThread;
     const totalB = resultB.costData.totalCostPerThread;
+    if (!Number.isFinite(totalA) || !Number.isFinite(totalB)) return;
     const difference = totalB - totalA;
     if (!Number.isFinite(difference) || difference === 0) {
-      elements.compareSummary.textContent = "Both tools have the same calculated total cost per thread.";
+      elements.compareSummary.textContent = uiText("compare.equalCost");
       return;
     }
     const winner = difference < 0
-      ? `Tool B: ${getCompareResultToolArticle(resultB)}`
-      : `Tool A: ${getCompareResultToolArticle(resultA)}`;
+      ? `${uiText("field.toolB")}: ${getCompareResultToolArticle(resultB)}`
+      : `${uiText("field.toolA")}: ${getCompareResultToolArticle(resultA)}`;
     const saving = Math.abs(difference);
     const baseline = difference < 0 ? totalA : totalB;
     const savingPercent = baseline ? Math.round(saving / baseline * 100) : 0;
-    elements.compareSummary.textContent = `${winner} saves ${formatCompareCurrency(saving)} per thread (${savingPercent}% lower total cost).`;
+    elements.compareSummary.textContent = i18n.format("compare.saving", { tool: winner, amount: formatCompareCurrency(saving), percent: formatDecimal(savingPercent, 0) });
   }
 
   function getCompareResultToolArticle(result) {
@@ -1764,7 +1926,7 @@
 
   function getCompareDisplayToolArticle(result, side) {
     const controls = getCompareControls(side);
-    if (controls.tool.value === CUSTOM_TOOL_ID) return "Custom tool";
+    if (controls.tool.value === CUSTOM_TOOL_ID) return uiText("tool.custom");
     return getCompareResultToolArticle(result);
   }
 
@@ -1806,6 +1968,22 @@
     button.addEventListener("click", copyCompareResults);
     copyGroup.appendChild(button);
 
+    if (typeof navigator.share === "function") {
+      const share = document.createElement("button");
+      share.type = "button";
+      share.className = "spg-button spg-compare-copy-button";
+      share.textContent = uiText("button.share");
+      share.addEventListener("click", async () => {
+        const text = buildCompareResultsCopyText();
+        if (!text) return;
+        try { await navigator.share({ title: `SmiProg ${uiText("compare.title")}`, text }); }
+        catch (error) {
+          if (error.name !== "AbortError") document.getElementById("spg-compare-copy-message").textContent = uiText("share.failed");
+        }
+      });
+      copyGroup.appendChild(share);
+    }
+
     const message = document.createElement("span");
     message.id = "spg-compare-copy-message";
     message.className = "spg-copy-message spg-compare-copy-message";
@@ -1820,8 +1998,8 @@
     const header = document.createElement("div");
     header.className = "spg-compare-result-row spg-compare-result-header";
     header.appendChild(createCompareResultMainHeader());
-    header.appendChild(createCompareHeaderCell("Tool A", getCompareDisplayToolArticle(resultA, "a")));
-    header.appendChild(createCompareHeaderCell("Tool B", getCompareDisplayToolArticle(resultB, "b")));
+    header.appendChild(createCompareHeaderCell(uiText("field.toolA"), getCompareDisplayToolArticle(resultA, "a")));
+    header.appendChild(createCompareHeaderCell(uiText("field.toolB"), getCompareDisplayToolArticle(resultB, "b")));
     elements.costData.appendChild(header);
 
     const rows = getCompareResultRows(resultA, resultB);
@@ -1840,8 +2018,11 @@
 
   function addCompareCustomToolError(side, result) {
     const controls = getCompareControls(side);
+    if (controls.tool.value === CUSTOM_TOOL_ID && !Number.isInteger(Number(controls.flutes.value))) {
+      result.errors.push(uiText("error.wholeFlutes"));
+    }
     if (controls.tool.value !== CUSTOM_TOOL_ID || hasCompleteCompareCustomDimensions(controls)) return;
-    result.errors.push(`Enter custom tool dimensions for Tool ${side.toUpperCase()}.`);
+    result.errors.push(uiText("error.tool"));
   }
 
   function renderCostData() {
@@ -1868,8 +2049,9 @@
 
     const inputA = getCompareScenarioInput("a", candidates, operationInput);
     const inputB = getCompareScenarioInput("b", candidates, operationInput);
-    const resultA = core.calculate(inputA, data);
-    const resultB = core.calculate(inputB, data);
+    const pricing = side => ({ comparePricing: { referencePrice: compareReferencePrice(findCompareTool(candidates, getCompareControls(side).tool.value)) } });
+    const resultA = core.calculate(inputA, data, pricing("a"));
+    const resultB = core.calculate(inputB, data, pricing("b"));
     addCompareCustomToolError("a", resultA);
     addCompareCustomToolError("b", resultB);
 
@@ -1885,7 +2067,7 @@
 
   function getComparePitchCopyText() {
     const pitchMode = getPitchMode(elements.compareThreadProfile.value);
-    const pitchLabel = pitchMode === "tpi" ? "Threads per inch" : "Pitch";
+    const pitchLabel = uiText(pitchMode === "tpi" ? "thread.tpi" : "thread.pitch");
     const pitchUnit = pitchMode === "tpi" ? "TPI" : "mm";
     return {
       label: pitchLabel,
@@ -1903,7 +2085,7 @@
 
   function getCompareToolTypeForCopy(result) {
     if (!result || !result.tool) return "-";
-    return result.tool.isCustom ? "Custom tool dimensions" : getThreadMillType(result.tool);
+    return result.tool.isCustom ? uiText("tool.custom") : getThreadMillType(result.tool);
   }
 
   function buildCompareToolCopyLines(label, result, controls) {
@@ -1912,14 +2094,14 @@
     return [
       label,
       "------",
-      `Article: ${getCompareResultToolArticle(result)}`,
-      `Type: ${getCompareToolTypeForCopy(result)}`,
-      `Cutter diameter: ${tool ? `${formatDimension(tool.cutterDiameter)} mm` : "-"}`,
-      `Cutting length: ${tool ? `${formatDimension(tool.cuttingEdgeLength)} mm` : "-"}`,
-      `Flutes: ${tool ? formatDecimal(tool.flutes, 0) : "-"}`,
-      `Tooling cost: € ${formatDecimal(getCompareActiveToolPrice(result, controls), 2)}`,
-      `Tool life: ${formatDecimal(getCompareActiveToolLife(controls), 0)} minutes`,
-      ...(toolPageUrl ? [`Tool page: ${toolPageUrl}`] : [])
+      `${uiText("copy.article")}: ${getCompareResultToolArticle(result)}`,
+      `${uiText("copy.type")}: ${getCompareToolTypeForCopy(result)}`,
+      `${uiText("tool.diameter")}: ${tool ? `${formatDimension(tool.cutterDiameter)} mm` : "-"}`,
+      `${uiText("tool.length")}: ${tool ? `${formatDimension(tool.cuttingEdgeLength)} mm` : "-"}`,
+      `${uiText("tool.flutes")}: ${tool ? formatDecimal(tool.flutes, 0) : "-"}`,
+      `${uiText("compare.toolPrice")}: ${formatCompareCurrency(getCompareActiveToolPrice(result, controls))}`,
+      `${uiText("compare.toolLife")}: ${formatDecimal(getCompareActiveToolLife(controls), 0)} ${uiText("compare.minutes")}`,
+      ...(toolPageUrl ? [`${uiText("copy.toolPage")}: ${toolPageUrl}`] : [])
     ];
   }
 
@@ -1930,7 +2112,7 @@
   function buildCompareToolResultCopyLines(article, rows, side) {
     const isToolA = side === "a";
     return [
-      `Article: ${article}`,
+      `${uiText("copy.article")}: ${article}`,
       "",
       ...rows.map(([label, leftValue, rightValue, leftInput, rightInput, leftDiff, rightDiff]) => (
         buildCompareSingleResultLine(label, isToolA ? leftValue : rightValue, isToolA ? leftDiff : rightDiff)
@@ -1942,7 +2124,7 @@
     if (!currentCompareResults || !currentCompareResults.resultA || !currentCompareResults.resultB) return "";
     const resultA = currentCompareResults.resultA;
     const resultB = currentCompareResults.resultB;
-    if (!resultA.tool || !resultB.tool || !resultA.cuttingData || !resultB.cuttingData || !resultA.costData || !resultB.costData) return "";
+    if (!resultA.cuttingData && !resultB.cuttingData) return "";
 
     const controlsA = getCompareControls("a");
     const controlsB = getCompareControls("b");
@@ -1950,30 +2132,31 @@
     const rows = getCompareResultRows(resultA, resultB);
 
     const lines = [
-      "SmiCut Internal Thread Milling Compare",
+      `SmiCut ${uiText("tabs.threadMilling")} - ${uiText("tabs.compare")}`,
       "",
-      "Thread",
-      `Material: ${getSelectedText(elements.compareMaterial)}`,
-      `Profile: ${getSelectedText(elements.compareThreadProfile)}`,
-      `Size: ${getSelectedText(elements.compareThreadSize)}`,
-      `Diameter: ${formatCopyInputNumber(elements.compareDiameter.value, 3)} mm`,
+      uiText("copy.thread"),
+      `${uiText("copy.material")}: ${getSelectedText(elements.compareMaterial)}`,
+      `${uiText("thread.profile")}: ${getSelectedText(elements.compareThreadProfile)}`,
+      `${uiText("thread.size")}: ${getSelectedText(elements.compareThreadSize)}`,
+      `${uiText("thread.diameter")}: ${formatCopyInputNumber(elements.compareDiameter.value, 3)} mm`,
       `${pitchCopy.label}: ${pitchCopy.value}`,
-      `Thread length: ${formatCopyInputNumber(elements.compareThreadLength.value, 3)} mm`,
-      `Machine cost per hour: € ${formatDecimal(elements.machineCost.value, 2)}`,
+      `${uiText("thread.length")}: ${formatCopyInputNumber(elements.compareThreadLength.value, 3)} mm`,
+      `${uiText("compare.hourlyRate")}: ${formatCompareCurrency(elements.machineCost.value)}`,
       "",
-      ...buildCompareToolCopyLines("Tool A", resultA, controlsA),
+      ...buildCompareToolCopyLines(uiText("field.toolA"), resultA, controlsA),
       "",
-      ...buildCompareToolCopyLines("Tool B", resultB, controlsB),
+      ...buildCompareToolCopyLines(uiText("field.toolB"), resultB, controlsB),
       "",
-      "Tool A Results",
+      `${uiText("field.toolA")} - ${uiText("compare.result")}`,
       "--------------",
       ...buildCompareToolResultCopyLines(getCompareResultToolArticle(resultA), rows, "a"),
       "",
-      "Tool B Results",
+      `${uiText("field.toolB")} - ${uiText("compare.result")}`,
       "--------------",
       ...buildCompareToolResultCopyLines(getCompareResultToolArticle(resultB), rows, "b")
     ];
 
+    if (elements.compareSummary.textContent) lines.push("", elements.compareSummary.textContent);
     return lines.join("\n");
   }
 
@@ -1983,7 +2166,7 @@
       elements.cncProgram.style.setProperty("height", "198px", "important");
       return;
     }
-    elements.cncProgram.value = result.cncProgram.join("\n");
+    elements.cncProgram.value = result.canGenerateCncProgram ? result.cncProgram.join("\n") : result.cncProgram.map(translatedError).join("\n");
     const lineHeightPx = 19;
     const targetHeight = Math.min(560, Math.max(198, 42 + (result.cncProgram.length * lineHeightPx)));
     elements.cncProgram.style.setProperty("height", `${targetHeight}px`, "important");
@@ -2003,11 +2186,11 @@
       return;
     }
     if (result.errors.length) {
-      setNote(result.errors.join(" "));
+      setNote(result.errors.map(translatedError).join(" "));
       return;
     }
     if (!result.canGenerateCncProgram) {
-      setNote(result.cncProgram.join(" "));
+      setNote(result.cncProgram.map(translatedError).join(" "));
       return;
     }
     setNote("");
@@ -2052,38 +2235,38 @@
     const c = currentResult.cuttingData;
     const toolPageUrl = getToolPageUrl(tool);
     const pitchMode = getPitchMode(elements.threadProfile.value);
-    const pitchLabel = pitchMode === "tpi" ? "Threads per inch" : "Pitch";
+    const pitchLabel = uiText(pitchMode === "tpi" ? "thread.tpi" : "thread.pitch");
     const pitchUnit = pitchMode === "tpi" ? "TPI" : "mm";
     const threadPitchText = `${formatCopyInputNumber(elements.pitch.value, 3)} ${pitchUnit}`;
     const lines = [
-      "SmiCut Internal Thread Milling",
+      `SmiCut ${uiText("tabs.threadMilling")}`,
       "",
-      "Thread",
-      `Material: ${getSelectedText(elements.material)}`,
-      `Profile: ${getSelectedText(elements.threadProfile)}`,
-      `Size: ${getSelectedText(elements.threadSize)}`,
-      `Diameter: ${formatCopyInputNumber(elements.diameter.value, 3)} mm`,
+      uiText("copy.thread"),
+      `${uiText("copy.material")}: ${getSelectedText(elements.material)}`,
+      `${uiText("thread.profile")}: ${getSelectedText(elements.threadProfile)}`,
+      `${uiText("thread.size")}: ${getSelectedText(elements.threadSize)}`,
+      `${uiText("thread.diameter")}: ${formatCopyInputNumber(elements.diameter.value, 3)} mm`,
       `${pitchLabel}: ${threadPitchText}`,
-      `Thread length: ${formatCopyInputNumber(elements.threadLength.value, 3)} mm`,
+      `${uiText("thread.length")}: ${formatCopyInputNumber(elements.threadLength.value, 3)} mm`,
       "",
-      "Thread Mill",
-      `Article: ${tool.description || "-"}`,
-      `Type: ${getThreadMillType(tool)}`,
-      `Tool pitch: ${threadPitchText}`,
-      `Cutter diameter: ${formatDimension(tool.cutterDiameter)} mm`,
-      `Cutting length: ${formatDimension(tool.cuttingEdgeLength)} mm`,
-      `Flutes: ${tool.flutes || "-"}`,
-      ...(toolPageUrl ? [`Tool page: ${toolPageUrl}`] : []),
+      uiText("tool.title"),
+      `${uiText("copy.article")}: ${tool.isCustom ? uiText("tool.custom") : tool.description || "-"}`,
+      `${uiText("copy.type")}: ${getThreadMillType(tool)}`,
+      `${uiText("thread.pitch")}: ${threadPitchText}`,
+      `${uiText("tool.diameter")}: ${formatDimension(tool.cutterDiameter)} mm`,
+      `${uiText("tool.length")}: ${formatDimension(tool.cuttingEdgeLength)} mm`,
+      `${uiText("tool.flutes")}: ${tool.flutes || "-"}`,
+      ...(toolPageUrl ? [`${uiText("copy.toolPage")}: ${toolPageUrl}`] : []),
       "",
-      "Cutting Data",
-      `Cutting speed Vc: ${core.fmt(c.cuttingSpeed, 0)} m/min`,
-      `Feed per tooth fz: ${formatDecimal(c.feedPerTooth, 3)} mm/tooth`,
-      `Radial passes: ${c.radialPasses}`,
-      `Axial passes: ${c.axialPasses}`,
-      `Spindle speed n: ${formatSpindleSpeed(c.spindleSpeed)} rpm`,
-      `Feed at thread diameter FD: ${core.fmt(c.feedAtThreadDiameter, 0)} mm/min`,
-      `Feed in center of mill Fd: ${core.fmt(c.centerFeed, 0)} mm/min`,
-      `Machining time: ${formatMachiningSeconds(c.machiningTime)} seconds`
+      uiText("section.cuttingData"),
+      `${uiText("cutting.speed")} Vc: ${formatDecimal(c.cuttingSpeed, 0)} m/min`,
+      `${uiText("cutting.feed")} fz: ${formatDecimal(c.feedPerTooth, 3)} ${uiText("unit.feed_per_tooth")}`,
+      `${uiText("cutting.passes")}: ${c.radialPasses}`,
+      `${uiText("results.axial")}: ${c.axialPasses}`,
+      `${uiText("results.rpm")} n: ${formatSpindleSpeed(c.spindleSpeed)} rpm`,
+      `${uiText("results.threadFeed")} FD: ${formatDecimal(c.feedAtThreadDiameter, 0)} mm/min`,
+      `${uiText("results.center")} Fd: ${formatDecimal(c.centerFeed, 0)} mm/min`,
+      `${uiText("results.time")}: ${formatMachiningSeconds(c.machiningTime)} ${uiText("compare.seconds")}`
     ];
 
     return lines.join("\n");
@@ -2097,15 +2280,16 @@
     const controlSystemText = getSelectedText(elements.controlSystem);
     const threadHandText = getSelectedText(elements.threadHand);
     return [
-      `CNC Program for ${processText}`,
-      `Control system: ${controlSystemText}`,
-      `Thread direction: ${threadHandText}`,
+      `${uiText("section.cncProgram")}: ${processText}`,
+      `${uiText("field.controlSystem")}: ${controlSystemText}`,
+      `${uiText("field.threadHand")}: ${threadHandText}`,
       "",
       cncProgram
     ].join("\n");
   }
 
   function setActiveTab(tabName) {
+    if (tabName === "compare" && !compareInitialized) useCurrentCompareSetup();
     elements.tabs.forEach((tab) => {
       const active = tab.dataset.spgTab === tabName;
       tab.classList.toggle("spg-tab-active", active);
@@ -2128,15 +2312,17 @@
   }
 
   function unlockCompare() {
-    if (elements.comparePassword.value.trim().toLowerCase() !== core.COMPARE_PASSWORD.toLowerCase()) {
-      setNote("Wrong compare password.");
+    if (elements.comparePassword.value !== core.COMPARE_PASSWORD) {
+      document.getElementById("spg-compare-unlock-message").textContent = uiText("compare.wrongPassword");
       return;
     }
     compareUnlocked = true;
+    document.getElementById("spg-compare-unlock-message").textContent = "";
     elements.compareLock.hidden = true;
-    elements.compareContent.hidden = false;
-    setNote("Compare is unlocked for this browser session.");
-    recalculate({ keepTool: true });
+    elements.comparePassword.value = "";
+    writeCompareStorage("smiprog.compare.cataloguePrices", true);
+    updateComparePriceAccess();
+    renderCostData();
   }
 
   async function copyCncProgram() {
@@ -2326,6 +2512,7 @@
       compareToolAId = elements.compareToolA.value;
       if (compareToolAId === CUSTOM_TOOL_ID && previousToolId && previousToolId !== CUSTOM_TOOL_ID) {
         compareToolACustomBaseId = previousToolId;
+        seedCompareCustomDimensions("a", previousToolId);
       } else if (compareToolAId !== CUSTOM_TOOL_ID) {
         compareToolACustomBaseId = compareToolAId;
       }
@@ -2336,6 +2523,7 @@
       compareToolBId = elements.compareToolB.value;
       if (compareToolBId === CUSTOM_TOOL_ID && previousToolId && previousToolId !== CUSTOM_TOOL_ID) {
         compareToolBCustomBaseId = previousToolId;
+        seedCompareCustomDimensions("b", previousToolId);
       } else if (compareToolBId !== CUSTOM_TOOL_ID) {
         compareToolBCustomBaseId = compareToolBId;
       }
@@ -2344,6 +2532,8 @@
     elements.copyCuttingData.addEventListener("click", copyCuttingData);
     elements.copyCnc.addEventListener("click", copyCncProgram);
     elements.unlockCompare.addEventListener("click", unlockCompare);
+    document.getElementById("spg-use-current-setup").addEventListener("click", useCurrentCompareSetup);
+    [elements.machineCost, elements.compareToolAPrice, elements.compareToolBPrice].forEach(input => input.addEventListener("input", persistComparePrices));
     elements.comparePassword.addEventListener("keydown", (event) => {
       if (event.key === "Enter") unlockCompare();
     });
@@ -2358,8 +2548,10 @@
 
   function init() {
     i18n.apply(document.getElementById("smiprog-app"));
+    document.getElementById("smiprog-app").lang = i18n.getLocaleKey();
+    elements.resetDiameter.title = uiText("action.reset");
     const visibleControlSystems = core.getVisibleControlSystems(data);
-    fillSelect(elements.process, data.processes, "machining-center", (item) => item.id, (item) => item.label);
+    fillSelect(elements.process, data.processes, "machining-center", (item) => item.id, (item) => uiText(item.id === "lathe" ? "cnc.lathe" : "cnc.machiningCenter", item.label));
     fillSelect(elements.controlSystem, visibleControlSystems, "fanuc", (item) => item.id, (item) => item.label);
     fillThreadProfileSelect(elements.threadProfile, "m");
     fillThreadProfileSelect(elements.compareThreadProfile, "m");
@@ -2375,10 +2567,12 @@
     bindEvents();
     initMaterialSelector();
     recalculate();
-    if (!compareUnlocked) {
-      elements.compareLock.hidden = false;
-      elements.compareContent.hidden = true;
-    }
+    compareUnlocked = readCompareStorage("smiprog.compare.cataloguePrices", false) === true;
+    const savedMoney = readCompareStorage(`smiprog.compare.money.${compareCurrency()}`, {});
+    elements.machineCost.value = savedMoney.machine ?? (compareCurrency() === "SEK" ? "900" : "80");
+    elements.compareLock.hidden = true;
+    updateComparePriceAccess();
+    renderCostData();
   }
 
   if (!data || !core) {

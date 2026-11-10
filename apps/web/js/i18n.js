@@ -25,6 +25,9 @@
 
   function getLocaleKey(currentLocale) {
     const normalized = normalizeLocale(currentLocale);
+    if (/^zh(?:-|$)/.test(normalized)) {
+      return /(?:hant|tw|hk|mo)/.test(normalized) ? "zh-tw" : "zh";
+    }
     if (dictionaries[normalized]) return normalized;
     const baseLocale = normalized.split("-")[0];
     if (dictionaries[baseLocale]) return baseLocale;
@@ -45,6 +48,20 @@
     const fallbackDictionary = dictionaries[DEFAULT_LOCALE] || {};
     if (hasOwn(fallbackDictionary, key)) return fallbackDictionary[key];
     return fallback !== undefined ? fallback : key;
+  }
+
+  function format(key, values) {
+    return t(key).replace(/\{([a-zA-Z]+)\}/g, (match, name) => (
+      Object.prototype.hasOwnProperty.call(values, name) ? String(values[name]) : match
+    ));
+  }
+
+  function getNumberLocale() {
+    const key = getLocaleKey(locale);
+    if (key === "zh-tw") return "zh-TW";
+    if (key === "zh") return "zh-CN";
+    try { return Intl.getCanonicalLocales(locale)[0]; }
+    catch { return key; }
   }
 
   function translateElement(element) {
@@ -72,12 +89,17 @@
     if (altKey) {
       element.setAttribute("alt", t(altKey, element.getAttribute("alt") || ""));
     }
+    const hrefKey = element.getAttribute("data-i18n-href");
+    if (hrefKey) {
+      const href = t(hrefKey);
+      if (href.startsWith("https://smicut.com/")) element.setAttribute("href", href);
+    }
   }
 
   function apply(root) {
     if (!documentRef) return;
     const scope = root || documentRef;
-    const selector = "[data-i18n], [data-i18n-html], [data-i18n-placeholder], [data-i18n-aria-label], [data-i18n-alt]";
+    const selector = "[data-i18n], [data-i18n-html], [data-i18n-placeholder], [data-i18n-aria-label], [data-i18n-alt], [data-i18n-href]";
     const elements = [];
     if (scope.nodeType === 1 && scope.matches(selector)) {
       elements.push(scope);
@@ -91,6 +113,7 @@
   }
 
   function getMaterialSelectorLanguage() {
+    if (/^zh(?:-|$)/.test(locale)) return getLocaleKey(locale);
     return getLocale() || DEFAULT_LOCALE;
   }
 
@@ -98,6 +121,9 @@
     apply,
     getLocale,
     getMaterialSelectorLanguage,
+    getNumberLocale,
+    getLocaleKey: () => getLocaleKey(locale),
+    format,
     t
   });
 })(window);

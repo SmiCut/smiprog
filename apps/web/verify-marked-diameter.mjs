@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
 import { tmpdir } from 'node:os';
-const browser = await chromium.launch({headless: true});
+const browser = await chromium.launch({headless: true, ...(process.env.CHROME_PATH ? {executablePath:process.env.CHROME_PATH} : {})});
 try {
   const page = await browser.newPage({viewport: {width: 1440, height: 1100}});
   const errors = [];

@@ -1349,6 +1349,15 @@
       }
     };
 
+    // Compare must not turn an invalid own value into a catalogue fallback.
+    if (options && options.comparePricing) {
+      for (const key of Object.keys(normalizedInput.overrides)) {
+        const value = input.overrides && input.overrides[key];
+        if (value !== undefined && value !== null && value !== "" && !Number.isFinite(Number(value))) {
+          normalizedInput.overrides[key] = NaN;
+        }
+      }
+    }
     const material = findMaterial(data, normalizedInput.materialId);
     const threadProfile = findThreadProfile(data, normalizedInput.threadProfileId);
     const controlSystem = findControlSystem(data, normalizedInput.controlSystemId);
@@ -1479,8 +1488,12 @@
         };
         cuttingData.machiningTime = getMachiningTime(normalizedInput, tool, cuttingData);
 
-        const toolPrice = normalizedInput.overrides.toolPrice !== null ? normalizedInput.overrides.toolPrice : tool.priceEur;
-        const toolingCostPerThread = toolPrice / (normalizedInput.toolLife * 60 / cuttingData.machiningTime);
+        const referencePrice = options && options.comparePricing
+          ? (tool.isCustom ? null : options.comparePricing.referencePrice)
+          : tool.priceEur;
+        const toolPrice = normalizedInput.overrides.toolPrice !== null ? normalizedInput.overrides.toolPrice : referencePrice;
+        const toolingCostPerThread = Number.isFinite(toolPrice)
+          ? toolPrice / (normalizedInput.toolLife * 60 / cuttingData.machiningTime) : null;
         const machineCostPerThread = normalizedInput.machineCost * cuttingData.machiningTime / 3600;
         costData = {
           toolPrice,
@@ -1488,7 +1501,7 @@
           machineCost: normalizedInput.machineCost,
           toolingCostPerThread,
           machineCostPerThread,
-          totalCostPerThread: toolingCostPerThread + machineCostPerThread
+          totalCostPerThread: toolingCostPerThread === null ? null : toolingCostPerThread + machineCostPerThread
         };
 
         const resultForProgram = {

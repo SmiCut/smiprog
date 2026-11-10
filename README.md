@@ -13,7 +13,28 @@ generate CNC programs, and compare tooling costs.
 Use the same complete HTML file on your own website: paste its contents into a
 Raw HTML block. [Website installation guide](docs/website-embedding.md).
 
-## Download SmiProg
+## All 16 language editions
+
+The source includes all 16 languages and the updated Compare workflow.
+The links below open each generated HTML review page in the repository:
+
+| Language | Language |
+|---|---|
+| [English](apps/web/languages/en.html) | [Svenska](apps/web/languages/sv.html) |
+| [Dansk](apps/web/languages/da.html) | [Deutsch](apps/web/languages/de.html) |
+| [Español](apps/web/languages/es.html) | [Français](apps/web/languages/fr.html) |
+| [Magyar](apps/web/languages/hu.html) | [Bahasa Indonesia](apps/web/languages/id.html) |
+| [Italiano](apps/web/languages/it.html) | [日本語](apps/web/languages/ja.html) |
+| [한국어](apps/web/languages/ko.html) | [Nederlands](apps/web/languages/nl.html) |
+| [Polski](apps/web/languages/pl.html) | [Русский](apps/web/languages/ru.html) |
+| [简体中文](apps/web/languages/zh.html) | [繁體中文（台灣）](apps/web/languages/zh-tw.html) |
+
+For local review, open `apps/web/languages/index.html` from a complete checkout.
+Run `npm run build:languages` to generate complete single-file HTML editions in
+`dist/downloads/`. See [language review](docs/languages.md).
+These source editions do not update the live website or the published release.
+
+## Download the published release
 
 **One HTML file contains the app, tool data and all images.** No installation,
 ZIP extraction, image folders or GitHub account is needed.
@@ -22,9 +43,8 @@ ZIP extraction, image folders or GitHub account is needed.
 |---|---|---|
 | English | [Open SmiProg](https://smicut.com/en/smiprog-online/) | [Download smiprog-en.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-en.html) |
 
-English is the currently released language. This branch prepares 16 language
-editions and the updated Compare workflow for review; it does not publish a new
-release or update the website. See [language review](docs/languages.md).
+English remains the currently published release. The other language editions
+are available in the source above, pending a separate release decision.
 
 ## Open your download in three steps
 

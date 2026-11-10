@@ -6,7 +6,7 @@
 - `apps/web/js/core.js`: calculation and CNC program logic
 - `apps/web/data/smiprog-data.js`: tool, material, thread, post and price data
 - `apps/web/data/tool-prices.csv`: editable reference prices
-- `apps/web/i18n/translations.csv`: text source for all 16 review languages
+- `apps/web/i18n/translations.csv`: text source for all 16 languages
 - `apps/web/tools/build-translations.mjs`: generates language JSON and bundled dictionaries
 - `tools/build-app-files.mjs`: shared static source preparation
 - `tools/build-single-html.mjs`: complete HTML distribution
@@ -81,7 +81,7 @@ app package. See [image settings, Retina sizing and rebuild instructions](tool-i
 
 ## Complete HTML downloads
 
-`npm run build:html` creates `dist/downloads/smiprog-en.html` and checksums.
+`npm run build:html` creates `dist/downloads/smiprog-<locale>.html` for all 16 languages and checksums.
 The builder uses the released locales and shared minified sources. Scripts and
 styles are inline; each WebP/SVG is stored once in an embedded asset dictionary.
 Static and dynamically selected tool images use that dictionary. The external
@@ -142,7 +142,7 @@ fixtures and release assets. Public branches are not a confidential review area.
 The original Excel workbooks and audit working files remain private; the selected
 public fixtures and image originals support reproducible tests and builds.
 
-The current release baseline is v1.0.0 (English only). It uses complete HTML
+The current release baseline is v1.1.0 (all 16 languages). It uses complete HTML
 for both downloads and direct embedding; the standalone and embedded checks run
 at desktop/mobile widths. Historical version labels in technical documents record
 when a change was introduced, not an unreleased controller status.

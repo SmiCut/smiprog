@@ -1,9 +1,9 @@
 # Language review and maintenance
 
-This review branch contains English, Swedish, Danish, German, Spanish, French,
+Version 1.1.0 includes English, Swedish, Danish, German, Spanish, French,
 Hungarian, Indonesian, Italian, Japanese, Korean, Dutch, Polish, Russian,
 simplified Chinese and traditional Chinese (Taiwan).
-It does not publish a release or update WordPress, Railway or the AI service.
+Each language has a complete HTML download in the GitHub release.
 
 The translations follow SmiCut's supplied iOS/Compare language handover, adapted
 to the existing web controls. Technical English terms in its Indonesian material
@@ -24,8 +24,8 @@ historical spreadsheets are not needed in this public repository.
 4. Run `npm test`, `npm run test:browser` and `npm run verify:languages`.
 
 Builds are local only. Uploading a release or changing a website is a separate
-decision. The previous public release links continue to identify the English
-release until a new release is explicitly approved.
+decision. Neither building nor publishing these static files deploys WordPress,
+Railway or the shared AI service.
 
 ## Rules for future translations
 

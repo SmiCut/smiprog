@@ -1,11 +1,11 @@
 # Embed SmiProg on your website
 
-Use the same complete HTML file offered in the [download table](../README.md#download-smiprog).
+Use the same complete HTML file offered in the [download table](../README.md#download-the-published-release).
 No iframe, PHP adapter, app-specific plugin or separate image folder is needed.
 
 ## Install or update
 
-1. Download `smiprog-en.html` and keep a backup of your current page.
+1. Download the HTML file for your language, such as `smiprog-en.html`, and keep a backup of your current page.
 2. Open the file in a plain-text editor and copy all its contents.
 3. Paste into a Raw HTML / Custom HTML block that preserves inline styles and scripts.
 4. Replace the old app block when updating; keep only one SmiProg instance per page.

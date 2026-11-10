@@ -32,7 +32,7 @@ The links below open each generated HTML review page in the repository:
 For local review, open `apps/web/languages/index.html` from a complete checkout.
 Run `npm run build:languages` to generate complete single-file HTML editions in
 `dist/downloads/`. See [language review](docs/languages.md).
-These source editions do not update the live website or the published release.
+Source changes do not automatically update the live website or release downloads.
 
 ## Download the published release
 
@@ -42,13 +42,28 @@ ZIP extraction, image folders or GitHub account is needed.
 | Language | Use online | Download complete app |
 |---|---|---|
 | English | [Open SmiProg](https://smicut.com/en/smiprog-online/) | [Download smiprog-en.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-en.html) |
+| Svenska | - | [Download smiprog-sv.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-sv.html) |
+| Dansk | - | [Download smiprog-da.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-da.html) |
+| Deutsch | - | [Download smiprog-de.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-de.html) |
+| Español | - | [Download smiprog-es.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-es.html) |
+| Français | - | [Download smiprog-fr.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-fr.html) |
+| Magyar | - | [Download smiprog-hu.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-hu.html) |
+| Bahasa Indonesia | - | [Download smiprog-id.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-id.html) |
+| Italiano | - | [Download smiprog-it.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-it.html) |
+| 日本語 | - | [Download smiprog-ja.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-ja.html) |
+| 한국어 | - | [Download smiprog-ko.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-ko.html) |
+| Nederlands | - | [Download smiprog-nl.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-nl.html) |
+| Polski | - | [Download smiprog-pl.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-pl.html) |
+| Русский | - | [Download smiprog-ru.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-ru.html) |
+| 简体中文 | - | [Download smiprog-zh.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh.html) |
+| 繁體中文（台灣） | - | [Download smiprog-zh-tw.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh-tw.html) |
 
-English remains the currently published release. The other language editions
-are available in the source above, pending a separate release decision.
+Version 1.1.0 includes all 16 languages and the updated Compare workflow.
+Each download includes its selected language, tool data, images and license notices.
 
 ## Open your download in three steps
 
-1. Click **Download smiprog-en.html** above.
+1. Choose your language's **Download** link above.
 2. Find the file in your Downloads folder.
 3. Double-click it to open SmiProg in your web browser. If asked, choose a browser.
 
@@ -68,7 +83,7 @@ Use the online version for AI-assisted selection.
 - Generate CNC programs for supported Fanuc / ISO and Heidenhain configurations.
 - Compare two tools, machining times and costs using your own prices.
 
-In this review version, Compare is open to everyone. `XL` reveals EUR catalogue
+Compare is open to everyone. `XL` reveals EUR catalogue
 prices; Swedish SEK reference prices are visible directly. The code is a display
 convenience, not a security feature. Prices are editable and are not a quotation.
 

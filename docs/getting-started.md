@@ -7,8 +7,8 @@ No installation or GitHub account is needed.
 
 ## Use the complete HTML download
 
-1. [Download the English app](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-en.html).
-2. Find `smiprog-en.html` in your Downloads folder.
+1. [Choose your language and download the app](../README.md#download-the-published-release).
+2. Find `smiprog-<language>.html` in your Downloads folder, for example `smiprog-en.html`.
 3. Double-click it and choose a web browser if asked. You can also drag it into
    an open browser window.
 
@@ -28,7 +28,7 @@ length, then choose a suitable tool. Check the cutting data and select the inten
 control system and thread direction. Use **Copy** to copy results or the CNC program.
 Verify the program for your actual machine and setup before machining.
 
-In this review version, **Compare** opens directly and accepts your own prices.
+**Compare** opens directly and accepts your own prices.
 `XL` reveals EUR catalogue prices; Swedish SEK prices are visible without a code.
 It compares two tools and their estimated costs.
 Its prices are reference values and may be changed; they are not a sales quotation.
@@ -64,7 +64,7 @@ Manual material selection and calculations work without that approval.
 ## Updates and help
 
 Downloads do not update automatically. Get the newest file from
-[the download table](../README.md#download-smiprog). Back up your customized version:
+[the download table](../README.md#download-the-published-release). Back up your customized version:
 your own edits are not automatically carried into a new download.
 
 Email [info@smicut.se](mailto:info@smicut.se) with your browser, language and a short

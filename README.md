@@ -2,7 +2,7 @@
 
 **Free thread-milling software. Calculate cutting data, select a tool and generate a CNC program.**
 
-[**Use online**](https://smicut.com/en/smiprog-online/) · [**Download SmiProg**](#download-smiprog) · [**Adapt for your company**](REBRANDING.md)
+[**Use online**](https://smicut.com/en/smiprog-online/) · [**Download SmiProg**](#download-the-published-release) · [**Adapt for your company**](REBRANDING.md)
 
 ![SmiProg start screen with thread milling, tool comparison and material selection](docs/images/smiprog-preview.png)
 

@@ -19,8 +19,14 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - run: npm test
-      - run: npm run test:browser
       - run: npm run verify:main-layout
+      - run: npm run test:browser
       - run: npm run build:wordpress
       - run: npm run verify:wordpress
       - run: npm run verify:languages
+      - uses: actions/upload-artifact@v5
+        if: failure()
+        with:
+          name: browser-failure-screenshots
+          path: dist/english-preview/*.png
+          retention-days: 7

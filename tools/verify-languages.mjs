@@ -65,6 +65,10 @@ try {
       }
       await page.setViewportSize({ width: 1440, height: 1100 });
       await page.locator('[data-spg-tab="main"]').click();
+      assert.deepEqual(await page.locator('#spg-process option').evaluateAll(options => options.map(option => ({ value: option.value, text: option.textContent }))), [
+        { value: 'machining-center', text: dictionary['cnc.machiningCenter'] },
+        { value: 'lathe-live-tool', text: dictionary['cnc.lathe'] }
+      ], `${locale}: distinct machining center and live-tool lathe options`);
       const program = await page.locator('#spg-cnc-program').inputValue();
       expectedProgram ??= program;
       assert.equal(program, expectedProgram, `${locale}: CNC changed with locale`);

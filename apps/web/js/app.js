@@ -2642,7 +2642,7 @@
     document.getElementById("smiprog-app").lang = i18n.getLocaleKey();
     elements.resetDiameter.title = uiText("action.reset");
     const visibleControlSystems = core.getVisibleControlSystems(data);
-    fillSelect(elements.process, data.processes, "machining-center", (item) => item.id, (item) => uiText(item.id === "lathe" ? "cnc.lathe" : "cnc.machiningCenter", item.label));
+    fillSelect(elements.process, data.processes, "machining-center", (item) => item.id, (item) => uiText(item.id === "lathe-live-tool" ? "cnc.lathe" : "cnc.machiningCenter", item.label));
     fillSelect(elements.controlSystem, visibleControlSystems, "fanuc", (item) => item.id, (item) => item.label);
     fillThreadProfileSelect(elements.threadProfile, "m");
     fillThreadProfileSelect(elements.compareThreadProfile, "m");

@@ -4,9 +4,12 @@ import { chromium, webkit } from 'playwright';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
 import { repositoryRoot } from './build-app-files.mjs';
+import { createSingleHtmlDownloads } from './build-single-html.mjs';
 
 const out = path.join(repositoryRoot, 'dist/english-preview');
 await fs.mkdir(out, { recursive: true });
+const english = (await createSingleHtmlDownloads()).find(file => file.locale === 'en');
+await fs.writeFile(path.join(out, english.name), english.bytes);
 for (const engine of [chromium, webkit]) {
   const browser = await engine.launch(engine === chromium && process.env.CHROME_PATH
     ? { executablePath: process.env.CHROME_PATH } : {});
@@ -48,6 +51,11 @@ for (const engine of [chromium, webkit]) {
       }));
       if (overflow.width > width + 1) await page.screenshot({path:path.join(out,'overflow.png'),fullPage:true});
       assert.ok(overflow.width <= width + 1, `${engine.name()} ${width}: ${JSON.stringify(overflow)}`);
+      if (width === 320) {
+        await page.locator('[data-spg-tab="information"]').click();
+        await page.locator('[data-spg-tab="main"]').click();
+        assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${engine.name()}: narrow tab navigation must not widen the page`);
+      }
       assert.equal(await page.locator('.spg-final-summary-item').evaluateAll(rows => rows.some(row => {
         const parent = row.getBoundingClientRect();
         return [...row.querySelectorAll('.spg-result-label, .spg-result-value')].some(child => child.getBoundingClientRect().bottom > parent.bottom + 1);

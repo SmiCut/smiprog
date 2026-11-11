@@ -113,7 +113,6 @@
   border-radius: 8px;
   background-color: #e9eeeb;
   overflow-x: auto;
-  contain: paint;
 }
 
 #smiprog-app .spg-tab {

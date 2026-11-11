@@ -49,7 +49,25 @@ for (const engine of [chromium, webkit]) {
           return r.width && r.right > innerWidth + 1;
         }).slice(0, 10).map(n => ({id:n.id, cls:n.className, width:n.getBoundingClientRect().width}))
       }));
-      if (overflow.width > width + 1) await page.screenshot({path:path.join(out,'overflow.png'),fullPage:true});
+      if (overflow.width > width + 1) {
+        await page.screenshot({path:path.join(out,'overflow.png'),fullPage:true});
+        const diagnostics = await page.evaluate(() => {
+          const measure = () => document.documentElement.scrollWidth;
+          const result = { original:measure(), candidates:[] };
+          window.scrollTo(10000,0);
+          result.maxScrollX = scrollX;
+          window.scrollTo(0,0);
+          for (const selector of ['.spg-tabs', 'select', '.spg-info-popover', '.spg-cnc-card', '.spg-final-summary']) {
+            const nodes = [...document.querySelectorAll(selector)];
+            const styles = nodes.map(n => n.getAttribute('style'));
+            nodes.forEach(n => n.style.setProperty('display','none','important'));
+            result.candidates.push({selector,width:measure()});
+            nodes.forEach((n,i) => styles[i] === null ? n.removeAttribute('style') : n.setAttribute('style',styles[i]));
+          }
+          return result;
+        });
+        console.log('Overflow diagnostics:',JSON.stringify(diagnostics));
+      }
       assert.ok(overflow.width <= width + 1, `${engine.name()} ${width}: ${JSON.stringify(overflow)}`);
       if (width === 320) {
         await page.locator('[data-spg-tab="information"]').click();

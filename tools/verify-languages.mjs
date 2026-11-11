@@ -83,7 +83,8 @@ try {
       assert.equal(await page.locator('#spg-compare-password').isVisible(), locale !== 'sv');
       assert.equal(await page.locator('#spg-machine-cost').inputValue(), locale === 'sv' ? '900' : '80');
       const input = page.locator('input.spg-compare-price-input:visible').first();
-      assert.equal(await input.getAttribute('placeholder'), locale === 'sv' ? 'kr' : '€');
+      assert.equal(await input.locator('..').locator('.spg-compare-input-unit').textContent(), locale === 'sv' ? 'kr' : '€');
+      assert.equal(await input.getAttribute('placeholder'), '');
       if (locale !== 'sv') {
         await page.locator('#spg-compare-password').fill('xl');
         await page.locator('#spg-unlock-compare').click();

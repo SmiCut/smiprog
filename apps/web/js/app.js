@@ -1764,7 +1764,7 @@
         input.setAttribute("aria-label", `${uiText(input.id.includes("-a-") ? "field.toolA" : "field.toolB")} ${uiText(inputLabels[input.id.split("-").at(-1)])}`);
         if (!input.value && !input.id.endsWith("-price")) input.placeholder = "";
       }
-      cell.appendChild(input);
+      cell.appendChild(createCompareInputField(input));
       syncCompareOwnInputReferenceState(input);
       const reset = createCompareReset(input);
       if (reset) {
@@ -1780,6 +1780,20 @@
     }
 
     return cell;
+  }
+
+  function createCompareInputField(input) {
+    const discount = input.classList.contains("spg-compare-discount-input");
+    if (!discount && !input.classList.contains("spg-compare-price-input")) return input;
+    const field = document.createElement("span");
+    field.className = "spg-compare-unit-field";
+    const unit = document.createElement("span");
+    unit.className = "spg-compare-input-unit";
+    unit.textContent = discount ? "%" : (compareCurrency() === "SEK" ? "kr" : "€");
+    unit.setAttribute("aria-hidden", "true");
+    input.placeholder = "";
+    field.append(input, unit);
+    return field;
   }
 
   function syncCompareOwnInputReferenceState(input) {
@@ -1899,7 +1913,7 @@
       valueElement.appendChild(referenceElement);
       if (priceKind === "discounted") {
         const discountInput = createCompareDiscountInput(side, true);
-        valueElement.appendChild(discountInput);
+        valueElement.appendChild(createCompareInputField(discountInput));
         const reset = createCompareReset(discountInput);
         if (reset) {
           referenceElement.classList.add("spg-compare-reference-reset");
@@ -1923,7 +1937,7 @@
           sourceInput.dispatchEvent(new Event("input", { bubbles: true }));
           sourceInput.dispatchEvent(new Event("change", { bubbles: true }));
         });
-        valueElement.appendChild(mobileInput);
+        valueElement.appendChild(createCompareInputField(mobileInput));
         const reset = createCompareReset(sourceInput);
         if (reset) {
           referenceElement.classList.add("spg-compare-reference-reset");

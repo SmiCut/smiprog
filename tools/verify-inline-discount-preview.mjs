@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import vm from 'node:vm';
 import { pathToFileURL } from 'node:url';
-import { chromium } from 'playwright';
+import { chromium, webkit } from 'playwright';
 import { parse } from 'parse5';
 import { createSingleHtmlDownloads } from './build-single-html.mjs';
 import { repositoryRoot } from './build-app-files.mjs';
@@ -19,7 +19,8 @@ function checkScripts(node) {
   for (const child of node.childNodes || []) checkScripts(child);
 }
 checkScripts(parse(english.bytes.toString()));
-const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
+const engine = process.env.BROWSER === 'webkit' ? webkit : chromium;
+const browser = await engine.launch(engine === chromium && process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
 try {
   const page = await browser.newPage({ viewport: { width: 877, height: 1000 } });
   const errors = [];
@@ -42,7 +43,24 @@ try {
     copy.querySelectorAll('button').forEach(button => button.remove());
     return copy.textContent;
   }));
-  const synced = async value => assert.deepEqual(await inputs().evaluateAll(nodes => nodes.map(n => n.value)), [value, value]);
+  const assertUnits = async () => {
+    for (const [selector, symbol] of [['.spg-compare-price-input:visible', '\u20ac'], ['.spg-compare-discount-input:visible', '%']]) {
+      const fields = page.locator(selector);
+      assert.equal(await fields.count(), 2);
+      for (const input of await fields.all()) {
+        const unit = input.locator('..').locator('.spg-compare-input-unit');
+        assert.equal(await unit.textContent(), symbol);
+        assert.equal(await unit.isVisible(), true);
+        assert.equal(await unit.getAttribute('aria-hidden'), 'true');
+        assert.equal(await input.getAttribute('placeholder'), '');
+        assert.ok(!(await input.inputValue()).includes(symbol));
+      }
+    }
+  };
+  const synced = async value => {
+    assert.deepEqual(await inputs().evaluateAll(nodes => nodes.map(n => n.value)), [value, value]);
+    await assertUnits();
+  };
   const priceState = async active => {
     const empty = await inputs().first().inputValue() === '';
     for (const [label, inactive] of [['Tooling cost', active], ['Price after discount', !active && !empty]]) {
@@ -66,8 +84,7 @@ try {
   assert.equal(await inputs().count(), 2);
   assert.equal(await page.locator('#spg-compare-discount-controls, #spg-compare-apply-discount').count(), 0);
   await synced('');
-  for (const input of await inputs().all()) assert.equal(await input.getAttribute('placeholder'), '%');
-  for (const input of await page.locator('.spg-compare-price-input:visible').all()) assert.equal(await input.getAttribute('placeholder'), '\u20ac');
+  await assertUnits();
   await priceState(false);
   const original = await values('Total cost per thread');
   const machine = await values('Machine cost per thread');
@@ -94,6 +111,7 @@ try {
     await page.locator(`#spg-compare-tool-${side}-price`).blur();
   }
   assert.deepEqual(await values('Price after discount'), ['87.50 €', '175.00 €']);
+  await assertUnits();
   for (const invalid of ['-1', '100.01', 'abc']) {
     await inputs().nth(0).fill(invalid);
     await synced(invalid);
@@ -120,8 +138,12 @@ try {
     assert.equal(await inputs().count(), 2);
     const fieldStyles = await page.locator('.spg-compare-result-row:visible, .spg-compare-mobile-result-row:visible').evaluateAll(rows => rows.flatMap(row => [...row.querySelectorAll('input')].map(input => {
       const rect = input.getBoundingClientRect();
-      const style = getComputedStyle(input, '::placeholder');
-      return { width: rect.width, height: rect.height, symbol: input.placeholder, placeholder: [style.color, style.fontFamily, style.fontSize, style.fontWeight, style.fontStyle, style.textAlign, style.opacity] };
+      const unit = input.parentElement.querySelector('.spg-compare-input-unit');
+      const style = unit && getComputedStyle(unit);
+      const unitRect = unit && unit.getBoundingClientRect();
+      return { width: rect.width, height: rect.height, symbol: unit?.textContent,
+        fits: !unit || (unitRect.left >= rect.right - parseFloat(getComputedStyle(input).paddingRight) && unitRect.right < rect.right && unitRect.top >= rect.top && unitRect.bottom <= rect.bottom),
+        unitStyle: style && [style.color, style.fontFamily, style.fontSize, style.fontWeight, style.fontStyle, style.textAlign, style.opacity] };
     })));
     const other = fieldStyles.find(field => !['\u20ac', '%'].includes(field.symbol));
     const moneyFields = fieldStyles.filter(field => ['\u20ac', '%'].includes(field.symbol));
@@ -129,7 +151,8 @@ try {
     for (const field of moneyFields) {
       assert.ok(Math.abs(field.width - other.width) < 1, `${width}: equal input widths`);
       assert.equal(field.height, other.height, `${width}: equal input heights`);
-      assert.deepEqual(field.placeholder, moneyFields[0].placeholder, `${width}: matching symbol styles`);
+      assert.ok(field.fits, `${width}: suffix has reserved space inside input`);
+      assert.deepEqual(field.unitStyle, moneyFields[0].unitStyle, `${width}: matching symbol styles`);
     }
     await inputs().nth(1).fill('25');
     await synced('25');
@@ -141,7 +164,7 @@ try {
     const layout = await page.locator('.spg-compare-discount-row:visible').evaluateAll(nodes => nodes.map(node => ({
       overflow: node.scrollWidth > node.clientWidth + 1,
       overlap: [...node.querySelectorAll('input')].some(input => {
-        const value = input.previousElementSibling.getBoundingClientRect();
+        const value = input.parentElement.previousElementSibling.getBoundingClientRect();
         const field = input.getBoundingClientRect();
         return value.right > field.left || field.right > node.getBoundingClientRect().right;
       })
@@ -163,12 +186,12 @@ try {
       ['Feed/tooth', '0.025'], ['Radial passes (max 3)', '2'], ['Price after discount', '20']
     ];
     for (const [label, value] of fields) {
-      const matchingRows = visibleRows.filter({ has: page.locator('.spg-result-label', { hasText: label, exact: true }) });
+      const matchingRows = visibleRows.filter({ has: page.getByText(label, { exact: true }) });
       for (const side of [0, 1]) {
         const field = matchingRows.locator('input').nth(side);
         await field.fill(value);
         await field.blur();
-        const cell = field.locator('..');
+        const cell = matchingRows.locator('.spg-result-value').nth(side);
         const reset = cell.locator('.spg-compare-reset');
         assert.equal(await reset.count(), 1, `${width}: ${label} ${side} reset`);
         assert.equal(await reset.getAttribute('title'), 'Restore recommended value');
@@ -185,13 +208,14 @@ try {
         assert.ok(geometry.gap >= 7 && geometry.clear, `${width}: ${label} spacing ${JSON.stringify(geometry)}`);
         await reset.click();
         assert.equal(await field.inputValue(), '', `${width}: ${label} clears`);
+        await assertUnits();
         assert.equal(await cell.locator('.spg-compare-reset').count(), 0);
         if (label === 'Price after discount') await synced('');
       }
     }
     // Show every editable row with its restore control in the review screenshots.
     for (const [label, value] of fields) {
-      const matchingRows = visibleRows.filter({ has: page.locator('.spg-result-label', { hasText: label, exact: true }) });
+      const matchingRows = visibleRows.filter({ has: page.getByText(label, { exact: true }) });
       for (const side of [0, 1]) {
         await matchingRows.locator('input').nth(side).fill(value);
         await matchingRows.locator('input').nth(side).blur();

@@ -48,7 +48,8 @@ try {
         return {
           discountNoOverlap: discountCells.every(cell => {
             const input = cell.querySelector('input');
-            return !input || input.previousElementSibling.getBoundingClientRect().right <= input.getBoundingClientRect().left;
+            const field = input && (input.closest('.spg-compare-unit-field') || input);
+            return !field || field.previousElementSibling.getBoundingClientRect().right <= field.getBoundingClientRect().left;
           }),
           unusedWidth: workspace.right - tools.right,
           narrowCards: cards.filter(card => card.getBoundingClientRect().width < Math.min(300, workspace.width) - 1).length,

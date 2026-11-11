@@ -58,8 +58,9 @@ ZIP extraction, image folders or GitHub account is needed.
 | 简体中文 | - | [Download smiprog-zh.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh.html) |
 | 繁體中文（台灣） | - | [Download smiprog-zh-tw.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh-tw.html) |
 
-Version 1.2.0 includes all 16 languages, the restored calculator information
+Version 1.2.1 includes all 16 languages, the restored calculator information
 buttons, inline Compare discounts and the corrected CNC process menu.
+Currency and percent symbols remain visible inside Compare inputs while editing.
 Each download includes its selected language, tool data, images and license notices.
 
 ## Open your download in three steps

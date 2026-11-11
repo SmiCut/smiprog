@@ -1815,14 +1815,38 @@
   font-variant-numeric: tabular-nums;
 }
 
-#smiprog-app .spg-compare-price-input::placeholder,
-#smiprog-app .spg-compare-discount-input::placeholder {
+#smiprog-app .spg-compare-unit-field {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  font-size: 12px;
+}
+
+#smiprog-app .spg-compare-mobile-results .spg-compare-unit-field {
+  font-size: 13px;
+}
+
+#smiprog-app .spg-compare-unit-field input {
+  padding-right: 20px !important;
+}
+
+#smiprog-app .spg-compare-unit-field .spg-compare-mobile-row-input {
+  padding-left: 4px !important;
+}
+
+#smiprog-app .spg-compare-input-unit {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
   color: #777 !important;
-  opacity: 1;
   font-family: inherit;
   font-size: inherit;
   font-style: normal;
   font-weight: 400 !important;
+  line-height: 1.2 !important;
   text-align: right;
 }
 

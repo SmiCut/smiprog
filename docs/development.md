@@ -26,7 +26,10 @@ row edit one shared discount, including when users enter their own tool prices.
 There is no separate discount toolbar or switch. Keep the net-price row visible
 whenever prices are unlocked. Empty fields show blue dashes; a positive valid
 discount applies immediately and greys out the original prices. Zero uses the
-original prices. Use matching currency/percent placeholders and input sizes.
+original prices. Use matching fixed currency/percent suffixes inside the inputs,
+not placeholders that disappear while typing. Keep them visible after editing,
+clearing, resetting and reloading, with space reserved beside the numeric value.
+Preserve matching input sizes and the Swedish `kr` currency suffix.
 All editable result values have compact restore buttons when overridden.
 Apply the same behavior to desktop rows and mobile result cards.
 Round discounted tool prices to two currency decimals before calculating costs.

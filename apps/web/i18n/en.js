@@ -3,6 +3,7 @@
   "use strict";
   global.SmiProgTranslations = Object.freeze({
   "en": {
+    "compare.applyDiscountShort": "Apply",
     "app.title": "SmiProg - Thread Milling",
     "aria.calculator": "SmiProg thread milling calculator",
     "aria.sections": "SmiProg sections",
@@ -365,6 +366,7 @@
     "tool.adjustDiameter": "Adjustment of the cutter diameter."
   },
   "sv": {
+    "compare.applyDiscountShort": "Tillämpa",
     "app.title": "SmiProg - Gängfräsning",
     "aria.calculator": "SmiProg - Gängfräsning",
     "aria.sections": "SmiProg",
@@ -727,6 +729,7 @@
     "tool.adjustDiameter": "Justering av fräsdiametern."
   },
   "da": {
+    "compare.applyDiscountShort": "Anvend",
     "app.title": "SmiProg - Gevindfræsning",
     "aria.calculator": "SmiProg - Gevindfræsning",
     "aria.sections": "SmiProg",
@@ -1089,6 +1092,7 @@
     "tool.adjustDiameter": "Justering af fræserdiameteren."
   },
   "de": {
+    "compare.applyDiscountShort": "Anwenden",
     "app.title": "SmiProg - Gewindefräsen",
     "aria.calculator": "SmiProg - Gewindefräsen",
     "aria.sections": "SmiProg",
@@ -1451,6 +1455,7 @@
     "tool.adjustDiameter": "Anpassung des Fräserdurchmessers."
   },
   "es": {
+    "compare.applyDiscountShort": "Aplicar",
     "app.title": "SmiProg - Fresado de roscas",
     "aria.calculator": "SmiProg - Fresado de roscas",
     "aria.sections": "SmiProg",
@@ -1813,6 +1818,7 @@
     "tool.adjustDiameter": "Ajuste del diámetro de la fresa."
   },
   "fr": {
+    "compare.applyDiscountShort": "Appliquer",
     "app.title": "SmiProg - Fraisage de filets",
     "aria.calculator": "SmiProg - Fraisage de filets",
     "aria.sections": "SmiProg",
@@ -2175,6 +2181,7 @@
     "tool.adjustDiameter": "Réglage du diamètre de la fraise."
   },
   "hu": {
+    "compare.applyDiscountShort": "Alkalmaz",
     "app.title": "SmiProg - Menetmarás",
     "aria.calculator": "SmiProg - Menetmarás",
     "aria.sections": "SmiProg",
@@ -2537,6 +2544,7 @@
     "tool.adjustDiameter": "A maró átmérőjének beállítása."
   },
   "id": {
+    "compare.applyDiscountShort": "Terapkan",
     "app.title": "SmiProg - Frais ulir",
     "aria.calculator": "SmiProg - Frais ulir",
     "aria.sections": "SmiProg",
@@ -2899,6 +2907,7 @@
     "tool.adjustDiameter": "Penyesuaian diameter cutter."
   },
   "it": {
+    "compare.applyDiscountShort": "Applica",
     "app.title": "SmiProg - Fresatura di filetti",
     "aria.calculator": "SmiProg - Fresatura di filetti",
     "aria.sections": "SmiProg",
@@ -3261,6 +3270,7 @@
     "tool.adjustDiameter": "Regolazione del diametro della fresa."
   },
   "ja": {
+    "compare.applyDiscountShort": "適用",
     "app.title": "SmiProg - ねじ切りフライス加工",
     "aria.calculator": "SmiProg - ねじ切りフライス加工",
     "aria.sections": "SmiProg",
@@ -3623,6 +3633,7 @@
     "tool.adjustDiameter": "カッター径の調整。"
   },
   "ko": {
+    "compare.applyDiscountShort": "적용",
     "app.title": "SmiProg - 나사 밀링",
     "aria.calculator": "SmiProg - 나사 밀링",
     "aria.sections": "SmiProg",
@@ -3985,6 +3996,7 @@
     "tool.adjustDiameter": "커터 직경 조정."
   },
   "nl": {
+    "compare.applyDiscountShort": "Toepassen",
     "app.title": "SmiProg - Draadfrezen",
     "aria.calculator": "SmiProg - Draadfrezen",
     "aria.sections": "SmiProg",
@@ -4347,6 +4359,7 @@
     "tool.adjustDiameter": "Aanpassing van de freesdiameter."
   },
   "pl": {
+    "compare.applyDiscountShort": "Zastosuj",
     "app.title": "SmiProg - Frezowanie gwintów",
     "aria.calculator": "SmiProg - Frezowanie gwintów",
     "aria.sections": "SmiProg",
@@ -4709,6 +4722,7 @@
     "tool.adjustDiameter": "Korekta średnicy frezu."
   },
   "ru": {
+    "compare.applyDiscountShort": "Применить",
     "app.title": "SmiProg - Резьбофрезерование",
     "aria.calculator": "SmiProg - Резьбофрезерование",
     "aria.sections": "SmiProg",
@@ -5071,6 +5085,7 @@
     "tool.adjustDiameter": "Корректировка диаметра фрезы."
   },
   "zh": {
+    "compare.applyDiscountShort": "应用",
     "app.title": "SmiProg - 螺纹铣削",
     "aria.calculator": "SmiProg - 螺纹铣削",
     "aria.sections": "SmiProg",
@@ -5433,6 +5448,7 @@
     "tool.adjustDiameter": "调整铣刀直径。"
   },
   "zh-tw": {
+    "compare.applyDiscountShort": "套用",
     "app.title": "SmiProg - 螺紋銑削",
     "aria.calculator": "SmiProg - 螺紋銑削",
     "aria.sections": "SmiProg",

@@ -12,7 +12,7 @@ native-speaker review; automated tests cannot establish linguistic quality.
 
 ## Build and review
 
-`apps/web/i18n/translations.csv` is the maintained source, with 360 keys per
+`apps/web/i18n/translations.csv` is the maintained source, with 361 keys per
 language. Keep the same key and named placeholders in every column. Do not edit
 generated dictionaries or HTML files by hand. Raw internal handover notes and
 historical spreadsheets are not needed in this public repository.

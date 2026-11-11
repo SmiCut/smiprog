@@ -434,8 +434,9 @@
               <label for="spg-compare-discount" data-i18n="compare.discount">Discount (%)</label>
               <input id="spg-compare-discount" class="spg-control" type="number" min="0" max="100" step="any" value="0" inputmode="decimal">
               <label class="spg-compare-discount-toggle" for="spg-compare-apply-discount">
-                <input id="spg-compare-apply-discount" type="checkbox">
-                <span data-i18n="compare.applyDiscount">Apply discount</span>
+                <input id="spg-compare-apply-discount" type="checkbox" role="switch" aria-label="Apply discount" data-i18n-aria-label="compare.applyDiscount">
+                <span class="spg-discount-apply-full" aria-hidden="true" data-i18n="compare.applyDiscount">Apply discount</span>
+                <span class="spg-discount-apply-short" aria-hidden="true" data-i18n="compare.applyDiscountShort">Apply</span>
               </label>
             </div>
             <div id="spg-cost-data" class="spg-compare-result-table"></div>

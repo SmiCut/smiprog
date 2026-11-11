@@ -1471,13 +1471,17 @@
 }
 
 #smiprog-app .spg-compare-discount-controls {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto 72px minmax(0, 1fr);
   align-items: center;
-  gap: 8px 12px;
-  padding: 0 0 12px;
+  gap: 12px;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  border-block: 1px solid #dce3e0;
+  background: #f2f5f4;
+  white-space: nowrap;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 #smiprog-app .spg-compare-discount-controls > label {
@@ -1485,11 +1489,14 @@
 }
 
 #smiprog-app #spg-compare-discount {
-  width: 88px !important;
-  flex: 0 0 88px;
+  width: 100% !important;
   min-width: 0;
+  min-height: 36px !important;
   height: 36px !important;
-  padding: 6px 10px !important;
+  padding: 6px 8px !important;
+  border-radius: 5px !important;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 
 #smiprog-app #spg-compare-discount[aria-invalid="true"] {
@@ -1498,19 +1505,77 @@
 
 #smiprog-app .spg-compare-discount-toggle {
   display: flex;
+  justify-self: end;
   align-items: center;
   gap: 8px;
-  min-height: 36px;
+  min-height: 44px;
   cursor: pointer;
 }
 
 #smiprog-app #spg-compare-apply-discount {
-  appearance: auto;
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-  margin: 0;
-  accent-color: #8b5c47;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  position: relative;
+  width: 32px !important;
+  height: 20px !important;
+  min-height: 20px !important;
+  flex: 0 0 32px;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 1px solid #737f79 !important;
+  border-radius: 10px !important;
+  background: #737f79 !important;
+  cursor: pointer;
+}
+
+#smiprog-app #spg-compare-apply-discount::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+#smiprog-app #spg-compare-apply-discount:checked {
+  background: #286d50 !important;
+  border-color: #286d50 !important;
+}
+
+#smiprog-app #spg-compare-apply-discount:checked::before {
+  transform: translateX(12px);
+}
+
+#smiprog-app #spg-compare-apply-discount:focus-visible {
+  outline: 2px solid #286d50;
+  outline-offset: 3px;
+}
+
+#smiprog-app .spg-discount-apply-short {
+  display: none;
+}
+
+@container smiprog-compare (max-width: 480px) {
+  #smiprog-app .spg-compare-discount-controls {
+    grid-template-columns: auto 60px minmax(0, 1fr);
+    gap: 6px;
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+
+  #smiprog-app .spg-compare-discount-toggle {
+    gap: 6px;
+  }
+
+  #smiprog-app .spg-discount-apply-full {
+    display: none;
+  }
+
+  #smiprog-app .spg-discount-apply-short {
+    display: inline;
+  }
 }
 
 #smiprog-app .spg-compare-summary {

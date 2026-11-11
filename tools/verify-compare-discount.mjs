@@ -46,6 +46,7 @@ try {
   await page.locator('#spg-unlock-compare').click();
   assert.equal(await discount.isVisible(), true);
   assert.equal(await apply.isChecked(), false);
+  assert.equal(await page.getByRole('switch', { name: 'Apply discount', exact: true }).count(), 1);
   assert.equal(await row('Price after discount').isVisible(), true);
   await assertPriceState(false);
   const original = await values('Total cost per thread');
@@ -56,6 +57,10 @@ try {
   assert.deepEqual(await values('Total cost per thread'), original);
   assert.deepEqual(await values('Price after discount'), gross.map(value => `${(value * .8).toFixed(2)} €`));
   await apply.check();
+  await apply.press('Space');
+  assert.equal(await apply.isChecked(), false);
+  await apply.press('Space');
+  assert.equal(await apply.isChecked(), true);
   await assertPriceState(true);
   assert.deepEqual(await values('Price after discount'), gross.map(value => `${(value * .8).toFixed(2)} €`));
   assert.deepEqual(await values('Time to mill thread'), time);

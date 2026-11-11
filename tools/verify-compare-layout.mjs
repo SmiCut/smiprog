@@ -15,7 +15,8 @@ const cases = [
   [1100, 1000, 861], [1100, 1000, 860], [860, 1000, 714],
   [900, 1000, 681], [900, 1000, 680], [720, 1000, 600],
   [561, 1000, 561], [560, 844, 560], [390, 844, 390],
-  [844, 390, 728], [540, 320, 540], [1200, 1000, 390]
+  [844, 390, 728], [540, 320, 540], [1200, 1000, 390],
+  [320, 568, 320], [360, 800, 360], [375, 812, 375], [1200, 1000, 320]
 ];
 try {
   for (const file of files.filter(file => !process.env.VERIFY_LOCALES || process.env.VERIFY_LOCALES.split(',').includes(file.locale))) {
@@ -43,7 +44,10 @@ try {
         const button = rect('#spg-use-current-setup');
         const note = rect('.spg-compare-note');
         const cards = [...document.querySelectorAll('.spg-compare-tool-card')];
+        const discountParts = [...document.querySelector('#spg-compare-discount-controls').children].map(node => node.getBoundingClientRect());
         return {
+          discountSingleRow: discountParts.every(part => Math.abs((part.top + part.bottom) / 2 - (discountParts[0].top + discountParts[0].bottom) / 2) < 1),
+          discountNoOverlap: discountParts[0].right <= discountParts[1].left && discountParts[1].right <= discountParts[2].left,
           unusedWidth: workspace.right - tools.right,
           narrowCards: cards.filter(card => card.getBoundingClientRect().width < Math.min(300, workspace.width) - 1).length,
           overflow: [...document.querySelectorAll('.spg-compare-tool-metric, .spg-compare-tool-type-label, .spg-compare-tool-select-row, .spg-compare-note-row, .spg-compare-discount-controls, .spg-compare-discount-toggle')]
@@ -63,6 +67,8 @@ try {
       assert.deepEqual(layout.overflow, [], `${label}: text overflow`);
       assert.equal(layout.pageOverflow, false, `${label}: page overflow`);
       assert.equal(layout.imagesLoaded, true, `${label}: tool images`);
+      assert.equal(layout.discountSingleRow, true, `${label}: discount must stay on one row`);
+      assert.equal(layout.discountNoOverlap, true, `${label}: discount controls overlap`);
       const portraitPhone = width <= 560 && height >= width;
       assert.equal(layout.buttonAbove, portraitPhone, `${label}: setup button position`);
       if (portraitPhone) assert.equal(layout.fullWidthButton, true, `${label}: setup button width`);

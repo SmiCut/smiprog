@@ -28,6 +28,10 @@ Keep the net-price row visible whenever prices are unlocked. With Apply discount
 off, it previews the entered discount in grey without affecting costs or copied
 results. With it on, grey out the original prices (including own-price inputs)
 instead. Apply the same styling to desktop rows and mobile result cards.
+Keep the discount label, numeric field and switch on one line at all supported
+widths. Use the compact translated Apply label in containers up to 480 px, while
+the switch retains its full accessible Apply discount name. Test narrow embedded
+columns as well as portrait phones; do not shrink text with viewport units.
 Round discounted tool prices to two currency decimals before calculating costs.
 Validate 0-100%, including fractional values; an invalid active discount must not
 produce usable cost results. Turning it off restores undiscounted prices. Keep

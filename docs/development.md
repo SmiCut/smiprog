@@ -21,23 +21,41 @@ Compare's workspace responds to its available container width; its setup button
 stays beside the note except on portrait phones up to 560 px.
 
 Compare's shared discount is available with price access (unlocked EUR prices or
-the existing public SEK prices). It applies equally to both tools, including own
-price overrides, only while Apply discount is checked. Preserve the original
-inputs; show each net price separately and include the discount in copied results.
-Keep the net-price row visible whenever prices are unlocked. With Apply discount
-off, it previews the entered discount in grey without affecting costs or copied
-results. With it on, grey out the original prices (including own-price inputs)
-instead. Apply the same styling to desktop rows and mobile result cards.
-Keep the discount label, numeric field and switch on one line at all supported
-widths. Use the compact translated Apply label in containers up to 480 px, while
-the switch retains its full accessible Apply discount name. Test narrow embedded
-columns as well as portrait phones; do not shrink text with viewport units.
+the existing public SEK prices). Two mirrored percent fields in the net-price
+row edit one shared discount, including when users enter their own tool prices.
+There is no separate discount toolbar or switch. Keep the net-price row visible
+whenever prices are unlocked. Empty fields show blue dashes; a positive valid
+discount applies immediately and greys out the original prices. Zero uses the
+original prices. Use matching currency/percent placeholders and input sizes.
+All editable result values have compact restore buttons when overridden.
+Apply the same behavior to desktop rows and mobile result cards.
 Round discounted tool prices to two currency decimals before calculating costs.
 Validate 0-100%, including fractional values; an invalid active discount must not
-produce usable cost results. Turning it off restores undiscounted prices. Keep
-discount value and enabled state in local storage, like the existing own prices.
+produce usable cost results. Clearing either field restores undiscounted prices
+and clears both fields. Persist the shared discount like the existing own prices.
 All locales must use the neutral prices wording, without catalogue qualifiers,
 and omit the redundant tool-life/machine-cost footer.
+
+## Preserve the complete interface when publishing
+
+Build every locale from this shared source, never by reusing an old standalone
+HTML or a separate Compare prototype. Before replacing a website's entire app
+block, verify both Internal Thread Milling and Compare.
+
+- Keep the three info buttons for cutter diameter, safety distance and CNC
+  verification; help must work with pointer, keyboard and touch.
+- Safety distance belongs inside CNC Program. Tool selection is step 7, marked
+  diameter is step 8, and custom dimensions are steps 8-10.
+- Preserve compact tool metrics, full-width thread length where appropriate,
+  localized help, Metric fine naming, and the latest inline Compare discounts.
+- Run `npm test`, `npm run verify:compare-discount`,
+  `npm run verify:main-layout` and `npm run verify:compare-layout`.
+  Main-layout tests use Chromium and WebKit; install both Playwright engines.
+- Back up the website content, replace only the app block, and verify the live
+  result. Keep unrelated catalogue tables and page text intact.
+- Commit source, translations and regression tests together. Record the exact
+  published HTML checksum and do not leave production-only layout edits in a
+  separate working copy.
 
 The fixture set contains 57 golden cases, a 153-case native Excel matrix and 18
 native Excel A/B cost scenarios. Those reference results are preserved, not

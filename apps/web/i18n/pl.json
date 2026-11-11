@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "Osiowy odstęp bezpieczeństwa przy ruchach dojazdu i wycofania.",
   "compare.applyDiscountShort": "Zastosuj",
   "app.title": "SmiProg - Frezowanie gwintów",
   "aria.calculator": "SmiProg - Frezowanie gwintów",
@@ -336,7 +337,7 @@
   "tool.length": "Długość części skrawającej",
   "tool.title": "Frez do gwintów",
   "unit.feed_per_tooth": "mm/ząb",
-  "profile.m-manual": "M - Własne wymiary",
+  "profile.m-manual": "M - metryczny drobny",
   "profile.g-manual": "G - gwint rurowy Whitwortha (ręcznie)",
   "option.manualSize": "Własne wymiary",
   "button.share": "Udostępnij",

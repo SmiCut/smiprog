@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "Jarak bebas aksial untuk gerakan mendekat dan menarik kembali.",
   "compare.applyDiscountShort": "Terapkan",
   "app.title": "SmiProg - Frais ulir",
   "aria.calculator": "SmiProg - Frais ulir",
@@ -336,7 +337,7 @@
   "tool.length": "Panjang potong",
   "tool.title": "Frais ulir",
   "unit.feed_per_tooth": "mm/gigi",
-  "profile.m-manual": "M - Dimensi sendiri",
+  "profile.m-manual": "M - Metrik halus",
   "profile.g-manual": "G - Ulir pipa Whitworth (manual)",
   "option.manualSize": "Dimensi sendiri",
   "button.share": "Bagikan",

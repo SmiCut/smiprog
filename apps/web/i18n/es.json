@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "Distancia de seguridad axial para los movimientos de aproximación y retirada.",
   "compare.applyDiscountShort": "Aplicar",
   "app.title": "SmiProg - Fresado de roscas",
   "aria.calculator": "SmiProg - Fresado de roscas",
@@ -336,7 +337,7 @@
   "tool.length": "Longitud de corte",
   "tool.title": "Fresa de roscar",
   "unit.feed_per_tooth": "mm/diente",
-  "profile.m-manual": "M - Dimensiones propias",
+  "profile.m-manual": "M - Métrica fina",
   "profile.g-manual": "G - Rosca de tubo Whitworth (manual)",
   "option.manualSize": "Dimensiones propias",
   "button.share": "Compartir",

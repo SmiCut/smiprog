@@ -32,8 +32,7 @@ try {
       await page.locator('#spg-compare-password').fill('XL');
       await page.locator('#spg-unlock-compare').click();
     }
-    await page.locator('#spg-compare-discount').fill('20');
-    await page.locator('#spg-compare-apply-discount').check();
+    await page.locator('.spg-compare-discount-input:visible').first().fill('20');
     for (const [width, height, hostWidth] of cases) {
       await page.setViewportSize({ width, height });
       await page.locator('#host').evaluate((node, size) => { node.style.width = `${size}px`; }, hostWidth);
@@ -44,10 +43,13 @@ try {
         const button = rect('#spg-use-current-setup');
         const note = rect('.spg-compare-note');
         const cards = [...document.querySelectorAll('.spg-compare-tool-card')];
-        const discountParts = [...document.querySelector('#spg-compare-discount-controls').children].map(node => node.getBoundingClientRect());
+        const discountCells = [...document.querySelectorAll('.spg-compare-discount-row .spg-compare-value-cell, .spg-compare-discount-row > .spg-result-value')]
+          .filter(node => node.getBoundingClientRect().width > 0);
         return {
-          discountSingleRow: discountParts.every(part => Math.abs((part.top + part.bottom) / 2 - (discountParts[0].top + discountParts[0].bottom) / 2) < 1),
-          discountNoOverlap: discountParts[0].right <= discountParts[1].left && discountParts[1].right <= discountParts[2].left,
+          discountNoOverlap: discountCells.every(cell => {
+            const input = cell.querySelector('input');
+            return !input || input.previousElementSibling.getBoundingClientRect().right <= input.getBoundingClientRect().left;
+          }),
           unusedWidth: workspace.right - tools.right,
           narrowCards: cards.filter(card => card.getBoundingClientRect().width < Math.min(300, workspace.width) - 1).length,
           overflow: [...document.querySelectorAll('.spg-compare-tool-metric, .spg-compare-tool-type-label, .spg-compare-tool-select-row, .spg-compare-note-row, .spg-compare-discount-controls, .spg-compare-discount-toggle')]
@@ -67,7 +69,6 @@ try {
       assert.deepEqual(layout.overflow, [], `${label}: text overflow`);
       assert.equal(layout.pageOverflow, false, `${label}: page overflow`);
       assert.equal(layout.imagesLoaded, true, `${label}: tool images`);
-      assert.equal(layout.discountSingleRow, true, `${label}: discount must stay on one row`);
       assert.equal(layout.discountNoOverlap, true, `${label}: discount controls overlap`);
       const portraitPhone = width <= 560 && height >= width;
       assert.equal(layout.buttonAbove, portraitPhone, `${label}: setup button position`);

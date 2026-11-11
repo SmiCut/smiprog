@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "Axiale veiligheidsafstand bij aanloop- en terugtrekbewegingen.",
   "compare.applyDiscountShort": "Toepassen",
   "app.title": "SmiProg - Draadfrezen",
   "aria.calculator": "SmiProg - Draadfrezen",
@@ -336,7 +337,7 @@
   "tool.length": "Snijlengte",
   "tool.title": "Draadfrees",
   "unit.feed_per_tooth": "mm/tand",
-  "profile.m-manual": "M - Eigen afmetingen",
+  "profile.m-manual": "M - Metrisch fijn",
   "profile.g-manual": "G - Whitworth-pijpdraad (handmatig)",
   "option.manualSize": "Eigen afmetingen",
   "button.share": "Delen",

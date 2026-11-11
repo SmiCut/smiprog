@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "Axiális biztonsági távolság a megközelítési és visszahúzási mozgásokhoz.",
   "compare.applyDiscountShort": "Alkalmaz",
   "app.title": "SmiProg - Menetmarás",
   "aria.calculator": "SmiProg - Menetmarás",
@@ -336,7 +337,7 @@
   "tool.length": "Élhossz",
   "tool.title": "Menetmaró",
   "unit.feed_per_tooth": "mm/fog",
-  "profile.m-manual": "M - Saját méretek",
+  "profile.m-manual": "M - Metrikus, finom",
   "profile.g-manual": "G - Whitworth csőmenet (kézi)",
   "option.manualSize": "Saját méretek",
   "button.share": "Megosztás",

@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "接近和退刀運動使用的軸向安全距離。",
   "compare.applyDiscountShort": "套用",
   "app.title": "SmiProg - 螺紋銑削",
   "aria.calculator": "SmiProg - 螺紋銑削",
@@ -336,7 +337,7 @@
   "tool.length": "刃長",
   "tool.title": "螺紋銑刀",
   "unit.feed_per_tooth": "mm/齒",
-  "profile.m-manual": "M - 自訂尺寸",
+  "profile.m-manual": "M - 公制細牙",
   "profile.g-manual": "G - 英制直管螺紋（手動）",
   "option.manualSize": "自訂尺寸",
   "button.share": "分享",

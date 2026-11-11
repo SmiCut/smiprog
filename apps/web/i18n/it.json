@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "Distanza di sicurezza assiale per i movimenti di avvicinamento e retrazione.",
   "compare.applyDiscountShort": "Applica",
   "app.title": "SmiProg - Fresatura di filetti",
   "aria.calculator": "SmiProg - Fresatura di filetti",
@@ -336,7 +337,7 @@
   "tool.length": "Lunghezza di taglio",
   "tool.title": "Fresa a filettare",
   "unit.feed_per_tooth": "mm/dente",
-  "profile.m-manual": "M - Dimensioni proprie",
+  "profile.m-manual": "M - Metrica, passo fine",
   "profile.g-manual": "G - Gas cilindrica Whitworth (manuale)",
   "option.manualSize": "Dimensioni proprie",
   "button.share": "Condividi",

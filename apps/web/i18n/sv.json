@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "Axiellt säkerhetsavstånd vid in- och utkörning.",
   "compare.applyDiscountShort": "Tillämpa",
   "app.title": "SmiProg - Gängfräsning",
   "aria.calculator": "SmiProg - Gängfräsning",
@@ -336,7 +337,7 @@
   "tool.length": "Skärlängd",
   "tool.title": "Gängfräs",
   "unit.feed_per_tooth": "mm/tand",
-  "profile.m-manual": "M - Egna mått",
+  "profile.m-manual": "M - Metrisk fin",
   "profile.g-manual": "G - Whitworth rörgänga (manuell)",
   "option.manualSize": "Egna mått",
   "button.share": "Dela",

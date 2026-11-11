@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "Aksial sikkerhedsafstand ved til- og frakørsel.",
   "compare.applyDiscountShort": "Anvend",
   "app.title": "SmiProg - Gevindfræsning",
   "aria.calculator": "SmiProg - Gevindfræsning",
@@ -336,7 +337,7 @@
   "tool.length": "Skærlængde",
   "tool.title": "Gevindfræser",
   "unit.feed_per_tooth": "mm/tand",
-  "profile.m-manual": "M - Egne dimensioner",
+  "profile.m-manual": "M - Metrisk fin",
   "profile.g-manual": "G - Whitworth-rørgevind (manuelt)",
   "option.manualSize": "Egne dimensioner",
   "button.share": "Del",

@@ -3,6 +3,7 @@
   "use strict";
   global.SmiProgTranslations = Object.freeze({
   "en": {
+    "help.safetyDistance": "Axial clearance used for approach and retract moves.",
     "compare.applyDiscountShort": "Apply",
     "app.title": "SmiProg - Thread Milling",
     "aria.calculator": "SmiProg thread milling calculator",
@@ -340,7 +341,7 @@
     "tool.length": "Cutting length",
     "tool.title": "Thread mill",
     "unit.feed_per_tooth": "mm/tooth",
-    "profile.m-manual": "M - Own dimensions",
+    "profile.m-manual": "M – Metric fine",
     "profile.g-manual": "G – Whitworth manual",
     "option.manualSize": "Own dimensions",
     "button.share": "Share",
@@ -366,6 +367,7 @@
     "tool.adjustDiameter": "Adjustment of the cutter diameter."
   },
   "sv": {
+    "help.safetyDistance": "Axiellt säkerhetsavstånd vid in- och utkörning.",
     "compare.applyDiscountShort": "Tillämpa",
     "app.title": "SmiProg - Gängfräsning",
     "aria.calculator": "SmiProg - Gängfräsning",
@@ -703,7 +705,7 @@
     "tool.length": "Skärlängd",
     "tool.title": "Gängfräs",
     "unit.feed_per_tooth": "mm/tand",
-    "profile.m-manual": "M - Egna mått",
+    "profile.m-manual": "M - Metrisk fin",
     "profile.g-manual": "G - Whitworth rörgänga (manuell)",
     "option.manualSize": "Egna mått",
     "button.share": "Dela",
@@ -729,6 +731,7 @@
     "tool.adjustDiameter": "Justering av fräsdiametern."
   },
   "da": {
+    "help.safetyDistance": "Aksial sikkerhedsafstand ved til- og frakørsel.",
     "compare.applyDiscountShort": "Anvend",
     "app.title": "SmiProg - Gevindfræsning",
     "aria.calculator": "SmiProg - Gevindfræsning",
@@ -1066,7 +1069,7 @@
     "tool.length": "Skærlængde",
     "tool.title": "Gevindfræser",
     "unit.feed_per_tooth": "mm/tand",
-    "profile.m-manual": "M - Egne dimensioner",
+    "profile.m-manual": "M - Metrisk fin",
     "profile.g-manual": "G - Whitworth-rørgevind (manuelt)",
     "option.manualSize": "Egne dimensioner",
     "button.share": "Del",
@@ -1092,6 +1095,7 @@
     "tool.adjustDiameter": "Justering af fræserdiameteren."
   },
   "de": {
+    "help.safetyDistance": "Axialer Sicherheitsabstand beim An- und Abfahren.",
     "compare.applyDiscountShort": "Anwenden",
     "app.title": "SmiProg - Gewindefräsen",
     "aria.calculator": "SmiProg - Gewindefräsen",
@@ -1429,7 +1433,7 @@
     "tool.length": "Schneidenlänge",
     "tool.title": "Gewindefräser",
     "unit.feed_per_tooth": "mm/Zahn",
-    "profile.m-manual": "M - Eigene Abmessungen",
+    "profile.m-manual": "M - Metrisches Feingewinde",
     "profile.g-manual": "G - Whitworth-Rohrgewinde (manuell)",
     "option.manualSize": "Eigene Abmessungen",
     "button.share": "Teilen",
@@ -1455,6 +1459,7 @@
     "tool.adjustDiameter": "Anpassung des Fräserdurchmessers."
   },
   "es": {
+    "help.safetyDistance": "Distancia de seguridad axial para los movimientos de aproximación y retirada.",
     "compare.applyDiscountShort": "Aplicar",
     "app.title": "SmiProg - Fresado de roscas",
     "aria.calculator": "SmiProg - Fresado de roscas",
@@ -1792,7 +1797,7 @@
     "tool.length": "Longitud de corte",
     "tool.title": "Fresa de roscar",
     "unit.feed_per_tooth": "mm/diente",
-    "profile.m-manual": "M - Dimensiones propias",
+    "profile.m-manual": "M - Métrica fina",
     "profile.g-manual": "G - Rosca de tubo Whitworth (manual)",
     "option.manualSize": "Dimensiones propias",
     "button.share": "Compartir",
@@ -1818,6 +1823,7 @@
     "tool.adjustDiameter": "Ajuste del diámetro de la fresa."
   },
   "fr": {
+    "help.safetyDistance": "Distance de sécurité axiale pour les mouvements d'approche et de retrait.",
     "compare.applyDiscountShort": "Appliquer",
     "app.title": "SmiProg - Fraisage de filets",
     "aria.calculator": "SmiProg - Fraisage de filets",
@@ -2155,7 +2161,7 @@
     "tool.length": "Longueur de coupe",
     "tool.title": "Fraise à fileter",
     "unit.feed_per_tooth": "mm/dent",
-    "profile.m-manual": "M - Propriétés dimensionnelles",
+    "profile.m-manual": "M - Métrique, pas fin",
     "profile.g-manual": "G - Gaz cylindrique Whitworth (manuel)",
     "option.manualSize": "Propriétés dimensionnelles",
     "button.share": "Partager",
@@ -2181,6 +2187,7 @@
     "tool.adjustDiameter": "Réglage du diamètre de la fraise."
   },
   "hu": {
+    "help.safetyDistance": "Axiális biztonsági távolság a megközelítési és visszahúzási mozgásokhoz.",
     "compare.applyDiscountShort": "Alkalmaz",
     "app.title": "SmiProg - Menetmarás",
     "aria.calculator": "SmiProg - Menetmarás",
@@ -2518,7 +2525,7 @@
     "tool.length": "Élhossz",
     "tool.title": "Menetmaró",
     "unit.feed_per_tooth": "mm/fog",
-    "profile.m-manual": "M - Saját méretek",
+    "profile.m-manual": "M - Metrikus, finom",
     "profile.g-manual": "G - Whitworth csőmenet (kézi)",
     "option.manualSize": "Saját méretek",
     "button.share": "Megosztás",
@@ -2544,6 +2551,7 @@
     "tool.adjustDiameter": "A maró átmérőjének beállítása."
   },
   "id": {
+    "help.safetyDistance": "Jarak bebas aksial untuk gerakan mendekat dan menarik kembali.",
     "compare.applyDiscountShort": "Terapkan",
     "app.title": "SmiProg - Frais ulir",
     "aria.calculator": "SmiProg - Frais ulir",
@@ -2881,7 +2889,7 @@
     "tool.length": "Panjang potong",
     "tool.title": "Frais ulir",
     "unit.feed_per_tooth": "mm/gigi",
-    "profile.m-manual": "M - Dimensi sendiri",
+    "profile.m-manual": "M - Metrik halus",
     "profile.g-manual": "G - Ulir pipa Whitworth (manual)",
     "option.manualSize": "Dimensi sendiri",
     "button.share": "Bagikan",
@@ -2907,6 +2915,7 @@
     "tool.adjustDiameter": "Penyesuaian diameter cutter."
   },
   "it": {
+    "help.safetyDistance": "Distanza di sicurezza assiale per i movimenti di avvicinamento e retrazione.",
     "compare.applyDiscountShort": "Applica",
     "app.title": "SmiProg - Fresatura di filetti",
     "aria.calculator": "SmiProg - Fresatura di filetti",
@@ -3244,7 +3253,7 @@
     "tool.length": "Lunghezza di taglio",
     "tool.title": "Fresa a filettare",
     "unit.feed_per_tooth": "mm/dente",
-    "profile.m-manual": "M - Dimensioni proprie",
+    "profile.m-manual": "M - Metrica, passo fine",
     "profile.g-manual": "G - Gas cilindrica Whitworth (manuale)",
     "option.manualSize": "Dimensioni proprie",
     "button.share": "Condividi",
@@ -3270,6 +3279,7 @@
     "tool.adjustDiameter": "Regolazione del diametro della fresa."
   },
   "ja": {
+    "help.safetyDistance": "アプローチおよび退避動作に使用する軸方向の安全距離。",
     "compare.applyDiscountShort": "適用",
     "app.title": "SmiProg - ねじ切りフライス加工",
     "aria.calculator": "SmiProg - ねじ切りフライス加工",
@@ -3607,7 +3617,7 @@
     "tool.length": "刃長",
     "tool.title": "スレッドミル",
     "unit.feed_per_tooth": "mm/刃",
-    "profile.m-manual": "M - 独自寸法",
+    "profile.m-manual": "M - メートル細目",
     "profile.g-manual": "G - 管用平行ねじ（手動）",
     "option.manualSize": "独自寸法",
     "button.share": "共有",
@@ -3633,6 +3643,7 @@
     "tool.adjustDiameter": "カッター径の調整。"
   },
   "ko": {
+    "help.safetyDistance": "접근 및 후퇴 이동에 사용되는 축 방향 안전 거리입니다.",
     "compare.applyDiscountShort": "적용",
     "app.title": "SmiProg - 나사 밀링",
     "aria.calculator": "SmiProg - 나사 밀링",
@@ -3970,7 +3981,7 @@
     "tool.length": "날 길이",
     "tool.title": "스레드 밀",
     "unit.feed_per_tooth": "mm/날",
-    "profile.m-manual": "M - 자신 치수",
+    "profile.m-manual": "M - 미터 가는",
     "profile.g-manual": "G - 관용 위트워드 나사(수동)",
     "option.manualSize": "자신 치수",
     "button.share": "공유",
@@ -3996,6 +4007,7 @@
     "tool.adjustDiameter": "커터 직경 조정."
   },
   "nl": {
+    "help.safetyDistance": "Axiale veiligheidsafstand bij aanloop- en terugtrekbewegingen.",
     "compare.applyDiscountShort": "Toepassen",
     "app.title": "SmiProg - Draadfrezen",
     "aria.calculator": "SmiProg - Draadfrezen",
@@ -4333,7 +4345,7 @@
     "tool.length": "Snijlengte",
     "tool.title": "Draadfrees",
     "unit.feed_per_tooth": "mm/tand",
-    "profile.m-manual": "M - Eigen afmetingen",
+    "profile.m-manual": "M - Metrisch fijn",
     "profile.g-manual": "G - Whitworth-pijpdraad (handmatig)",
     "option.manualSize": "Eigen afmetingen",
     "button.share": "Delen",
@@ -4359,6 +4371,7 @@
     "tool.adjustDiameter": "Aanpassing van de freesdiameter."
   },
   "pl": {
+    "help.safetyDistance": "Osiowy odstęp bezpieczeństwa przy ruchach dojazdu i wycofania.",
     "compare.applyDiscountShort": "Zastosuj",
     "app.title": "SmiProg - Frezowanie gwintów",
     "aria.calculator": "SmiProg - Frezowanie gwintów",
@@ -4696,7 +4709,7 @@
     "tool.length": "Długość części skrawającej",
     "tool.title": "Frez do gwintów",
     "unit.feed_per_tooth": "mm/ząb",
-    "profile.m-manual": "M - Własne wymiary",
+    "profile.m-manual": "M - metryczny drobny",
     "profile.g-manual": "G - gwint rurowy Whitwortha (ręcznie)",
     "option.manualSize": "Własne wymiary",
     "button.share": "Udostępnij",
@@ -4722,6 +4735,7 @@
     "tool.adjustDiameter": "Korekta średnicy frezu."
   },
   "ru": {
+    "help.safetyDistance": "Осевой безопасный зазор при подводе и отводе инструмента.",
     "compare.applyDiscountShort": "Применить",
     "app.title": "SmiProg - Резьбофрезерование",
     "aria.calculator": "SmiProg - Резьбофрезерование",
@@ -5059,7 +5073,7 @@
     "tool.length": "Длина режущей части",
     "tool.title": "Резьбофреза",
     "unit.feed_per_tooth": "мм/зуб",
-    "profile.m-manual": "M - Собственные размеры",
+    "profile.m-manual": "M - метрическая, мелкая",
     "profile.g-manual": "G - трубная резьба Витворта (вручную)",
     "option.manualSize": "Собственные размеры",
     "button.share": "Поделиться",
@@ -5085,6 +5099,7 @@
     "tool.adjustDiameter": "Корректировка диаметра фрезы."
   },
   "zh": {
+    "help.safetyDistance": "接近和退刀运动使用的轴向安全距离。",
     "compare.applyDiscountShort": "应用",
     "app.title": "SmiProg - 螺纹铣削",
     "aria.calculator": "SmiProg - 螺纹铣削",
@@ -5422,7 +5437,7 @@
     "tool.length": "刃长",
     "tool.title": "螺纹铣刀",
     "unit.feed_per_tooth": "mm/齿",
-    "profile.m-manual": "M - 自定义尺寸",
+    "profile.m-manual": "M - 公制细牙",
     "profile.g-manual": "G - 惠氏管螺纹（手动）",
     "option.manualSize": "自定义尺寸",
     "button.share": "共享",
@@ -5448,6 +5463,7 @@
     "tool.adjustDiameter": "调整铣刀直径。"
   },
   "zh-tw": {
+    "help.safetyDistance": "接近和退刀運動使用的軸向安全距離。",
     "compare.applyDiscountShort": "套用",
     "app.title": "SmiProg - 螺紋銑削",
     "aria.calculator": "SmiProg - 螺紋銑削",
@@ -5785,7 +5801,7 @@
     "tool.length": "刃長",
     "tool.title": "螺紋銑刀",
     "unit.feed_per_tooth": "mm/齒",
-    "profile.m-manual": "M - 自訂尺寸",
+    "profile.m-manual": "M - 公制細牙",
     "profile.g-manual": "G - 英制直管螺紋（手動）",
     "option.manualSize": "自訂尺寸",
     "button.share": "分享",

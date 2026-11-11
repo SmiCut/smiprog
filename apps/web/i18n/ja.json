@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "アプローチおよび退避動作に使用する軸方向の安全距離。",
   "compare.applyDiscountShort": "適用",
   "app.title": "SmiProg - ねじ切りフライス加工",
   "aria.calculator": "SmiProg - ねじ切りフライス加工",
@@ -336,7 +337,7 @@
   "tool.length": "刃長",
   "tool.title": "スレッドミル",
   "unit.feed_per_tooth": "mm/刃",
-  "profile.m-manual": "M - 独自寸法",
+  "profile.m-manual": "M - メートル細目",
   "profile.g-manual": "G - 管用平行ねじ（手動）",
   "option.manualSize": "独自寸法",
   "button.share": "共有",

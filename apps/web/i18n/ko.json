@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "접근 및 후퇴 이동에 사용되는 축 방향 안전 거리입니다.",
   "compare.applyDiscountShort": "적용",
   "app.title": "SmiProg - 나사 밀링",
   "aria.calculator": "SmiProg - 나사 밀링",
@@ -336,7 +337,7 @@
   "tool.length": "날 길이",
   "tool.title": "스레드 밀",
   "unit.feed_per_tooth": "mm/날",
-  "profile.m-manual": "M - 자신 치수",
+  "profile.m-manual": "M - 미터 가는",
   "profile.g-manual": "G - 관용 위트워드 나사(수동)",
   "option.manualSize": "자신 치수",
   "button.share": "공유",

@@ -2062,22 +2062,22 @@ window.SmiProgToolWebLinks = Object.freeze({
   },
   "XBT0606C10_28W_AC": {
     "ean": "07340227531783",
-    "image": "NB08075D21_1.5ISO_AC.webp",
+    "image": "NBT08075D21_1.5ISO_AC.webp",
     "shopProductID": "XBT0606C10_28W_AC"
   },
   "XBT1010D22_19W_AC": {
     "ean": "07340227531790",
-    "image": "NB08075D21_1.5ISO_AC.webp",
+    "image": "NBT08075D21_1.5ISO_AC.webp",
     "shopProductID": "XBT1010D22_19W_AC"
   },
   "XBT1212D28_14W_AC": {
     "ean": "07340227531806",
-    "image": "NB08075D21_1.5ISO_AC.webp",
+    "image": "NBT08075D21_1.5ISO_AC.webp",
     "shopProductID": "XBT1212D28_14W_AC"
   },
   "XBT1616D40_11W_AC": {
     "ean": "07340227531813",
-    "image": "NB08075D21_1.5ISO_AC.webp",
+    "image": "NBT08075D21_1.5ISO_AC.webp",
     "shopProductID": "XBT1616D40_11W_AC"
   }
 });

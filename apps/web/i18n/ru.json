@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "Осевой безопасный зазор при подводе и отводе инструмента.",
   "compare.applyDiscountShort": "Применить",
   "app.title": "SmiProg - Резьбофрезерование",
   "aria.calculator": "SmiProg - Резьбофрезерование",
@@ -336,7 +337,7 @@
   "tool.length": "Длина режущей части",
   "tool.title": "Резьбофреза",
   "unit.feed_per_tooth": "мм/зуб",
-  "profile.m-manual": "M - Собственные размеры",
+  "profile.m-manual": "M - метрическая, мелкая",
   "profile.g-manual": "G - трубная резьба Витворта (вручную)",
   "option.manualSize": "Собственные размеры",
   "button.share": "Поделиться",

@@ -1,4 +1,5 @@
 {
+  "help.safetyDistance": "Distance de sécurité axiale pour les mouvements d'approche et de retrait.",
   "compare.applyDiscountShort": "Appliquer",
   "app.title": "SmiProg - Fraisage de filets",
   "aria.calculator": "SmiProg - Fraisage de filets",
@@ -336,7 +337,7 @@
   "tool.length": "Longueur de coupe",
   "tool.title": "Fraise à fileter",
   "unit.feed_per_tooth": "mm/dent",
-  "profile.m-manual": "M - Propriétés dimensionnelles",
+  "profile.m-manual": "M - Métrique, pas fin",
   "profile.g-manual": "G - Gaz cylindrique Whitworth (manuel)",
   "option.manualSize": "Propriétés dimensionnelles",
   "button.share": "Partager",

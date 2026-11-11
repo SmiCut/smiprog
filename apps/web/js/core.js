@@ -1367,6 +1367,11 @@
     const candidates = filterTools(data, normalizedInput);
     const tool = getEffectiveTool(candidates, normalizedInput.selectedToolId, normalizedInput.overrides);
     const errors = [];
+    const discountPercent = options && options.comparePricing
+      ? Number(options.comparePricing.discountPercent ?? 0) : 0;
+    if (!Number.isFinite(discountPercent) || discountPercent < 0 || discountPercent > 100) {
+      errors.push("Enter a discount from 0 to 100%.");
+    }
     const catalogueTool = getSelectedTool(candidates, normalizedInput.selectedToolId);
     if (catalogueTool && !hasCustomTool(normalizedInput.overrides) &&
         normalizedInput.overrides.cutterDiameter > catalogueTool.cutterDiameter) {
@@ -1491,7 +1496,9 @@
         const referencePrice = options && options.comparePricing
           ? (tool.isCustom ? null : options.comparePricing.referencePrice)
           : tool.priceEur;
-        const toolPrice = normalizedInput.overrides.toolPrice !== null ? normalizedInput.overrides.toolPrice : referencePrice;
+        const baseToolPrice = normalizedInput.overrides.toolPrice !== null ? normalizedInput.overrides.toolPrice : referencePrice;
+        const toolPrice = Number.isFinite(baseToolPrice) && discountPercent > 0
+          ? round(baseToolPrice * (1 - discountPercent / 100), 2) : baseToolPrice;
         const toolingCostPerThread = Number.isFinite(toolPrice)
           ? toolPrice / (normalizedInput.toolLife * 60 / cuttingData.machiningTime) : null;
         const machineCostPerThread = normalizedInput.machineCost * cuttingData.machiningTime / 3600;

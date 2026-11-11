@@ -74,3 +74,28 @@ test("Compare with no allowed reference keeps time and machine cost without a ca
     assert.equal(invalid.costData, null);
   }
 });
+
+test("Compare applies one discount after selecting the reference or own price", () => {
+  const input = { ...timings.cases[0].input, overrides: {}, machineCost: 80, toolLife: 120 };
+  const calculate = (discountPercent, overrides = {}, referencePrice = 227.8) => core.calculate(
+    { ...input, overrides }, data, { comparePricing: { referencePrice, discountPercent } });
+  const base = calculate(0);
+  for (const [discount, expected] of [[20, 182.24], [12.5, 199.33], [100, 0]]) {
+    const result = calculate(discount);
+    assert.equal(result.errors.length, 0);
+    assert.equal(result.costData.toolPrice, expected);
+    assert.equal(result.cuttingData.machiningTime, base.cuttingData.machiningTime);
+    assert.equal(result.costData.machineCostPerThread, base.costData.machineCostPerThread);
+    assert.ok(Math.abs(result.costData.toolingCostPerThread - base.costData.toolingCostPerThread * expected / 227.8) < 1e-10);
+  }
+  assert.equal(calculate(20, { toolPrice: 100 }).costData.toolPrice, 80);
+  assert.equal(calculate(20, { toolPrice: 0 }).costData.toolPrice, 0);
+  assert.equal(calculate(20, {}, 2460).costData.toolPrice, 1968);
+  assert.equal(calculate(20, {}, null).costData.toolPrice, null);
+  assert.equal(calculate(20, { cutterDiameter: 5, cuttingEdgeLength: 10, flutes: 3, toolPrice: 100 }).costData.toolPrice, 80);
+  for (const discount of [-1, 100.01, NaN, Infinity, "bad"]) {
+    const invalid = calculate(discount);
+    assert.ok(invalid.errors.includes("Enter a discount from 0 to 100%."));
+    assert.equal(invalid.costData, null);
+  }
+});

@@ -20,6 +20,17 @@ phone sizes, including narrow WordPress columns inside wider browser windows.
 Compare's workspace responds to its available container width; its setup button
 stays beside the note except on portrait phones up to 560 px.
 
+Compare's shared discount is available with price access (unlocked EUR prices or
+the existing public SEK prices). It applies equally to both tools, including own
+price overrides, only while Apply discount is checked. Preserve the original
+inputs; show each net price separately and include the discount in copied results.
+Round discounted tool prices to two currency decimals before calculating costs.
+Validate 0-100%, including fractional values; an invalid active discount must not
+produce usable cost results. Turning it off restores undiscounted prices. Keep
+discount value and enabled state in local storage, like the existing own prices.
+All locales must use the neutral prices wording, without catalogue qualifiers,
+and omit the redundant tool-life/machine-cost footer.
+
 The fixture set contains 57 golden cases, a 153-case native Excel matrix and 18
 native Excel A/B cost scenarios. Those reference results are preserved, not
 regenerated from the browser implementation. Historical workbooks and internal
@@ -146,7 +157,7 @@ fixtures and release assets. Public branches are not a confidential review area.
 The original Excel workbooks and audit working files remain private; the selected
 public fixtures and image originals support reproducible tests and builds.
 
-The current release baseline is v1.1.1 (all 16 languages). It uses complete HTML
+The current release baseline is v1.2.0 (all 16 languages). It uses complete HTML
 for both downloads and direct embedding; the standalone and embedded checks run
 at desktop/mobile widths. Historical version labels in technical documents record
 when a change was introduced, not an unreleased controller status.

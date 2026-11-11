@@ -31,6 +31,8 @@ try {
       await page.locator('#spg-compare-password').fill('XL');
       await page.locator('#spg-unlock-compare').click();
     }
+    await page.locator('#spg-compare-discount').fill('20');
+    await page.locator('#spg-compare-apply-discount').check();
     for (const [width, height, hostWidth] of cases) {
       await page.setViewportSize({ width, height });
       await page.locator('#host').evaluate((node, size) => { node.style.width = `${size}px`; }, hostWidth);
@@ -44,7 +46,7 @@ try {
         return {
           unusedWidth: workspace.right - tools.right,
           narrowCards: cards.filter(card => card.getBoundingClientRect().width < Math.min(300, workspace.width) - 1).length,
-          overflow: [...document.querySelectorAll('.spg-compare-tool-metric, .spg-compare-tool-type-label, .spg-compare-tool-select-row, .spg-compare-note-row')]
+          overflow: [...document.querySelectorAll('.spg-compare-tool-metric, .spg-compare-tool-type-label, .spg-compare-tool-select-row, .spg-compare-note-row, .spg-compare-discount-controls, .spg-compare-discount-toggle')]
             .filter(node => node.scrollWidth > node.clientWidth + 2).map(node => node.className),
           buttonAbove: button.bottom <= note.top,
           fullWidthButton: Math.abs(button.width - note.width) < 1,

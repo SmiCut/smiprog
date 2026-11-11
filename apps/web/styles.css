@@ -1470,6 +1470,49 @@
   box-shadow: none !important;
 }
 
+#smiprog-app .spg-compare-discount-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 0 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#smiprog-app .spg-compare-discount-controls > label {
+  margin: 0;
+}
+
+#smiprog-app #spg-compare-discount {
+  width: 88px !important;
+  flex: 0 0 88px;
+  min-width: 0;
+  height: 36px !important;
+  padding: 6px 10px !important;
+}
+
+#smiprog-app #spg-compare-discount[aria-invalid="true"] {
+  border-color: #b42318 !important;
+}
+
+#smiprog-app .spg-compare-discount-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  cursor: pointer;
+}
+
+#smiprog-app #spg-compare-apply-discount {
+  appearance: auto;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin: 0;
+  accent-color: #8b5c47;
+}
+
 #smiprog-app .spg-compare-summary {
   display: none !important;
   color: #7a4f3d !important;

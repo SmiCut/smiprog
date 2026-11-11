@@ -282,11 +282,11 @@
 
       <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden="">
         <div id="spg-compare-access" class="spg-compare-access">
-          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">사용할 공구 가격을 입력하세요. SmiCut 대리점은 카탈로그 가격을 확인하기 위한 비밀번호를 SmiCut에 요청할 수 있습니다.</p>
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">사용할 공구 가격을 입력하세요. SmiCut 대리점은 가격을 확인하기 위한 비밀번호를 SmiCut에 요청할 수 있습니다.</p>
           <div id="spg-compare-lock" class="spg-compare-password-row">
             <label for="spg-compare-password" data-i18n="compare.password">비밀번호</label>
             <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
-            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">카탈로그 가격 잠금 해제</button>
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">가격 잠금 해제</button>
           </div>
           <div id="spg-compare-unlock-message" class="spg-help-text" role="status"></div>
         </div>
@@ -430,8 +430,15 @@
           </div>
 
           <section class="spg-card spg-final-card spg-compare-results-card">
+            <div id="spg-compare-discount-controls" class="spg-compare-discount-controls" hidden="">
+              <label for="spg-compare-discount" data-i18n="compare.discount">할인율 (%)</label>
+              <input id="spg-compare-discount" class="spg-control" type="number" min="0" max="100" step="any" value="0" inputmode="decimal">
+              <label class="spg-compare-discount-toggle" for="spg-compare-apply-discount">
+                <input id="spg-compare-apply-discount" type="checkbox">
+                <span data-i18n="compare.applyDiscount">할인 적용</span>
+              </label>
+            </div>
             <div id="spg-cost-data" class="spg-compare-result-table"></div>
-            <p class="spg-help-text" data-i18n="compare.referencePrices">공구 수명은 절삭 시간(분)으로, 기계 비용은 시간당 금액으로 입력합니다.</p>
           </section>
         </div>
       </section>

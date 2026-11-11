@@ -99,6 +99,17 @@ try {
       assert.ok(copy.includes(dictionary['compare.totalCost']));
       assert.ok(copy.includes(summary));
       assert.ok(copy.includes(locale === 'sv' ? 'SWE/shop/productinfo/' : 'id.smicut.com/'));
+      assert.equal(await page.locator('#spg-compare-discount-controls').isVisible(), true);
+      assert.equal(await page.locator('#spg-compare-discount').count(), 1);
+      await page.locator('#spg-compare-discount').fill('20');
+      await page.locator('#spg-compare-apply-discount').check();
+      await page.locator('#spg-copy-compare-results').click();
+      const discountedCopy = await page.evaluate(() => window.copiedText);
+      assert.ok(discountedCopy.includes(dictionary['compare.netPrice']));
+      assert.ok(discountedCopy.includes(dictionary['compare.discount']));
+      const numberLocale = await page.evaluate(() => window.SmiProgI18n.getNumberLocale());
+      for (const net of [80, 160]) assert.ok(discountedCopy.includes(net.toLocaleString(numberLocale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })));
+      await page.locator('#spg-compare-apply-discount').uncheck();
       assert.equal(await page.getByRole('button', {name:dictionary['button.share'],exact:true}).count(), 0);
       assert.equal(await page.evaluate(()=>window.sharedText), undefined);
       await input.fill('-1'); await input.blur();
@@ -122,7 +133,7 @@ try {
       assert.ok((await page.locator('.sms-category-result-value').textContent()).includes(dictionary['materialDescriptor.steel-medium-carbon']));
       assert.ok(requests.every(request=>request.language===locale));
       assert.deepEqual(errors,[],locale);
-      report.push({locale, passed:true, screenshots:6, checks:['all views','layout','prices','copy','no share button','validation','CNC parity','material key','greeting fallback']});
+      report.push({locale, passed:true, screenshots:6, checks:['all views','layout','prices','discount','copy','no share button','validation','CNC parity','material key','greeting fallback']});
       console.log(`${locale}: passed`);
     } finally { await context.close(); }
   }

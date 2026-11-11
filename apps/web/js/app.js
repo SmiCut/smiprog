@@ -35,6 +35,7 @@
       "Enter a valid cutting length.": "error.tool",
       "Enter a valid number of flutes.": "error.wholeFlutes",
       "Enter a valid tool price.": "compare.priceError",
+      "Enter a discount from 0 to 100%.": "compare.discountError",
       "Enter a valid cutting speed.": "error.cutting",
       "Enter a valid feed per tooth.": "error.cutting",
       "No matching tool was found for the selected input.": "error.noTool",
@@ -142,6 +143,24 @@
   let currentResult = null;
   let compareUnlocked = false;
   let compareInitialized = false;
+  const compareDiscountInput = document.getElementById("spg-compare-discount");
+  const compareDiscountToggle = document.getElementById("spg-compare-apply-discount");
+
+  function compareDiscountActive() {
+    return comparePriceAllowed() && compareDiscountToggle.checked;
+  }
+
+  function compareDiscountPercent() {
+    if (!compareDiscountActive()) return 0;
+    return compareDiscountInput.value === "" ? NaN : Number(compareFieldValue(compareDiscountInput));
+  }
+
+  function updateCompareDiscount() {
+    const percent = compareDiscountPercent();
+    compareDiscountInput.setAttribute("aria-invalid", String(!Number.isFinite(percent) || percent < 0 || percent > 100));
+    writeCompareStorage("smiprog.compare.discount", { value: compareFieldValue(compareDiscountInput), enabled: compareDiscountToggle.checked });
+    renderCostData();
+  }
 
   function readCompareStorage(key, fallback) {
     try { return JSON.parse(global.localStorage.getItem(key)) ?? fallback; } catch (_) { return fallback; }
@@ -180,6 +199,7 @@
     elements.compareLock.hidden = comparePriceAllowed();
     document.getElementById("spg-compare-price-help").hidden = comparePriceAllowed();
     document.getElementById("spg-compare-access").hidden = comparePriceAllowed();
+    document.getElementById("spg-compare-discount-controls").hidden = !comparePriceAllowed();
     document.querySelector('label[for="spg-machine-cost"] span').textContent = `${uiText("compare.hourlyRate")} (${compareCurrency() === "SEK" ? "kr" : "EUR"})`;
   }
 
@@ -1794,6 +1814,7 @@
 
     return [
       [uiText("compare.toolPrice"), invalidA ? "-" : valueOrDash(getCompareReferenceToolPrice(resultA), priceDecimals, currencySuffix), invalidB ? "-" : valueOrDash(getCompareReferenceToolPrice(resultB), priceDecimals, currencySuffix), controlsA.price, controlsB.price],
+      ...(compareDiscountActive() ? [[uiText("compare.netPrice"), valueOrDash(costA.toolPrice, 2, currencySuffix), valueOrDash(costB.toolPrice, 2, currencySuffix)]] : []),
       [uiText("compare.toolLife"), invalidA ? "-" : `${formatDecimal(getCompareReferenceToolLife(), 0)} ${uiText("compare.minutes")}`, invalidB ? "-" : `${formatDecimal(getCompareReferenceToolLife(), 0)} ${uiText("compare.minutes")}`, controlsA.life, controlsB.life],
       [uiText("cutting.speed"), valueOrDash(cA.recommendedCuttingSpeed, 0, " m/min"), valueOrDash(cB.recommendedCuttingSpeed, 0, " m/min"), controlsA.speed, controlsB.speed],
       [uiText("compare.feedPerTooth"), valueOrDash(cA.calculatedFeedPerTooth, 3, ` ${uiText("unit.feed_per_tooth")}`), valueOrDash(cB.calculatedFeedPerTooth, 3, ` ${uiText("unit.feed_per_tooth")}`), controlsA.feed, controlsB.feed],
@@ -2033,7 +2054,10 @@
 
     const inputA = getCompareScenarioInput("a", candidates, operationInput);
     const inputB = getCompareScenarioInput("b", candidates, operationInput);
-    const pricing = side => ({ comparePricing: { referencePrice: compareReferencePrice(findCompareTool(candidates, getCompareControls(side).tool.value)) } });
+    const pricing = side => ({ comparePricing: {
+      referencePrice: compareReferencePrice(findCompareTool(candidates, getCompareControls(side).tool.value)),
+      discountPercent: compareDiscountPercent()
+    } });
     const resultA = core.calculate(inputA, data, pricing("a"));
     const resultB = core.calculate(inputB, data, pricing("b"));
     addCompareCustomToolError("a", resultA);
@@ -2126,6 +2150,7 @@
       `${pitchCopy.label}: ${pitchCopy.value}`,
       `${uiText("thread.length")}: ${formatCopyInputNumber(elements.compareThreadLength.value, 3)} mm`,
       `${uiText("compare.hourlyRate")}: ${formatCompareCurrency(elements.machineCost.value)}`,
+      ...(compareDiscountActive() ? [`${uiText("compare.discount")}: ${formatDecimal(compareDiscountPercent(), 2)}`] : []),
       "",
       ...buildCompareToolCopyLines(uiText("field.toolA"), resultA, controlsA),
       "",
@@ -2516,6 +2541,8 @@
     elements.copyCuttingData.addEventListener("click", copyCuttingData);
     elements.copyCnc.addEventListener("click", copyCncProgram);
     elements.unlockCompare.addEventListener("click", unlockCompare);
+    compareDiscountInput.addEventListener("input", updateCompareDiscount);
+    compareDiscountToggle.addEventListener("change", updateCompareDiscount);
     document.getElementById("spg-use-current-setup").addEventListener("click", useCurrentCompareSetup);
     [elements.machineCost, elements.compareToolAPrice, elements.compareToolBPrice].forEach(input => input.addEventListener("input", persistComparePrices));
     elements.comparePassword.addEventListener("keydown", (event) => {
@@ -2552,6 +2579,9 @@
     initMaterialSelector();
     recalculate();
     compareUnlocked = readCompareStorage("smiprog.compare.cataloguePrices", false) === true;
+    const savedDiscount = readCompareStorage("smiprog.compare.discount", {});
+    compareDiscountInput.value = savedDiscount.value ?? "0";
+    compareDiscountToggle.checked = savedDiscount.enabled === true;
     const savedMoney = readCompareStorage(`smiprog.compare.money.${compareCurrency()}`, {});
     elements.machineCost.value = savedMoney.machine ?? (compareCurrency() === "SEK" ? "900" : "80");
     elements.compareLock.hidden = true;

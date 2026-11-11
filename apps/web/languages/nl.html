@@ -282,11 +282,11 @@
 
       <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden="">
         <div id="spg-compare-access" class="spg-compare-access">
-          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Voer uw eigen gereedschapsprijzen in. SmiCut-dealers kunnen bij SmiCut het wachtwoord aanvragen om de catalogusprijzen te bekijken.</p>
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Voer uw eigen gereedschapsprijzen in. SmiCut-dealers kunnen bij SmiCut het wachtwoord aanvragen om de prijzen te bekijken.</p>
           <div id="spg-compare-lock" class="spg-compare-password-row">
             <label for="spg-compare-password" data-i18n="compare.password">Wachtwoord</label>
             <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
-            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">Catalogusprijzen ontgrendelen</button>
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">Prijzen ontgrendelen</button>
           </div>
           <div id="spg-compare-unlock-message" class="spg-help-text" role="status"></div>
         </div>
@@ -430,8 +430,15 @@
           </div>
 
           <section class="spg-card spg-final-card spg-compare-results-card">
+            <div id="spg-compare-discount-controls" class="spg-compare-discount-controls" hidden="">
+              <label for="spg-compare-discount" data-i18n="compare.discount">Korting (%)</label>
+              <input id="spg-compare-discount" class="spg-control" type="number" min="0" max="100" step="any" value="0" inputmode="decimal">
+              <label class="spg-compare-discount-toggle" for="spg-compare-apply-discount">
+                <input id="spg-compare-apply-discount" type="checkbox">
+                <span data-i18n="compare.applyDiscount">Korting toepassen</span>
+              </label>
+            </div>
             <div id="spg-cost-data" class="spg-compare-result-table"></div>
-            <p class="spg-help-text" data-i18n="compare.referencePrices">De standtijd wordt uitgedrukt in snijminuten en de machinekosten per uur.</p>
           </section>
         </div>
       </section>

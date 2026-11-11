@@ -4,8 +4,11 @@ permissions:
   contents: read
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
+    container:
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
+      options: --user 1001
     steps:
       - uses: actions/checkout@v7
         with:
@@ -15,9 +18,15 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci --ignore-scripts
-      - run: npx playwright install --with-deps chromium
       - run: npm test
+      - run: npm run verify:main-layout
       - run: npm run test:browser
       - run: npm run build:wordpress
       - run: npm run verify:wordpress
       - run: npm run verify:languages
+      - uses: actions/upload-artifact@v5
+        if: failure()
+        with:
+          name: browser-failure-screenshots
+          path: dist/english-preview/*.png
+          retention-days: 7

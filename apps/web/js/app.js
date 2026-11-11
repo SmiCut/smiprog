@@ -35,6 +35,7 @@
       "Enter a valid cutting length.": "error.tool",
       "Enter a valid number of flutes.": "error.wholeFlutes",
       "Enter a valid tool price.": "compare.priceError",
+      "Enter a discount from 0 to 100%.": "compare.discountError",
       "Enter a valid cutting speed.": "error.cutting",
       "Enter a valid feed per tooth.": "error.cutting",
       "No matching tool was found for the selected input.": "error.noTool",
@@ -142,6 +143,41 @@
   let currentResult = null;
   let compareUnlocked = false;
   let compareInitialized = false;
+  let compareDiscountValue = "";
+
+  function compareDiscountActive() {
+    const percent = compareDiscountPercent();
+    return comparePriceAllowed() && Number.isFinite(percent) && percent > 0 && percent <= 100;
+  }
+
+  function compareDiscountPercent() {
+    return comparePriceAllowed() ? Number(compareDiscountValue.replace(",", ".")) : 0;
+  }
+
+  function updateCompareDiscount(input) {
+    compareDiscountValue = compareFieldValue(input);
+    writeCompareStorage("smiprog.compare.discount", { value: compareDiscountValue, enabled: compareDiscountActive() });
+    renderCostData();
+  }
+
+  function createCompareDiscountInput(side, mobile = false) {
+    const input = document.createElement("input");
+    input.id = `spg-compare-discount-${side}${mobile ? "-mobile" : ""}`;
+    input.className = "spg-control spg-compare-discount-input";
+    if (mobile) input.classList.add("spg-compare-mobile-row-input");
+    input.type = "text";
+    input.min = "0";
+    input.max = "100";
+    input.step = "any";
+    input.inputMode = "decimal";
+    input.placeholder = "%";
+    input.setAttribute("aria-label", `${uiText(side === "a" ? "field.toolA" : "field.toolB")} ${uiText("compare.discount")}`);
+    input.value = compareDiscountValue;
+    const percent = compareDiscountPercent();
+    input.setAttribute("aria-invalid", String(!Number.isFinite(percent) || percent < 0 || percent > 100));
+    input.addEventListener("input", () => updateCompareDiscount(input));
+    return input;
+  }
 
   function readCompareStorage(key, fallback) {
     try { return JSON.parse(global.localStorage.getItem(key)) ?? fallback; } catch (_) { return fallback; }
@@ -248,7 +284,7 @@
 
   const threadProfileOptions = [
     { id: "m", label: "M - Metric coarse", coreProfileId: "m", pitchMode: "mm", sizeTableId: "metricCoarse" },
-    { id: "m-manual", label: "M - Metric (manual)", coreProfileId: "m", pitchMode: "mm" },
+    { id: "m-manual", label: "M - Metric fine", coreProfileId: "m", pitchMode: "mm" },
     { id: "unc", label: "UNC - Unified", coreProfileId: "un", pitchMode: "tpi", sizeTableId: "unc" },
     { id: "unf", label: "UNF - Unified", coreProfileId: "un", pitchMode: "tpi", sizeTableId: "unf" },
     { id: "unef", label: "UNEF - Unified", coreProfileId: "un", pitchMode: "tpi", sizeTableId: "unef" },
@@ -1133,6 +1169,7 @@
     const customSelected = isCustomToolSelected();
     elements.customToolFields.hidden = !customSelected;
     elements.markedDiameterField.hidden = customSelected;
+    document.getElementById("spg-tool-metrics").hidden = customSelected;
     elements.tool.closest("#spg-tool-field")?.classList.toggle("spg-tool-field-custom", customSelected);
     elements.toolSummary.hidden = false;
   }
@@ -1283,12 +1320,8 @@
     const visualGroup = document.createElement("div");
     visualGroup.className = "spg-tool-visual-group";
 
-    const metricGrid = document.createElement("div");
-    metricGrid.className = "spg-tool-metric-grid";
-    metricGrid.appendChild(resultRow(uiText("tool.length"), hasTool ? `${formatDimension(result.tool.cuttingEdgeLength)} mm` : "-"));
-    metricGrid.appendChild(resultRow(uiText("tool.flutes"), hasTool ? String(result.tool.flutes) : "-"));
-
-    summaryLayout.appendChild(metricGrid);
+    setText(document.getElementById("spg-tool-cutting-length"), hasTool ? `${formatDimension(result.tool.cuttingEdgeLength)} mm` : "-");
+    setText(document.getElementById("spg-tool-flutes"), hasTool ? String(result.tool.flutes) : "-");
     visualGroup.appendChild(typeRow);
     visualGroup.appendChild(imageFrame);
     elements.toolSummary.appendChild(summaryLayout);
@@ -1599,13 +1632,13 @@
     renderCompareToolSummary(side, result, selectedTool);
 
     if (selectedTool) {
-      controls.price.placeholder = i18n.format("compare.pricePlaceholder", { currency: compareCurrency() === "SEK" ? "kr" : "€" });
+      controls.price.placeholder = compareCurrency() === "SEK" ? "kr" : "€";
       controls.price.title = uiText("compare.ownPrice");
       setInputPlaceholder(controls.diameter, selectedTool.cutterDiameter, 2);
       setInputPlaceholder(controls.length, selectedTool.cuttingEdgeLength, 2);
       setInputPlaceholder(controls.flutes, selectedTool.flutes, 0);
     } else {
-      controls.price.placeholder = i18n.format("compare.pricePlaceholder", { currency: compareCurrency() === "SEK" ? "kr" : "€" });
+      controls.price.placeholder = compareCurrency() === "SEK" ? "kr" : "€";
       controls.price.title = uiText("compare.ownPrice");
       controls.diameter.placeholder = "mm";
       controls.length.placeholder = "mm";
@@ -1664,7 +1697,7 @@
 
   function getActiveCompareInputId() {
     const activeElement = document.activeElement;
-    return activeElement && activeElement.classList.contains("spg-compare-row-input") ? activeElement.id : "";
+    return activeElement && activeElement.matches(".spg-compare-row-input, .spg-compare-discount-input") ? activeElement.id : "";
   }
 
   function restoreCompareInputFocus(inputId) {
@@ -1690,11 +1723,22 @@
   }
 
   function hasCompareOwnValue(input) {
-    return Boolean(input && String(input.value || "").trim() !== "");
+    return Boolean(input && !input.classList.contains("spg-compare-discount-input") && String(input.value || "").trim() !== "");
   }
 
   function getCompareReferenceToolPrice(result) {
     return compareReferencePrice(result && result.tool);
+  }
+
+  function getCompareDiscountedPrice(result, controls) {
+    if (!result || !result.costData || compareDiscountValue.trim() === "") return null;
+    const basePrice = controls.price.value !== "" ? Number(compareFieldValue(controls.price)) : getCompareReferenceToolPrice(result);
+    const percent = compareDiscountPercent();
+    return core.discountedToolPrice(basePrice, percent);
+  }
+
+  function isInactiveComparePrice(priceKind) {
+    return priceKind === "original" ? compareDiscountActive() : priceKind === "discounted" && compareDiscountValue.trim() !== "" && !compareDiscountActive();
   }
 
   function getCompareReferenceToolLife() {
@@ -1716,12 +1760,17 @@
     if (input) {
       input.classList.add("spg-compare-row-input");
       const inputLabels = { price: "compare.toolPrice", life: "compare.toolLife", speed: "cutting.speed", feed: "compare.feedPerTooth", passes: "cutting.passesMaximum" };
-      input.setAttribute("aria-label", `${uiText(input.id.includes("-a-") ? "field.toolA" : "field.toolB")} ${uiText(inputLabels[input.id.split("-").at(-1)])}`);
-      if (!input.value && !input.id.endsWith("-price")) input.placeholder = "";
+      if (!input.classList.contains("spg-compare-discount-input")) {
+        input.setAttribute("aria-label", `${uiText(input.id.includes("-a-") ? "field.toolA" : "field.toolB")} ${uiText(inputLabels[input.id.split("-").at(-1)])}`);
+        if (!input.value && !input.id.endsWith("-price")) input.placeholder = "";
+      }
       cell.appendChild(input);
       syncCompareOwnInputReferenceState(input);
       const reset = createCompareReset(input);
-      if (reset) valueElement.appendChild(reset);
+      if (reset) {
+        valueElement.classList.add("spg-compare-reference-reset");
+        valueElement.appendChild(reset);
+      }
     } else if (diffText) {
       const diffElement = document.createElement("span");
       diffElement.className = "spg-compare-cell-difference";
@@ -1741,7 +1790,7 @@
   }
 
   function createCompareReset(input) {
-    if (!input || !/-(speed|feed|passes)$/.test(input.id) || !hasCompareOwnValue(input)) return null;
+    if (!input || String(input.value).trim() === "") return null;
     const button = document.createElement("button");
     button.type = "button";
     button.className = "spg-button spg-compare-reset";
@@ -1750,6 +1799,7 @@
     button.setAttribute("aria-label", `${uiText("compare.restore")}: ${input.getAttribute("aria-label")}`);
     button.addEventListener("click", () => {
       input.value = "";
+      input.dispatchEvent(new Event("input", { bubbles: true }));
       input.dispatchEvent(new Event("change", { bubbles: true }));
     });
     return button;
@@ -1760,6 +1810,8 @@
     row.className = "spg-compare-result-row spg-result-row";
     if (options && options.highlight) row.classList.add("spg-result-row-highlight");
     if (options && options.editable) row.classList.add("spg-compare-result-row-editable");
+    if (options && options.priceKind === "discounted") row.classList.add("spg-compare-discount-row");
+    if (options && isInactiveComparePrice(options.priceKind)) row.classList.add("spg-compare-price-inactive");
 
     const labelElement = document.createElement("span");
     labelElement.className = "spg-result-label";
@@ -1793,7 +1845,8 @@
     );
 
     return [
-      [uiText("compare.toolPrice"), invalidA ? "-" : valueOrDash(getCompareReferenceToolPrice(resultA), priceDecimals, currencySuffix), invalidB ? "-" : valueOrDash(getCompareReferenceToolPrice(resultB), priceDecimals, currencySuffix), controlsA.price, controlsB.price],
+      [uiText("compare.toolPrice"), invalidA ? "-" : valueOrDash(getCompareReferenceToolPrice(resultA), priceDecimals, currencySuffix), invalidB ? "-" : valueOrDash(getCompareReferenceToolPrice(resultB), priceDecimals, currencySuffix), controlsA.price, controlsB.price, null, null, "original"],
+      ...(comparePriceAllowed() ? [[uiText("compare.netPrice"), valueOrDash(getCompareDiscountedPrice(resultA, controlsA), 2, currencySuffix), valueOrDash(getCompareDiscountedPrice(resultB, controlsB), 2, currencySuffix), createCompareDiscountInput("a"), createCompareDiscountInput("b"), null, null, "discounted"]] : []),
       [uiText("compare.toolLife"), invalidA ? "-" : `${formatDecimal(getCompareReferenceToolLife(), 0)} ${uiText("compare.minutes")}`, invalidB ? "-" : `${formatDecimal(getCompareReferenceToolLife(), 0)} ${uiText("compare.minutes")}`, controlsA.life, controlsB.life],
       [uiText("cutting.speed"), valueOrDash(cA.recommendedCuttingSpeed, 0, " m/min"), valueOrDash(cB.recommendedCuttingSpeed, 0, " m/min"), controlsA.speed, controlsB.speed],
       [uiText("compare.feedPerTooth"), valueOrDash(cA.calculatedFeedPerTooth, 3, ` ${uiText("unit.feed_per_tooth")}`), valueOrDash(cB.calculatedFeedPerTooth, 3, ` ${uiText("unit.feed_per_tooth")}`), controlsA.feed, controlsB.feed],
@@ -1825,12 +1878,14 @@
     header.appendChild(articleElement);
     card.appendChild(header);
 
-    rows.forEach(([label, leftValue, rightValue, leftInput, rightInput, leftDiff, rightDiff]) => {
+    rows.forEach(([label, leftValue, rightValue, leftInput, rightInput, leftDiff, rightDiff, priceKind]) => {
       const sourceInput = side === "a" ? leftInput : rightInput;
       const displayValue = side === "a" ? leftValue : rightValue;
       const diffText = side === "a" ? leftDiff : rightDiff;
       const row = document.createElement("div");
       row.className = "spg-compare-mobile-result-row";
+      if (priceKind === "discounted") row.classList.add("spg-compare-discount-row");
+      if (isInactiveComparePrice(priceKind)) row.classList.add("spg-compare-price-inactive");
       if (sourceInput) row.classList.add("spg-compare-mobile-result-row-editable");
       const labelElement = document.createElement("span");
       labelElement.className = "spg-result-label";
@@ -1842,7 +1897,15 @@
       if (sourceInput && hasCompareOwnValue(sourceInput)) referenceElement.classList.add("spg-result-value-muted");
       referenceElement.textContent = displayValue;
       valueElement.appendChild(referenceElement);
-      if (sourceInput) {
+      if (priceKind === "discounted") {
+        const discountInput = createCompareDiscountInput(side, true);
+        valueElement.appendChild(discountInput);
+        const reset = createCompareReset(discountInput);
+        if (reset) {
+          referenceElement.classList.add("spg-compare-reference-reset");
+          referenceElement.appendChild(reset);
+        }
+      } else if (sourceInput) {
         const mobileInput = document.createElement("input");
         mobileInput.className = "spg-compare-mobile-row-input";
         if (sourceInput.id.endsWith("-price")) mobileInput.classList.add("spg-compare-price-input");
@@ -1862,7 +1925,10 @@
         });
         valueElement.appendChild(mobileInput);
         const reset = createCompareReset(sourceInput);
-        if (reset) referenceElement.appendChild(reset);
+        if (reset) {
+          referenceElement.classList.add("spg-compare-reference-reset");
+          referenceElement.appendChild(reset);
+        }
       }
       if (diffText) {
         const diffElement = document.createElement("span");
@@ -1987,8 +2053,9 @@
     elements.costData.appendChild(header);
 
     const rows = getCompareResultRows(resultA, resultB);
-    rows.forEach(([label, leftValue, rightValue, leftInput, rightInput, leftDiff, rightDiff]) => {
+    rows.forEach(([label, leftValue, rightValue, leftInput, rightInput, leftDiff, rightDiff, priceKind]) => {
       elements.costData.appendChild(createCompareResultRow(label, leftValue, rightValue, {
+        priceKind,
         leftInput,
         rightInput,
         leftDiff,
@@ -2033,7 +2100,10 @@
 
     const inputA = getCompareScenarioInput("a", candidates, operationInput);
     const inputB = getCompareScenarioInput("b", candidates, operationInput);
-    const pricing = side => ({ comparePricing: { referencePrice: compareReferencePrice(findCompareTool(candidates, getCompareControls(side).tool.value)) } });
+    const pricing = side => ({ comparePricing: {
+      referencePrice: compareReferencePrice(findCompareTool(candidates, getCompareControls(side).tool.value)),
+      discountPercent: compareDiscountPercent()
+    } });
     const resultA = core.calculate(inputA, data, pricing("a"));
     const resultB = core.calculate(inputB, data, pricing("b"));
     addCompareCustomToolError("a", resultA);
@@ -2113,7 +2183,7 @@
     const controlsA = getCompareControls("a");
     const controlsB = getCompareControls("b");
     const pitchCopy = getComparePitchCopyText();
-    const rows = getCompareResultRows(resultA, resultB);
+    const rows = getCompareResultRows(resultA, resultB).filter(row => row[7] !== "discounted" || compareDiscountActive());
 
     const lines = [
       `SmiCut ${uiText("tabs.threadMilling")} - ${uiText("tabs.compare")}`,
@@ -2126,6 +2196,7 @@
       `${pitchCopy.label}: ${pitchCopy.value}`,
       `${uiText("thread.length")}: ${formatCopyInputNumber(elements.compareThreadLength.value, 3)} mm`,
       `${uiText("compare.hourlyRate")}: ${formatCompareCurrency(elements.machineCost.value)}`,
+      ...(compareDiscountActive() ? [`${uiText("compare.discount")}: ${formatDecimal(compareDiscountPercent(), 2)}`] : []),
       "",
       ...buildCompareToolCopyLines(uiText("field.toolA"), resultA, controlsA),
       "",
@@ -2379,7 +2450,43 @@
     input.value = String(Math.min(3, Math.max(1, Number.isFinite(numericValue) ? numericValue : 1)));
   }
 
+  function bindInfoHelp() {
+    const closeHelp = [];
+    document.querySelectorAll("#smiprog-app .spg-info").forEach((wrapper) => {
+      const button = wrapper.querySelector("button");
+      const tip = wrapper.querySelector("[role=tooltip]");
+      let pinned = false;
+      const show = (open) => {
+        tip.hidden = !open;
+        button.setAttribute("aria-expanded", String(open));
+      };
+      const close = () => { pinned = false; show(false); };
+      closeHelp.push(close);
+      wrapper.addEventListener("pointerenter", (event) => {
+        if (event.pointerType !== "touch") show(true);
+      });
+      wrapper.addEventListener("pointerleave", () => { if (!pinned) show(false); });
+      button.addEventListener("focus", () => show(true));
+      button.addEventListener("click", () => {
+        const nextPinned = !pinned;
+        closeHelp.forEach((hide) => hide());
+        pinned = nextPinned;
+        show(pinned);
+      });
+      wrapper.addEventListener("focusout", (event) => {
+        if (!wrapper.contains(event.relatedTarget)) close();
+      });
+      document.addEventListener("click", (event) => {
+        if (!wrapper.contains(event.target)) close();
+      });
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeHelp.forEach((close) => close());
+    });
+  }
+
   function bindEvents() {
+    bindInfoHelp();
     bindRecalculateEvents(elements.markedDiameter);
     elements.resetDiameter.addEventListener("click", () => {
       elements.markedDiameter.value = catalogueDiameter.replace(".", ",");
@@ -2535,7 +2642,7 @@
     document.getElementById("smiprog-app").lang = i18n.getLocaleKey();
     elements.resetDiameter.title = uiText("action.reset");
     const visibleControlSystems = core.getVisibleControlSystems(data);
-    fillSelect(elements.process, data.processes, "machining-center", (item) => item.id, (item) => uiText(item.id === "lathe" ? "cnc.lathe" : "cnc.machiningCenter", item.label));
+    fillSelect(elements.process, data.processes, "machining-center", (item) => item.id, (item) => uiText(item.id === "lathe-live-tool" ? "cnc.lathe" : "cnc.machiningCenter", item.label));
     fillSelect(elements.controlSystem, visibleControlSystems, "fanuc", (item) => item.id, (item) => item.label);
     fillThreadProfileSelect(elements.threadProfile, "m");
     fillThreadProfileSelect(elements.compareThreadProfile, "m");
@@ -2552,6 +2659,8 @@
     initMaterialSelector();
     recalculate();
     compareUnlocked = readCompareStorage("smiprog.compare.cataloguePrices", false) === true;
+    const savedDiscount = readCompareStorage("smiprog.compare.discount", {});
+    compareDiscountValue = savedDiscount.enabled === true ? String(savedDiscount.value ?? "") : "";
     const savedMoney = readCompareStorage(`smiprog.compare.money.${compareCurrency()}`, {});
     elements.machineCost.value = savedMoney.machine ?? (compareCurrency() === "SEK" ? "900" : "80");
     elements.compareLock.hidden = true;

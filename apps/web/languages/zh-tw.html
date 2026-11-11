@@ -114,38 +114,43 @@
                   <label id="spg-pitch-label" for="spg-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">螺距 (mm)</span></label>
                   <input id="spg-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
                 </div>
-                <div class="spg-field spg-mobile-compact-field">
+                <div class="spg-field spg-mobile-compact-field spg-thread-length-field">
                   <label for="spg-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">螺紋長度 (mm)</span></label>
                   <input id="spg-thread-length" class="spg-control" type="number" min="0" step="0.001" placeholder="螺紋長度" data-i18n-placeholder="placeholder.enterLength">
-                </div>
-                <div class="spg-field spg-mobile-compact-field">
-                  <label for="spg-safety-distance" class="spg-field-label"><span class="spg-step">7</span><span data-i18n="field.safetyDistance">安全距離 (mm)</span></label>
-                  <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2">
                 </div>
               </div>
 
               <div id="spg-tool-field" class="spg-field">
-                <label for="spg-tool" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.tool">螺紋銑刀</span></label>
+                <label for="spg-tool" class="spg-field-label"><span class="spg-step">7</span><span data-i18n="field.tool">螺紋銑刀</span></label>
                 <select id="spg-tool" class="spg-control"></select>
-                <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
-                  <label for="spg-marked-diameter" class="spg-field-label" data-i18n="field.cutterDiameter">刀具直徑 (mm)</label>
-                  <div class="spg-marked-diameter-controls">
-                    <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
-                    <button id="spg-reset-diameter" type="button" aria-label="重設" data-i18n-aria-label="action.reset" title="Reset">↺</button>
-                    <small id="spg-marked-diameter-help" data-i18n="tool.markedHelp">輸入刀具上的雷射標記直徑，以調整 CNC 程式並確保螺紋在公差範圍內。</small>
+                <div id="spg-tool-metrics" class="spg-tool-metric-grid">
+                  <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
+                    <div class="spg-label-with-help">
+                      <label for="spg-marked-diameter" class="spg-result-label"><span class="spg-step">8</span><span data-i18n="field.cutterDiameter">刀具直徑 (mm)</span></label>
+                    </div>
+                    <div class="spg-marked-diameter-controls">
+                      <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
+                      <button id="spg-reset-diameter" type="button" aria-label="重設" data-i18n-aria-label="action.reset" title="Reset">↺</button>
+                      <span class="spg-info">
+                        <button type="button" class="spg-info-button" aria-label="刀具直徑 (mm)" data-i18n-aria-label="field.cutterDiameter" aria-expanded="false" aria-controls="spg-marked-diameter-help"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                        <span id="spg-marked-diameter-help" class="spg-info-tip" role="tooltip" data-i18n="tool.markedHelp" hidden="">輸入刀具上的雷射標記直徑，以調整 CNC 程式並確保螺紋在公差範圍內。</span>
+                      </span>
+                    </div>
                   </div>
+                  <div class="spg-result-row"><span class="spg-result-label" data-i18n="tool.length">刃長</span><span id="spg-tool-cutting-length" class="spg-result-value">-</span></div>
+                  <div class="spg-result-row"><span class="spg-result-label" data-i18n="tool.flutes">刃數</span><span id="spg-tool-flutes" class="spg-result-value">-</span></div>
                 </div>
                 <div id="spg-custom-tool-fields" class="spg-custom-tool-fields" hidden="">
                   <div class="spg-tool-custom-input">
-                    <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cutterDiameter">刀具直徑 (mm)</span></label>
+                    <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.cutterDiameter">刀具直徑 (mm)</span></label>
                     <input id="spg-override-cutter-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="自動" data-i18n-placeholder="placeholder.auto">
                   </div>
                   <div class="spg-tool-custom-input">
-                    <label for="spg-override-edge-length" class="spg-field-label"><span class="spg-step">10</span><span data-i18n="field.cuttingLength">刃長 (mm)</span></label>
+                    <label for="spg-override-edge-length" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cuttingLength">刃長 (mm)</span></label>
                     <input id="spg-override-edge-length" class="spg-control" type="number" min="0" step="0.01" placeholder="自動" data-i18n-placeholder="placeholder.auto">
                   </div>
                   <div class="spg-tool-custom-input">
-                    <label for="spg-override-flutes" class="spg-field-label"><span class="spg-step">11</span><span data-i18n="field.flutes">刃數</span></label>
+                    <label for="spg-override-flutes" class="spg-field-label"><span class="spg-step">10</span><span data-i18n="field.flutes">刃數</span></label>
                     <input id="spg-override-flutes" class="spg-control" type="number" min="0" step="1" placeholder="自動" data-i18n-placeholder="placeholder.auto">
                   </div>
                 </div>
@@ -219,7 +224,13 @@
 
             <section class="spg-card spg-cnc-card">
               <div class="spg-cnc-head">
-                <div class="spg-section-title" data-i18n="section.cncProgram">CNC 程式</div>
+                <div class="spg-label-with-help">
+                  <div class="spg-section-title" data-i18n="section.cncProgram">CNC 程式</div>
+                  <span class="spg-info">
+                    <button type="button" class="spg-info-button" aria-label="CNC 程式" data-i18n-aria-label="section.cncProgram" aria-expanded="false" aria-controls="spg-cnc-disclaimer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                    <span id="spg-cnc-disclaimer" class="spg-info-tip" role="tooltip" data-i18n="cnc.disclaimer" hidden="">加工前，請以模擬或單節執行驗證 CNC 程式。可能需要調整機台專屬選項與後處理器設定。</span>
+                  </span>
+                </div>
                 <div id="spg-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
                 <button type="button" id="spg-copy-cnc" class="spg-button" data-i18n="button.copy">複製</button>
               </div>
@@ -242,6 +253,16 @@
                   </select>
                 </div>
 
+                <div class="spg-field spg-cnc-safety-field">
+                  <div class="spg-label-with-help">
+                    <label for="spg-safety-distance" class="spg-field-label"><span data-i18n="field.safetyDistance">安全距離 (mm)</span></label>
+                    <span class="spg-info">
+                      <button type="button" class="spg-info-button" aria-label="安全距離 (mm)" data-i18n-aria-label="field.safetyDistance" aria-expanded="false" aria-controls="spg-safety-distance-help"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                      <span id="spg-safety-distance-help" class="spg-info-tip" role="tooltip" data-i18n="help.safetyDistance" hidden="">接近和退刀運動使用的軸向安全距離。</span>
+                    </span>
+                  </div>
+                  <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2" aria-describedby="spg-safety-distance-help">
+                </div>
                 <div class="spg-field spg-dev-only">
                   <label for="spg-program-template" data-i18n="field.programTemplate">Fanuc - CNC 程式</label>
                   <select id="spg-program-template" class="spg-control">
@@ -274,7 +295,6 @@
                 </div>
               </div>
               <textarea id="spg-cnc-program" class="spg-copy-text" readonly="" spellcheck="false" placeholder="修正輸入值以產生 CNC 程式。" data-i18n-placeholder="placeholder.cncProgram"></textarea>
-              <div id="spg-cnc-disclaimer" class="spg-help-text" data-i18n="cnc.disclaimer">加工前，請以模擬或單節執行驗證 CNC 程式。可能需要調整機台專屬選項與後處理器設定。</div>
             </section>
           </div>
         </div>
@@ -282,11 +302,11 @@
 
       <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden="">
         <div id="spg-compare-access" class="spg-compare-access">
-          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">請輸入您自己的刀具價格。SmiCut 經銷商可向 SmiCut 索取密碼，以查看型錄價格。</p>
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">請輸入您自己的刀具價格。SmiCut 經銷商可向 SmiCut 索取密碼，以查看價格。</p>
           <div id="spg-compare-lock" class="spg-compare-password-row">
             <label for="spg-compare-password" data-i18n="compare.password">密碼</label>
             <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
-            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">解鎖型錄價格</button>
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">解鎖價格</button>
           </div>
           <div id="spg-compare-unlock-message" class="spg-help-text" role="status"></div>
         </div>
@@ -431,7 +451,6 @@
 
           <section class="spg-card spg-final-card spg-compare-results-card">
             <div id="spg-cost-data" class="spg-compare-result-table"></div>
-            <p class="spg-help-text" data-i18n="compare.referencePrices">刀具壽命以切削分鐘數計，機台成本按小時計。</p>
           </section>
         </div>
       </section>

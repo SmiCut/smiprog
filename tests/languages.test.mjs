@@ -37,6 +37,14 @@ test("all 16 dictionaries have complete matching keys and named placeholders", (
   }
 });
 
+test("metric fine keeps its profile name in every language, separate from custom dimensions", () => {
+  for (const locale of locales) {
+    assert.equal(dictionaries[locale]["profile.m-manual"], dictionaries[locale]["profile.mFine"], locale);
+    assert.notEqual(dictionaries[locale]["profile.m-manual"], `M - ${dictionaries[locale]["option.manualSize"]}`, locale);
+  }
+  assert.match(dictionaries.en["profile.m-manual"], /Metric fine$/);
+});
+
 test("regional and Chinese variants resolve without losing backend market codes", () => {
   for (const [locale, key, backend] of [
     ["zh-Hans", "zh", "zh"], ["zh-CN", "zh", "zh"], ["zh-Hant-TW", "zh-tw", "zh-tw"],

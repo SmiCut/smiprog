@@ -114,38 +114,43 @@
                   <label id="spg-pitch-label" for="spg-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Pitch (mm)</span></label>
                   <input id="spg-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
                 </div>
-                <div class="spg-field spg-mobile-compact-field">
+                <div class="spg-field spg-mobile-compact-field spg-thread-length-field">
                   <label for="spg-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Panjang ulir (mm)</span></label>
                   <input id="spg-thread-length" class="spg-control" type="number" min="0" step="0.001" placeholder="Panjang ulir" data-i18n-placeholder="placeholder.enterLength">
-                </div>
-                <div class="spg-field spg-mobile-compact-field">
-                  <label for="spg-safety-distance" class="spg-field-label"><span class="spg-step">7</span><span data-i18n="field.safetyDistance">Jarak aman (mm)</span></label>
-                  <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2">
                 </div>
               </div>
 
               <div id="spg-tool-field" class="spg-field">
-                <label for="spg-tool" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.tool">Frais ulir</span></label>
+                <label for="spg-tool" class="spg-field-label"><span class="spg-step">7</span><span data-i18n="field.tool">Frais ulir</span></label>
                 <select id="spg-tool" class="spg-control"></select>
-                <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
-                  <label for="spg-marked-diameter" class="spg-field-label" data-i18n="field.cutterDiameter">Diameter cutter (mm)</label>
-                  <div class="spg-marked-diameter-controls">
-                    <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
-                    <button id="spg-reset-diameter" type="button" aria-label="Atur ulang" data-i18n-aria-label="action.reset" title="Reset">↺</button>
-                    <small id="spg-marked-diameter-help" data-i18n="tool.markedHelp">Masukkan diameter yang ditandai laser pada cutter Anda untuk menyesuaikan program CNC dan mendapatkan ulir dalam toleransi.</small>
+                <div id="spg-tool-metrics" class="spg-tool-metric-grid">
+                  <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
+                    <div class="spg-label-with-help">
+                      <label for="spg-marked-diameter" class="spg-result-label"><span class="spg-step">8</span><span data-i18n="field.cutterDiameter">Diameter cutter (mm)</span></label>
+                    </div>
+                    <div class="spg-marked-diameter-controls">
+                      <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
+                      <button id="spg-reset-diameter" type="button" aria-label="Atur ulang" data-i18n-aria-label="action.reset" title="Reset">↺</button>
+                      <span class="spg-info">
+                        <button type="button" class="spg-info-button" aria-label="Diameter cutter (mm)" data-i18n-aria-label="field.cutterDiameter" aria-expanded="false" aria-controls="spg-marked-diameter-help"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                        <span id="spg-marked-diameter-help" class="spg-info-tip" role="tooltip" data-i18n="tool.markedHelp" hidden="">Masukkan diameter yang ditandai laser pada cutter Anda untuk menyesuaikan program CNC dan mendapatkan ulir dalam toleransi.</span>
+                      </span>
+                    </div>
                   </div>
+                  <div class="spg-result-row"><span class="spg-result-label" data-i18n="tool.length">Panjang potong</span><span id="spg-tool-cutting-length" class="spg-result-value">-</span></div>
+                  <div class="spg-result-row"><span class="spg-result-label" data-i18n="tool.flutes">Jumlah flute</span><span id="spg-tool-flutes" class="spg-result-value">-</span></div>
                 </div>
                 <div id="spg-custom-tool-fields" class="spg-custom-tool-fields" hidden="">
                   <div class="spg-tool-custom-input">
-                    <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cutterDiameter">Diameter cutter (mm)</span></label>
+                    <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.cutterDiameter">Diameter cutter (mm)</span></label>
                     <input id="spg-override-cutter-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Otomatis" data-i18n-placeholder="placeholder.auto">
                   </div>
                   <div class="spg-tool-custom-input">
-                    <label for="spg-override-edge-length" class="spg-field-label"><span class="spg-step">10</span><span data-i18n="field.cuttingLength">Panjang potong (mm)</span></label>
+                    <label for="spg-override-edge-length" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cuttingLength">Panjang potong (mm)</span></label>
                     <input id="spg-override-edge-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Otomatis" data-i18n-placeholder="placeholder.auto">
                   </div>
                   <div class="spg-tool-custom-input">
-                    <label for="spg-override-flutes" class="spg-field-label"><span class="spg-step">11</span><span data-i18n="field.flutes">Jumlah flute</span></label>
+                    <label for="spg-override-flutes" class="spg-field-label"><span class="spg-step">10</span><span data-i18n="field.flutes">Jumlah flute</span></label>
                     <input id="spg-override-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Otomatis" data-i18n-placeholder="placeholder.auto">
                   </div>
                 </div>
@@ -219,7 +224,13 @@
 
             <section class="spg-card spg-cnc-card">
               <div class="spg-cnc-head">
-                <div class="spg-section-title" data-i18n="section.cncProgram">Program CNC</div>
+                <div class="spg-label-with-help">
+                  <div class="spg-section-title" data-i18n="section.cncProgram">Program CNC</div>
+                  <span class="spg-info">
+                    <button type="button" class="spg-info-button" aria-label="Program CNC" data-i18n-aria-label="section.cncProgram" aria-expanded="false" aria-controls="spg-cnc-disclaimer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                    <span id="spg-cnc-disclaimer" class="spg-info-tip" role="tooltip" data-i18n="cnc.disclaimer" hidden="">Periksa program CNC melalui simulasi atau dalam mode blok tunggal sebelum pemesinan. Opsi khusus mesin dan pengaturan postprosesor mungkin perlu disesuaikan.</span>
+                  </span>
+                </div>
                 <div id="spg-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
                 <button type="button" id="spg-copy-cnc" class="spg-button" data-i18n="button.copy">Salin</button>
               </div>
@@ -242,6 +253,16 @@
                   </select>
                 </div>
 
+                <div class="spg-field spg-cnc-safety-field">
+                  <div class="spg-label-with-help">
+                    <label for="spg-safety-distance" class="spg-field-label"><span data-i18n="field.safetyDistance">Jarak aman (mm)</span></label>
+                    <span class="spg-info">
+                      <button type="button" class="spg-info-button" aria-label="Jarak aman (mm)" data-i18n-aria-label="field.safetyDistance" aria-expanded="false" aria-controls="spg-safety-distance-help"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                      <span id="spg-safety-distance-help" class="spg-info-tip" role="tooltip" data-i18n="help.safetyDistance" hidden="">Jarak bebas aksial untuk gerakan mendekat dan menarik kembali.</span>
+                    </span>
+                  </div>
+                  <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2" aria-describedby="spg-safety-distance-help">
+                </div>
                 <div class="spg-field spg-dev-only">
                   <label for="spg-program-template" data-i18n="field.programTemplate">Fanuc - Program CNC</label>
                   <select id="spg-program-template" class="spg-control">
@@ -274,7 +295,6 @@
                 </div>
               </div>
               <textarea id="spg-cnc-program" class="spg-copy-text" readonly="" spellcheck="false" placeholder="Perbaiki input untuk menghasilkan program CNC." data-i18n-placeholder="placeholder.cncProgram"></textarea>
-              <div id="spg-cnc-disclaimer" class="spg-help-text" data-i18n="cnc.disclaimer">Periksa program CNC melalui simulasi atau dalam mode blok tunggal sebelum pemesinan. Opsi khusus mesin dan pengaturan postprosesor mungkin perlu disesuaikan.</div>
             </section>
           </div>
         </div>
@@ -282,11 +302,11 @@
 
       <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden="">
         <div id="spg-compare-access" class="spg-compare-access">
-          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Masukkan harga alat potong Anda sendiri. Distributor SmiCut dapat meminta kata sandi kepada SmiCut untuk melihat harga katalog.</p>
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Masukkan harga alat potong Anda sendiri. Distributor SmiCut dapat meminta kata sandi kepada SmiCut untuk melihat harga.</p>
           <div id="spg-compare-lock" class="spg-compare-password-row">
             <label for="spg-compare-password" data-i18n="compare.password">Kata sandi</label>
             <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
-            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">Buka harga katalog</button>
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">Buka harga</button>
           </div>
           <div id="spg-compare-unlock-message" class="spg-help-text" role="status"></div>
         </div>
@@ -431,7 +451,6 @@
 
           <section class="spg-card spg-final-card spg-compare-results-card">
             <div id="spg-cost-data" class="spg-compare-result-table"></div>
-            <p class="spg-help-text" data-i18n="compare.referencePrices">Umur alat diukur dalam menit pemotongan. Biaya mesin dihitung per jam.</p>
           </section>
         </div>
       </section>

@@ -65,6 +65,10 @@ try {
       }
       await page.setViewportSize({ width: 1440, height: 1100 });
       await page.locator('[data-spg-tab="main"]').click();
+      assert.deepEqual(await page.locator('#spg-process option').evaluateAll(options => options.map(option => ({ value: option.value, text: option.textContent }))), [
+        { value: 'machining-center', text: dictionary['cnc.machiningCenter'] },
+        { value: 'lathe-live-tool', text: dictionary['cnc.lathe'] }
+      ], `${locale}: distinct machining center and live-tool lathe options`);
       const program = await page.locator('#spg-cnc-program').inputValue();
       expectedProgram ??= program;
       assert.equal(program, expectedProgram, `${locale}: CNC changed with locale`);
@@ -79,7 +83,7 @@ try {
       assert.equal(await page.locator('#spg-compare-password').isVisible(), locale !== 'sv');
       assert.equal(await page.locator('#spg-machine-cost').inputValue(), locale === 'sv' ? '900' : '80');
       const input = page.locator('input.spg-compare-price-input:visible').first();
-      assert.equal(await input.getAttribute('placeholder'), dictionary['compare.pricePlaceholder'].replace('{currency}', locale === 'sv' ? 'kr' : '€'));
+      assert.equal(await input.getAttribute('placeholder'), locale === 'sv' ? 'kr' : '€');
       if (locale !== 'sv') {
         await page.locator('#spg-compare-password').fill('xl');
         await page.locator('#spg-unlock-compare').click();
@@ -99,6 +103,17 @@ try {
       assert.ok(copy.includes(dictionary['compare.totalCost']));
       assert.ok(copy.includes(summary));
       assert.ok(copy.includes(locale === 'sv' ? 'SWE/shop/productinfo/' : 'id.smicut.com/'));
+      assert.equal(await page.locator('.spg-compare-discount-input:visible').count(), 2);
+      assert.equal(await page.getByText(dictionary['compare.netPrice'], { exact: true }).first().isVisible(), true);
+      await page.locator('.spg-compare-discount-input:visible').first().fill('20');
+      await page.locator('#spg-copy-compare-results').click();
+      const discountedCopy = await page.evaluate(() => window.copiedText);
+      assert.ok(discountedCopy.includes(dictionary['compare.netPrice']));
+      assert.ok(discountedCopy.includes(dictionary['compare.discount']));
+      const numberLocale = await page.evaluate(() => window.SmiProgI18n.getNumberLocale());
+      for (const net of [80, 160]) assert.ok(discountedCopy.includes(net.toLocaleString(numberLocale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })));
+      await page.locator('.spg-compare-discount-input:visible').last().fill('');
+      assert.equal(await page.getByText(dictionary['compare.netPrice'], { exact: true }).first().isVisible(), true);
       assert.equal(await page.getByRole('button', {name:dictionary['button.share'],exact:true}).count(), 0);
       assert.equal(await page.evaluate(()=>window.sharedText), undefined);
       await input.fill('-1'); await input.blur();
@@ -122,7 +137,7 @@ try {
       assert.ok((await page.locator('.sms-category-result-value').textContent()).includes(dictionary['materialDescriptor.steel-medium-carbon']));
       assert.ok(requests.every(request=>request.language===locale));
       assert.deepEqual(errors,[],locale);
-      report.push({locale, passed:true, screenshots:6, checks:['all views','layout','prices','copy','no share button','validation','CNC parity','material key','greeting fallback']});
+      report.push({locale, passed:true, screenshots:6, checks:['all views','layout','prices','discount','copy','no share button','validation','CNC parity','material key','greeting fallback']});
       console.log(`${locale}: passed`);
     } finally { await context.close(); }
   }

@@ -15,7 +15,8 @@ const cases = [
   [1100, 1000, 861], [1100, 1000, 860], [860, 1000, 714],
   [900, 1000, 681], [900, 1000, 680], [720, 1000, 600],
   [561, 1000, 561], [560, 844, 560], [390, 844, 390],
-  [844, 390, 728], [540, 320, 540], [1200, 1000, 390]
+  [844, 390, 728], [540, 320, 540], [1200, 1000, 390],
+  [320, 568, 320], [360, 800, 360], [375, 812, 375], [1200, 1000, 320]
 ];
 try {
   for (const file of files.filter(file => !process.env.VERIFY_LOCALES || process.env.VERIFY_LOCALES.split(',').includes(file.locale))) {
@@ -31,6 +32,7 @@ try {
       await page.locator('#spg-compare-password').fill('XL');
       await page.locator('#spg-unlock-compare').click();
     }
+    await page.locator('.spg-compare-discount-input:visible').first().fill('20');
     for (const [width, height, hostWidth] of cases) {
       await page.setViewportSize({ width, height });
       await page.locator('#host').evaluate((node, size) => { node.style.width = `${size}px`; }, hostWidth);
@@ -41,10 +43,16 @@ try {
         const button = rect('#spg-use-current-setup');
         const note = rect('.spg-compare-note');
         const cards = [...document.querySelectorAll('.spg-compare-tool-card')];
+        const discountCells = [...document.querySelectorAll('.spg-compare-discount-row .spg-compare-value-cell, .spg-compare-discount-row > .spg-result-value')]
+          .filter(node => node.getBoundingClientRect().width > 0);
         return {
+          discountNoOverlap: discountCells.every(cell => {
+            const input = cell.querySelector('input');
+            return !input || input.previousElementSibling.getBoundingClientRect().right <= input.getBoundingClientRect().left;
+          }),
           unusedWidth: workspace.right - tools.right,
           narrowCards: cards.filter(card => card.getBoundingClientRect().width < Math.min(300, workspace.width) - 1).length,
-          overflow: [...document.querySelectorAll('.spg-compare-tool-metric, .spg-compare-tool-type-label, .spg-compare-tool-select-row, .spg-compare-note-row')]
+          overflow: [...document.querySelectorAll('.spg-compare-tool-metric, .spg-compare-tool-type-label, .spg-compare-tool-select-row, .spg-compare-note-row, .spg-compare-discount-controls, .spg-compare-discount-toggle')]
             .filter(node => node.scrollWidth > node.clientWidth + 2).map(node => node.className),
           buttonAbove: button.bottom <= note.top,
           fullWidthButton: Math.abs(button.width - note.width) < 1,
@@ -61,6 +69,7 @@ try {
       assert.deepEqual(layout.overflow, [], `${label}: text overflow`);
       assert.equal(layout.pageOverflow, false, `${label}: page overflow`);
       assert.equal(layout.imagesLoaded, true, `${label}: tool images`);
+      assert.equal(layout.discountNoOverlap, true, `${label}: discount controls overlap`);
       const portraitPhone = width <= 560 && height >= width;
       assert.equal(layout.buttonAbove, portraitPhone, `${label}: setup button position`);
       if (portraitPhone) assert.equal(layout.fullWidthButton, true, `${label}: setup button width`);

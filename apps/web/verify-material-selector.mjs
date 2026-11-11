@@ -62,6 +62,8 @@ async function layout(page) {
 
 try {
   const page = await open();
+  await page.addStyleTag({ content: 'label span { color: #c60000 !important; }' });
+  assert.equal(await page.locator('[data-sms-role="label"] span').evaluate(node => getComputedStyle(node).color), 'rgb(79, 81, 88)');
   await layout(page);
   assert.equal(await page.locator('[data-sms-role="send"]').isDisabled(), true);
   assert.equal(await page.locator('[data-sms-role="welcome"]').isVisible(), true);

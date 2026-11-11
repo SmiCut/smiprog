@@ -678,6 +678,11 @@
   box-shadow: none !important;
 }
 
+/* Native WebKit select contents must not enlarge the document on narrow screens. */
+#smiprog-app select.spg-control {
+  contain: paint;
+}
+
 #smiprog-app .spg-control:focus {
   border-color: #a97862 !important;
   outline: 2px solid rgba(169, 120, 98, 0.22) !important;

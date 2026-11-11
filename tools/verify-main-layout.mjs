@@ -51,41 +51,6 @@ for (const engine of [chromium, webkit]) {
       }));
       if (overflow.width > width + 1) {
         await page.screenshot({path:path.join(out,'overflow.png'),fullPage:true});
-        const diagnostics = await page.evaluate(() => {
-          const measure = () => document.documentElement.scrollWidth;
-          const result = { original:measure(), candidates:[] };
-          window.scrollTo(10000,0);
-          result.maxScrollX = scrollX;
-          window.scrollTo(0,0);
-          for (const selector of ['.spg-tabs', 'select', '.spg-info-popover', '.spg-cnc-card', '.spg-final-summary']) {
-            const nodes = [...document.querySelectorAll(selector)];
-            const styles = nodes.map(n => n.getAttribute('style'));
-            nodes.forEach(n => n.style.setProperty('display','none','important'));
-            result.candidates.push({selector,width:measure()});
-            nodes.forEach((n,i) => styles[i] === null ? n.removeAttribute('style') : n.setAttribute('style',styles[i]));
-          }
-          for (const selector of ['#spg-process','#spg-control-system','#spg-thread-hand']) {
-            const node = document.querySelector(selector);
-            const style = node.getAttribute('style');
-            node.style.setProperty('display','none','important');
-            result.candidates.push({selector,width:measure()});
-            style === null ? node.removeAttribute('style') : node.setAttribute('style',style);
-          }
-          for (const css of [
-            '#smiprog-app .spg-cnc-settings .spg-field:has(select){overflow:clip}',
-            '#smiprog-app select.spg-control{contain:paint}',
-            '#smiprog-app select.spg-control{appearance:none}',
-            '#smiprog-app select.spg-control{text-overflow:ellipsis}'
-          ]) {
-            const style = document.createElement('style');
-            style.textContent = css;
-            document.head.append(style);
-            result.candidates.push({css,width:measure()});
-            style.remove();
-          }
-          return result;
-        });
-        console.log('Overflow diagnostics:',JSON.stringify(diagnostics));
       }
       assert.ok(overflow.width <= width + 1, `${engine.name()} ${width}: ${JSON.stringify(overflow)}`);
       if (width === 320) {

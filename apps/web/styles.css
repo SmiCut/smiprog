@@ -1801,6 +1801,9 @@
   white-space: nowrap;
 }
 
+#smiprog-app .spg-compare-price-inactive .spg-compare-cell-value,
+#smiprog-app .spg-compare-price-inactive .spg-compare-mobile-reference-value,
+#smiprog-app .spg-compare-price-inactive input,
 #smiprog-app .spg-compare-cell-value.spg-result-value-muted,
 #smiprog-app .spg-compare-mobile-reference-value.spg-result-value-muted {
   color: #8f8b88 !important;

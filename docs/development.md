@@ -24,6 +24,10 @@ Compare's shared discount is available with price access (unlocked EUR prices or
 the existing public SEK prices). It applies equally to both tools, including own
 price overrides, only while Apply discount is checked. Preserve the original
 inputs; show each net price separately and include the discount in copied results.
+Keep the net-price row visible whenever prices are unlocked. With Apply discount
+off, it previews the entered discount in grey without affecting costs or copied
+results. With it on, grey out the original prices (including own-price inputs)
+instead. Apply the same styling to desktop rows and mobile result cards.
 Round discounted tool prices to two currency decimals before calculating costs.
 Validate 0-100%, including fractional values; an invalid active discount must not
 produce usable cost results. Turning it off restores undiscounted prices. Keep

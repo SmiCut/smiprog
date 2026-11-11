@@ -24,7 +24,21 @@ try {
   const row = label => page.locator('#spg-cost-data > .spg-compare-result-row')
     .filter({ has: page.locator('.spg-result-label', { hasText: new RegExp(`^${label}$`) }) });
   const values = label => row(label).locator('.spg-compare-cell-value').allTextContents();
+  const assertPriceState = async active => {
+    for (const [label, inactive] of [['Tooling cost', active], ['Price after discount', !active]]) {
+      const rows = page.locator('.spg-compare-result-row, .spg-compare-mobile-result-row')
+        .filter({ has: page.locator('.spg-result-label', { hasText: new RegExp(`^${label}$`) }) });
+      assert.equal(await rows.count(), 3);
+      assert.deepEqual(await rows.evaluateAll(nodes => nodes.map(node => node.classList.contains('spg-compare-price-inactive'))), [inactive, inactive, inactive]);
+      if (inactive) {
+        const colors = await rows.locator('.spg-compare-cell-value, .spg-compare-mobile-reference-value, input')
+          .evaluateAll(nodes => nodes.map(node => getComputedStyle(node).color));
+        assert.ok(colors.length >= 4 && colors.every(color => color === 'rgb(143, 139, 136)'));
+      }
+    }
+  };
   assert.equal(await discount.isVisible(), false);
+  assert.equal(await row('Price after discount').count(), 0);
   await page.locator('#spg-compare-password').fill('xl');
   await page.locator('#spg-unlock-compare').click();
   assert.equal(await discount.isVisible(), false);
@@ -32,26 +46,35 @@ try {
   await page.locator('#spg-unlock-compare').click();
   assert.equal(await discount.isVisible(), true);
   assert.equal(await apply.isChecked(), false);
+  assert.equal(await row('Price after discount').isVisible(), true);
+  await assertPriceState(false);
   const original = await values('Total cost per thread');
   const time = await values('Time to mill thread');
   const machine = await values('Machine cost per thread');
   const gross = (await values('Tooling cost')).map(value => Number.parseFloat(value.replaceAll(',', '')));
   await discount.fill('20');
   assert.deepEqual(await values('Total cost per thread'), original);
+  assert.deepEqual(await values('Price after discount'), gross.map(value => `${(value * .8).toFixed(2)} €`));
   await apply.check();
+  await assertPriceState(true);
   assert.deepEqual(await values('Price after discount'), gross.map(value => `${(value * .8).toFixed(2)} €`));
   assert.deepEqual(await values('Time to mill thread'), time);
   assert.deepEqual(await values('Machine cost per thread'), machine);
   assert.notDeepEqual(await values('Total cost per thread'), original);
   await apply.uncheck();
+  await assertPriceState(false);
   assert.deepEqual(await values('Total cost per thread'), original);
   assert.equal(await discount.inputValue(), '20');
+  assert.deepEqual(await values('Price after discount'), gross.map(value => `${(value * .8).toFixed(2)} €`));
+  await page.locator('#spg-copy-compare-results').click();
+  assert.doesNotMatch(await page.evaluate(() => window.copiedText), /Price after discount|Discount \(%\)/);
   await apply.check();
   for (const [side, price] of [['a', '100'], ['b', '200']]) {
     await page.locator(`#spg-compare-tool-${side}-price`).fill(price);
     await page.locator(`#spg-compare-tool-${side}-price`).blur();
   }
   assert.deepEqual(await values('Price after discount'), ['80.00 €', '160.00 €']);
+  await assertPriceState(true);
   for (const invalid of ['-1', '100.01', '']) {
     await discount.fill(invalid);
     assert.match(await page.locator('#spg-compare-summary').textContent(), /discount from 0 to 100%/);
@@ -79,6 +102,10 @@ try {
     await page.setViewportSize({ width, height });
     assert.equal(await discount.count(), 1);
     assert.equal(await discount.isVisible(), true);
+    await assertPriceState(true);
+    await apply.uncheck();
+    await assertPriceState(false);
+    await apply.check();
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.equal(await page.locator('#spg-compare-discount-controls').evaluate(e => e.scrollWidth > e.clientWidth), false);
     assert.ok(await discount.evaluate(e => e.getBoundingClientRect().width <= 90));

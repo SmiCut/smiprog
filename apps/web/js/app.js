@@ -1717,6 +1717,17 @@
     return compareReferencePrice(result && result.tool);
   }
 
+  function getCompareDiscountedPrice(result, controls) {
+    if (!result || !result.costData) return null;
+    const basePrice = controls.price.value !== "" ? Number(compareFieldValue(controls.price)) : getCompareReferenceToolPrice(result);
+    const percent = compareDiscountInput.value === "" ? NaN : Number(compareFieldValue(compareDiscountInput));
+    return core.discountedToolPrice(basePrice, percent);
+  }
+
+  function isInactiveComparePrice(priceKind) {
+    return priceKind === "original" ? compareDiscountActive() : priceKind === "discounted" && !compareDiscountActive();
+  }
+
   function getCompareReferenceToolLife() {
     return 120;
   }
@@ -1780,6 +1791,7 @@
     row.className = "spg-compare-result-row spg-result-row";
     if (options && options.highlight) row.classList.add("spg-result-row-highlight");
     if (options && options.editable) row.classList.add("spg-compare-result-row-editable");
+    if (options && isInactiveComparePrice(options.priceKind)) row.classList.add("spg-compare-price-inactive");
 
     const labelElement = document.createElement("span");
     labelElement.className = "spg-result-label";
@@ -1813,8 +1825,8 @@
     );
 
     return [
-      [uiText("compare.toolPrice"), invalidA ? "-" : valueOrDash(getCompareReferenceToolPrice(resultA), priceDecimals, currencySuffix), invalidB ? "-" : valueOrDash(getCompareReferenceToolPrice(resultB), priceDecimals, currencySuffix), controlsA.price, controlsB.price],
-      ...(compareDiscountActive() ? [[uiText("compare.netPrice"), valueOrDash(costA.toolPrice, 2, currencySuffix), valueOrDash(costB.toolPrice, 2, currencySuffix)]] : []),
+      [uiText("compare.toolPrice"), invalidA ? "-" : valueOrDash(getCompareReferenceToolPrice(resultA), priceDecimals, currencySuffix), invalidB ? "-" : valueOrDash(getCompareReferenceToolPrice(resultB), priceDecimals, currencySuffix), controlsA.price, controlsB.price, null, null, "original"],
+      ...(comparePriceAllowed() ? [[uiText("compare.netPrice"), valueOrDash(getCompareDiscountedPrice(resultA, controlsA), 2, currencySuffix), valueOrDash(getCompareDiscountedPrice(resultB, controlsB), 2, currencySuffix), null, null, null, null, "discounted"]] : []),
       [uiText("compare.toolLife"), invalidA ? "-" : `${formatDecimal(getCompareReferenceToolLife(), 0)} ${uiText("compare.minutes")}`, invalidB ? "-" : `${formatDecimal(getCompareReferenceToolLife(), 0)} ${uiText("compare.minutes")}`, controlsA.life, controlsB.life],
       [uiText("cutting.speed"), valueOrDash(cA.recommendedCuttingSpeed, 0, " m/min"), valueOrDash(cB.recommendedCuttingSpeed, 0, " m/min"), controlsA.speed, controlsB.speed],
       [uiText("compare.feedPerTooth"), valueOrDash(cA.calculatedFeedPerTooth, 3, ` ${uiText("unit.feed_per_tooth")}`), valueOrDash(cB.calculatedFeedPerTooth, 3, ` ${uiText("unit.feed_per_tooth")}`), controlsA.feed, controlsB.feed],
@@ -1846,12 +1858,13 @@
     header.appendChild(articleElement);
     card.appendChild(header);
 
-    rows.forEach(([label, leftValue, rightValue, leftInput, rightInput, leftDiff, rightDiff]) => {
+    rows.forEach(([label, leftValue, rightValue, leftInput, rightInput, leftDiff, rightDiff, priceKind]) => {
       const sourceInput = side === "a" ? leftInput : rightInput;
       const displayValue = side === "a" ? leftValue : rightValue;
       const diffText = side === "a" ? leftDiff : rightDiff;
       const row = document.createElement("div");
       row.className = "spg-compare-mobile-result-row";
+      if (isInactiveComparePrice(priceKind)) row.classList.add("spg-compare-price-inactive");
       if (sourceInput) row.classList.add("spg-compare-mobile-result-row-editable");
       const labelElement = document.createElement("span");
       labelElement.className = "spg-result-label";
@@ -2008,8 +2021,9 @@
     elements.costData.appendChild(header);
 
     const rows = getCompareResultRows(resultA, resultB);
-    rows.forEach(([label, leftValue, rightValue, leftInput, rightInput, leftDiff, rightDiff]) => {
+    rows.forEach(([label, leftValue, rightValue, leftInput, rightInput, leftDiff, rightDiff, priceKind]) => {
       elements.costData.appendChild(createCompareResultRow(label, leftValue, rightValue, {
+        priceKind,
         leftInput,
         rightInput,
         leftDiff,
@@ -2137,7 +2151,7 @@
     const controlsA = getCompareControls("a");
     const controlsB = getCompareControls("b");
     const pitchCopy = getComparePitchCopyText();
-    const rows = getCompareResultRows(resultA, resultB);
+    const rows = getCompareResultRows(resultA, resultB).filter(row => row[7] !== "discounted" || compareDiscountActive());
 
     const lines = [
       `SmiCut ${uiText("tabs.threadMilling")} - ${uiText("tabs.compare")}`,

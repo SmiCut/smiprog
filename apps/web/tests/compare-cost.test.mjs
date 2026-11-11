@@ -99,3 +99,13 @@ test("Compare applies one discount after selecting the reference or own price", 
     assert.equal(invalid.costData, null);
   }
 });
+
+test("discount preview uses the same price rounding without applying it to costs", () => {
+  assert.equal(core.discountedToolPrice(227.8, 20), 182.24);
+  assert.equal(core.discountedToolPrice(227.8, 12.5), 199.33);
+  assert.equal(core.discountedToolPrice(227.8, 0), 227.8);
+  assert.equal(core.discountedToolPrice(227.8, 100), 0);
+  assert.equal(core.discountedToolPrice(null, 20), null);
+  assert.equal(core.discountedToolPrice(100, NaN), null);
+  assert.equal(core.discountedToolPrice(100, 101), null);
+});

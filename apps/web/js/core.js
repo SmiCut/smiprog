@@ -1323,6 +1323,11 @@
     };
   }
 
+  function discountedToolPrice(price, percent) {
+    if (!Number.isFinite(price) || price < 0 || !Number.isFinite(percent) || percent < 0 || percent > 100) return null;
+    return percent > 0 ? round(price * (1 - percent / 100), 2) : price;
+  }
+
   function calculate(input, data, options) {
     const normalizedInput = {
       processId: input.processId,
@@ -1497,8 +1502,7 @@
           ? (tool.isCustom ? null : options.comparePricing.referencePrice)
           : tool.priceEur;
         const baseToolPrice = normalizedInput.overrides.toolPrice !== null ? normalizedInput.overrides.toolPrice : referencePrice;
-        const toolPrice = Number.isFinite(baseToolPrice) && discountPercent > 0
-          ? round(baseToolPrice * (1 - discountPercent / 100), 2) : baseToolPrice;
+        const toolPrice = discountPercent > 0 ? discountedToolPrice(baseToolPrice, discountPercent) : baseToolPrice;
         const toolingCostPerThread = Number.isFinite(toolPrice)
           ? toolPrice / (normalizedInput.toolLife * 60 / cuttingData.machiningTime) : null;
         const machineCostPerThread = normalizedInput.machineCost * cuttingData.machiningTime / 3600;
@@ -1554,6 +1558,7 @@
 
   global.SmiProgCore = {
     COMPARE_PASSWORD,
+    discountedToolPrice,
     calculate,
     filterTools,
     findControlSystem,

@@ -101,6 +101,7 @@ try {
       assert.ok(copy.includes(locale === 'sv' ? 'SWE/shop/productinfo/' : 'id.smicut.com/'));
       assert.equal(await page.locator('#spg-compare-discount-controls').isVisible(), true);
       assert.equal(await page.locator('#spg-compare-discount').count(), 1);
+      assert.equal(await page.getByText(dictionary['compare.netPrice'], { exact: true }).first().isVisible(), true);
       await page.locator('#spg-compare-discount').fill('20');
       await page.locator('#spg-compare-apply-discount').check();
       await page.locator('#spg-copy-compare-results').click();
@@ -110,6 +111,7 @@ try {
       const numberLocale = await page.evaluate(() => window.SmiProgI18n.getNumberLocale());
       for (const net of [80, 160]) assert.ok(discountedCopy.includes(net.toLocaleString(numberLocale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })));
       await page.locator('#spg-compare-apply-discount').uncheck();
+      assert.equal(await page.getByText(dictionary['compare.netPrice'], { exact: true }).first().isVisible(), true);
       assert.equal(await page.getByRole('button', {name:dictionary['button.share'],exact:true}).count(), 0);
       assert.equal(await page.evaluate(()=>window.sharedText), undefined);
       await input.fill('-1'); await input.blur();

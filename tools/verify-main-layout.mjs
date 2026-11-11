@@ -30,11 +30,17 @@ for (const engine of [chromium, webkit]) {
     await page.locator('#spg-safety-distance').fill('2');
     for (const [width, height] of [[1440,1100],[1024,1000],[877,1000],[720,1000],[561,900],[560,844],[390,844],[320,568],[844,390]]) {
       await page.setViewportSize({ width, height });
+      // WebKit can acknowledge a resize before its scroll containers are repainted.
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
       const overflow = await page.evaluate(() => ({
         width: document.documentElement.scrollWidth,
         inner: innerWidth,
         scrollX,
         body: {width:document.body.getBoundingClientRect().width, scroll:document.body.scrollWidth},
+        tabs: [...document.querySelectorAll('.spg-tabs')].map(n => ({
+          width:n.getBoundingClientRect().width, scroll:n.scrollWidth,
+          overflowX:getComputedStyle(n).overflowX, overflowY:getComputedStyle(n).overflowY
+        })),
         nodes: [...document.querySelectorAll('#smiprog-app *')].filter(n => {
           const r = n.getBoundingClientRect();
           return r.width && r.right > innerWidth + 1;

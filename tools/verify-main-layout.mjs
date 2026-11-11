@@ -8,8 +8,8 @@ import { repositoryRoot } from './build-app-files.mjs';
 const out = path.join(repositoryRoot, 'dist/english-preview');
 await fs.mkdir(out, { recursive: true });
 for (const engine of [chromium, webkit]) {
-  const browser = await engine.launch(engine === chromium
-    ? { executablePath: process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' } : {});
+  const browser = await engine.launch(engine === chromium && process.env.CHROME_PATH
+    ? { executablePath: process.env.CHROME_PATH } : {});
   try {
     const page = await browser.newPage();
     const errors = [];

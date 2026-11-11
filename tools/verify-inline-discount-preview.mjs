@@ -19,7 +19,7 @@ function checkScripts(node) {
   for (const child of node.childNodes || []) checkScripts(child);
 }
 checkScripts(parse(english.bytes.toString()));
-const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
+const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
 try {
   const page = await browser.newPage({ viewport: { width: 877, height: 1000 } });
   const errors = [];

@@ -40,6 +40,30 @@ as a terminology reference, adapted to current web controls without Excel cell
 numbers. Indonesian has no equivalent in that original reference and follows
 the same technical meaning in its existing terminology.
 
+Version 1.2.4 extends that review to every information-tab heading, paragraph,
+diagram label and article label in all 16 languages, changing 185 text cells.
+The original INFO reference covers 15 of these languages; Indonesian is aligned
+with the reviewed technical meaning. This is a terminology and content review,
+not native-speaker certification. Existing article titles and destinations are
+retained, including the intentional English fallbacks.
+
+| Original information topic | Web adaptation |
+| --- | --- |
+| How to use the program | Three steps using current selectors; safety distance is under CNC Program, without numbered Excel fields. |
+| Tool compensation | Small corrections, radius compensation during short movements, and a near-zero diameter compensation value. |
+| Correct thread diameter | Optically measured pitch diameter and laser-marked theoretical cutter diameter. |
+| Unlisted/special tooling | Custom dimensions: cutter diameter, cutting edge length and number of flutes. |
+| One or two axial teeth | Automatic spiral for NM tools; pitch entered as cutting edge length for another suitable tool. The web engine supports this cycle. |
+| Reduced neck | Multiple axial passes, subject to tool suitability. |
+| Indexable inserts | Cutter-body cutting diameter, insert cutting edge length and number of inserts; axial passes where needed. |
+| Tapered threads | Diameter at the last full tooth nearest the shank and the corresponding workpiece position. |
+| Warning | Recommended starting values, machining-dependent adjustments and responsibility for CNC/cutting-data use. |
+
+Web-only preparation guidance, ThreadBurr, flank infeed and diagram text were
+also reviewed for consistency. Reviewed information prose and labels are pinned
+in the overrides; article titles and URLs can still follow a new link handover.
+The original workbook remains outside the public repository.
+
 - Localize visible labels, input hints, errors, copied/shared results and links.
   Keep CNC commands and numeric machine-code output unchanged.
 - Use the active language's number format. Preserve the ungrouped spindle-speed

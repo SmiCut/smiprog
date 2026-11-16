@@ -463,19 +463,19 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definieren Sie das Gewinde</strong><p data-i18n="info.step1.body">Wählen Sie Material, Gewindeprofil und -größe, Gewindelänge und Sicherheitsabstand. M verwendet Millimeter für die Steigung; andere Profile verwenden Gewindegänge pro Zoll (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definieren Sie das Gewinde</strong><p data-i18n="info.step1.body">Wählen Sie Werkstoff, Gewindeprofil, Gewindegröße und Gewindelänge. Geben Sie den Sicherheitsabstand unter CNC-Programm ein. Bei M-Gewinden wird die Steigung in Millimetern angegeben; andere Profile verwenden Gewindegänge pro Zoll (TPI).</p></div></div>
                 <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Wählen Sie den Gewindefräser</strong><p data-i18n="info.step2.body">Verwenden Sie einen vorgeschlagenen SmiCut-Fräser oder geben Sie benutzerdefinierte Werkzeugabmessungen in der Werkzeugauswahl ein.</p></div></div>
-                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Ausgabe überprüfen</strong><p data-i18n="info.step3.body">Wählen Sie im CNC-Programm das Herstellungsverfahren, das Kontrollsystem und die Gewinderichtung. Prüfen Sie vor der Bearbeitung die Schnittdaten, die Bearbeitungszeit und das CNC-Programm.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Ausgabe überprüfen</strong><p data-i18n="info.step3.body">Wählen Sie unter CNC-Programm das Bearbeitungsverfahren, die Steuerung und die Gewinderichtung. Prüfen Sie vor der Bearbeitung die Schnittdaten, die Bearbeitungszeit und das CNC-Programm.</p></div></div>
               </div>
               <div class="spg-info-check-strip">
                 <strong data-i18n="info.beforeMachining.title">Vor der Bearbeitung</strong>
-                <p data-i18n="info.beforeMachining.body">Stellen Sie sicher, dass das ausgewählte Gewindefräserwerkzeug den Gewindedurchmesser, die Steigung und die Gewindelänge bearbeiten kann. Bestätigen Sie das Programm in der Simulation oder im Einblckbetrieb vor der Serienfertigung.</p>
+                <p data-i18n="info.beforeMachining.body">Prüfen Sie, ob der gewählte Gewindefräser für Gewindedurchmesser, Steigung und Gewindelänge geeignet ist. Prüfen Sie das Programm vor der Serienfertigung in einer Simulation oder im Einzelsatzbetrieb.</p>
               </div>
             </div>
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="Gewindefräsen-Abmessungsreferenz mit Gewindedurchmesser, Steigung, Schneidelänge, Sicherheitsabstand und Fräserdurchmesser." data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="Maßskizze zum Gewindefräsen mit Gewindedurchmesser, Steigung, Gewindelänge, Schneidenlänge, Sicherheitsabstand und Fräserdurchmesser." data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Gewindedurchmesser</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">Steigung</span></span>
@@ -495,7 +495,7 @@
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
                 <h2 data-i18n="info.toolCompensation.title">Werkzeug-Kompensation</h2>
-                <p data-i18n="info.toolCompensation.body">Die Werkzeugkompensation ist normalerweise nur für kleine Anpassungen erforderlich. Große Kompensationswerte können Probleme verursachen. Verwenden Sie einen Wert nahe Null für die Fräserdurchmesserkompensation in der Werkzeugbibliothek des Kontrollsystems.</p>
+                <p data-i18n="info.toolCompensation.body">In SmiProg wird die Werkzeug-Kompensation nur für kleinere Korrekturen verwendet. Dies verringert Probleme, die bei Radiuskorrekturen auf kurzen Verfahrwegen auftreten können. Geben Sie daher für die Fräserdurchmesserkompensation in der Werkzeugtabelle der Steuerung einen Wert nahe null an.</p>
               </article>
 
               <article class="spg-info-card">
@@ -505,7 +505,7 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.customTools.title">Spezialwerkzeuge</h2>
-                <p data-i18n="info.customTools.body">Wenn sich Ihr Werkzeug nicht in der Liste befindet, wählen Sie benutzerdefinierte Werkzeugabmessungen in der Werkzeugauswahl und geben Sie Fräserdurchmesser, Schneidelänge und Anzahl der Schneiden ein. Prüfen Sie das erzeugte Programm bei der Verwendung von Sonderwerkzeugen sorgfältig.</p>
+                <p data-i18n="info.customTools.body">Wenn Ihr Werkzeug nicht in der Liste aufgeführt ist, wählen Sie benutzerdefinierte Werkzeugabmessungen und geben Sie Fräserdurchmesser, Schneidenlänge und Anzahl der Schneiden ein. Prüfen Sie das erzeugte Programm bei der Verwendung von Spezialwerkzeugen sorgfältig.</p>
               </article>
 
               <article class="spg-info-card">
@@ -516,7 +516,7 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.oneTwoRows.title">Werkzeuge mit einem Zahn / zwei Zähnen (axial)</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProg kompensiert Standard-SmiCut-Fräser mit einer oder zwei Zahnreihen. Bei der Verwendung eines nicht standardmäßigen Fräsers prüfen Sie vor der Bearbeitung das Verhältnis von Schneidelänge zu Steigung.</p>
+                <p data-i18n="info.oneTwoRows.body">Wenn Sie einen SmiCut-Standardfräser vom Typ NM mit einem oder zwei Zähnen in axialer Richtung wählen, erzeugt SmiProg automatisch eine Spirale, bis das Gewinde fertig ist. Für diesen Zyklus mit einem anderen geeigneten Werkzeug geben Sie bei den benutzerdefinierten Werkzeugabmessungen die Steigung als Schneidenlänge ein. Prüfen Sie vor der Bearbeitung die Eignung des Werkzeugs und das erzeugte Programm.</p>
               </article>
 
               <article class="spg-info-card">
@@ -527,22 +527,22 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.shortCuttingLength.title">Gewindefräser mit Freistellung</h2>
-                <p data-i18n="info.shortCuttingLength.body">Wenn das ausgewählte Werkzeug eine kürzere Schneidelänge als die angeforderte Gewindelänge hat, teilt SmiProg den Vorgang in mehrere axiale Schnitte auf, wenn der Werkzeugtyp dies unterstützt.</p>
+                <p data-i18n="info.shortCuttingLength.body">Wenn die Schneidenlänge des Werkzeugs kürzer als die gewünschte Gewindelänge ist, teilt SmiProg die Bearbeitung in mehrere axiale Durchgänge auf, sofern der Werkzeugtyp dies unterstützt.</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.inserts.title">Wendeschneid-Gewindefräser</h2>
-                <p data-i18n="info.inserts.body">Wählen Sie in der Werkzeugliste die benutzerdefinierten Werkzeugabmessungen, um Schnittdaten für Gewindefräser mit Wendeschneidplatten zu erhalten. Geben Sie den tatsächlichen Fräserdurchmesser, die Schneidenlänge und die Anzahl der Wendeschneidplatten oder Schneiden ein. Prüfen Sie das erzeugte Programm vor der Bearbeitung.</p>
+                <h2 data-i18n="info.inserts.title">Gewindefräser mit Wendeschneidplatten</h2>
+                <p data-i18n="info.inserts.body">Wählen Sie benutzerdefinierte Werkzeugabmessungen und geben Sie den Schneidendurchmesser des Fräserkörpers, die Schneidenlänge der Wendeschneidplatte und die Anzahl der Wendeschneidplatten ein. Bei Bedarf erzeugt SmiProg die gesamte Gewindelänge in mehreren axialen Durchgängen. Prüfen Sie das erzeugte Programm vor der Bearbeitung.</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.taperedThreads.title">Kegelige Gewinde</h2>
+                <h2 data-i18n="info.taperedThreads.title">Konische Gewinde</h2>
                 <p data-i18n="info.taperedThreads.body">Bei kegeligem Gewinde bezieht sich der Fräserdurchmesser auf den letzten vollständigen Gewindegang nahe dem Schaft. Geben Sie den Gewindedurchmesser an dieser Position ein, um ein korrektes CNC-Programm zu erhalten.</p>
               </article>
 
               <article class="spg-info-warning" aria-label="Warnung" data-i18n-aria-label="aria.warning">
                 <div class="spg-info-kicker" data-i18n="info.warning.title">Warnung</div>
-                <p data-i18n="info.warning.body">Die in SmiProg angegebenen Schnittdaten sind empfohlene Startwerte. Viele Faktoren können Anpassungen erforderlich machen, darunter Werkstoff, Maschinenschwingung, Spannmittel, Werkzeugaufnahme, Kühlschmierstoff und Späneabfuhr. SmiCut übernimmt keine Haftung für Schäden, die durch die Verwendung des von der Software empfohlenen CNC-Programms oder der Schnittdaten entstehen.</p>
+                <p data-i18n="info.warning.body">Die in SmiProg angegebenen Schnittdaten sind empfohlene Startwerte. Viele Faktoren können Anpassungen erforderlich machen, darunter Werkstoff, Maschinenstabilität, Spannmittel, Werkzeugaufnahme, Kühlschmierstoff und Späneabfuhr. SmiCut übernimmt keine Haftung für Schäden, die durch die Verwendung des von der Software empfohlenen CNC-Programms oder der Schnittdaten entstehen.</p>
               </article>
             </div>
           </section>

@@ -463,19 +463,19 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definieer de schroefdraad</strong><p data-i18n="info.step1.body">Selecteer materiaal, schroefdraadprofiel en maat, schroefdraadlengte en veilige afstand. M gebruikt millimeters voor de spoed; andere profielen gebruiken threads per inch (TPI).</p></div></div>
-                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Selecteer de draadfrees</strong><p data-i18n="info.step2.body">Gebruik een voorgesteld SmiCut-gereedschap of voer aangepaste gereedschafsmaten in bij de gereedschapsselectie.</p></div></div>
-                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Controleer de uitvoer</strong><p data-i18n="info.step3.body">Selecteer het productieproces, controlesysteem en schroefdraadrichting in het CNC-programma. Controleer de snijgegevens, bewerkingstijd en het CNC-programma voordat u begint met bewerken.</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definieer de schroefdraad</strong><p data-i18n="info.step1.body">Selecteer materiaal, schroefdraadprofiel, maat en schroefdraadlengte. Voer de veiligheidsafstand in onder CNC-programma. Bij M-schroefdraad wordt de spoed in millimeters opgegeven; andere profielen gebruiken het aantal gangen per inch (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Selecteer de draadfrees</strong><p data-i18n="info.step2.body">Gebruik een voorgesteld SmiCut-gereedschap of voer aangepaste gereedschapsafmetingen in bij de gereedschapsselectie.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Controleer de uitvoer</strong><p data-i18n="info.step3.body">Selecteer de bewerkingsmethode, de besturing en de schroefdraadrichting onder CNC-programma. Controleer de snijgegevens, de bewerkingstijd en het CNC-programma vóór de bewerking.</p></div></div>
               </div>
               <div class="spg-info-check-strip">
                 <strong data-i18n="info.beforeMachining.title">Voorafgaand aan het bewerken</strong>
-                <p data-i18n="info.beforeMachining.body">Controleer of de geselecteerde draadfrezer de schroefdraaddiameter, spoed en schroefdraadlengte kan bewerken. Bevestig het programma in simulatie of enkelblok voordat u de productie start.</p>
+                <p data-i18n="info.beforeMachining.body">Controleer of de geselecteerde draadfrees geschikt is voor de schroefdraaddiameter, spoed en schroefdraadlengte. Controleer het programma in een simulatie of in enkelblokmodus voordat u de productie start.</p>
               </div>
             </div>
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="Referentie voor schroefdraadafmetingen bij draadfrezen, met weergave van schroefdraaddiameter, spoed, snijlengte, veilige afstand en freesdiameter." data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="Maatschets voor draadfrezen met schroefdraaddiameter, spoed, schroefdraadlengte, snijlengte, veiligheidsafstand en freesdiameter." data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Schroefdraaddiameter</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">Spoed</span></span>
@@ -494,8 +494,8 @@
             </div>
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
-                <h2 data-i18n="info.toolCompensation.title">Gereedschap compensatie</h2>
-                <p data-i18n="info.toolCompensation.body">Compensatie van gereedschap is normaal gesproken alleen nodig voor kleine aanpassingen. Grote compensatiewaarden kunnen problemen veroorzaken. Gebruik een waarde dicht bij nul voor de compensatie van de freesdiameter in de gereedschapsbibliotheek van het controlesysteem.</p>
+                <h2 data-i18n="info.toolCompensation.title">Gereedschapscompensatie</h2>
+                <p data-i18n="info.toolCompensation.body">In SmiProg wordt gereedschapscompensatie alleen gebruikt voor kleine correcties. Dit vermindert problemen die kunnen ontstaan bij radiuscompensatie tijdens korte bewegingen. Gebruik daarom een waarde dicht bij nul voor de freesdiametercompensatie in de gereedschapstabel van de besturing.</p>
               </article>
 
               <article class="spg-info-card">
@@ -505,7 +505,7 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.customTools.title">Speciaalgereedschap</h2>
-                <p data-i18n="info.customTools.body">Als uw gereedschap niet in de lijst staat, kies dan voor aangepaste gereedschapsafmetingen in de gereedschapsselectie en voer freesdiameter, snijlengte en aantal snijtanden in. Controleer het gegenereerde programma zorgvuldig bij gebruik van aangepast gereedschap.</p>
+                <p data-i18n="info.customTools.body">Als uw gereedschap niet in de lijst staat, kies dan aangepaste gereedschapsafmetingen en voer de freesdiameter, snijlengte en het aantal snijkanten in. Controleer het gegenereerde programma zorgvuldig bij gebruik van speciaalgereedschap.</p>
               </article>
 
               <article class="spg-info-card">
@@ -516,23 +516,23 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.oneTwoRows.title">Draadfrezen met een tand / twee tanden (axiaal)</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProg compenseert standaard SmiCut-frezen met één of twee rijen snijtanden. Gebruikt u een niet-standaard frees, controleer dan de relatie tussen snijlengte en spoed voordat u begint met bewerken.</p>
+                <p data-i18n="info.oneTwoRows.body">Als u een standaard SmiCut-frees van het type NM met één of twee tanden in axiale richting kiest, genereert SmiProg automatisch een spiraal tot de schroefdraad klaar is. Voor deze cyclus met een ander geschikt gereedschap voert u de spoed in als snijlengte bij de aangepaste gereedschapsafmetingen. Controleer vóór de bewerking of het gereedschap geschikt is en controleer het gegenereerde programma.</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.flankInfeed.title">Flanktoevoer</h2>
-                <p data-i18n="info.flankInfeed.body">SmiProg gebruikt flanktoevoer bij het programmeren van meerdere radiale passes. Dit helpt trillingen te verminderen en verbetert de bewerkingsstabiliteit.</p>
+                <p data-i18n="info.flankInfeed.body">SmiProg gebruikt flanktoevoer bij het programmeren van meerdere radiale gangen. Dit vermindert trillingen en verbetert de bewerkingsstabiliteit.</p>
                 <p><a href="https://smicut.com/nl/vibratievrij-draadfrezen-voor-hogere-productiviteit/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Vibratievrij draadfrezen voor hogere productiviteit</a></p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.shortCuttingLength.title">Draadfrezen met gereduceerde hals</h2>
-                <p data-i18n="info.shortCuttingLength.body">Als het geselecteerde gereedschap een kortere snijlengte heeft dan de gevraagde schroefdraadlengte, deelt SmiProg de bewerking in meerdere axiale passes op, mits het gereedschapstype dit ondersteunt.</p>
+                <p data-i18n="info.shortCuttingLength.body">Als de snijlengte van het gereedschap korter is dan de gewenste schroefdraadlengte, verdeelt SmiProg de bewerking over meerdere axiale gangen, mits het gereedschapstype dit ondersteunt.</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.inserts.title">Draadfrezen met wisselplaten</h2>
-                <p data-i18n="info.inserts.body">Kies aangepaste gereedschapsafmetingen in de gereedschapslijst voor de snijgegevens van draadfrezen met wisselplaten. Voer de werkelijke freesdiameter, de snijlengte en het aantal wisselplaten of tanden in. Controleer het gegenereerde programma vóór de bewerking.</p>
+                <p data-i18n="info.inserts.body">Kies aangepaste gereedschapsafmetingen en voer de snijdiameter van de freesbody, de snijlengte van de wisselplaat en het aantal wisselplaten in. Indien nodig maakt SmiProg de volledige schroefdraadlengte in meerdere axiale gangen. Controleer het gegenereerde programma vóór de bewerking.</p>
               </article>
 
               <article class="spg-info-card">

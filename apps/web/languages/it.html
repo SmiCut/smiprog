@@ -463,19 +463,19 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definire la filettatura</strong><p data-i18n="info.step1.body">Selezionare il materiale, il profilo della filettatura e la dimensione, la lunghezza della filettatura e la distanza di sicurezza. M utilizza millimetri per il passo; altri profili utilizzano filetti per pollice (TPI).</p></div></div>
-                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Selezionare la fresa a elica</strong><p data-i18n="info.step2.body">Utilizzare un utensile SmiCut suggerito o inserire le dimensioni personalizzate dell'utensile nella selezione dell'utensile.</p></div></div>
-                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Verificare l'output</strong><p data-i18n="info.step3.body">Selezionare il processo di produzione, il sistema di controllo e il senso della filettatura nel programma CNC. Rivedere i dati di taglio, il tempo di lavorazione e il programma CNC prima della lavorazione.</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definire la filettatura</strong><p data-i18n="info.step1.body">Selezionare il materiale, il profilo, la dimensione e la lunghezza della filettatura. Inserire la distanza di sicurezza in Programma CNC. Per le filettature M, il passo si indica in millimetri; gli altri profili utilizzano filetti per pollice (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Selezionare la fresa a filettare</strong><p data-i18n="info.step2.body">Utilizzare un utensile SmiCut suggerito o inserire le dimensioni personalizzate dell'utensile nella selezione dell'utensile.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Verificare i risultati</strong><p data-i18n="info.step3.body">Selezionare il processo di produzione, il sistema di controllo e il senso della filettatura nel programma CNC. Rivedere i dati di taglio, il tempo di lavorazione e il programma CNC prima della lavorazione.</p></div></div>
               </div>
               <div class="spg-info-check-strip">
                 <strong data-i18n="info.beforeMachining.title">Prima della lavorazione</strong>
-                <p data-i18n="info.beforeMachining.body">Verifica che la fresa per filettare selezionata possa lavorare il diametro della filettatura, il passo e la lunghezza del filetto. Conferma il programma in simulazione o in blocco singolo prima di avviare la produzione.</p>
+                <p data-i18n="info.beforeMachining.body">Verificare che la fresa a filettare selezionata sia adatta al diametro, al passo e alla lunghezza del filetto. Controllare il programma mediante simulazione o esecuzione in blocco singolo prima di avviare la produzione.</p>
               </div>
             </div>
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="Riferimento alle dimensioni della fresatura a filettare che mostra il diametro della filettatura, il passo, la lunghezza tagliente, la distanza di sicurezza e il diametro della fresa." data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="Schema della fresatura di filetti con diametro della filettatura, passo, lunghezza del filetto, lunghezza tagliente, distanza di sicurezza e diametro della fresa." data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Diametro filettatura</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">Passo</span></span>
@@ -495,17 +495,17 @@
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
                 <h2 data-i18n="info.toolCompensation.title">Compensazione utensile</h2>
-                <p data-i18n="info.toolCompensation.body">La compensazione degli utensili è normalmente necessaria solo per piccole regolazioni. Valori di compensazione elevati possono causare problemi. Utilizzare un valore vicino allo zero per la compensazione del diametro della fresa nella libreria degli utensili del sistema di controllo.</p>
+                <p data-i18n="info.toolCompensation.body">In SmiProg, la compensazione utensile viene usata solo per piccole correzioni. Questo riduce i problemi che possono verificarsi con la compensazione del raggio nei movimenti brevi. Utilizzare quindi un valore vicino allo zero per la compensazione del diametro della fresa nella tabella utensili del controllo numerico.</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.correctThreadDiameter.title">Correggi il diametro della filettatura</h2>
+                <h2 data-i18n="info.correctThreadDiameter.title">Diametro corretto della filettatura</h2>
                 <p data-i18n="info.correctThreadDiameter.body">Il diametro medio delle frese a filettare SmiCut viene misurato otticamente e il diametro esterno teorico viene marcato a laser su ogni utensile. Inserisci questa misura come diametro della fresa in SmiProg per ottenere il diametro corretto del filetto fin dalla prima lavorazione. Se sono necessarie ulteriori correzioni, modifica il valore in SmiProg o la compensazione utensile nel controllo numerico.</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.customTools.title">Utensili non in lista o speciali</h2>
-                <p data-i18n="info.customTools.body">Se il tuo utensile non è nell'elenco, scegli le dimensioni personalizzate dell'utensile nella selezione dell'utensile e inserisci il diametro della fresa, la lunghezza tagliente e il numero di taglienti. Verifica attentamente il programma generato quando si utilizzano utensili personalizzati.</p>
+                <p data-i18n="info.customTools.body">Se l’utensile non è in lista, selezionare le dimensioni personalizzate dell’utensile e inserire il diametro della fresa, la lunghezza tagliente e il numero dei taglienti. Verificare attentamente il programma generato quando si utilizzano utensili speciali.</p>
               </article>
 
               <article class="spg-info-card">
@@ -515,28 +515,28 @@
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.oneTwoRows.title">Frese a filettare con solo uno o due denti</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProg compensa le frese a elica SmiCut standard con una o due file di taglienti. Quando si utilizza una fresa a elica non standard, verificare la relazione tra la lunghezza di taglio e il passo prima della lavorazione.</p>
+                <h2 data-i18n="info.oneTwoRows.title">Frese a filettare con uno o due denti (assiali)</h2>
+                <p data-i18n="info.oneTwoRows.body">Selezionando una fresa standard SmiCut di tipo NM con uno o due denti in senso assiale, SmiProg genera automaticamente una spirale fino al completamento del filetto. Per usare questo ciclo con un altro utensile adatto, inserire il passo come lunghezza tagliente nelle dimensioni personalizzate dell’utensile. Verificare l’idoneità dell’utensile e il programma generato prima della lavorazione.</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.flankInfeed.title">Avanzamento laterale</h2>
-                <p data-i18n="info.flankInfeed.body">SmiProg utilizza l'avanzamento laterale quando si programmano più passi radiali. Questo aiuta a ridurre le vibrazioni e migliora la stabilità di lavorazione.</p>
+                <h2 data-i18n="info.flankInfeed.title">Penetrazione sul fianco</h2>
+                <p data-i18n="info.flankInfeed.body">SmiProg utilizza la penetrazione sul fianco quando si programmano più passate radiali. Questo riduce le vibrazioni e migliora la stabilità della lavorazione.</p>
                 <p><a href="https://smicut.com/it/fresatura-dei-filetti-senza-vibrazioni-migliore-produttivita-e-ottimizzazione-dei-costi/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Fresatura dei filetti senza vibrazioni: migliore produttività e ottimizzazione dei costi</a></p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.shortCuttingLength.title">Frese a filettare con collo scaricato</h2>
-                <p data-i18n="info.shortCuttingLength.body">Se l'utensile selezionato ha una lunghezza di taglio inferiore alla lunghezza della filettatura richiesta, SmiProg divide l'operazione in più passi assiali, a condizione che il tipo di utensile lo supporti.</p>
+                <p data-i18n="info.shortCuttingLength.body">Se la lunghezza tagliente dell’utensile è inferiore alla lunghezza del filetto richiesta, SmiProg suddivide la lavorazione in più passate assiali, quando il tipo di utensile lo consente.</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.inserts.title">Frese a filettare ad inserti  intercambiabili</h2>
-                <p data-i18n="info.inserts.body">Per ottenere i dati di taglio per frese a filettare con inserti intercambiabili, selezionare le dimensioni personalizzate nell’elenco utensili. Inserire il diametro effettivo della fresa, la lunghezza di taglio e il numero di inserti o taglienti. Verificare il programma generato prima della lavorazione.</p>
+                <h2 data-i18n="info.inserts.title">Frese a filettare ad inserti intercambiabili</h2>
+                <p data-i18n="info.inserts.body">Selezionare le dimensioni personalizzate dell’utensile e inserire il diametro di taglio del corpo fresa, la lunghezza tagliente dell’inserto e il numero di inserti. Se necessario, SmiProg esegue l’intera lunghezza del filetto in più passate assiali. Verificare il programma generato prima della lavorazione.</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.taperedThreads.title">Filetti conici</h2>
+                <h2 data-i18n="info.taperedThreads.title">Filettature coniche</h2>
                 <p data-i18n="info.taperedThreads.body">Per i filetti conici, il diametro della fresa si riferisce all’ultimo filetto completo più vicino al codolo. Inserisci il diametro del filetto in quella posizione per ottenere un programma CNC corretto.</p>
               </article>
 

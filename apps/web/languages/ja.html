@@ -463,8 +463,8 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">ねじを定義する</strong><p data-i18n="info.step1.body">材料、ねじ規格とサイズ、ねじ長さ、安全距離を選択します。Mはピッチにミリメートルを使用します。その他の規格は1インチあたりのねじ数（TPI）を使用します。</p></div></div>
-                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">ねじ切りカッターを選択</strong><p data-i18n="info.step2.body">提案されたSmiCut工具を使用するか、工具選択でカスタム工具寸法を入力してください。</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">ねじを定義する</strong><p data-i18n="info.step1.body">材料、ねじ規格、サイズ、ねじ長さを選択します。安全距離はCNCプログラム欄で入力してください。Mねじのピッチはミリメートル、その他の規格は1インチあたりのねじ山数（TPI）で指定します。</p></div></div>
+                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">スレッドミルを選択</strong><p data-i18n="info.step2.body">提案されたSmiCut工具を使用するか、工具選択でカスタム工具寸法を入力してください。</p></div></div>
                 <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">出力を確認</strong><p data-i18n="info.step3.body">CNCプログラムで製造プロセス、制御システム、ねじの向きを選択します。加工前に切削データ、加工時間、CNCプログラムを確認してください。</p></div></div>
               </div>
               <div class="spg-info-check-strip">
@@ -475,7 +475,7 @@
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="ねじ径、ピッチ、切削長さ、安全距離、カッター径を示すThreadBurr寸法リファレンス。" data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="ねじ径、ピッチ、ねじ長さ、刃長、安全距離、カッタ径を示すねじ切り加工の寸法図。" data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">ねじ径</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">ピッチ</span></span>
@@ -495,7 +495,7 @@
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
                 <h2 data-i18n="info.toolCompensation.title">ツール補正</h2>
-                <p data-i18n="info.toolCompensation.body">工具の補正は通常、小さな調整にのみ必要です。大きな補正値は問題を引き起こす可能性があります。制御システムの工具ライブラリでは、刃径補正に0に近い値を使用してください。</p>
+                <p data-i18n="info.toolCompensation.body">SmiProgでは、ツール補正は微調整にのみ使用します。これにより、短い移動で半径補正を行う際に生じる問題を減らします。制御装置の工具テーブルでは、カッタ径の補正値をゼロに近い値に設定してください。</p>
               </article>
 
               <article class="spg-info-card">
@@ -505,7 +505,7 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.customTools.title">リスト外ツールとスペシャルツール</h2>
-                <p data-i18n="info.customTools.body">リストに工具がない場合は、工具選択でカスタム工具寸法を選択し、カッター径、切削長さ、フラウート数を入力してください。カスタム工具を使用する場合は、生成されたプログラムを慎重に検証してください。</p>
+                <p data-i18n="info.customTools.body">工具がリストにない場合は、工具選択でカスタム工具寸法を選び、カッタ径、刃長、刃数を入力してください。リスト外ツールやスペシャルツールを使用する際は、生成されたプログラムを慎重に確認してください。</p>
               </article>
 
               <article class="spg-info-card">
@@ -515,24 +515,24 @@
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.oneTwoRows.title">１刃あるいは２刃のねじ切りツール</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProgは、1列または2列の刃を持つ標準的なSmiCutカッターを補正します。非標準カッターを使用する場合は、加工前に有効刃長とピッチの関係を必ず確認してください。</p>
+                <h2 data-i18n="info.oneTwoRows.title">軸方向に1山または2山のスレッドミル</h2>
+                <p data-i18n="info.oneTwoRows.body">軸方向に1山または2山を持つスミカットの標準NMタイプを選択すると、SmiProgはねじが完成するまでの螺旋を自動生成します。他の適切な工具で同じサイクルを使用する場合は、カスタム工具寸法の刃長にピッチを入力してください。加工前に工具の適合性と生成されたプログラムを確認してください。</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.flankInfeed.title">側面送り</h2>
-                <p data-i18n="info.flankInfeed.body">SmiProgは複数のラジアルパスをプログラムする際に側面送りを使用します。これは振動を軽減し、加工の安定性を向上させます。</p>
+                <h2 data-i18n="info.flankInfeed.title">フランクインフィード</h2>
+                <p data-i18n="info.flankInfeed.body">SmiProgは半径方向に複数回切り込む際にフランクインフィードを使用します。これにより振動を減らし、加工の安定性を高めます。</p>
                 <p><a href="https://smicut.com/en/vibration-free-thread-milling-improving-productivity-and-economy/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Vibration-Free Thread Milling: Improving Productivity and Economy</a></p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.shortCuttingLength.title">首逃げ付きスレッドミル</h2>
-                <p data-i18n="info.shortCuttingLength.body">選択された工具の有効刃長が要求されたねじ長さより短い場合、SmiProgは工具タイプがサポートする場合、この操作を複数の軸方向パスに分割します。</p>
+                <p data-i18n="info.shortCuttingLength.body">工具の刃長が必要なねじ長さより短い場合、工具の種類が対応していれば、SmiProgは軸方向に複数のパスでねじを加工します。</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.inserts.title">スローアウェイチップのねじ切りカッタ</h2>
-                <p data-i18n="info.inserts.body">インサート式ねじ切りカッターの切削データを取得するには、工具選択でカスタム工具寸法を使用してください。実際の刃径、有効刃長、インサート数または刃数を入力し、加工前に生成されたプログラムを確認してください。</p>
+                <p data-i18n="info.inserts.body">カスタム工具寸法を選び、カッタ本体の刃径、チップの刃長、チップの数を入力してください。必要に応じて、SmiProgは軸方向に複数のパスでねじ全長を加工します。加工前に生成されたプログラムを確認してください。</p>
               </article>
 
               <article class="spg-info-card">

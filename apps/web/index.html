@@ -465,9 +465,9 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Define the thread</strong><p data-i18n="info.step1.body">Select material, thread profile, thread size, thread length and safety distance.</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Define the thread</strong><p data-i18n="info.step1.body">Select material, thread profile, thread size and thread length. Enter the safety distance under CNC Program. For M threads, enter the pitch in millimetres; other profiles use threads per inch (TPI).</p></div></div>
                 <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Select the thread mill</strong><p data-i18n="info.step2.body">Use a suggested SmiCut tool or enter custom tool dimensions in the tool selection.</p></div></div>
-                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Check output</strong><p data-i18n="info.step3.body">Review cutting data, machining time and the Fanuc CNC program before machining.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Check output</strong><p data-i18n="info.step3.body">Select the manufacturing process, control system and thread hand in CNC Program. Review cutting data, machining time and the CNC program before machining.</p></div></div>
               </div>
               <div class="spg-info-check-strip">
                 <strong data-i18n="info.beforeMachining.title">Before machining</strong>
@@ -477,7 +477,7 @@
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="./assets/info/smiprog-nb.svg" alt="Thread milling dimension reference showing thread diameter, pitch, cutting length, safety distance and cutter diameter." data-i18n-alt="info.figureAlt">
+                <img src="./assets/info/smiprog-nb.svg" alt="Thread milling dimension reference showing thread diameter, pitch, thread length, cutting length, safety distance and cutter diameter." data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Thread diameter</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">Pitch</span></span>
@@ -497,44 +497,44 @@
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
                 <h2 data-i18n="info.toolCompensation.title">Tool Compensation</h2>
-                <p data-i18n="info.toolCompensation.body">Compensation of tooling is normally only needed for small adjustments. Large compensation values can cause problems. Use a value close to zero for cutter diameter compensation in the control system tool library.</p>
+                <p data-i18n="info.toolCompensation.body">SmiProg uses tool compensation only for small adjustments. This reduces problems caused by radius compensation during short movements. Use a value close to zero for cutter diameter compensation in the control system tool library.</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.correctThreadDiameter.title">Correct Thread Diameter</h2>
-                <p data-i18n="info.correctThreadDiameter.body">The pitch diameter is usually checked with a thread plug gauge or another accepted thread measuring method. If adjustment is needed, compensate in the machine control rather than changing standard thread data.</p>
+                <p data-i18n="info.correctThreadDiameter.body">SmiCut optically measures the pitch diameter of its thread mills and laser-marks the theoretical external diameter on each tool. Enter this marked value as the cutter diameter in SmiProg to help achieve the correct thread diameter from the first cut. If further adjustment is needed, adjust the value in SmiProg or the tool compensation in the control system.</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.customTools.title">Custom and Special Tools</h2>
-                <p data-i18n="info.customTools.body">If your tool is not in the list, choose custom tool dimensions in the tool selection and enter cutter diameter, cutting length and number of flutes. Verify the generated program carefully when using custom tooling.</p>
+                <p data-i18n="info.customTools.body">If your tool is not in the list, choose custom tool dimensions in the tool selection and enter cutter diameter, cutting edge length and number of flutes. Check the generated program carefully when using custom or special tooling.</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
                 <p data-i18n="info.threadBurr.body">To use the deburring feature of solid carbide thread mills from SmiCut, input the complete cutting length of the tool in the thread length box. That way the threading and deburring will be made in the same operation.</p>
-                <p><a href="https://smicut.com/en/threadburr-solid-carbide-thread-mills/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">Read more in the article ThreadBurr Solid Carbide Thread Mills.</a></p>
+                <p><a href="https://smicut.com/en/threadburr-solid-carbide-thread-mills/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">ThreadBurr – Solid Carbide Thread Mills from SmiCut</a></p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.oneTwoRows.title">Thread Mills with One or Two Rows of Teeth</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProg compensates for standard SmiCut cutters with one or two rows of teeth. When using a non-standard cutter, check the cutting length and pitch relationship before machining.</p>
+                <h2 data-i18n="info.oneTwoRows.title">Thread Mills with One or Two Teeth per Flute</h2>
+                <p data-i18n="info.oneTwoRows.body">When you select a standard SmiCut NM thread mill with one or two teeth per flute, SmiProg automatically generates a spiral until the thread is complete. To use this cycle with another suitable tool, enter the pitch as the cutting edge length in the custom tool dimensions. Check that the tool is suitable and verify the generated program before machining.</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.flankInfeed.title">Flank Infeed</h2>
                 <p data-i18n="info.flankInfeed.body">SmiProg uses flank infeed when programming multiple radial passes. This helps reduce vibration and improves machining stability.</p>
-                <p><a href="https://smicut.com/en/vibration-free-thread-milling-improving-productivity-and-economy/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Read more in the article Vibration-Free Thread Milling.</a></p>
+                <p><a href="https://smicut.com/en/vibration-free-thread-milling-improving-productivity-and-economy/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Vibration-Free Thread Milling: Improving Productivity and Economy</a></p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.shortCuttingLength.title">Short Cutting Length</h2>
+                <h2 data-i18n="info.shortCuttingLength.title">Thread Mills with a Reduced Neck</h2>
                 <p data-i18n="info.shortCuttingLength.body">If the selected tool has a shorter cutting length than the requested thread length, SmiProg divides the operation into several axial passes when the tool type supports it.</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.inserts.title">Thread Mills with Inserts</h2>
-                <p data-i18n="info.inserts.body">Use custom tool dimensions in the tool selection to get cutting data for indexable thread mills. Enter the actual cutter diameter, cutting length and number of inserts or flutes, then verify the generated program before machining.</p>
+                <h2 data-i18n="info.inserts.title">Thread Milling Cutters with Indexable Inserts</h2>
+                <p data-i18n="info.inserts.body">Choose custom tool dimensions and enter the cutting diameter of the cutter body, the cutting edge length of the insert and the number of inserts. When needed, SmiProg produces the full thread length in several axial passes. Verify the generated program before machining.</p>
               </article>
 
               <article class="spg-info-card">

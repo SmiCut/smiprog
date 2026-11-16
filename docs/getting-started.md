@@ -2,7 +2,7 @@
 
 ## Use online
 
-[Open SmiProg on smicut.com](https://smicut.com/en/smiprog-online/) to start immediately.
+[Open SmiProg on smicut.com](https://smicut.com/en/smiprog-online-software-for-thread-milling/) to start immediately.
 No installation or GitHub account is needed.
 
 ## Use the complete HTML download

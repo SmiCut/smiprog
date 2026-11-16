@@ -199,7 +199,7 @@
                     </span>
                   </div>
                   <div class="spg-final-summary-item">
-                    <span class="spg-result-label" data-i18n="result.axialPasses">Axiala pass</span>
+                    <span class="spg-result-label" data-i18n="result.axialPasses">Axiella pass</span>
                     <span id="spg-final-axial-passes" class="spg-result-value">-</span>
                   </div>
                   <div class="spg-final-summary-item">
@@ -463,19 +463,19 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definiera gängan</strong><p data-i18n="info.step1.body">Välj material, gängprofil, gängstorlek, gänglängd och säkerhetsavstånd. För M-gängor anges stigningen i millimeter. Övriga profiler använder gängor per tum (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definiera gängan</strong><p data-i18n="info.step1.body">Välj material, gängprofil, gängdimension och gänglängd. Ange säkerhetsavstånd under CNC-program. För M-gängor anges stigningen i millimeter. Övriga profiler använder gängor per tum (TPI).</p></div></div>
                 <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Välj gängfräsen</strong><p data-i18n="info.step2.body">Välj en föreslagen gängfräs från SmiCut eller ange egna verktygsmått i verktygsvalet.</p></div></div>
                 <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Kontrollera resultatet</strong><p data-i18n="info.step3.body">Välj tillverkningsprocess, styrsystem och gängriktning under CNC-program. Kontrollera skärdata, bearbetningstid och CNC-program före bearbetning.</p></div></div>
               </div>
               <div class="spg-info-check-strip">
-                <strong data-i18n="info.beforeMachining.title">Innan bearbetning</strong>
+                <strong data-i18n="info.beforeMachining.title">Före bearbetning</strong>
                 <p data-i18n="info.beforeMachining.body">Kontrollera att gängfräsen klarar vald gängdiameter, stigning och gänglängd. Verifiera programmet i simulering eller med enkelblockskörning före produktion.</p>
               </div>
             </div>
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="Måttskiss för gängfräsning med gängdiameter, stigning, skärlängd, säkerhetsavstånd och fräsdiameter." data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="Måttskiss för gängfräsning med gängdiameter, stigning, gänglängd, skärlängd, säkerhetsavstånd och fräsdiameter." data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Gängdiameter</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">Stigning</span></span>
@@ -495,12 +495,12 @@
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
                 <h2 data-i18n="info.toolCompensation.title">Verktygskompensering</h2>
-                <p data-i18n="info.toolCompensation.body">Verktygskompensering behövs normalt bara för små justeringar. Stora kompenseringsvärden kan orsaka problem. Använd ett värde nära noll för diameterkompenseringen i styrsystemets verktygsregister.</p>
+                <p data-i18n="info.toolCompensation.body">Med SmiProg används verktygskompenseringen endast för mindre justeringar. Det minskar risken för problem vid radiekompensering på korta förflyttningar. Ange därför ett värde nära noll för diameterkompenseringen i styrsystemets verktygsregister.</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.correctThreadDiameter.title">Rätt gängdiameter</h2>
-                <p data-i18n="info.correctThreadDiameter.body">Gängans delningsdiameter kontrolleras normalt med en gängtolk för invändig gänga eller med en annan vedertagen mätmetod. Gör vid behov korrigeringen i maskinens styrsystem så att standardgängans mått behålls.</p>
+                <h2 data-i18n="info.correctThreadDiameter.title">Rätt gängdiameter direkt</h2>
+                <p data-i18n="info.correctThreadDiameter.body">På gängfräsar från SmiCut är medeldiametern uppmätt optiskt och den teoretiska ytterdiametern lasermärkt på verktyget. Ange detta mått som fräsdiameter i SmiProg för att få rätt gängdiameter direkt. Om ytterligare justering behövs kan du ändra värdet i SmiProg eller verktygskompenseringen i styrsystemet.</p>
               </article>
 
               <article class="spg-info-card">
@@ -511,12 +511,12 @@
               <article class="spg-info-card">
                 <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
                 <p data-i18n="info.threadBurr.body">Ange den valda hårdmetallfräsens hela skärlängd i fältet för gänglängd. Med SmiCuts ThreadBurr fräses och gradas gängan i samma operation.</p>
-                <p><a href="https://smicut.com/sv/threadburr-solida-gangfrasar/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">ThreadBurr – Solida Gängfräsar från SmiCut</a></p>
+                <p><a href="https://smicut.com/sv/threadburr-solida-gangfrasar/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">ThreadBurr – solida gängfräsar från SmiCut</a></p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.oneTwoRows.title">Gängfräsar med en eller två tandrader</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProg kompenserar för SmiCuts standardfräsar med en eller två tandrader. Kontrollera förhållandet mellan skärlängd och stigning före bearbetning med specialfräs.</p>
+                <h2 data-i18n="info.oneTwoRows.title">Verktyg med en eller två tänder (axiellt)</h2>
+                <p data-i18n="info.oneTwoRows.body">När du väljer en standardfräs från SmiCut med en eller två tänder axiellt skapar SmiProg en spiralrörelse tills gängan är färdig. Kontrollera förhållandet mellan skärlängd och stigning när du använder specialverktyg.</p>
               </article>
 
               <article class="spg-info-card">
@@ -526,18 +526,18 @@
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.shortCuttingLength.title">Kort skärlängd</h2>
-                <p data-i18n="info.shortCuttingLength.body">Om fräsens skärlängd är kortare än gänglängden delar SmiProg upp bearbetningen i flera axiella pass när verktygstypen tillåter det.</p>
+                <h2 data-i18n="info.shortCuttingLength.title">Verktyg med midja</h2>
+                <p data-i18n="info.shortCuttingLength.body">Om verktygets skärkantlängd är kortare än gänglängden gör SmiProg gängan i flera axiella pass när verktygstypen tillåter det.</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.inserts.title">Gängfräsar med vändskär</h2>
-                <p data-i18n="info.inserts.body">Välj Egna verktygsmått för att få skärdata för vändskärsgängfräsar. Ange verklig fräsdiameter, skärlängd och antal skär. Verifiera programmet före bearbetning.</p>
+                <h2 data-i18n="info.inserts.title">Vändskärsgängfräsar</h2>
+                <p data-i18n="info.inserts.body">Välj Egna verktygsmått och ange fräskroppens skärdiameter, vändskärets skärkantlängd och antal skär. Vid behov delas bearbetningen upp i flera axiella pass. Verifiera CNC-programmet före bearbetning.</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.taperedThreads.title">Koniska gängor</h2>
-                <p data-i18n="info.taperedThreads.body">För koniska gängor avser fräsdiametern den sista fullständiga gängan närmast skaftet. Ange gängdiametern vid den positionen för korrekt CNC-program.</p>
+                <p data-i18n="info.taperedThreads.body">För koniska gängfräsar anges skärdiametern vid den sista fullständiga gängtanden närmast skaftet. Gängdiametern i SmiProg ska därför avse den position där denna del av verktyget går i ingrepp.</p>
               </article>
 
               <article class="spg-info-warning" aria-label="Varning" data-i18n-aria-label="aria.warning">

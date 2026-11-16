@@ -13,26 +13,18 @@ generate CNC programs, and compare tooling costs.
 Use the same complete HTML file on your own website: paste its contents into a
 Raw HTML block. [Website installation guide](docs/website-embedding.md).
 
-## All 16 language editions
+## Choose your next step
 
-The source includes all 16 languages and the updated Compare workflow.
-The links below open each generated HTML review page in the repository:
-
-| Language | Language |
+| I want to… | Start here |
 |---|---|
-| [English](apps/web/languages/en.html) | [Svenska](apps/web/languages/sv.html) |
-| [Dansk](apps/web/languages/da.html) | [Deutsch](apps/web/languages/de.html) |
-| [Español](apps/web/languages/es.html) | [Français](apps/web/languages/fr.html) |
-| [Magyar](apps/web/languages/hu.html) | [Bahasa Indonesia](apps/web/languages/id.html) |
-| [Italiano](apps/web/languages/it.html) | [日本語](apps/web/languages/ja.html) |
-| [한국어](apps/web/languages/ko.html) | [Nederlands](apps/web/languages/nl.html) |
-| [Polski](apps/web/languages/pl.html) | [Русский](apps/web/languages/ru.html) |
-| [简体中文](apps/web/languages/zh.html) | [繁體中文（台灣）](apps/web/languages/zh-tw.html) |
+| Try SmiProg | [Open the online app](https://smicut.com/en/smiprog-online-software-for-thread-milling/) or choose a language below. |
+| Add it to my website | [Install the complete HTML file](docs/website-embedding.md). |
+| Create my own branded version | [Follow the reseller customization example](REBRANDING.md). |
 
-For local review, open `apps/web/languages/index.html` from a complete checkout.
-Run `npm run build:languages` to generate complete single-file HTML editions in
-`dist/downloads/`. See [language review](docs/languages.md).
-Source changes do not automatically update the live website or release downloads.
+The ready-to-use download is a **web app**. It runs in a browser, on your website,
+or offline from the HTML file. A separately published iPhone or Android app needs
+additional development, packaging and store publication; this repository does not
+supply a ready-to-submit mobile app project.
 
 ## Download the published release
 
@@ -58,7 +50,10 @@ ZIP extraction, image folders or GitHub account is needed.
 | 简体中文 | [Open SmiProg](https://smicut.com/zh/smiprog-online-%e8%9e%ba%e7%ba%b9%e9%93%a3%e5%89%8a%e8%bd%af%e4%bb%b6/) | [Download smiprog-zh.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh.html) |
 | 繁體中文（台灣） | [Open SmiProg](https://smicut.com/zh-tw/smiprog-online-%e8%9e%ba%e7%b4%8b%e9%8a%91%e5%89%8a%e8%bb%9f%e9%ab%94/) | [Download smiprog-zh-tw.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh-tw.html) |
 
-Version 1.2.2 refreshes all 16 languages from the shared iOS translations.
+Version 1.2.3 improves Swedish terminology, including V-profil, restores the
+laser-marked diameter explanation in all 16 languages and adds a step-by-step
+reseller customization example. The shared iOS translations retain reviewed
+web corrections when imported again.
 Online pages are available in all 20 SmiCut language and market variants.
 The calculator information buttons, inline Compare discounts and corrected CNC
 process menu remain included.
@@ -115,5 +110,10 @@ already embedded in the HTML and do not require visible branding in your interfa
 - **Report a problem:** [open an issue](https://github.com/SmiCut/smiprog/issues).
 - **For developers:** [source files, tests and builds](docs/development.md), [contributing](.github/CONTRIBUTING.md), and [MIT license](LICENSE).
 - **Tapping, thread turning, grooving, milling and drilling:** see [SmiCalc](https://github.com/SmiCut/smicalc).
+
+For developers: the editable text source is `apps/web/i18n/translations.csv`.
+Run `npm run build:languages` to generate all 16 complete HTML editions in
+`dist/downloads/`. Local source previews are in `apps/web/languages/index.html`.
+[Set up a development copy](docs/development.md#developer-setup-and-editable-prices).
 
 For contributors: [what belongs in this public project](docs/publication-policy.md).

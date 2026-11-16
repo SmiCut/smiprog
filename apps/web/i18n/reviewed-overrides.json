@@ -1,0 +1,93 @@
+{
+  "sv": {
+    "tool.description.partial": "Gängfräs i solid hårdmetall med en tand (axiellt) och V-profil",
+    "result.axialPasses": "Axiella pass",
+    "results.axial": "Axiella pass",
+    "copy.copied": "Kopierat",
+    "error.fieldPositive": "Ange ett tal större än noll.",
+    "error.catalogHelp": "Ladda om sidan eller öppna HTML-filen igen. Om problemet kvarstår, hämta den senaste versionen av SmiProg.",
+    "info.step1.body": "Välj material, gängprofil, gängdimension och gänglängd. Ange säkerhetsavstånd under CNC-program. För M-gängor anges stigningen i millimeter. Övriga profiler använder gängor per tum (TPI).",
+    "info.threadBurr.link": "ThreadBurr – solida gängfräsar från SmiCut",
+    "tool.linkText": "➜ Se verktygssidan för alla mått och en STEP-fil för 3D-CAD",
+    "materialSelector.noExactMatch": "Ingen materialkategori kunde föreslås. Försök med en mer specifik materialbeteckning.",
+    "materialSelector.noResponse": "Ingen materialkategori kunde föreslås. Försök med en mer specifik materialbeteckning.",
+    "materialSelector.openCalculator": "Öppna kalkylatorn",
+    "materialSelector.applyHelp": "Materialet används i Invändig gängfräsning och Jämför.",
+    "thread.safetyDrawing": "S markerar det axiella säkerhetsavståndet i måttskissen för gängfräsning.",
+    "compare.saving": "Med {tool} sparar du {amount} per gänga ({percent} % lägre totalkostnad).",
+    "info.correctThreadDiameter.body": "På gängfräsar från SmiCut är medeldiametern uppmätt optiskt och den teoretiska ytterdiametern lasermärkt på verktyget. Ange detta mått som fräsdiameter i SmiProg för att få rätt gängdiameter direkt. Om ytterligare justering behövs kan du ändra värdet i SmiProg eller verktygskompenseringen i styrsystemet.",
+    "info.shortCuttingLength.title": "Verktyg med midja",
+    "info.correctThreadDiameter.title": "Rätt gängdiameter direkt",
+    "info.oneTwoRows.title": "Verktyg med en eller två tänder (axiellt)",
+    "info.oneTwoRows.body": "När du väljer en standardfräs från SmiCut med en eller två tänder axiellt skapar SmiProg en spiralrörelse tills gängan är färdig. Kontrollera förhållandet mellan skärlängd och stigning när du använder specialverktyg.",
+    "info.inserts.title": "Vändskärsgängfräsar",
+    "info.inserts.body": "Välj Egna verktygsmått och ange fräskroppens skärdiameter, vändskärets skärkantlängd och antal skär. Vid behov delas bearbetningen upp i flera axiella pass. Verifiera CNC-programmet före bearbetning.",
+    "info.toolCompensation.body": "Med SmiProg används verktygskompenseringen endast för mindre justeringar. Det minskar risken för problem vid radiekompensering på korta förflyttningar. Ange därför ett värde nära noll för diameterkompenseringen i styrsystemets verktygsregister.",
+    "info.taperedThreads.body": "För koniska gängfräsar anges skärdiametern vid den sista fullständiga gängtanden närmast skaftet. Gängdiametern i SmiProg ska därför avse den position där denna del av verktyget går i ingrepp.",
+    "info.figureAlt": "Måttskiss för gängfräsning med gängdiameter, stigning, gänglängd, skärlängd, säkerhetsavstånd och fräsdiameter.",
+    "info.beforeMachining.title": "Före bearbetning",
+    "info.shortCuttingLength.body": "Om verktygets skärkantlängd är kortare än gänglängden gör SmiProg gängan i flera axiella pass när verktygstypen tillåter det.",
+    "tool.description.single": "Gängfräs i solid hårdmetall med en tand (axiellt)",
+    "tool.description.double": "Gängfräs i solid hårdmetall med två tänder (axiellt)"
+  },
+  "en": {
+    "info.correctThreadDiameter.body": "SmiCut optically measures the pitch diameter of its thread mills and laser-marks the theoretical external diameter on each tool. Enter this marked value as the cutter diameter in SmiProg to help achieve the correct thread diameter from the first cut. If further adjustment is needed, adjust the value in SmiProg or the tool compensation in the control system.",
+    "info.shortCuttingLength.title": "Thread Mills with a Reduced Neck"
+  },
+  "da": {
+    "info.correctThreadDiameter.body": "På gevindfræserne fra SmiCut er middeldiameteren målt optisk, og den teoretiske yderdiameter er lasermærket på værktøjet. Indtast dette mål som fræserdiameter i SmiProg for at opnå den korrekte gevinddiameter fra første bearbejdning. Hvis yderligere justering er nødvendig, kan værdien ændres i SmiProg eller via værktøjskompenseringen i styresystemet.",
+    "info.shortCuttingLength.title": "Værktøj med skaftreduktion"
+  },
+  "de": {
+    "info.correctThreadDiameter.body": "Bei SmiCut-Gewindefräsern wird der Flankendurchmesser optisch gemessen und der theoretische Außendurchmesser auf jedem Werkzeug lasermarkiert. Geben Sie dieses Maß als Fräserdurchmesser in SmiProg ein, um möglichst schon beim ersten Schnitt den richtigen Gewindedurchmesser zu erzielen. Weitere Korrekturen können Sie in SmiProg oder über die Werkzeugkorrektur der Steuerung vornehmen.",
+    "info.shortCuttingLength.title": "Gewindefräser mit Freistellung"
+  },
+  "es": {
+    "info.correctThreadDiameter.body": "El diámetro medio de las fresas de roscar de SmiCut se mide ópticamente y el diámetro exterior teórico se marca con láser en cada herramienta. Introduzca esta medida como diámetro de la fresa en SmiProg para obtener el diámetro de rosca correcto desde la primera pasada. Si necesita más ajustes, puede modificar el valor en SmiProg o la compensación de la herramienta en el control numérico.",
+    "info.shortCuttingLength.title": "Fresas de roscar con cuello reducido"
+  },
+  "fr": {
+    "info.correctThreadDiameter.body": "Le diamètre sur flancs des fraises à fileter SmiCut est mesuré par voie optique et le diamètre extérieur théorique est gravé au laser sur chaque fraise. Saisissez cette valeur comme diamètre de fraise dans SmiProg pour obtenir le bon diamètre de filetage dès la première passe. Si un ajustement est nécessaire, modifiez la valeur dans SmiProg ou la correction d’outil dans la commande numérique.",
+    "info.shortCuttingLength.title": "Fraises à fileter à col réduit"
+  },
+  "it": {
+    "info.correctThreadDiameter.body": "Il diametro medio delle frese a filettare SmiCut viene misurato otticamente e il diametro esterno teorico viene marcato a laser su ogni utensile. Inserisci questa misura come diametro della fresa in SmiProg per ottenere il diametro corretto del filetto fin dalla prima lavorazione. Se sono necessarie ulteriori correzioni, modifica il valore in SmiProg o la compensazione utensile nel controllo numerico.",
+    "info.shortCuttingLength.title": "Frese a filettare con collo scaricato"
+  },
+  "hu": {
+    "info.correctThreadDiameter.body": "A SmiCut menetmarókon a középátmérőt optikailag megmérik, és az elméleti külső átmérőt lézerjelöléssel feltüntetik minden marón. Ezt az értéket adja meg maróátmérőként a SmiProgban, hogy már az első megmunkáláskor megfelelő menetátmérőt kapjon. Ha további korrekció szükséges, módosítsa az értéket a SmiProgban vagy a szerszámkorrekciót a vezérlésben.",
+    "info.shortCuttingLength.title": "Menetmarók vékony nyakkal"
+  },
+  "nl": {
+    "info.correctThreadDiameter.body": "Bij SmiCut-draadfrezen wordt de flankdiameter optisch gemeten en wordt de theoretische buitendiameter op elke frees met een laser gemarkeerd. Voer deze maat in als freesdiameter in SmiProg om vanaf de eerste bewerking de juiste schroefdraaddiameter te bereiken. Verdere correcties kunt u uitvoeren in SmiProg of via de gereedschapscompensatie in de besturing.",
+    "info.shortCuttingLength.title": "Draadfrezen met gereduceerde hals"
+  },
+  "pl": {
+    "info.correctThreadDiameter.body": "Średnica podziałowa frezów do gwintów SmiCut jest mierzona optycznie, a teoretyczna średnica zewnętrzna jest oznaczana laserowo na każdym narzędziu. Wprowadź tę wartość jako średnicę freza w SmiProg, aby uzyskać prawidłową średnicę gwintu już przy pierwszej obróbce. W razie potrzeby skoryguj wartość w SmiProg lub kompensację narzędzia w sterowaniu CNC.",
+    "info.shortCuttingLength.title": "Frezy do gwintów z przewężoną szyjką"
+  },
+  "ru": {
+    "info.correctThreadDiameter.body": "Средний диаметр резьбофрез SmiCut измеряется оптически, а теоретический наружный диаметр наносится лазером на каждый инструмент. Введите это значение как диаметр фрезы в SmiProg, чтобы получить правильный диаметр резьбы уже при первой обработке. При необходимости измените значение в SmiProg или коррекцию инструмента в системе ЧПУ.",
+    "info.shortCuttingLength.title": "Резьбовые фрезы с уменьшенной шейкой"
+  },
+  "ja": {
+    "info.correctThreadDiameter.body": "スミカットのスレッドミルは有効径を光学測定し、理論外径を各工具にレーザーマークしています。この値をSmiProgのカッタ径に入力することで、初回から正しいねじ径を得やすくなります。さらに調整が必要な場合は、SmiProgの入力値または制御装置の工具補正値を調整してください。",
+    "info.shortCuttingLength.title": "首逃げ付きスレッドミル"
+  },
+  "zh": {
+    "info.correctThreadDiameter.body": "SmiCut 采用光学方法测量螺纹铣刀的螺纹中径，并将理论外径用激光标记在每把刀具上。请在 SmiProg 中将此数值输入为刀具直径，以便首次加工就获得正确的螺纹直径。如需进一步修正，可修改 SmiProg 中的数值，或调整数控系统中的刀具补偿。",
+    "info.shortCuttingLength.title": "缩颈螺纹铣刀"
+  },
+  "zh-tw": {
+    "info.correctThreadDiameter.body": "SmiCut 以光學方式量測銑牙刀的螺紋中徑，並將理論外徑以雷射標記在每支刀具上。請在 SmiProg 中將此數值輸入為刀具直徑，以便首次加工就獲得正確的螺紋直徑。如需進一步修正，可修改 SmiProg 中的數值，或調整控制系統中的刀具補償。",
+    "info.shortCuttingLength.title": "縮頸銑牙刀"
+  },
+  "ko": {
+    "info.correctThreadDiameter.body": "SmiCut 나사 밀링 공구의 유효 직경은 광학적으로 측정되며, 이론적 외경은 각 공구에 레이저로 표시됩니다. 첫 가공부터 올바른 나사 직경을 얻을 수 있도록 이 값을 SmiProg의 공구 직경으로 입력하세요. 추가 조정이 필요하면 SmiProg의 입력값이나 제어 시스템의 공구 보정값을 조정하세요.",
+    "info.shortCuttingLength.title": "목이 가는 나사 밀링 공구"
+  },
+  "id": {
+    "info.correctThreadDiameter.body": "Diameter pitch thread mill SmiCut diukur secara optik, lalu diameter luar teoretis ditandai dengan laser pada setiap tool. Masukkan nilai ini sebagai diameter cutter di SmiProg untuk membantu mendapatkan diameter ulir yang tepat sejak pemotongan pertama. Jika perlu penyesuaian lebih lanjut, ubah nilainya di SmiProg atau kompensasi tool pada sistem kontrol.",
+    "info.shortCuttingLength.title": "Thread Mill dengan Leher yang Diperkecil"
+  }
+}

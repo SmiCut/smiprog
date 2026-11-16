@@ -1,5 +1,5 @@
 {
-  "help.safetyDistance": "접근 및 후퇴 이동에 사용되는 축 방향 안전 거리입니다.",
+  "help.safetyDistance": "접근 및 후퇴 이동에 사용되는 축 방향 여유.",
   "compare.applyDiscountShort": "적용",
   "app.title": "SmiProg - 나사 밀링",
   "aria.calculator": "SmiProg - 나사 밀링",
@@ -243,8 +243,8 @@
   "compare.rateError": "0 이상의 기계 비용을 입력하십시오.",
   "compare.discount": "할인율 (%)",
   "compare.applyDiscount": "할인 적용",
-  "compare.netPrice": "할인 후 가격",
-  "compare.discountError": "0~100%의 할인율을 입력하세요.",
+  "compare.netPrice": "할인 적용 가격",
+  "compare.discountError": "0~100% 사이의 할인율을 입력하세요.",
   "compare.saving": "{tool} 사용 시 나사 1개당 {amount} 절감됩니다(총비용 {percent}% 감소).",
   "compare.seconds": "초",
   "compare.share": "비교 공유",

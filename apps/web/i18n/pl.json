@@ -1,5 +1,5 @@
 {
-  "help.safetyDistance": "Osiowy odstęp bezpieczeństwa przy ruchach dojazdu i wycofania.",
+  "help.safetyDistance": "Osiowy luz używany do ruchów przybliżania i wycofywania.",
   "compare.applyDiscountShort": "Zastosuj",
   "app.title": "SmiProg - Frezowanie gwintów",
   "aria.calculator": "SmiProg - Frezowanie gwintów",
@@ -244,7 +244,7 @@
   "compare.discount": "Rabat (%)",
   "compare.applyDiscount": "Zastosuj rabat",
   "compare.netPrice": "Cena po rabacie",
-  "compare.discountError": "Wprowadź rabat od 0 do 100%.",
+  "compare.discountError": "Podaj rabat od 0 do 100%.",
   "compare.saving": "Oszczędność przy użyciu {tool} wynosi {amount} na gwint (koszt całkowity niższy o {percent}%).",
   "compare.seconds": "sekundy",
   "compare.share": "Udostępnij porównanie",

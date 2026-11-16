@@ -1,6 +1,6 @@
 {
   "name": "smiprog",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "private": true,
   "description": "SmiCut thread-milling calculator and CNC programming widget.",
   "scripts": {
@@ -16,7 +16,7 @@
     "verify:main-layout": "node tools/verify-main-layout.mjs",
     "verify:compare-layout": "node tools/verify-compare-layout.mjs",
     "build:languages": "node apps/web/tools/build-translations.mjs && node tools/build-language-packages.mjs && npm run build:html",
-    "test:languages": "node --test tests/language-packages.test.mjs tests/languages.test.mjs",
+    "test:languages": "node --test tests/language-packages.test.mjs tests/languages.test.mjs tests/ios-translations.test.mjs",
     "verify:languages": "node tools/verify-language-packages.mjs && node tools/verify-languages.mjs",
     "test:cnc-motion": "node --test apps/web/tests/cnc-motion.test.mjs",
     "build:html": "node tools/build-single-html.mjs",

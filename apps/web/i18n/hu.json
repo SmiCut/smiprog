@@ -1,5 +1,5 @@
 {
-  "help.safetyDistance": "Axiális biztonsági távolság a megközelítési és visszahúzási mozgásokhoz.",
+  "help.safetyDistance": "Axialisan használt szabad tér megközelítési és visszahúzási lépésekhez.",
   "compare.applyDiscountShort": "Alkalmaz",
   "app.title": "SmiProg - Menetmarás",
   "aria.calculator": "SmiProg - Menetmarás",
@@ -244,7 +244,7 @@
   "compare.discount": "Kedvezmény (%)",
   "compare.applyDiscount": "Kedvezmény alkalmazása",
   "compare.netPrice": "Kedvezményes ár",
-  "compare.discountError": "Adjon meg 0 és 100 % közötti kedvezményt.",
+  "compare.discountError": "Adjon meg 0 és 100% közötti kedvezményt.",
   "compare.saving": "{tool} használatával a megtakarítás menetenként {amount} (az összköltség {percent}%-kal alacsonyabb).",
   "compare.seconds": "másodperc",
   "compare.share": "Összehasonlítás megosztása",

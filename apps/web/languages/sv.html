@@ -14,7 +14,7 @@
       <div class="spg-tabs" role="tablist" aria-label="SmiProg" data-i18n-aria-label="aria.sections">
         <button type="button" class="spg-tab spg-tab-active" data-spg-tab="start" role="tab" aria-selected="true" data-i18n-html="tabs.start">Startsida</button>
         <button type="button" class="spg-tab" data-spg-tab="materialselector" role="tab" aria-selected="false" data-i18n-html="tabs.materialSelector">SmiCut Materialväljare</button>
-        <button type="button" class="spg-tab" data-spg-tab="main" role="tab" aria-selected="false" data-i18n="tabs.threadMilling">Invändig gängfräsning i fräsmaskin</button>
+        <button type="button" class="spg-tab" data-spg-tab="main" role="tab" aria-selected="false" data-i18n="tabs.threadMilling">Invändig gängfräsning</button>
         <button type="button" class="spg-tab" data-spg-tab="compare" role="tab" aria-selected="false" data-i18n="tabs.compare">Jämför</button>
         <button type="button" class="spg-tab" data-spg-tab="information" role="tab" aria-selected="false" data-i18n="tabs.information">Information</button>
       </div>
@@ -35,7 +35,7 @@
           PERFORMANCE OF THIS SOFTWARE. -->
           <div class="spg-start-grid">
             <button type="button" class="spg-start-card spg-start-card-button spg-start-card-main" data-spg-start-tab="main">
-              <strong><span data-i18n="start.threadMilling.title">Invändig gängfräsning i fräsmaskin</span> <span class="spg-card-arrow">➜</span></strong>
+              <strong><span data-i18n="start.threadMilling.title">Invändig gängfräsning</span> <span class="spg-card-arrow">➜</span></strong>
               <span data-i18n="start.threadMilling.description">Välj gängfräs, beräkna skärdata och skapa ett CNC-program.</span>
               <span class="spg-start-card-visual" aria-hidden="true"><img src="../assets/thread-mills/NB08075D21_1.5ISO_AC.webp" alt=""></span>
             </button>
@@ -258,7 +258,7 @@
                     <label for="spg-safety-distance" class="spg-field-label"><span data-i18n="field.safetyDistance">Säkerhetsavstånd (mm)</span></label>
                     <span class="spg-info">
                       <button type="button" class="spg-info-button" aria-label="Säkerhetsavstånd (mm)" data-i18n-aria-label="field.safetyDistance" aria-expanded="false" aria-controls="spg-safety-distance-help"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
-                      <span id="spg-safety-distance-help" class="spg-info-tip" role="tooltip" data-i18n="help.safetyDistance" hidden="">Axiellt säkerhetsavstånd vid in- och utkörning.</span>
+                      <span id="spg-safety-distance-help" class="spg-info-tip" role="tooltip" data-i18n="help.safetyDistance" hidden="">Axiellt säkerhetsavstånd vid framkörning och återgång.</span>
                     </span>
                   </div>
                   <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2" aria-describedby="spg-safety-distance-help">
@@ -302,7 +302,7 @@
 
       <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden="">
         <div id="spg-compare-access" class="spg-compare-access">
-          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Ange dina egna verktygspriser. SmiCuts återförsäljare kan be SmiCut om lösenordet för att se priser.</p>
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Ange dina egna verktygspriser. SmiCuts återförsäljare kan be SmiCut om lösenordet för att se priserna.</p>
           <div id="spg-compare-lock" class="spg-compare-password-row">
             <label for="spg-compare-password" data-i18n="compare.password">Lösenord</label>
             <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">

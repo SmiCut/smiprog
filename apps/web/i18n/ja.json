@@ -1,5 +1,5 @@
 {
-  "help.safetyDistance": "アプローチおよび退避動作に使用する軸方向の安全距離。",
+  "help.safetyDistance": "接近および退刀移動に使用される軸方向クリアランス。",
   "compare.applyDiscountShort": "適用",
   "app.title": "SmiProg - ねじ切りフライス加工",
   "aria.calculator": "SmiProg - ねじ切りフライス加工",

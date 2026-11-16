@@ -2,7 +2,7 @@
 
 **Free thread-milling software. Calculate cutting data, select a tool and generate a CNC program.**
 
-[**Use online**](https://smicut.com/en/smiprog-online/) · [**Download SmiProg**](#download-the-published-release) · [**Adapt for your company**](REBRANDING.md)
+[**Use online**](https://smicut.com/en/smiprog-online-software-for-thread-milling/) · [**Download SmiProg**](#download-the-published-release) · [**Adapt for your company**](REBRANDING.md)
 
 ![SmiProg start screen with thread milling, tool comparison and material selection](docs/images/smiprog-preview.png)
 
@@ -41,25 +41,27 @@ ZIP extraction, image folders or GitHub account is needed.
 
 | Language | Use online | Download complete app |
 |---|---|---|
-| English | [Open SmiProg](https://smicut.com/en/smiprog-online/) | [Download smiprog-en.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-en.html) |
-| Svenska | - | [Download smiprog-sv.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-sv.html) |
-| Dansk | - | [Download smiprog-da.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-da.html) |
-| Deutsch | - | [Download smiprog-de.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-de.html) |
-| Español | - | [Download smiprog-es.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-es.html) |
-| Français | - | [Download smiprog-fr.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-fr.html) |
-| Magyar | - | [Download smiprog-hu.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-hu.html) |
-| Bahasa Indonesia | - | [Download smiprog-id.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-id.html) |
-| Italiano | - | [Download smiprog-it.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-it.html) |
-| 日本語 | - | [Download smiprog-ja.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-ja.html) |
-| 한국어 | - | [Download smiprog-ko.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-ko.html) |
-| Nederlands | - | [Download smiprog-nl.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-nl.html) |
-| Polski | - | [Download smiprog-pl.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-pl.html) |
-| Русский | - | [Download smiprog-ru.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-ru.html) |
-| 简体中文 | - | [Download smiprog-zh.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh.html) |
-| 繁體中文（台灣） | - | [Download smiprog-zh-tw.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh-tw.html) |
+| English | [Open SmiProg](https://smicut.com/en/smiprog-online-software-for-thread-milling/) | [Download smiprog-en.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-en.html) |
+| Svenska | [Open SmiProg](https://smicut.com/sv/smiprog-online-programvara-for-gangfrasning/) | [Download smiprog-sv.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-sv.html) |
+| Dansk | [Open SmiProg](https://smicut.com/da/smiprog-online-software-til-gevindfraesning/) | [Download smiprog-da.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-da.html) |
+| Deutsch | [Open SmiProg](https://smicut.com/de/smiprog-online-software-zum-gewindefraesen/) | [Download smiprog-de.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-de.html) |
+| Español | [Open SmiProg](https://smicut.com/es/smiprog-online-software-para-fresado-de-roscas/) | [Download smiprog-es.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-es.html) |
+| Français | [Open SmiProg](https://smicut.com/fr/smiprog-online-logiciel-de-fraisage-de-filets/) | [Download smiprog-fr.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-fr.html) |
+| Magyar | [Open SmiProg](https://smicut.com/hu/smiprog-online-menetmaro-szoftver/) | [Download smiprog-hu.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-hu.html) |
+| Bahasa Indonesia | [Open SmiProg](https://smicut.com/id/smiprog-online-software-untuk-thread-milling/) | [Download smiprog-id.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-id.html) |
+| Italiano | [Open SmiProg](https://smicut.com/it/smiprog-online-software-per-la-fresatura-dei-filetti/) | [Download smiprog-it.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-it.html) |
+| 日本語 | [Open SmiProg](https://smicut.com/ja/smiprog-online-%e3%81%ad%e3%81%98%e3%83%95%e3%83%a9%e3%82%a4%e3%82%b9%e5%8a%a0%e5%b7%a5%e7%94%a8%e3%82%bd%e3%83%95%e3%83%88%e3%82%a6%e3%82%a7%e3%82%a2/) | [Download smiprog-ja.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-ja.html) |
+| 한국어 | [Open SmiProg](https://smicut.com/ko/smiprog-online-%eb%82%98%ec%82%ac-%eb%b0%80%eb%a7%81%ec%9a%a9-%ec%86%8c%ed%94%84%ed%8a%b8%ec%9b%a8%ec%96%b4/) | [Download smiprog-ko.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-ko.html) |
+| Nederlands | [Open SmiProg](https://smicut.com/nl/smiprog-online-software-voor-draadfrezen/) | [Download smiprog-nl.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-nl.html) |
+| Polski | [Open SmiProg](https://smicut.com/pl/smiprog-online-oprogramowanie-do-frezowania-gwintow/) | [Download smiprog-pl.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-pl.html) |
+| Русский | [Open SmiProg](https://smicut.com/ru/smiprog-online-%d0%bf%d1%80%d0%be%d0%b3%d1%80%d0%b0%d0%bc%d0%bc%d0%b0-%d0%b4%d0%bb%d1%8f-%d1%84%d1%80%d0%b5%d0%b7%d0%b5%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d1%8f-%d1%80%d0%b5%d0%b7%d1%8c%d0%b1%d1%8b/) | [Download smiprog-ru.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-ru.html) |
+| 简体中文 | [Open SmiProg](https://smicut.com/zh/smiprog-online-%e8%9e%ba%e7%ba%b9%e9%93%a3%e5%89%8a%e8%bd%af%e4%bb%b6/) | [Download smiprog-zh.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh.html) |
+| 繁體中文（台灣） | [Open SmiProg](https://smicut.com/zh-tw/smiprog-online-%e8%9e%ba%e7%b4%8b%e9%8a%91%e5%89%8a%e8%bb%9f%e9%ab%94/) | [Download smiprog-zh-tw.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh-tw.html) |
 
-Version 1.2.2 includes all 16 languages, the restored calculator information
-buttons, inline Compare discounts and the corrected CNC process menu.
+Version 1.2.2 refreshes all 16 languages from the shared iOS translations.
+Online pages are available in all 20 SmiCut language and market variants.
+The calculator information buttons, inline Compare discounts and corrected CNC
+process menu remain included.
 Currency and percent symbols remain visible inside Compare inputs while editing.
 Each download includes its selected language, tool data, images and license notices.
 

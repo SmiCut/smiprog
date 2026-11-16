@@ -4,6 +4,7 @@ Usage: python3 tools/import-ios-translations.py /path/to/translations.xlsx
 Only customer-facing text is imported; workbook notes and source paths stay out.
 """
 import csv
+import json
 import re
 import sys
 import zipfile
@@ -109,6 +110,19 @@ ALIASES = {
 KEEP_WEB = {"compare.priceError", "tool.custom", "info.step1.body"}
 
 
+def apply_reviewed_overrides(rows):
+    """Keep reviewed terminology when an older workbook is imported again."""
+    by_key = {row["key"]: row for row in rows}
+    overrides = json.loads((ROOT / "apps/web/i18n/reviewed-overrides.json").read_text())
+    for locale, translations in overrides.items():
+        if locale not in LOCALES:
+            raise ValueError(f"Unknown reviewed locale: {locale}")
+        for key, text in translations.items():
+            if key not in by_key or not text.strip():
+                raise ValueError(f"Invalid reviewed translation: {locale}/{key}")
+            by_key[key][locale] = text
+
+
 def saving_format(text):
     names = ["tool", "amount", "percent"]
     sequential = iter(names)
@@ -151,6 +165,7 @@ def main():
         if f"info.{page}.url" in by_key:
             by_key[f"info.{page}.url"][locale] = url
             by_key[f"info.{page}.link"][locale] = title
+    apply_reviewed_overrides(web)
     changed = sum(a[l] != b[l] for a, b in zip(before, web) for l in LOCALES)
     with target.open("w", newline="") as stream:
         writer = csv.DictWriter(stream, fieldnames=fields, lineterminator="\n")

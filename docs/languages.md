@@ -29,6 +29,17 @@ Railway or the shared AI service.
 
 ## Rules for future translations
 
+Reviewed terminology and web-specific corrections are retained in
+`apps/web/i18n/reviewed-overrides.json`. The workbook importer applies these after
+the supplied translations, preventing older handovers from undoing corrections.
+When revising a listed key, update both the CSV and its reviewed override, then
+rebuild. Version 1.2.3 uses **V-profil**, **axiella pass**, **verktyg med midja** and
+**vändskärsgängfräsar** in Swedish. Its information-tab review restores the
+laser-marked cutter-diameter instructions using the original SmiProg Info text
+as a terminology reference, adapted to current web controls without Excel cell
+numbers. Indonesian has no equivalent in that original reference and follows
+the same technical meaning in its existing terminology.
+
 - Localize visible labels, input hints, errors, copied/shared results and links.
   Keep CNC commands and numeric machine-code output unchanged.
 - Use the active language's number format. Preserve the ungrouped spindle-speed

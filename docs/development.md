@@ -67,7 +67,7 @@ audit working files are not part of this public source release.
 
 ## Browser setup
 
-Install dependencies and Chromium with the commands in README. Browser verifiers
+Install dependencies and browser engines with the developer setup commands below. Browser verifiers
 use local Playwright and its bundled Chromium. Set `CHROME_PATH` to an installed
 Chrome executable if needed; no developer-specific absolute paths are required.
 Screenshots and temporary reports stay in ignored `tmp/` directories.
@@ -152,7 +152,7 @@ Use Node.js 20 or later:
 
 ```bash
 npm ci --ignore-scripts
-npx playwright install chromium
+npx playwright install chromium webkit
 npm test
 npm run test:browser
 npm run verify:html
@@ -186,7 +186,7 @@ fixtures and release assets. Public branches are not a confidential review area.
 The original Excel workbooks and audit working files remain private; the selected
 public fixtures and image originals support reproducible tests and builds.
 
-The current release baseline is v1.2.0 (all 16 languages). It uses complete HTML
+The current release baseline is v1.2.3 (all 16 languages). It uses complete HTML
 for both downloads and direct embedding; the standalone and embedded checks run
 at desktop/mobile widths. Historical version labels in technical documents record
 when a change was introduced, not an unreleased controller status.

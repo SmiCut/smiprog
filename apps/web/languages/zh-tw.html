@@ -463,7 +463,7 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">定義螺紋</strong><p data-i18n="info.step1.body">選取材質、螺紋牙型與尺寸、螺紋長度和安全距離。M 使用毫米作為螺距單位；其他牙型使用每英吋牙數 (TPI)。</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">定義螺紋</strong><p data-i18n="info.step1.body">選取材質、螺紋牙型、尺寸與螺紋長度。請在 CNC 程式欄中輸入安全距離。M 螺紋的螺距以毫米表示；其他牙型使用每英吋牙數（TPI）。</p></div></div>
                 <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">選取銑牙刀</strong><p data-i18n="info.step2.body">使用建議的 SmiCut 刀具，或在刀具選擇中輸入自訂刀具尺寸。</p></div></div>
                 <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">檢查輸出</strong><p data-i18n="info.step3.body">在 CNC 程式中選取銑牙方式、控制系統和螺紋旋向。加工前請檢查切削數據、加工時間和 CNC 程式。</p></div></div>
               </div>
@@ -475,7 +475,7 @@
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="螺紋銑削尺寸參考，顯示螺紋直徑、螺距、切削長度、安全距離與刀具直徑。" data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="銑牙加工尺寸圖，顯示螺紋直徑、螺距、螺紋長度、刃長、安全距離與刀具直徑。" data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">螺紋直徑</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">螺距</span></span>
@@ -495,7 +495,7 @@
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
                 <h2 data-i18n="info.toolCompensation.title">刀具補償</h2>
-                <p data-i18n="info.toolCompensation.body">刀具補償通常僅需進行微小調整。過大的補償值可能會導致問題。請在控制系統刀具庫中使用接近零的刀具直徑補償值。</p>
+                <p data-i18n="info.toolCompensation.body">在 SmiProg 中，刀具補償僅用於微量調整。這可減少短距離移動時使用半徑補償所產生的問題。因此，請在控制系統的刀具表中使用接近零的刀具直徑補償值。</p>
               </article>
 
               <article class="spg-info-card">
@@ -504,39 +504,39 @@
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.customTools.title">非程式選用刀具及特殊加工</h2>
-                <p data-i18n="info.customTools.body">若您的刀具不在列表中，請於刀具選擇中自訂刀具尺寸，並輸入刀具直徑、切削長度與刃數。使用自訂刀具時，請仔細驗證生成的程式。</p>
+                <h2 data-i18n="info.customTools.title">清單以外及特殊刀具</h2>
+                <p data-i18n="info.customTools.body">若刀具不在清單中，請在刀具選擇中選取自訂刀具尺寸，並輸入刀具直徑、刃長與刃數。使用特殊刀具時，請仔細檢查產生的程式。</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
-                <p data-i18n="info.threadBurr.body">在螺紋長度欄輸入所選 SmiCut 整體鎢鋼螺紋銑刀的完整刃長。如此即可使用 ThreadBurr 在同一工序中完成螺紋銑削及去毛邊。</p>
+                <p data-i18n="info.threadBurr.body">在螺紋長度欄輸入所選 SmiCut 全鎢鋼銑牙刀的完整刃長。如此即可使用 ThreadBurr 在同一工序中完成銑牙及去毛邊。</p>
                 <p><a href="https://smicut.com/zh-tw/threadburr-全鎢鋼銑牙刀/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">ThreadBurr-全鎢鋼銑牙刀</a></p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.oneTwoRows.title">以每刃一或二牙銑牙</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProg 會補償具有一排或兩排刀刃的標準 SmiCut 刀具。使用非標準刀具時，請在加工前檢查切削刃長度和螺距的關係。</p>
+                <p data-i18n="info.oneTwoRows.body">選用每刃一牙或二牙的 SmiCut 標準 NM 型銑牙刀時，SmiProg 會自動產生螺旋路徑，直到完成螺紋。若要用其他合適的刀具執行相同循環，請在自訂刀具尺寸中將螺距輸入為刃長。加工前請確認刀具適用，並檢查產生的程式。</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.flankInfeed.title">側刃進給</h2>
-                <p data-i18n="info.flankInfeed.body">SmiProg 在編程多個徑向切削層時使用側刃進給。這有助於減少振動並提高加工穩定性。</p>
+                <h2 data-i18n="info.flankInfeed.title">側向切入</h2>
+                <p data-i18n="info.flankInfeed.body">編寫多次徑向進刀的程式時，SmiProg 採用沿牙側方向切入的方式。這有助於減少振動並提高加工穩定性。</p>
                 <p><a href="https://smicut.com/zh-tw/抗震銑牙加工：提升產能以及經濟性/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">抗震銑牙加工：提升產能以及經濟性</a></p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.shortCuttingLength.title">縮頸銑牙刀</h2>
-                <p data-i18n="info.shortCuttingLength.body">如果選取的刀具切削長度短於要求的螺紋長度，且刀具類型支援時，SmiProg 會將作業分為多個軸向切削層。</p>
+                <p data-i18n="info.shortCuttingLength.body">如果刀具刃長短於要求的螺紋長度，且刀具類型允許，SmiProg 會透過多次軸向進刀完成加工。</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.inserts.title">可換刀片式銑牙刀</h2>
-                <p data-i18n="info.inserts.body">在刀具選擇中使用自訂刀具尺寸，以取得可換刃銑牙刀的切削數據。輸入實際刀具直徑、切削刃長度和刀片或刀刃數量，然後在加工前驗證生成的程式。</p>
+                <p data-i18n="info.inserts.body">選取自訂刀具尺寸，輸入刀體的切削直徑、刀片的刃長與刀片數量。需要時，SmiProg 會透過多次軸向進刀完成整個螺紋長度。加工前請檢查產生的程式。</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.taperedThreads.title">錐螺紋</h2>
+                <h2 data-i18n="info.taperedThreads.title">錐度銑牙</h2>
                 <p data-i18n="info.taperedThreads.body">對於錐螺紋，銑刀直徑以最靠近刀柄的最後一個完整牙型為基準。請輸入該位置的螺紋直徑，以產生正確的 CNC 程式。</p>
               </article>
 

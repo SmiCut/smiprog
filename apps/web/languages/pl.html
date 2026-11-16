@@ -463,19 +463,19 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Zdefiniuj gwint</strong><p data-i18n="info.step1.body">Wybierz materiał, zarys i rozmiar gwintu, długość gwintu oraz odległość bezpieczeństwa. M oznacza milimetry dla skoku; inne profile używają gwintów na cal (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Zdefiniuj gwint</strong><p data-i18n="info.step1.body">Wybierz materiał, zarys, rozmiar i długość gwintu. Odstęp bezpieczeństwa wprowadź w sekcji Program CNC. Dla gwintów M skok podaje się w milimetrach; dla pozostałych zarysów używa się liczby zwojów na cal (TPI).</p></div></div>
                 <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Wybierz frez gwintowy</strong><p data-i18n="info.step2.body">Użyj sugerowanego frezu SmiCut lub wpisz niestandardowe wymiary narzędzia w selekcji narzędzi.</p></div></div>
                 <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Sprawdź wynik</strong><p data-i18n="info.step3.body">W sekcji programu CNC wybierz proces produkcji, układ sterowania i kierunek gwintu. Przed obróbką sprawdź dane skrawania, czas obróbki i program CNC.</p></div></div>
               </div>
               <div class="spg-info-check-strip">
                 <strong data-i18n="info.beforeMachining.title">Przed obróbką</strong>
-                <p data-i18n="info.beforeMachining.body">Upewnij się, że wybrany frez do gwintowania może wykonać średnicę gwintu, skok i długość gwintu. Potwierdź program w symulacji lub trybie pojedynczego bloku przed uruchomieniem produkcji.</p>
+                <p data-i18n="info.beforeMachining.body">Sprawdź, czy wybrany frez do gwintów jest odpowiedni do średnicy, skoku i długości gwintu. Przed rozpoczęciem produkcji sprawdź program w symulacji lub w trybie pojedynczych bloków.</p>
               </div>
             </div>
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="Odniesienie wymiarowe frezowania gwintu pokazujące średnicę gwintu, skok, długość skrawania, odległość bezpieczeństwa i średnicę frezu." data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="Szkic wymiarowy frezowania gwintu przedstawiający średnicę gwintu, skok, długość gwintu, długość części skrawającej, odstęp bezpieczeństwa i średnicę freza." data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Średnica gwintu</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">Skok</span></span>
@@ -494,8 +494,8 @@
             </div>
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
-                <h2 data-i18n="info.toolCompensation.title">Kompensacja Narzędzi</h2>
-                <p data-i18n="info.toolCompensation.body">Kompensacja narzędzi jest zwykle potrzebna tylko do drobnych korekt. Duże wartości kompensacji mogą powodować problemy. Użyj wartości bliskiej zeru dla kompensacji średnicy frezu w bibliotece narzędzi układu sterowania.</p>
+                <h2 data-i18n="info.toolCompensation.title">Kompensacja narzędzia</h2>
+                <p data-i18n="info.toolCompensation.body">W SmiProg kompensacja narzędzia służy tylko do drobnych korekt. Ogranicza to problemy związane z kompensacją promienia podczas krótkich przemieszczeń. Dlatego w tabeli narzędzi sterowania CNC należy ustawić wartość kompensacji średnicy freza bliską zeru.</p>
               </article>
 
               <article class="spg-info-card">
@@ -504,8 +504,8 @@
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.customTools.title">Narzędzia Niewymienione lub Specjalne</h2>
-                <p data-i18n="info.customTools.body">Jeśli Twoje narzędzie nie znajduje się na liście, wybierz niestandardowe wymiary narzędzia w selekcji narzędzi i wprowadź średnicę frezu, długość skrawania oraz liczbę bruzd. Dokładnie zweryfikuj wygenerowany program podczas korzystania z niestandardowego narzędzia.</p>
+                <h2 data-i18n="info.customTools.title">Narzędzia spoza listy i specjalne</h2>
+                <p data-i18n="info.customTools.body">Jeśli narzędzia nie ma na liście, wybierz niestandardowe wymiary narzędzia i wprowadź średnicę freza, długość części skrawającej oraz liczbę ostrzy. Przy użyciu narzędzi specjalnych dokładnie sprawdź wygenerowany program.</p>
               </article>
 
               <article class="spg-info-card">
@@ -516,7 +516,7 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.oneTwoRows.title">Frezy do gwintów z jednym lub dwoma zębami na ostrzu</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProg kompensuje standardowe frezy SmiCut z jedną lub dwoma rzędami ząbków. Podczas używania niestandardowego frezu sprawdź zależność między długością krawędzi roboczej a skokiem przed obróbką.</p>
+                <p data-i18n="info.oneTwoRows.body">Po wybraniu standardowego freza SmiCut typu NM z jednym lub dwoma zębami na ostrzu SmiProg automatycznie tworzy tor spiralny aż do ukończenia gwintu. Aby użyć tego cyklu z innym odpowiednim narzędziem, wprowadź skok jako długość części skrawającej w niestandardowych wymiarach narzędzia. Przed obróbką sprawdź przydatność narzędzia i wygenerowany program.</p>
               </article>
 
               <article class="spg-info-card">
@@ -532,7 +532,7 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.inserts.title">Głowice frezujące gwinty z płytką wymienną</h2>
-                <p data-i18n="info.inserts.body">Użyj niestandardowych wymiarów narzędzia w selekcji narzędzi, aby uzyskać dane skrawania dla frezów gwintowych z wymiennymi ostrzami. Wpisz rzeczywistą średnicę frezu, długość krawędzi roboczej oraz liczbę ostrzy lub ząbków, a następnie zweryfikuj wygenerowany program przed obróbką.</p>
+                <p data-i18n="info.inserts.body">Wybierz niestandardowe wymiary narzędzia i wprowadź średnicę skrawania korpusu freza, długość krawędzi skrawającej płytki oraz liczbę płytek. W razie potrzeby SmiProg wykonuje całą długość gwintu w kilku przejściach osiowych. Sprawdź wygenerowany program przed obróbką.</p>
               </article>
 
               <article class="spg-info-card">
@@ -542,7 +542,7 @@
 
               <article class="spg-info-warning" aria-label="Ostrzeżenie" data-i18n-aria-label="aria.warning">
                 <div class="spg-info-kicker" data-i18n="info.warning.title">Ostrzeżenie</div>
-                <p data-i18n="info.warning.body">Dane skrawania w SmiProg to zalecane dane początkowe. Na wiele czynników może być konieczne wprowadzenie korekt, w tym materiał obrabianego elementu, stabilność maszyny, mocowanie, ustawienie narzędzia, chłodzenie i odprowadzanie wiórów. SmiCut nie ponosi odpowiedzialności za szkody spowodowane użyciem programu CNC lub zalecanych przez oprogramowanie danych skrawania.</p>
+                <p data-i18n="info.warning.body">Dane skrawania w SmiProg są zalecanymi wartościami początkowymi. Wiele czynników może wymagać ich korekty, między innymi materiał przedmiotu, stabilność maszyny, mocowanie, ustawienie narzędzia, chłodzenie i odprowadzanie wiórów. SmiCut nie ponosi odpowiedzialności za szkody wynikające z użycia programu CNC lub danych skrawania zalecanych przez oprogramowanie.</p>
               </article>
             </div>
           </section>

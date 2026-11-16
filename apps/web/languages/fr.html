@@ -463,19 +463,19 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Définir le filetage</strong><p data-i18n="info.step1.body">Sélectionnez le matériau, le profil de filetage et la taille, la longueur de filetage et la distance de sécurité. M utilise des millimètres pour le pas ; les autres profils utilisent les filets par pouce (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Définir le filetage</strong><p data-i18n="info.step1.body">Sélectionnez le matériau, le profil, la dimension et la longueur du filetage. Saisissez la distance de sécurité dans Programme CNC. Pour les filetages M, le pas est exprimé en millimètres ; les autres profils utilisent le nombre de filets par pouce (TPI).</p></div></div>
                 <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Sélectionner la fraise à fileter</strong><p data-i18n="info.step2.body">Utilisez un outil SmiCut suggéré ou entrez des dimensions d'outil personnalisées dans la sélection d'outil.</p></div></div>
-                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Vérifier la sortie</strong><p data-i18n="info.step3.body">Sélectionnez le processus de fabrication, le système de contrôle et le sens du filetage dans le programme CNC. Examinez les données de coupe, le temps d'usinage et le programme CNC avant l'usinage.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Vérifier les résultats</strong><p data-i18n="info.step3.body">Sélectionnez le mode d’usinage, la commande numérique et le sens du filetage dans Programme CNC. Vérifiez les données de coupe, le temps d’usinage et le programme CNC avant l’usinage.</p></div></div>
               </div>
               <div class="spg-info-check-strip">
                 <strong data-i18n="info.beforeMachining.title">Avant l'usinage</strong>
-                <p data-i18n="info.beforeMachining.body">Vérifiez que la fraise à fileter sélectionnée peut usiner le diamètre du filetage, le pas et la longueur de filetage. Confirmez le programme en simulation ou en mode bloc unique avant de lancer la production.</p>
+                <p data-i18n="info.beforeMachining.body">Vérifiez que la fraise à fileter sélectionnée convient au diamètre, au pas et à la longueur du filetage. Contrôlez le programme par simulation ou en mode bloc par bloc avant de lancer la production.</p>
               </div>
             </div>
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="Référence dimensionnelle du fraisage de filetage indiquant le diamètre du filetage, le pas, la longueur de coupe, la distance de sécurité et le diamètre de la fraise." data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="Schéma de fraisage de filetage indiquant le diamètre du filetage, le pas, la longueur du filetage, la longueur de coupe, la distance de sécurité et le diamètre de la fraise." data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Diamètre du filetage</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">Pas</span></span>
@@ -494,8 +494,8 @@
             </div>
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
-                <h2 data-i18n="info.toolCompensation.title">Rectification de l'outillage</h2>
-                <p data-i18n="info.toolCompensation.body">La compensation des outils n'est normalement nécessaire que pour de petits ajustements. De grandes valeurs de compensation peuvent causer des problèmes. Utilisez une valeur proche de zéro pour la compensation du diamètre de la fraise dans la bibliothèque d'outils du système de contrôle.</p>
+                <h2 data-i18n="info.toolCompensation.title">Correction d’outil</h2>
+                <p data-i18n="info.toolCompensation.body">Dans SmiProg, la correction d’outil sert uniquement aux petits ajustements. Cela réduit les problèmes liés à la correction de rayon lors de déplacements courts. Utilisez donc une valeur proche de zéro pour la correction du diamètre de fraise dans la table d’outils de la commande numérique.</p>
               </article>
 
               <article class="spg-info-card">
@@ -504,8 +504,8 @@
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.customTools.title">Outils non repertoriés ou spéciaux</h2>
-                <p data-i18n="info.customTools.body">Si votre outil ne figure pas dans la liste, choisissez des dimensions d'outil personnalisées dans la sélection d'outil et entrez le diamètre de la fraise, la longueur de coupe et le nombre de dents. Vérifiez attentivement le programme généré lors de l'utilisation d'outils personnalisés.</p>
+                <h2 data-i18n="info.customTools.title">Outils non répertoriés ou spéciaux</h2>
+                <p data-i18n="info.customTools.body">Si votre outil ne figure pas dans la liste, choisissez les dimensions d’outil personnalisées et saisissez le diamètre de la fraise, la longueur de coupe et le nombre de dents. Vérifiez attentivement le programme généré lorsque vous utilisez des outils non répertoriés ou spéciaux.</p>
               </article>
 
               <article class="spg-info-card">
@@ -515,8 +515,8 @@
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.oneTwoRows.title">Fraises à fileter avec une ou 2 dents par goujure</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProg compense les fraises SmiCut standard avec une ou deux rangées de dents. Lors de l'utilisation d'une fraise non standard, vérifiez la relation entre la longueur de coupe et le pas avant l'usinage.</p>
+                <h2 data-i18n="info.oneTwoRows.title">Fraises à fileter avec une ou deux dents par goujure</h2>
+                <p data-i18n="info.oneTwoRows.body">Lorsque vous choisissez une fraise standard SmiCut de type NM avec une ou deux dents par goujure, SmiProg génère automatiquement une spirale jusqu’à la fin du filetage. Pour utiliser ce cycle avec un autre outil adapté, saisissez le pas comme longueur de coupe dans les dimensions d’outil personnalisées. Vérifiez que l’outil convient et contrôlez le programme généré avant l’usinage.</p>
               </article>
 
               <article class="spg-info-card">
@@ -531,8 +531,8 @@
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.inserts.title">Fraise à fileter à inserts indexables</h2>
-                <p data-i18n="info.inserts.body">Utilisez les dimensions d'outil personnalisées dans la sélection d'outil pour obtenir les données de coupe pour les fraises à fileter indexables. Entrez le diamètre réel de la fraise, la longueur de coupe et le nombre d'inserts ou de dents, puis vérifiez le programme généré avant l'usinage.</p>
+                <h2 data-i18n="info.inserts.title">Fraises à fileter à plaquettes indexables</h2>
+                <p data-i18n="info.inserts.body">Choisissez les dimensions d’outil personnalisées et saisissez le diamètre de coupe du corps de fraise, la longueur de coupe de la plaquette et le nombre de plaquettes. Si nécessaire, SmiProg réalise toute la longueur du filetage en plusieurs passes axiales. Vérifiez le programme généré avant l’usinage.</p>
               </article>
 
               <article class="spg-info-card">

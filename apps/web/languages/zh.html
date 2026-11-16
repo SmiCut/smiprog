@@ -463,7 +463,7 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">定义螺纹</strong><p data-i18n="info.step1.body">选择材质、螺纹牙型及尺寸、螺纹长度和安全距离。M 制使用毫米表示螺距；其他牙型使用每英寸牙数 (TPI)。</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">定义螺纹</strong><p data-i18n="info.step1.body">选择材质、螺纹牙型、尺寸和螺纹长度。在 CNC 程序栏中输入安全距离。M 螺纹的螺距以毫米表示；其他牙型使用每英寸牙数（TPI）。</p></div></div>
                 <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">选择螺纹铣刀</strong><p data-i18n="info.step2.body">使用建议的 SmiCut 刀具或在刀具选择中输入自定义刀具尺寸。</p></div></div>
                 <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">检查输出</strong><p data-i18n="info.step3.body">在 CNC 程序中选择制造工艺、控制系统和螺纹旋向。在加工前检查切削数据、加工时间和 CNC 程序。</p></div></div>
               </div>
@@ -475,7 +475,7 @@
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="螺纹铣削尺寸参考，显示螺纹直径、螺距、切削刃长度、安全距离和刀具直径。" data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="螺纹铣削尺寸图，显示螺纹直径、螺距、螺纹长度、刃长、安全距离和刀具直径。" data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">螺纹直径</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">螺距</span></span>
@@ -495,7 +495,7 @@
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
                 <h2 data-i18n="info.toolCompensation.title">刀具补偿</h2>
-                <p data-i18n="info.toolCompensation.body">刀具补偿通常仅用于微调。过大的补偿值可能会导致问题。在控制系统刀具库中，刀具直径补偿值应使用接近零的数值。</p>
+                <p data-i18n="info.toolCompensation.body">在 SmiProg 中，刀具补偿仅用于微量调整。这样可减少短距离移动时采用半径补偿所引起的问题。因此，请在数控系统刀具表中使用接近零的刀具直径补偿值。</p>
               </article>
 
               <article class="spg-info-card">
@@ -505,7 +505,7 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.customTools.title">非标刀具或表中未列出的刀具</h2>
-                <p data-i18n="info.customTools.body">如果您的刀具不在列表中，请在刀具选择中自定义刀具尺寸，并输入刀具直径、切削刃长度和刃口数量。使用非标刀具时，请仔细验证生成的程序。</p>
+                <p data-i18n="info.customTools.body">如果刀具未列在表中，请在刀具选择中选择自定义刀具尺寸，并输入刀具直径、刃长和刃数。使用非标刀具时，请仔细检查生成的程序。</p>
               </article>
 
               <article class="spg-info-card">
@@ -516,27 +516,27 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.oneTwoRows.title">每刃有一个或两个牙（单牙或双牙）的螺纹铣刀</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProg 会补偿具有一排或两排刃口的标准 SmiCut 刀具。使用非标刀具时，请在加工前检查切削刃长度与螺距的关系。</p>
+                <p data-i18n="info.oneTwoRows.body">选择每刃有一个或两个牙的 SmiCut 标准 NM 型螺纹铣刀后，SmiProg 会自动生成螺旋路径，直至完成螺纹。若要用其他合适的刀具执行同样的循环，请在自定义刀具尺寸中将螺距输入为刃长。加工前请确认刀具适用，并检查生成的程序。</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.flankInfeed.title">侧刃进给</h2>
-                <p data-i18n="info.flankInfeed.body">SmiProg 在编程多个径向进给时使用侧刃进给。这有助于减少振动并提高加工稳定性。</p>
+                <h2 data-i18n="info.flankInfeed.title">侧向切入</h2>
+                <p data-i18n="info.flankInfeed.body">编程多次径向走刀时，SmiProg 采用沿牙侧方向切入的方式。这有助于减少振动并提高加工稳定性。</p>
                 <p><a href="https://smicut.com/en/vibration-free-thread-milling-improving-productivity-and-economy/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Vibration-Free Thread Milling: Improving Productivity and Economy</a></p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.shortCuttingLength.title">缩颈螺纹铣刀</h2>
-                <p data-i18n="info.shortCuttingLength.body">如果所选刀具的切削刃长度短于要求的螺纹长度，且刀具类型支持时，SmiProg 会将操作分为多个轴向进给。</p>
+                <p data-i18n="info.shortCuttingLength.body">如果刀具刃长短于要求的螺纹长度，且刀具类型允许，SmiProg 会通过多次轴向走刀完成加工。</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.inserts.title">可转位螺纹铣刀</h2>
-                <p data-i18n="info.inserts.body">在刀具选择中使用自定义刀具尺寸以获取可转位螺纹铣刀的切削数据。输入实际的刀具直径、切削刃长度以及刀片或刃口数量，然后在加工前验证生成的程序。</p>
+                <p data-i18n="info.inserts.body">选择自定义刀具尺寸，输入刀体的切削直径、刀片的切削刃长度和刀片数量。需要时，SmiProg 会通过多次轴向走刀加工全部螺纹长度。加工前请检查生成的程序。</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.taperedThreads.title">锥螺纹</h2>
+                <h2 data-i18n="info.taperedThreads.title">锥形螺纹</h2>
                 <p data-i18n="info.taperedThreads.body">对于锥螺纹，铣刀直径以最靠近刀柄的最后一个完整牙型为基准。请填写该位置的螺纹直径，以生成正确的 CNC 程序。</p>
               </article>
 

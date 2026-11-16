@@ -463,19 +463,19 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Tentukan ulir</strong><p data-i18n="info.step1.body">Pilih material, profil ulir dan ukuran, panjang ulir, dan jarak pengaman. M menggunakan milimeter untuk pitch; profil lain menggunakan ulir per inci (TPI).</p></div></div>
-                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Pilih thread mill</strong><p data-i18n="info.step2.body">Gunakan alat SmiCut yang disarankan atau masukkan dimensi alat kustom dalam pemilihan alat.</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Tentukan ulir</strong><p data-i18n="info.step1.body">Pilih material, profil, ukuran, dan panjang ulir. Masukkan jarak aman pada Program CNC. Untuk ulir M, pitch dinyatakan dalam milimeter; profil lain menggunakan jumlah ulir per inci (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Pilih thread mill</strong><p data-i18n="info.step2.body">Gunakan tool SmiCut yang disarankan atau masukkan dimensi tool kustom pada pemilihan tool.</p></div></div>
                 <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Periksa output</strong><p data-i18n="info.step3.body">Pilih proses manufaktur, sistem kontrol, dan arah ulir pada Program CNC. Periksa data pemotongan, waktu pemesinan, dan program CNC sebelum pemesinan.</p></div></div>
               </div>
               <div class="spg-info-check-strip">
                 <strong data-i18n="info.beforeMachining.title">Sebelum pemesinan</strong>
-                <p data-i18n="info.beforeMachining.body">Pastikan bahwa mill ulir yang dipilih dapat memproses diameter ulir, pitch, dan panjang ulir. Konfirmasi program dalam simulasi atau blok tunggal sebelum menjalankan produksi.</p>
+                <p data-i18n="info.beforeMachining.body">Pastikan thread mill yang dipilih sesuai untuk diameter, pitch, dan panjang ulir yang akan dikerjakan. Periksa program melalui simulasi atau mode blok tunggal sebelum produksi.</p>
               </div>
             </div>
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="Referensi dimensi milling ulir menunjukkan diameter ulir, pitch, panjang pemotongan, jarak pengaman, dan diameter cutter." data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="Gambar dimensi frais ulir yang menunjukkan diameter ulir, pitch, panjang ulir, panjang potong, jarak aman, dan diameter cutter." data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Diameter ulir</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">Pitch</span></span>
@@ -494,8 +494,8 @@
             </div>
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
-                <h2 data-i18n="info.toolCompensation.title">Kompensasi Alat</h2>
-                <p data-i18n="info.toolCompensation.body">Kompensasi alat biasanya hanya diperlukan untuk penyesuaian kecil. Nilai kompensasi besar dapat menyebabkan masalah. Gunakan nilai yang mendekati nol untuk kompensasi diameter cutter di perpustakaan alat sistem kontrol.</p>
+                <h2 data-i18n="info.toolCompensation.title">Kompensasi Tool</h2>
+                <p data-i18n="info.toolCompensation.body">SmiProg menggunakan kompensasi tool hanya untuk penyesuaian kecil. Hal ini mengurangi masalah akibat kompensasi radius pada gerakan pendek. Gunakan nilai mendekati nol untuk kompensasi diameter cutter pada tabel tool sistem kontrol.</p>
               </article>
 
               <article class="spg-info-card">
@@ -504,19 +504,19 @@
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.customTools.title">Alat Kustom dan Khusus</h2>
-                <p data-i18n="info.customTools.body">Jika alat Anda tidak ada dalam daftar, pilih dimensi alat kustom di pemilihan alat dan masukkan diameter cutter, panjang pemotongan, dan jumlah flutes. Verifikasi program yang dihasilkan dengan cermat saat menggunakan alat kustom.</p>
+                <h2 data-i18n="info.customTools.title">Tool di Luar Daftar dan Tool Khusus</h2>
+                <p data-i18n="info.customTools.body">Jika tool tidak ada dalam daftar, pilih dimensi tool kustom dan masukkan diameter cutter, panjang potong, serta jumlah mata potong. Periksa program yang dihasilkan dengan cermat saat menggunakan tool khusus.</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
-                <p data-i18n="info.threadBurr.body">Masukkan seluruh panjang potong frais ulir karbida solid SmiCut pada kolom panjang ulir. Dengan ThreadBurr, pengefraisan ulir dan pembuangan geram tepi dilakukan dalam satu operasi.</p>
+                <p data-i18n="info.threadBurr.body">Masukkan seluruh panjang potong thread mill karbida solid SmiCut pada kolom panjang ulir. Dengan ThreadBurr, pengefraisan ulir dan penghilangan burr dilakukan dalam satu operasi.</p>
                 <p><a href="https://smicut.com/id/threadburr-solid-carbide-thread-mills-dari-smicut/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">ThreadBurr – Solid Carbide Thread Mills dari SmiCut</a></p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.oneTwoRows.title">Thread Mill dengan Satu atau Dua Baris Gigi</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProg mengkompensasi cutter SmiCut standar dengan satu atau dua baris gigi. Saat menggunakan cutter non-standar, periksa hubungan panjang potong dan pitch sebelum pemesinan.</p>
+                <h2 data-i18n="info.oneTwoRows.title">Thread Mill dengan Satu atau Dua Gigi per Alur</h2>
+                <p data-i18n="info.oneTwoRows.body">Saat thread mill SmiCut standar tipe NM dengan satu atau dua gigi per alur dipilih, SmiProg otomatis membuat lintasan spiral hingga ulir selesai. Untuk menggunakan siklus ini dengan tool lain yang sesuai, masukkan pitch sebagai panjang potong pada dimensi tool kustom. Periksa kesesuaian tool dan program yang dihasilkan sebelum pemesinan.</p>
               </article>
 
               <article class="spg-info-card">
@@ -527,12 +527,12 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.shortCuttingLength.title">Thread Mill dengan Leher yang Diperkecil</h2>
-                <p data-i18n="info.shortCuttingLength.body">Jika alat yang dipilih memiliki panjang potong lebih pendek dari panjang ulir yang diminta, SmiProg membagi operasi menjadi beberapa langkah sumbu axial ketika tipe alat mendukungnya.</p>
+                <p data-i18n="info.shortCuttingLength.body">Jika panjang potong tool lebih pendek dari panjang ulir yang diperlukan, SmiProg membagi pemesinan menjadi beberapa lintasan aksial apabila jenis tool mendukungnya.</p>
               </article>
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.inserts.title">Thread Mills dengan Insert</h2>
-                <p data-i18n="info.inserts.body">Gunakan dimensi alat kustom di pemilihan alat untuk mendapatkan data pemotongan untuk mill ulir dapat ganti (indexable). Masukkan diameter cutter aktual, panjang pemotongan, dan jumlah insert atau flutes, lalu verifikasi program yang dihasilkan sebelum pemesinan.</p>
+                <p data-i18n="info.inserts.body">Pilih dimensi tool kustom dan masukkan diameter potong badan cutter, panjang mata potong insert, serta jumlah insert. Jika diperlukan, SmiProg mengerjakan seluruh panjang ulir dalam beberapa lintasan aksial. Periksa program yang dihasilkan sebelum pemesinan.</p>
               </article>
 
               <article class="spg-info-card">

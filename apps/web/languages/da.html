@@ -463,19 +463,19 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definér gevindet</strong><p data-i18n="info.step1.body">Vælg materiale, gevindprofil og størrelse, gevindlængde og sikkerhedsafstand. M bruger millimeter for stigning; andre profiler bruger gevind pr. tomme (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definér gevindet</strong><p data-i18n="info.step1.body">Vælg materiale, gevindprofil, gevindstørrelse og gevindlængde. Angiv sikkerhedsafstanden under CNC-program. For M-gevind angives stigningen i millimeter; øvrige profiler bruger gevind pr. tomme (TPI).</p></div></div>
                 <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Vælg gevindfræseren</strong><p data-i18n="info.step2.body">Brug et foreslået SmiCut-værktøj, eller indtast brugerdefinerede værktøjsdimensioner i værktøjsvalget.</p></div></div>
-                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Tjek output</strong><p data-i18n="info.step3.body">Vælg fremstillingsproces, kontrolsystem og gevindretning under CNC-program. Kontrollér skæredata, bearbejdningstid og CNC-program før bearbejdning.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Kontrollér resultatet</strong><p data-i18n="info.step3.body">Vælg bearbejdningsmetode, styresystem og gevindretning under CNC-program. Kontrollér skæredata, bearbejdningstid og CNC-program før bearbejdning.</p></div></div>
               </div>
               <div class="spg-info-check-strip">
-                <strong data-i18n="info.beforeMachining.title">Før maskinering</strong>
-                <p data-i18n="info.beforeMachining.body">Tjek at det valgte gevindfræser kan maskinere gevinddiameter, stigning og gevindlængde. Bekræft programmet i simulation eller enkeltblok før produktion.</p>
+                <strong data-i18n="info.beforeMachining.title">Før bearbejdning</strong>
+                <p data-i18n="info.beforeMachining.body">Kontrollér, at den valgte gevindfræser kan bearbejde gevindets diameter, stigning og længde. Kontrollér programmet ved simulering eller enkeltblokskørsel før produktion.</p>
               </div>
             </div>
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="Gevindfræsning dimensionreference, der viser gevinddiameter, stigning, skærelængde, sikkerhedsafstand og fræserdiameter." data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="Målskitse for gevindfræsning med gevinddiameter, stigning, gevindlængde, skærlængde, sikkerhedsafstand og fræserdiameter." data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Gevinddiameter</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">Stigning</span></span>
@@ -490,12 +490,12 @@
 
           <section class="spg-info-section" aria-label="Maskineringsnoter" data-i18n-aria-label="aria.machiningNotes">
             <div class="spg-info-section-head">
-              <h2 data-i18n="info.machiningNotes">Maskineringsnoter</h2>
+              <h2 data-i18n="info.machiningNotes">Bemærkninger om bearbejdning</h2>
             </div>
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
                 <h2 data-i18n="info.toolCompensation.title">Værktøjskompensering</h2>
-                <p data-i18n="info.toolCompensation.body">Kompensation af værktøjer er normalt kun nødvendig for små justeringer. Store kompensationsværdier kan forårsage problemer. Brug en værdi tæt på nul for fræserdiameterkompensation i kontrolsystemets værktøjsbibliotek.</p>
+                <p data-i18n="info.toolCompensation.body">Med SmiProg anvendes værktøjskompensering kun til mindre justeringer. Det mindsker problemer ved radiuskompensering på korte bevægelser. Angiv derfor en værdi nær nul for fræserens diameterkompensering i styresystemets værktøjsbibliotek.</p>
               </article>
 
               <article class="spg-info-card">
@@ -505,7 +505,7 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.customTools.title">Specialværktøj</h2>
-                <p data-i18n="info.customTools.body">Hvis dit værktøj ikke er på listen, vælg brugerdefinerede værktøjsdimensioner i værktøjsvalget, og indtast fræserdiameter, skærelængde og antal fløjt. Verificer det genererede program nøje ved brug af brugerdefinerede værktøjer.</p>
+                <p data-i18n="info.customTools.body">Hvis værktøjet ikke findes på listen, vælg brugerdefinerede værktøjsdimensioner i værktøjsvalget, og angiv fræserdiameter, skærekantslængde og antal skær. Kontrollér det genererede program omhyggeligt ved brug af specialværktøj.</p>
               </article>
 
               <article class="spg-info-card">
@@ -515,8 +515,8 @@
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.oneTwoRows.title">Værktøj med en eller 2 tænder (axialt)</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiProg kompenserer for standard SmiCut-fræsere med én eller to rækker af tænder. Når du bruger en ikke-standard fræser, skal du kontrollere forholdet mellem skærelængde og stigning før maskinering.</p>
+                <h2 data-i18n="info.oneTwoRows.title">Værktøj med en eller to tænder (aksialt)</h2>
+                <p data-i18n="info.oneTwoRows.body">Når du vælger et standardværktøj fra SmiCut af typen NM med en eller to tænder aksialt, laver SmiProg automatisk en spiral, indtil gevindet er færdigt. For at bruge denne cyklus med et andet egnet værktøj skal du angive stigningen som skærekantslængde under brugerdefinerede værktøjsdimensioner. Kontrollér værktøjets egnethed og det genererede program før bearbejdning.</p>
               </article>
 
               <article class="spg-info-card">
@@ -527,12 +527,12 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.shortCuttingLength.title">Værktøj med skaftreduktion</h2>
-                <p data-i18n="info.shortCuttingLength.body">Hvis det valgte værktøj har en kortere skærelængde end den anmodede gevindlængde, deler SmiProg operationen op i flere aksepassager, når værktøjstypen understøtter det.</p>
+                <p data-i18n="info.shortCuttingLength.body">Hvis værktøjets skærekantslængde er kortere end gevindlængden, udfører SmiProg gevindet i flere aksiale gennemløb, når værktøjstypen tillader det.</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.inserts.title">Vendeskærs gevindfræser</h2>
-                <p data-i18n="info.inserts.body">Vælg brugerdefinerede værktøjsdimensioner i værktøjslisten for at få skæredata for gevindfræsere med vendeskær. Angiv fræserens faktiske diameter, skærlængde og antal vendeskær eller skær. Kontrollér det genererede program før bearbejdning.</p>
+                <h2 data-i18n="info.inserts.title">Gevindfræsere med vendeskær</h2>
+                <p data-i18n="info.inserts.body">Vælg brugerdefinerede værktøjsdimensioner, og angiv fræserkroppens skærediameter, vendeskærets skærekantslængde og antal skær. Ved behov udfører SmiProg hele gevindlængden i flere aksiale gennemløb. Kontrollér det genererede program før bearbejdning.</p>
               </article>
 
               <article class="spg-info-card">
@@ -542,7 +542,7 @@
 
               <article class="spg-info-warning" aria-label="Advarsel" data-i18n-aria-label="aria.warning">
                 <div class="spg-info-kicker" data-i18n="info.warning.title">Advarsel</div>
-                <p data-i18n="info.warning.body">Skæredataene i SmiProg er anbefalede startdata. Mange faktorer kan kræve justeringer, herunder emne materiale, maskinstabilitet, spænding, værktøjsopsætning, køling og chipudledning. SmiCut påtager sig intet ansvar for skader, der opstår ved brug af CNC-programmet eller de skæredata, der anbefales af softwaren.</p>
+                <p data-i18n="info.warning.body">Skæredataene i SmiProg er anbefalede startværdier. Mange faktorer kan kræve justeringer, herunder emnemateriale, maskinstabilitet, opspænding, værktøjsudrustning, køling og spånafgang. SmiCut påtager sig intet ansvar for skader som følge af brug af CNC-programmet eller de skæredata, softwaren anbefaler.</p>
               </article>
             </div>
           </section>

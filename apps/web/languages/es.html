@@ -463,19 +463,19 @@
             </div>
             <div class="spg-info-overview-copy">
               <div class="spg-info-workflow">
-                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Defina la rosca</strong><p data-i18n="info.step1.body">Seleccione el material, el perfil de rosca y el tamaño, la longitud de rosca y la distancia de seguridad. M utiliza milímetros para el paso; otros perfiles utilizan hilos por pulgada (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Defina la rosca</strong><p data-i18n="info.step1.body">Seleccione el material, el perfil, el tamaño y la longitud de la rosca. Introduzca la distancia de seguridad en Programa CNC. En las roscas M, el paso se indica en milímetros; los demás perfiles utilizan hilos por pulgada (TPI).</p></div></div>
                 <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Seleccione la fresa de roscar</strong><p data-i18n="info.step2.body">Utilice una herramienta SmiCut sugerida o introduzca dimensiones de herramienta personalizadas en la selección de herramientas.</p></div></div>
-                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Verificar salida</strong><p data-i18n="info.step3.body">Seleccione el proceso de manufactura, el sistema de control y el sentido de la rosca en el programa CNC. Revise los datos de corte, el tiempo de mecanizado y el programa CNC antes del mecanizado.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Comprobar los resultados</strong><p data-i18n="info.step3.body">Seleccione el proceso de manufactura, el sistema de control y el sentido de la rosca en el programa CNC. Revise los datos de corte, el tiempo de mecanizado y el programa CNC antes del mecanizado.</p></div></div>
               </div>
               <div class="spg-info-check-strip">
                 <strong data-i18n="info.beforeMachining.title">Antes del mecanizado</strong>
-                <p data-i18n="info.beforeMachining.body">Verifica que la fresa de roscas seleccionada pueda mecanizar el diámetro de rosca, el paso y la longitud de rosca. Confirma el programa en simulación o bloque único antes de ejecutar la producción.</p>
+                <p data-i18n="info.beforeMachining.body">Compruebe que la fresa de roscar seleccionada sea adecuada para el diámetro, el paso y la longitud de la rosca. Verifique el programa mediante simulación o ejecución bloque a bloque antes de iniciar la producción.</p>
               </div>
             </div>
 
             <div class="spg-info-overview-figure">
               <figure class="spg-info-figure">
-                <img src="../assets/info/smiprog-nb.svg" alt="Referencia de dimensiones de fresado de roscas que muestra el diámetro de rosca, el paso, la longitud de corte, la distancia de seguridad y el diámetro de la fresa." data-i18n-alt="info.figureAlt">
+                <img src="../assets/info/smiprog-nb.svg" alt="Esquema de fresado de roscas con diámetro de rosca, paso, longitud de rosca, longitud de corte, distancia de seguridad y diámetro de la fresa." data-i18n-alt="info.figureAlt">
                 <figcaption>
                   <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Diámetro de la rosca</span></span>
                   <span><strong>P</strong><span data-i18n="info.figure.pitch">Paso</span></span>
@@ -495,7 +495,7 @@
             <div class="spg-info-notes-grid">
               <article class="spg-info-card">
                 <h2 data-i18n="info.toolCompensation.title">Compensación de la herramienta</h2>
-                <p data-i18n="info.toolCompensation.body">La compensación de herramientas normalmente solo es necesaria para ajustes pequeños. Los valores de compensación grandes pueden causar problemas. Utilice un valor cercano a cero para la compensación del diámetro de la fresa en la biblioteca de herramientas del sistema de control.</p>
+                <p data-i18n="info.toolCompensation.body">En SmiProg, la compensación de la herramienta se utiliza solo para ajustes menores. Esto reduce los problemas que pueden surgir al compensar el radio en movimientos cortos. Utilice un valor cercano a cero para la compensación del diámetro de la fresa en la tabla de herramientas del control numérico.</p>
               </article>
 
               <article class="spg-info-card">
@@ -505,7 +505,7 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.customTools.title">Herramientas especiales</h2>
-                <p data-i18n="info.customTools.body">Si tu herramienta no está en la lista, selecciona dimensiones de herramienta personalizadas en la selección de herramientas e introduce el diámetro de la fresa, la longitud de corte y el número de flautas. Verifica cuidadosamente el programa generado al utilizar herramientas personalizadas.</p>
+                <p data-i18n="info.customTools.body">Si su herramienta no está en la lista, seleccione dimensiones de herramienta personalizadas e introduzca el diámetro de la fresa, la longitud de corte y el número de labios. Compruebe cuidadosamente el programa generado al utilizar herramientas especiales.</p>
               </article>
 
               <article class="spg-info-card">
@@ -516,12 +516,12 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.oneTwoRows.title">Herramientas con uno o dos dientes (axial)</h2>
-                <p data-i18n="info.oneTwoRows.body">SmiCut compensa las fresas estándar de SmiCut con una o dos filas de dientes. Al utilizar una fresa no estándar, verifique la relación entre la longitud del corte y el paso antes del mecanizado.</p>
+                <p data-i18n="info.oneTwoRows.body">Al seleccionar una fresa estándar SmiCut de tipo NM con uno o dos dientes en sentido axial, SmiProg genera automáticamente una espiral hasta completar la rosca. Para usar este ciclo con otra herramienta adecuada, introduzca el paso como longitud de corte en las dimensiones de herramienta personalizadas. Compruebe la idoneidad de la herramienta y el programa generado antes del mecanizado.</p>
               </article>
 
               <article class="spg-info-card">
-                <h2 data-i18n="info.flankInfeed.title">Avance de flanco</h2>
-                <p data-i18n="info.flankInfeed.body">SmiProg utiliza el avance de flanco al programar varias pasadas radiales. Esto reduce las vibraciones y mejora la estabilidad del mecanizado.</p>
+                <h2 data-i18n="info.flankInfeed.title">Penetración por el flanco</h2>
+                <p data-i18n="info.flankInfeed.body">SmiProg utiliza la penetración por el flanco al programar varias pasadas radiales. Esto reduce las vibraciones y mejora la estabilidad del mecanizado.</p>
                 <p><a href="https://smicut.com/es-gl/fresado-de-roscas-sin-vibraciones-mejorando-la-productividad-y-la-economia-2/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Fresado de Roscas Sin Vibraciones: Mejorando la Productividad y la Economía</a></p>
               </article>
 
@@ -532,7 +532,7 @@
 
               <article class="spg-info-card">
                 <h2 data-i18n="info.inserts.title">Herramientas con plaquitas</h2>
-                <p data-i18n="info.inserts.body">Utilice dimensiones de herramienta personalizadas en la selección de herramientas para obtener datos de corte para fresas de roscar de insertos. Introduzca el diámetro real de la fresa, la longitud del corte y el número de insertos o flautas, y verifique el programa generado antes del mecanizado.</p>
+                <p data-i18n="info.inserts.body">Seleccione dimensiones de herramienta personalizadas e introduzca el diámetro de corte del cuerpo de la fresa, la longitud de corte de la plaquita y el número de plaquitas. Si es necesario, SmiProg completa toda la longitud de la rosca en varias pasadas axiales. Compruebe el programa generado antes del mecanizado.</p>
               </article>
 
               <article class="spg-info-card">

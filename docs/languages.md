@@ -12,7 +12,7 @@ native-speaker review; automated tests cannot establish linguistic quality.
 
 ## Build and review
 
-`apps/web/i18n/translations.csv` is the maintained source, with 361 keys per
+`apps/web/i18n/translations.csv` is the maintained source, with 362 keys per
 language. Keep the same key and named placeholders in every column. Do not edit
 generated dictionaries or HTML files by hand. Raw internal handover notes and
 historical spreadsheets are not needed in this public repository.
@@ -55,3 +55,30 @@ desktop/mobile layouts, local images, copy/share, price access, input validation
 regional codes and mocked material answers. All 16 languages must produce the
 same CNC program for the same valid input. Existing marked-diameter, CNC-motion,
 Safari metric layout and embedded-image behavior remain part of the baseline.
+
+## iOS translation refresh (1.2.2)
+
+The November 2026 iOS handover contains 256 keys in 16 languages and 48
+published article/privacy links. Import it with Python 3 (standard library only):
+
+```bash
+python3 tools/import-ios-translations.py /path/to/SmiProg-iOS-translations-16-languages.xlsx
+npm run build:languages
+```
+
+The importer matches shared keys and reviewed functional aliases, converts Swift
+saving placeholders to named web arguments, and uses article titles with their
+matching URLs. It leaves web-only text, the compact custom-tool label, web pitch
+guidance and optional-price comparison validation intact. Existing translated
+material groups/descriptors and numeric material data remain unchanged.
+Only translated customer text is imported; the workbook, source-path columns,
+internal notes and iOS-only controls are not included in the public release.
+
+This refresh reuses existing translations for most of the web interface; it
+updates 61 text cells. In particular, start-page and output guidance now cover
+CNC programs without describing the application as Fanuc-only. Material-service
+errors explain retry/manual selection in the supplied languages.
+
+The 16 app editions also serve the four regional website variants: English
+South Africa, global Spanish, Belgian French and Belgian Dutch. The surrounding
+WordPress pages and their language associations are published separately.

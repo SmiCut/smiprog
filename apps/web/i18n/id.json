@@ -1,5 +1,5 @@
 {
-  "help.safetyDistance": "Jarak bebas aksial untuk gerakan mendekat dan menarik kembali.",
+  "help.safetyDistance": "Jarak aman aksial untuk gerakan mendekat dan menarik kembali pahat.",
   "compare.applyDiscountShort": "Terapkan",
   "app.title": "SmiProg - Frais ulir",
   "aria.calculator": "SmiProg - Frais ulir",
@@ -244,7 +244,7 @@
   "compare.discount": "Diskon (%)",
   "compare.applyDiscount": "Terapkan diskon",
   "compare.netPrice": "Harga setelah diskon",
-  "compare.discountError": "Masukkan diskon dari 0 hingga 100%.",
+  "compare.discountError": "Masukkan diskon antara 0 dan 100%.",
   "compare.saving": "Dengan {tool}, penghematan per ulir adalah {amount} (biaya total turun {percent}%).",
   "compare.seconds": "detik",
   "compare.share": "Bagikan perbandingan",

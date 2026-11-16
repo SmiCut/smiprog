@@ -1,5 +1,5 @@
 {
-  "help.safetyDistance": "Distanza di sicurezza assiale per i movimenti di avvicinamento e retrazione.",
+  "help.safetyDistance": "Distanza di sicurezza assiale per i movimenti di avvicinamento e di uscita.",
   "compare.applyDiscountShort": "Applica",
   "app.title": "SmiProg - Fresatura di filetti",
   "aria.calculator": "SmiProg - Fresatura di filetti",
@@ -244,7 +244,7 @@
   "compare.discount": "Sconto (%)",
   "compare.applyDiscount": "Applica sconto",
   "compare.netPrice": "Prezzo scontato",
-  "compare.discountError": "Inserisci uno sconto da 0 a 100%.",
+  "compare.discountError": "Inserire uno sconto compreso tra 0 e 100%.",
   "compare.saving": "Con {tool} si risparmiano {amount} per filetto (costo totale inferiore del {percent}%).",
   "compare.seconds": "secondi",
   "compare.share": "Condividi confronto",

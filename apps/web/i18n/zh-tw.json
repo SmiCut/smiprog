@@ -1,5 +1,5 @@
 {
-  "help.safetyDistance": "接近和退刀運動使用的軸向安全距離。",
+  "help.safetyDistance": "用於進刀與退刀的軸向間隙。",
   "compare.applyDiscountShort": "套用",
   "app.title": "SmiProg - 螺紋銑削",
   "aria.calculator": "SmiProg - 螺紋銑削",
@@ -244,7 +244,7 @@
   "compare.discount": "折扣率 (%)",
   "compare.applyDiscount": "套用折扣",
   "compare.netPrice": "折扣後價格",
-  "compare.discountError": "請輸入 0 至 100% 的折扣率。",
+  "compare.discountError": "請輸入 0% 至 100% 的折扣率（減價百分比）。",
   "compare.saving": "使用{tool}，每個螺紋可節省 {amount}（總成本降低 {percent}%）。",
   "compare.seconds": "秒",
   "compare.share": "分享比較",

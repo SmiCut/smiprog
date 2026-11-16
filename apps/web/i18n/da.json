@@ -1,5 +1,5 @@
 {
-  "help.safetyDistance": "Aksial sikkerhedsafstand ved til- og frakørsel.",
+  "help.safetyDistance": "Aksial sikkerhedsafstand ved tilkørsel og tilbagetrækning.",
   "compare.applyDiscountShort": "Anvend",
   "app.title": "SmiProg - Gevindfræsning",
   "aria.calculator": "SmiProg - Gevindfræsning",
@@ -244,7 +244,7 @@
   "compare.discount": "Rabat (%)",
   "compare.applyDiscount": "Anvend rabat",
   "compare.netPrice": "Pris efter rabat",
-  "compare.discountError": "Angiv en rabat fra 0 til 100 %.",
+  "compare.discountError": "Angiv en rabat mellem 0 og 100 %.",
   "compare.saving": "Med {tool} sparer du {amount} pr. gevind ({percent}% lavere samlede omkostninger).",
   "compare.seconds": "sekunder",
   "compare.share": "Del sammenligning",

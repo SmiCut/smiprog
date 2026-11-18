@@ -365,7 +365,7 @@
   "print.back": "Wstecz",
   "print.preview": "Podgląd wydruku",
   "print.includeCnc": "Dołącz program CNC",
-  "print.setup": "Karta ustawień frezowania gwintów",
+  "print.setup": "Frezowanie gwintów",
   "print.machine": "Ustawienia maszyny",
   "print.comparison": "Porównanie frezowania gwintów",
   "print.tools": "Porównanie narzędzi",

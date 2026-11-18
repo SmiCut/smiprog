@@ -186,7 +186,7 @@ fixtures and release assets. Public branches are not a confidential review area.
 The original Excel workbooks and audit working files remain private; the selected
 public fixtures and image originals support reproducible tests and builds.
 
-The current release baseline is v1.3.1 (all 16 languages). It uses complete HTML
+The current release baseline is v1.3.2 (all 16 languages). It uses complete HTML
 for both downloads and direct embedding; the standalone and embedded checks run
 at desktop/mobile widths. Historical version labels in technical documents record
 when a change was introduced, not an unreleased controller status.

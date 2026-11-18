@@ -50,7 +50,7 @@ async function prepareSmiProgPages(mode, fields, expectedCnc, cataloguePrices = 
   style.textContent = `
     html,body { margin:0!important; padding:0!important; width:210mm; background:white; }
     #spg-native-pages .report-sheet { display:flex; flex-direction:column; margin:0;
-      width:210mm; height:297mm; padding:13mm 14mm 13mm; }
+      width:210mm; height:297mm; padding:13mm 14mm 7mm; }
     #spg-native-pages .report-footer { margin-top:auto; }
     #spg-native-pages .report-code pre { font-size:9.5pt; line-height:1.26; }
   `;

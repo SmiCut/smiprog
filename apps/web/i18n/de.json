@@ -365,7 +365,7 @@
   "print.back": "Zurück",
   "print.preview": "Druckvorschau",
   "print.includeCnc": "CNC-Programm einschließen",
-  "print.setup": "Einrichtblatt zum Gewindefräsen",
+  "print.setup": "Gewindefräsen",
   "print.machine": "Maschineneinstellungen",
   "print.comparison": "Vergleich beim Gewindefräsen",
   "print.tools": "Werkzeugvergleich",

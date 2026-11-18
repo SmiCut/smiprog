@@ -365,7 +365,7 @@
   "print.back": "Indietro",
   "print.preview": "Anteprima di stampa",
   "print.includeCnc": "Includi il programma CNC",
-  "print.setup": "Scheda di attrezzaggio per fresatura di filetti",
+  "print.setup": "Fresatura di filetti",
   "print.machine": "Impostazioni macchina",
   "print.comparison": "Confronto di fresatura dei filetti",
   "print.tools": "Confronto utensili",

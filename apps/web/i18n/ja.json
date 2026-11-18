@@ -365,7 +365,7 @@
   "print.back": "戻る",
   "print.preview": "印刷プレビュー",
   "print.includeCnc": "CNCプログラムを含める",
-  "print.setup": "ねじ切りフライス加工 段取り表",
+  "print.setup": "ねじ切りフライス加工",
   "print.machine": "機械設定",
   "print.comparison": "ねじ切りフライス加工の比較",
   "print.tools": "工具比較",

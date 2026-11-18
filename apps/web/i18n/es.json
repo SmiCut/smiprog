@@ -365,7 +365,7 @@
   "print.back": "Volver",
   "print.preview": "Vista previa de impresión",
   "print.includeCnc": "Incluir programa CNC",
-  "print.setup": "Hoja de preparación para fresado de roscas",
+  "print.setup": "Fresado de roscas",
   "print.machine": "Configuración de la máquina",
   "print.comparison": "Comparación de fresado de roscas",
   "print.tools": "Comparación de herramientas",

@@ -365,7 +365,7 @@
   "print.back": "返回",
   "print.preview": "打印预览",
   "print.includeCnc": "包含 CNC 程序",
-  "print.setup": "螺纹铣削工艺设置单",
+  "print.setup": "螺纹铣削",
   "print.machine": "机床设置",
   "print.comparison": "螺纹铣削对比",
   "print.tools": "刀具对比",

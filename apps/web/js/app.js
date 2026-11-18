@@ -2755,7 +2755,8 @@
     }
     function compareRow([label,left,right,leftInput,rightInput,leftDiff,rightDiff,priceKind]) {
       const title = priceKind === 'original' ? uiText('print.price') : label;
-      const rowClass = leftInput === elements.compareToolALife ? ' class="report-tool-life"' : '';
+      const rowClass = priceKind ? ' class="report-price"' :
+        leftInput === elements.compareToolALife ? ' class="report-tool-life"' : '';
       return '<tr'+rowClass+'><th scope="row">'+esc(title)+'</th>'
         +compareCell(left,leftInput,leftDiff,priceKind)+compareCell(right,rightInput,rightDiff,priceKind)+'</tr>';
     }
@@ -2783,7 +2784,7 @@
       const comparisonCard = '<section class="report-card report-tool-comparison" aria-label="'+esc(uiText('print.tools'))+'">'
         +table([uiText('print.tools'),uiText('field.toolA'),uiText('field.toolB')],partRow+dimensions+toolSettings+machine
           +'<tr class="report-results-heading"><th colspan="3">'+esc(uiText('print.results'))+'</th></tr>'+results)+'</section>';
-      return head(uiText('print.comparison'))+thread(true)+comparisonCard+'<p class="report-result">'+esc(result)+(priced?' '+esc(elements.compareSummary.textContent):'')+'</p>'+footer();
+      return head(uiText('print.comparison'))+thread(true)+comparisonCard+'<p class="report-result">'+esc(result)+(priced?' '+esc(elements.compareSummary.textContent):'')+'</p>';
     }
     const dialog=document.createElement('dialog'); dialog.id='spg-report-preview';dialog.setAttribute('aria-label',uiText('print.preview'));
     dialog.innerHTML='<div class="report-actions"><button type="button" data-close>'+esc(uiText('print.back'))+'</button><label><input type="checkbox">'+esc(uiText('print.includeCnc'))+'</label><button type="button" data-print>'+esc(uiText('print.button'))+'</button></div><article class="report-page"></article>';
@@ -2819,36 +2820,25 @@
         sheet = continuation;
       }
     }
-    // A priced comparison or a long translation can need more than one sheet.
-    // Move whole rows and repeat the column headings, including on WebKit.
-    function paginateComparison() {
-      let sheet = paper.querySelector('.report-sheet:has(.report-tool-comparison)');
-      if (!sheet) return;
+    function fitComparison() {
+      const content = paper.querySelector('.report-comparison-content');
+      if (!content) return;
+      const sheet = content.parentElement;
       const limit = paper.clientHeight;
-      while (sheet.offsetHeight > limit) {
-        const card = sheet.querySelector('.report-tool-comparison');
-        const body = card.querySelector('tbody');
-        if (body.rows.length < 2) break;
-        const next = document.createElement('section');
-        next.className = 'report-sheet';
-        const nextCard = card.cloneNode(true);
-        const nextBody = nextCard.querySelector('tbody');
-        nextBody.replaceChildren();
-        next.append(nextCard, sheet.querySelector('.report-result'), sheet.querySelector('footer').cloneNode(true));
-        sheet.after(next);
-        do {
-          nextBody.prepend(body.lastElementChild);
-        } while (body.rows.length > 1 && (sheet.offsetHeight > limit || body.lastElementChild.classList.contains('report-results-heading')));
-        sheet = next;
+      if (sheet.offsetHeight <= limit) return;
+      sheet.classList.add('report-compact');
+      if (sheet.offsetHeight > limit) {
+        const available = limit - (sheet.offsetHeight - content.offsetHeight);
+        content.style.zoom = String(Math.min(1, (available - 4) / content.offsetHeight));
       }
     }
     function refresh() {
       const original = mode === 'main' ? setup(include.checked && !include.disabled)
-        : '<section class="report-sheet">'+comparison()+'</section>';
+        : '<section class="report-sheet report-comparison"><div class="report-comparison-content">'+comparison()+'</div>'+footer()+'</section>';
       paper.innerHTML = original;
       paper.classList.add('report-measure');
       paginateCnc();
-      paginateComparison();
+      fitComparison();
       paper.classList.remove('report-measure');
       const numbers = paper.querySelectorAll('.report-page-number');
       numbers.forEach((label,i) => { label.textContent = i18n.format('print.page',{page:i+1,pages:numbers.length}); });

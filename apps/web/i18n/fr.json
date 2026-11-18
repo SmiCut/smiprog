@@ -365,7 +365,7 @@
   "print.back": "Retour",
   "print.preview": "Aperçu avant impression",
   "print.includeCnc": "Inclure le programme CNC",
-  "print.setup": "Fiche de réglage pour le fraisage de filets",
+  "print.setup": "Fraisage de filets",
   "print.machine": "Réglages machine",
   "print.comparison": "Comparaison en fraisage de filets",
   "print.tools": "Comparaison des outils",

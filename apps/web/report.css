@@ -184,3 +184,44 @@
 .report-footer .report-folio { margin-left: auto; gap: 0 8px; }
 .report-page-number { white-space: nowrap; }
 .report-page-number:not(:empty)::before { content: '·'; margin-right: 8px; }
+
+/* WordPress themes can set typography and dark table backgrounds on bare tags. */
+:is(#spg-report-preview, #spg-print-paper) :is(h1, h2, table, th, td, figcaption) {
+  font-family: inherit;
+}
+:is(#spg-report-preview, #spg-print-paper) .report-card h2 {
+  line-height: 1.32;
+  letter-spacing: normal;
+  text-transform: none;
+}
+:is(#spg-report-preview, #spg-print-paper) .report-card table {
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  border: 0;
+}
+:is(#spg-report-preview, #spg-print-paper) .report-card tr { background: transparent; }
+:is(#spg-report-preview, #spg-print-paper) .report-card :is(td, th) {
+  border-top: 0;
+  border-inline: 0;
+  text-transform: none;
+  letter-spacing: normal;
+}
+:is(#spg-report-preview, #spg-print-paper) .report-card tbody tr:not(.report-part-row):not(.report-results-heading) > :is(th, td) {
+  background: transparent;
+}
+:is(#spg-report-preview, #spg-print-paper) .report-card dd { padding: 0; }
+:is(#spg-report-preview, #spg-print-paper) .report-code pre {
+  background: transparent;
+  color: inherit;
+  box-shadow: none;
+  border-radius: 0;
+  border-block: 0;
+  border-right: 0;
+  padding-block: 0;
+  padding-right: 0;
+}
+:is(#spg-report-preview, #spg-print-paper) .report-sheet > p { padding: 0; margin: 1em 0; }
+:is(#spg-report-preview, #spg-print-paper) .report-sheet > p.report-result { padding: 7px 10px; }
+:is(#spg-report-preview, #spg-print-paper) .report-footer img,
+:is(#spg-report-preview, #spg-print-paper) .report-tool img { margin: 0; }

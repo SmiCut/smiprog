@@ -20,6 +20,7 @@ for (const engine of [chromium, webkit]) {
       page.on('pageerror', error => errors.push(error.message));
       await page.route(/^https?:/, route => route.abort());
       await page.goto(url);
+      await page.addStyleTag({content: 'body h1, body h2, body table {font-family: Georgia;line-height:45px} body th{background:#111} body dd{padding-left:20px}'});
       await page.locator('[data-spg-tab="main"]').click();
       await page.locator('#spg-thread-length').fill('');
       await page.locator('#print-main').click();
@@ -34,6 +35,15 @@ for (const engine of [chromium, webkit]) {
         assert.equal(await dialog.isVisible(),true);
         assert.equal(await dialog.locator('h1').first().innerText(),dictionary[mode==='compare'?'print.comparison':'print.setup']);
         assert.equal(await dialog.locator('.report-code').count(), mode === 'cnc' ? 1 : 0);
+        if (mode === 'main') {
+          const hostStyles = await dialog.evaluate(el => {
+            const style = selector => getComputedStyle(el.querySelector(selector));
+            return [style('tbody th').backgroundColor,style('tbody th').fontFamily === style('article').fontFamily,
+              style('dd').paddingLeft,style('h2').lineHeight];
+          });
+          assert.deepEqual(hostStyles.slice(0,3),['rgba(0, 0, 0, 0)',true,'0px']);
+          assert(parseFloat(hostStyles[3]) < 24);
+        }
         if (mode === 'cnc') {
           assert.equal(await dialog.locator('pre').innerText(),await page.locator('#spg-cnc-program').inputValue());
           assert.equal(await dialog.locator('.report-page-number').last().innerText(),dictionary['print.page'].replace('{page}','2').replace('{pages}','2'));

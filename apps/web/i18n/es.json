@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "El fresado de roscas a izquierdas con Heidenhain aún no está verificado.",
   "action.reset": "Restablecer",
   "tool.markedHelp": "Introduce el diámetro grabado con láser en tu fresa para ajustar el programa CNC y obtener la rosca dentro de la tolerancia.",
-  "tool.adjustDiameter": "Ajuste del diámetro de la fresa."
+  "tool.adjustDiameter": "Ajuste del diámetro de la fresa.",
+  "print.button": "Imprimir",
+  "print.back": "Volver",
+  "print.preview": "Vista previa de impresión",
+  "print.includeCnc": "Incluir programa CNC",
+  "print.setup": "Hoja de preparación para fresado de roscas",
+  "print.machine": "Configuración de la máquina",
+  "print.comparison": "Comparación de fresado de roscas",
+  "print.tools": "Comparación de herramientas",
+  "print.part": "Número de artículo",
+  "print.price": "Precio de la herramienta",
+  "print.results": "Resultados",
+  "print.incomplete": "Complete el cálculo para imprimir.",
+  "print.sameTime": "Ambas herramientas tardan lo mismo por rosca.",
+  "print.saved": "{tool} ahorra {seconds} s por rosca.",
+  "print.page": "Página {page} de {pages}"
 }

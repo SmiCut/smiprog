@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "Heidenhain 왼나사 밀링은 아직 검증되지 않았습니다.",
   "action.reset": "재설정",
   "tool.markedHelp": "커터에 레이저로 각인된 직경을 입력하면 CNC 프로그램이 보정되어 공차 범위 내에서 나사를 가공할 수 있습니다.",
-  "tool.adjustDiameter": "커터 직경 조정."
+  "tool.adjustDiameter": "커터 직경 조정.",
+  "print.button": "인쇄",
+  "print.back": "뒤로",
+  "print.preview": "인쇄 미리 보기",
+  "print.includeCnc": "CNC 프로그램 포함",
+  "print.setup": "나사 밀링 작업 준비표",
+  "print.machine": "기계 설정",
+  "print.comparison": "나사 밀링 비교",
+  "print.tools": "공구 비교",
+  "print.part": "품번",
+  "print.price": "공구 가격",
+  "print.results": "결과",
+  "print.incomplete": "계산을 완료한 후 인쇄하세요.",
+  "print.sameTime": "두 공구의 나사당 가공 시간이 같습니다.",
+  "print.saved": "{tool} 사용 시 나사당 {seconds}초가 절약됩니다.",
+  "print.page": "{page} / {pages}페이지"
 }

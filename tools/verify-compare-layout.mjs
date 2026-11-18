@@ -26,7 +26,7 @@ try {
     await page.evaluate(() => { navigator.share = async () => {}; });
     await page.setContent(`<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0}#host{max-width:100%;margin:auto}</style><article id="host">${html}</article>`);
     await page.locator('[data-spg-tab="compare"]').click();
-    assert.equal(await page.locator('.spg-compare-result-copy-group button').count(), 1, `${file.locale}: only Copy in Results, even with Web Share available`);
+    assert.deepEqual(await page.locator('.spg-compare-result-copy-group button').evaluateAll(buttons => buttons.map(b => b.id)), ['spg-copy-compare-results', 'print-compare']);
     assert.equal(await page.locator('#spg-copy-compare-results').isVisible(), true, `${file.locale}: Copy remains available`);
     if (file.locale !== 'sv') {
       await page.locator('#spg-compare-password').fill('XL');

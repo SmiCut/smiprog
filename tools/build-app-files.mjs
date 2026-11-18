@@ -7,7 +7,7 @@ export const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
 export const apiUrl = "https://smicut-material-selector-production.up.railway.app/api/chat";
 const scriptNames = ["i18n/en.js", "js/i18n.js", "data/smiprog-data.js", "data/tool-web-links.js",
   "js/core.js", "js/material-selector.js", "js/app.js"];
-const styleNames = ["styles.css", "material-selector.css"];
+const styleNames = ["styles.css", "material-selector.css", "report.css"];
 export async function createAppFiles() {
   const sourceRoot = path.join(repositoryRoot, "apps/web");
   const files = new Map();

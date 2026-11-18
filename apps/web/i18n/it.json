@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "La fresatura di filetti sinistri con Heidenhain non è ancora verificata.",
   "action.reset": "Ripristina",
   "tool.markedHelp": "Inserire il diametro marcato a laser sulla fresa per regolare il programma CNC e ottenere la filettatura in tolleranza.",
-  "tool.adjustDiameter": "Regolazione del diametro della fresa."
+  "tool.adjustDiameter": "Regolazione del diametro della fresa.",
+  "print.button": "Stampa",
+  "print.back": "Indietro",
+  "print.preview": "Anteprima di stampa",
+  "print.includeCnc": "Includi il programma CNC",
+  "print.setup": "Scheda di attrezzaggio per fresatura di filetti",
+  "print.machine": "Impostazioni macchina",
+  "print.comparison": "Confronto di fresatura dei filetti",
+  "print.tools": "Confronto utensili",
+  "print.part": "Codice articolo",
+  "print.price": "Prezzo utensile",
+  "print.results": "Risultati",
+  "print.incomplete": "Completa il calcolo per stampare.",
+  "print.sameTime": "Il tempo per filetto è uguale per entrambi gli utensili.",
+  "print.saved": "{tool} consente di risparmiare {seconds} s per filetto.",
+  "print.page": "Pagina {page} di {pages}"
 }

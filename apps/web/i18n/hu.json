@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "A balmenet marása Heidenhain vezérléssel még nincs ellenőrizve.",
   "action.reset": "Visszaállítás",
   "tool.markedHelp": "Adja meg a szerszámon lézerrel jelölt átmérőt a CNC-program beállításához és a menet pontosságának biztosításához.",
-  "tool.adjustDiameter": "A maró átmérőjének beállítása."
+  "tool.adjustDiameter": "A maró átmérőjének beállítása.",
+  "print.button": "Nyomtatás",
+  "print.back": "Vissza",
+  "print.preview": "Nyomtatási kép",
+  "print.includeCnc": "CNC-program mellékelése",
+  "print.setup": "Menetmarási beállítási lap",
+  "print.machine": "Gépbeállítások",
+  "print.comparison": "Menetmarás összehasonlítása",
+  "print.tools": "Szerszámok összehasonlítása",
+  "print.part": "Cikkszám",
+  "print.price": "Szerszám ára",
+  "print.results": "Eredmények",
+  "print.incomplete": "A nyomtatáshoz fejezze be a számítást.",
+  "print.sameTime": "A menetenkénti idő mindkét szerszámnál azonos.",
+  "print.saved": "{tool} használatával menetenként {seconds} s takarítható meg.",
+  "print.page": "{page}. oldal / {pages}"
 }

@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "Heidenhainによる左ねじのフライス加工はまだ検証されていません。",
   "action.reset": "リセット",
   "tool.markedHelp": "カッターにレーザー刻印された直径を入力してCNCプログラムを調整し、ねじ公差内に収めてください。",
-  "tool.adjustDiameter": "カッター径の調整。"
+  "tool.adjustDiameter": "カッター径の調整。",
+  "print.button": "印刷",
+  "print.back": "戻る",
+  "print.preview": "印刷プレビュー",
+  "print.includeCnc": "CNCプログラムを含める",
+  "print.setup": "ねじ切りフライス加工 段取り表",
+  "print.machine": "機械設定",
+  "print.comparison": "ねじ切りフライス加工の比較",
+  "print.tools": "工具比較",
+  "print.part": "品番",
+  "print.price": "工具価格",
+  "print.results": "結果",
+  "print.incomplete": "計算を完了してから印刷してください。",
+  "print.sameTime": "ねじ1個当たりの加工時間は両工具で同じです。",
+  "print.saved": "{tool}はねじ1個当たり{seconds}秒短縮できます。",
+  "print.page": "{page} / {pages} ページ"
 }

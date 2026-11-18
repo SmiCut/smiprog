@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "Venstregevindfræsning med Heidenhain er endnu ikke verificeret.",
   "action.reset": "Nulstil",
   "tool.markedHelp": "Indtast den lasermærkede diameter på fræseren for at tilpasse CNC-programmet og opnå et gevind inden for tolerancen.",
-  "tool.adjustDiameter": "Justering af fræserdiameteren."
+  "tool.adjustDiameter": "Justering af fræserdiameteren.",
+  "print.button": "Udskriv",
+  "print.back": "Tilbage",
+  "print.preview": "Vis udskrift",
+  "print.includeCnc": "Medtag CNC-program",
+  "print.setup": "Opstillingsark til gevindfræsning",
+  "print.machine": "Maskinopsætning",
+  "print.comparison": "Sammenligning af gevindfræsning",
+  "print.tools": "Værktøjssammenligning",
+  "print.part": "Varenummer",
+  "print.price": "Værktøjspris",
+  "print.results": "Resultater",
+  "print.incomplete": "Afslut beregningen for at udskrive.",
+  "print.sameTime": "Begge værktøjer bruger samme tid pr. gevind.",
+  "print.saved": "{tool} sparer {seconds} s pr. gevind.",
+  "print.page": "Side {page} af {pages}"
 }

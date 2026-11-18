@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "Frezowanie gwintu lewego ze sterowaniem Heidenhain nie zostało jeszcze zweryfikowane.",
   "action.reset": "Resetuj",
   "tool.markedHelp": "Wpisz średnicę oznaczoną laserowo na frezie, aby skorygować program CNC i uzyskać gwint w granicach tolerancji.",
-  "tool.adjustDiameter": "Korekta średnicy frezu."
+  "tool.adjustDiameter": "Korekta średnicy frezu.",
+  "print.button": "Drukuj",
+  "print.back": "Wstecz",
+  "print.preview": "Podgląd wydruku",
+  "print.includeCnc": "Dołącz program CNC",
+  "print.setup": "Karta ustawień frezowania gwintów",
+  "print.machine": "Ustawienia maszyny",
+  "print.comparison": "Porównanie frezowania gwintów",
+  "print.tools": "Porównanie narzędzi",
+  "print.part": "Numer katalogowy",
+  "print.price": "Cena narzędzia",
+  "print.results": "Wyniki",
+  "print.incomplete": "Aby wydrukować, dokończ obliczenia.",
+  "print.sameTime": "Czas wykonania jednego gwintu jest taki sam dla obu narzędzi.",
+  "print.saved": "{tool} skraca czas wykonania jednego gwintu o {seconds} s.",
+  "print.page": "Strona {page} z {pages}"
 }

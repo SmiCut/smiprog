@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "Vänstergängfräsning med Heidenhain är ännu inte verifierad.",
   "action.reset": "Återställ",
   "tool.markedHelp": "Ange den lasermärkta diametern på fräsen för att justera CNC-programmet och få gängan inom tolerans.",
-  "tool.adjustDiameter": "Justering av fräsdiametern."
+  "tool.adjustDiameter": "Justering av fräsdiametern.",
+  "print.button": "Skriv ut",
+  "print.back": "Tillbaka",
+  "print.preview": "Förhandsgranskning",
+  "print.includeCnc": "Inkludera CNC-program",
+  "print.setup": "Ställblad för gängfräsning",
+  "print.machine": "Maskininställningar",
+  "print.comparison": "Jämförelse av gängfräsning",
+  "print.tools": "Verktygsjämförelse",
+  "print.part": "Artikelnummer",
+  "print.price": "Verktygspris",
+  "print.results": "Resultat",
+  "print.incomplete": "Slutför beräkningen för att skriva ut.",
+  "print.sameTime": "Båda verktygen tar lika lång tid per gänga.",
+  "print.saved": "{tool} sparar {seconds} s per gänga.",
+  "print.page": "Sida {page} av {pages}"
 }

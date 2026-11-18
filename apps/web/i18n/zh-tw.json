@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "Heidenhain 左旋螺紋銑削尚未驗證。",
   "action.reset": "重設",
   "tool.markedHelp": "輸入刀具上的雷射標記直徑，以調整 CNC 程式並確保螺紋在公差範圍內。",
-  "tool.adjustDiameter": "調整銑刀直徑。"
+  "tool.adjustDiameter": "調整銑刀直徑。",
+  "print.button": "列印",
+  "print.back": "返回",
+  "print.preview": "預覽列印",
+  "print.includeCnc": "包含 CNC 程式",
+  "print.setup": "螺紋銑削設定表",
+  "print.machine": "工具機設定",
+  "print.comparison": "螺紋銑削比較",
+  "print.tools": "刀具比較",
+  "print.part": "訂購編號",
+  "print.price": "刀具價格",
+  "print.results": "結果",
+  "print.incomplete": "請完成計算後再列印。",
+  "print.sameTime": "兩種刀具加工每個螺紋所需的時間相同。",
+  "print.saved": "{tool}每加工一個螺紋可節省 {seconds} 秒。",
+  "print.page": "第 {page} 頁，共 {pages} 頁"
 }

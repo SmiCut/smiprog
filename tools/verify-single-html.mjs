@@ -27,7 +27,7 @@ try {
    await p.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{value:{writeText:async text=>window.__copied=text}}));
    await p.goto(pathToFileURL(target).href);
    if(mode==='embedded') assert.equal(await p.locator('#host-button').evaluate(el=>getComputedStyle(el).fontSize),'24px');
-   const assetCount=await p.evaluate(async()=>{const images=Object.values(window.SmiProgConfig.embeddedAssets);await Promise.all(images.map(src=>new Promise((resolve,reject)=>{const i=new Image();i.onload=resolve;i.onerror=reject;i.src=src})));return images.length});assert.equal(assetCount,11);
+   const assetCount=await p.evaluate(async()=>{const images=Object.values(window.SmiProgConfig.embeddedAssets);await Promise.all(images.map(src=>new Promise((resolve,reject)=>{const i=new Image();i.onload=resolve;i.onerror=reject;i.src=src})));return images.length});assert.equal(assetCount,12);
    await p.screenshot({path:path.join(screenshotDir,`${mode}-start-${width}.png`),fullPage:true});
    await p.locator('[data-spg-tab="main"]').click();await p.locator('#spg-thread-length').fill('15');
    const reference=await context.newPage();await reference.goto(pathToFileURL(path.join(repositoryRoot,'apps/web/index.html')).href);await reference.locator('[data-spg-tab="main"]').click();await reference.locator('#spg-thread-length').fill('15');
@@ -51,7 +51,7 @@ try {
    const response=p.waitForResponse('**/api/chat');
    await p.locator('[data-sms-role="send"]').click();await response;
    assert.equal(payload.language,file.locale);assert.equal(payload.message,'316L');assert(Array.isArray(payload.history));
-   await context.close();console.log(`PASS ${mode} ${file.locale} ${width}px: isolated offline HTML, 11 images, CNC parity, overrides, copy, validation, Compare and no dependent requests`);
+   await context.close();console.log(`PASS ${mode} ${file.locale} ${width}px: isolated offline HTML, 12 images, CNC parity, overrides, copy, validation, Compare and no dependent requests`);
   }
  }
  }

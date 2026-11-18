@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "Le fraisage de filets à gauche avec Heidenhain n’est pas encore vérifié.",
   "action.reset": "Réinitialiser",
   "tool.markedHelp": "Saisissez le diamètre gravé au laser sur votre fraise pour ajuster le programme CNC et obtenir le filetage dans les tolérances.",
-  "tool.adjustDiameter": "Réglage du diamètre de la fraise."
+  "tool.adjustDiameter": "Réglage du diamètre de la fraise.",
+  "print.button": "Imprimer",
+  "print.back": "Retour",
+  "print.preview": "Aperçu avant impression",
+  "print.includeCnc": "Inclure le programme CNC",
+  "print.setup": "Fiche de réglage pour le fraisage de filets",
+  "print.machine": "Réglages machine",
+  "print.comparison": "Comparaison en fraisage de filets",
+  "print.tools": "Comparaison des outils",
+  "print.part": "Référence article",
+  "print.price": "Prix de l’outil",
+  "print.results": "Résultats",
+  "print.incomplete": "Terminez le calcul pour imprimer.",
+  "print.sameTime": "Les deux outils prennent le même temps par filet.",
+  "print.saved": "{tool} fait gagner {seconds} s par filet.",
+  "print.page": "Page {page} sur {pages}"
 }

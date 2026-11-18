@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "Heidenhain left-hand thread milling is not verified yet.",
   "action.reset": "Reset",
   "tool.markedHelp": "Enter the laser-marked diameter on your cutter to adjust the CNC-program and get the thread in tolerance.",
-  "tool.adjustDiameter": "Adjustment of the cutter diameter."
+  "tool.adjustDiameter": "Adjustment of the cutter diameter.",
+  "print.button": "Print",
+  "print.back": "Back",
+  "print.preview": "Print preview",
+  "print.includeCnc": "Include CNC program",
+  "print.setup": "Thread milling setup sheet",
+  "print.machine": "Machine setup",
+  "print.comparison": "Thread milling comparison",
+  "print.tools": "Tool comparison",
+  "print.part": "Part Number",
+  "print.price": "Tool price",
+  "print.results": "Results",
+  "print.incomplete": "Complete the calculation to print.",
+  "print.sameTime": "Both tools take the same time per thread.",
+  "print.saved": "{tool} saves {seconds} s per thread.",
+  "print.page": "Page {page} of {pages}"
 }

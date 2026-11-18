@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "Linkse schroefdraad frezen met Heidenhain is nog niet geverifieerd.",
   "action.reset": "Herstellen",
   "tool.markedHelp": "Voer de laser-gegraveerde diameter van uw frees in om het CNC-programma aan te passen en de schroefdraad binnen tolerantie te krijgen.",
-  "tool.adjustDiameter": "Aanpassing van de freesdiameter."
+  "tool.adjustDiameter": "Aanpassing van de freesdiameter.",
+  "print.button": "Afdrukken",
+  "print.back": "Terug",
+  "print.preview": "Afdrukvoorbeeld",
+  "print.includeCnc": "CNC-programma opnemen",
+  "print.setup": "Instelblad voor draadfrezen",
+  "print.machine": "Machine-instellingen",
+  "print.comparison": "Vergelijking van draadfrezen",
+  "print.tools": "Gereedschapsvergelijking",
+  "print.part": "Artikelnummer",
+  "print.price": "Gereedschapsprijs",
+  "print.results": "Resultaten",
+  "print.incomplete": "Voltooi de berekening om af te drukken.",
+  "print.sameTime": "Beide gereedschappen hebben dezelfde tijd per schroefdraad nodig.",
+  "print.saved": "{tool} bespaart {seconds} s per schroefdraad.",
+  "print.page": "Pagina {page} van {pages}"
 }

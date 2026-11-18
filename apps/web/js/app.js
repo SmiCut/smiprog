@@ -2046,7 +2046,7 @@
     button.className = "spg-button spg-compare-copy-button";
     button.textContent = uiText("button.copy", "Copy");
     button.addEventListener("click", copyCompareResults);
-    copyGroup.appendChild(button);
+    copyGroup.append(button, createPrintButton(button, "compare"));
 
     const message = document.createElement("span");
     message.id = "spg-compare-copy-message";
@@ -2651,6 +2651,253 @@
 
   }
 
+  function createPrintButton(copy, target) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = copy.className;
+    button.id = 'print-' + target;
+    button.dataset.reportTarget = target;
+    button.textContent = uiText('print.button');
+    button.setAttribute('aria-haspopup','dialog');
+    return button;
+  }
+  function installPrintReports() {
+    const label = (key, english) => i18n.getLocaleKey() === 'en' ? english : uiText(key);
+    const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const logo = '<img class="report-logo" alt="SmiCut" src="'+esc(widgetConfig.embeddedAssets?.['info/smicut-logo.webp'] || ASSET_BASE+'info/smicut-logo.webp')+'">';
+    const name = (control) => getSelectedText(control);
+    const number = (value, digits, unit) => formatDecimal(value, digits) + (unit ? ' ' + unit : '');
+    const facts = (entries, layout = '') => '<dl class="'+layout+'">'+entries.map(([label,value])=>'<div><dt>'+esc(label)+'</dt><dd>'+esc(value)+'</dd></div>').join('')+'</dl>';
+    const section = (title, content, identifier = '') => '<section class="report-card"><h2>'+esc(title)
+      +(identifier ? ' <span class="report-identifier">'+esc(identifier)+'</span>' : '')+'</h2>'+content+'</section>';
+    const head = title => '<header class="report-header">'+logo
+      +'<div class="report-heading"><span class="report-brand">SmiProg</span><h1>'+esc(title)
+      +'</h1></div></header>';
+    const contacts = [
+      ['+46 240 182 30','<path d="M6 3 3.6 4.3c-1.7 1 .3 6.2 4.9 10.8s9.8 6.6 10.8 4.9l1.3-2.4-4.8-3.2-2.1 2c-2.6-1.2-5.1-3.7-6.3-6.3l2-2.1z"/>'],
+      ['info@smicut.se','<rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/>'],
+      ['smicut.com','<circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4" ry="9.2"/><path d="M3 12h18"/>']
+    ].map(([value,shape]) => {
+      function icon(size,top) {
+        const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="'+size+'" height="'+size+'" viewBox="0 '+top+' 24 24" fill="none" stroke="#805743" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+shape+'</svg>';
+        return 'data:image/svg+xml,'+encodeURIComponent(svg);
+      }
+      // Margin-box images sit on the text baseline. Center their artwork on the ink instead.
+      return {value, icon:icon(12,0), marginIcon:icon(11,-2)};
+    });
+    const contactItems = contacts.map(({value,icon})=>'<span class="report-contact"><img alt="" src="'+icon+'"><span>'+esc(value)+'</span></span>').join('');
+    const marginContacts = '"SmiCut AB　" '+contacts.map(({value,marginIcon})=>'url("'+marginIcon+'") " '+value+'"').join(' "　" ');
+    function footer() {
+      const date = new Intl.DateTimeFormat(i18n.getLocaleKey() === 'en' ? 'en-GB' : i18n.getNumberLocale(), {dateStyle:'medium'}).format(new Date());
+      return '<footer class="report-footer"><div><strong>SmiCut AB</strong>'+contactItems+'</div><div class="report-folio"><time>'+esc(date)+'</time><span class="report-page-number"></span></div></footer>';
+    }
+    function toolPicture(result, summary) {
+      const image = summary.querySelector('.spg-thread-mill-image');
+      if (!image || result.tool.isCustom) return '';
+      return '<img class="report-tool-image" src="'+esc(image.src)+'" alt="'+esc(image.alt)+'">';
+    }
+    const table = (headers,body) => '<table><thead><tr>'+headers.map(h=>'<th scope="col">'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+body+'</tbody></table>';
+    const dataRows = rows => rows.map(([label,...values])=>'<tr><th scope="row">'+esc(label)+'</th>'+values.map(v=>'<td>'+esc(v)+'</td>').join('')+'</tr>').join('');
+    function thread(compare) {
+      const fields = compare ? [elements.compareMaterial,elements.compareThreadProfile,elements.compareThreadSize,elements.compareDiameter,elements.comparePitch,elements.compareThreadLength] : [elements.material,elements.threadProfile,elements.threadSize,elements.diameter,elements.pitch,elements.threadLength];
+      const [material,profile,size,dia,pitch,length]=fields;
+      const pitchText = pitch.value+(getPitchMode(profile.value)==='tpi'?' TPI':' mm');
+      const details = facts([[uiText('copy.material'),name(material)],[uiText('thread.profile'),name(profile)]], 'thread-description')
+        + facts([[uiText('thread.size'),name(size)],[uiText('thread.diameter'),dia.value+' mm'],[uiText('thread.pitch'),pitchText],[uiText('thread.length'),length.value+' mm']], 'thread-dimensions');
+      return section(uiText('thread.title'),details);
+    }
+    function setup(includeCnc) {
+      const {tool,cuttingData:c}=currentResult;
+      const article=getCompareResultToolArticle(currentResult);
+      const rows=[
+        [label('cutting.speed', 'Cutting speed')+' · Vc',number(c.cuttingSpeed,0,'m/min')],[label('cutting.feed', 'Feed per tooth')+' · fz',number(c.feedPerTooth,3,uiText('unit.feed_per_tooth'))],
+        [label('results.rpm', 'Spindle speed')+' · n',formatSpindleSpeed(c.spindleSpeed)+' rpm'],[label('results.threadFeed', 'Feed at thread diameter')+' · FD',number(c.feedAtThreadDiameter,0,'mm/min')],
+        [label('results.center', 'Feed at cutter centre')+' · Fd',number(c.centerFeed,0,'mm/min')],[uiText('cutting.passes'),c.radialPasses],[uiText('results.axial'),c.axialPasses],[label('results.time', 'Time per thread'),formatMachiningSeconds(c.machiningTime)+' s']];
+      const toolDetails = facts([[uiText('print.part'),article],[uiText('tool.diameter'),formatDimension(tool.cutterDiameter)+' mm'],[uiText('tool.length'),formatDimension(tool.cuttingEdgeLength)+' mm'],[uiText('tool.flutes'),tool.flutes]]);
+      const picture = toolPicture(currentResult,elements.toolSummary);
+      const figure = picture ? '<figure>'+picture+'<figcaption>'+esc(getThreadMillType(tool))+'</figcaption></figure>' : '';
+      let html = '<section class="report-sheet">'+head(uiText('print.setup'))
+        + thread(false)
+        + section(label('field.tool', 'Tool'),'<div class="report-tool">'+toolDetails+figure+'</div>')
+        + section(uiText('section.cuttingData'),'<table><tbody>'+dataRows(rows)+'</tbody></table>') + footer()+'</section>';
+      if (includeCnc) {
+        const machine = facts([[label('cnc.process', 'Process'),name(elements.process)],[uiText('cnc.control'),name(elements.controlSystem)]], 'machine-details')
+          + facts([[uiText('thread.hand'),name(elements.threadHand)],[uiText('thread.safety'),elements.safetyDistance.value+' mm']], 'machine-settings');
+        html += '<section class="report-sheet report-code">' + head(label('cnc.title', 'CNC program'))
+          + section(uiText('print.machine'),machine,article)
+          + '<p>'+esc(uiText('cnc.disclaimer'))+'</p><pre>'+esc(elements.cncProgram.value)+'</pre>'+footer()+'</section>';
+      }
+      return html;
+    }
+    function compareCell(reference,input,difference,priceKind) {
+      const own = input && input.value.trim() !== '';
+      const inactive = isInactiveComparePrice(priceKind);
+      const muted = inactive || hasCompareOwnValue(input);
+      const parts = [];
+      if (reference !== '-' || !own) {
+        parts.push('<span class="'+(muted ? 'report-muted' : 'report-reference')+'">'+esc(reference)+'</span>');
+      }
+      if (own) {
+        let unit = '';
+        if (priceKind === 'discounted') unit = '%';
+        else if (priceKind === 'original') unit = compareCurrency() === 'SEK' ? 'kr' : '€';
+        else unit = reference.split(' ').slice(1).join(' ');
+        parts.push('<span class="'+(inactive ? 'report-muted' : 'report-own')+'">'+esc([input.value,unit].filter(Boolean).join(' '))+'</span>');
+      }
+      if (difference) {
+        const percent = document.createElement('span');
+        percent.className = 'report-difference';
+        addCompareDifferenceClass(percent,difference);
+        percent.textContent = difference;
+        parts.push(percent.outerHTML);
+      }
+      return '<td><div class="report-cell-values">'+parts.join('')+'</div></td>';
+    }
+    function compareRow([label,left,right,leftInput,rightInput,leftDiff,rightDiff,priceKind]) {
+      const title = priceKind === 'original' ? uiText('print.price') : label;
+      const rowClass = leftInput === elements.compareToolALife ? ' class="report-tool-life"' : '';
+      return '<tr'+rowClass+'><th scope="row">'+esc(title)+'</th>'
+        +compareCell(left,leftInput,leftDiff,priceKind)+compareCell(right,rightInput,rightDiff,priceKind)+'</tr>';
+    }
+    function comparison() {
+      const {resultA:a,resultB:b}=currentCompareResults;
+      const pair=[a,b], row=(label,get)=>[label,...pair.map(get)];
+      const dimensions = dataRows([
+        row(uiText('tool.diameter'),r=>formatDimension(r.tool.cutterDiameter)+' mm'),
+        row(uiText('tool.length'),r=>formatDimension(r.tool.cuttingEdgeLength)+' mm'),
+        row(uiText('tool.flutes'),r=>r.tool.flutes)
+      ]);
+      const appRows = getCompareResultRows(a,b);
+      const start = appRows.findIndex(r=>r[3]===getCompareControls('a').speed);
+      const toolSettings = appRows.slice(0,start).map(compareRow).join('');
+      const machine = dataRows([row(uiText('compare.machineCost'),r=>r.costData ? formatCompareCurrency(r.costData.machineCost)+'/h' : '-')]);
+      const results = appRows.slice(start).map(compareRow).join('');
+      const priced=pair.every(r=>Number.isFinite(r.costData?.totalCostPerThread));
+      const delta=a.cuttingData.machiningTime-b.cuttingData.machiningTime;
+      const result=delta === 0 ? uiText('print.sameTime') : i18n.format('print.saved', { tool: uiText(delta > 0 ? 'field.toolB' : 'field.toolA'), seconds: formatMachiningSeconds(Math.abs(delta)) });
+      const parts = pair.map((result,index) => {
+        const summary = getCompareControls(index === 0 ? 'a' : 'b').summary;
+        return '<td>'+esc(getCompareResultToolArticle(result))+toolPicture(result,summary)+'</td>';
+      });
+      const partRow = '<tr class="report-part-row"><th scope="row">'+esc(uiText('print.part'))+'</th>'+parts.join('')+'</tr>';
+      const comparisonCard = '<section class="report-card report-tool-comparison" aria-label="'+esc(uiText('print.tools'))+'">'
+        +table([uiText('print.tools'),uiText('field.toolA'),uiText('field.toolB')],partRow+dimensions+toolSettings+machine
+          +'<tr class="report-results-heading"><th colspan="3">'+esc(uiText('print.results'))+'</th></tr>'+results)+'</section>';
+      return head(uiText('print.comparison'))+thread(true)+comparisonCard+'<p class="report-result">'+esc(result)+(priced?' '+esc(elements.compareSummary.textContent):'')+'</p>'+footer();
+    }
+    const dialog=document.createElement('dialog'); dialog.id='spg-report-preview';dialog.setAttribute('aria-label',uiText('print.preview'));
+    dialog.innerHTML='<div class="report-actions"><button type="button" data-close>'+esc(uiText('print.back'))+'</button><label><input type="checkbox">'+esc(uiText('print.includeCnc'))+'</label><button type="button" data-print>'+esc(uiText('print.button'))+'</button></div><article class="report-page"></article>';
+    dialog.lang = i18n.getLocaleKey();
+    document.body.append(dialog);
+    const paper=document.createElement('article');paper.id='spg-print-paper';paper.className='report-page';paper.lang = dialog.lang;document.body.append(paper);
+    const printDateStyle=document.createElement('style');
+    document.head.append(printDateStyle);
+    const preview=dialog.querySelector('article'), include=dialog.querySelector('input');let mode;
+    // Number the preview and provide explicit page breaks for printers without CSS margin boxes.
+    function paginateCnc() {
+      let sheet = paper.querySelector('.report-code');
+      if (!sheet) return;
+      let lines = sheet.querySelector('pre').textContent.split('\n');
+      const limit = paper.clientHeight;
+      while (sheet.offsetHeight > limit && lines.length > 1) {
+        const code = sheet.querySelector('pre');
+        let low = 1, high = lines.length - 1;
+        while (low < high) {
+          const count = Math.ceil((low + high) / 2);
+          code.textContent = lines.slice(0,count).join('\n');
+          if (sheet.offsetHeight <= limit) low = count;
+          else high = count - 1;
+        }
+        code.textContent = lines.slice(0,low).join('\n');
+        lines = lines.slice(low);
+        const continuation = document.createElement('section');
+        continuation.className = sheet.className;
+        const remainder = document.createElement('pre');
+        remainder.textContent = lines.join('\n');
+        continuation.append(remainder,sheet.querySelector('footer').cloneNode(true));
+        sheet.after(continuation);
+        sheet = continuation;
+      }
+    }
+    // A priced comparison or a long translation can need more than one sheet.
+    // Move whole rows and repeat the column headings, including on WebKit.
+    function paginateComparison() {
+      let sheet = paper.querySelector('.report-sheet:has(.report-tool-comparison)');
+      if (!sheet) return;
+      const limit = paper.clientHeight;
+      while (sheet.offsetHeight > limit) {
+        const card = sheet.querySelector('.report-tool-comparison');
+        const body = card.querySelector('tbody');
+        if (body.rows.length < 2) break;
+        const next = document.createElement('section');
+        next.className = 'report-sheet';
+        const nextCard = card.cloneNode(true);
+        const nextBody = nextCard.querySelector('tbody');
+        nextBody.replaceChildren();
+        next.append(nextCard, sheet.querySelector('.report-result'), sheet.querySelector('footer').cloneNode(true));
+        sheet.after(next);
+        do {
+          nextBody.prepend(body.lastElementChild);
+        } while (body.rows.length > 1 && (sheet.offsetHeight > limit || body.lastElementChild.classList.contains('report-results-heading')));
+        sheet = next;
+      }
+    }
+    function refresh() {
+      const original = mode === 'main' ? setup(include.checked && !include.disabled)
+        : '<section class="report-sheet">'+comparison()+'</section>';
+      paper.innerHTML = original;
+      paper.classList.add('report-measure');
+      paginateCnc();
+      paginateComparison();
+      paper.classList.remove('report-measure');
+      const numbers = paper.querySelectorAll('.report-page-number');
+      numbers.forEach((label,i) => { label.textContent = i18n.format('print.page',{page:i+1,pages:numbers.length}); });
+      preview.innerHTML = paper.innerHTML;
+      const date = paper.querySelector('time').textContent;
+      const folio = uiText('print.page').split(/(\{pages?\})/).map(token =>
+        token === '{page}' ? 'counter(page)' : token === '{pages}' ? 'counter(pages)' : JSON.stringify(token)).join(' ');
+      printDateStyle.textContent = '@page spg-report { @bottom-left { content: '+marginContacts+' } @bottom-right { content: '+JSON.stringify(date+'   ·   ')+' '+folio+' } }';
+      const nativePages = Boolean(printDateStyle.sheet.cssRules[0]?.cssRules?.length);
+      paper.classList.toggle('spg-margin-boxes',nativePages);
+      if (nativePages && mode === 'main') paper.innerHTML = original;
+    }
+    include.addEventListener('change',refresh);
+    dialog.querySelector('[data-close]').onclick=()=>dialog.close();
+    dialog.querySelector('[data-print]').onclick=()=>window.print();
+    dialog.addEventListener('close',()=>{document.body.classList.remove('spg-report-active');paper.replaceChildren();});
+    for (const [copy, target] of [[elements.copyCuttingData,'main'], [elements.copyCnc,'cnc']]) {
+      const actions = document.createElement('span');
+      actions.className = 'spg-report-buttons';
+      copy.before(actions);
+      actions.append(copy, createPrintButton(copy,target));
+    }
+    document.getElementById('smiprog-app').addEventListener('click', event => {
+      const launcher = event.target.closest('button[data-report-target]');
+      if (!launcher) return;
+      const target = launcher.dataset.reportTarget;
+      mode = target === 'compare' ? 'compare' : 'main';
+      const results = mode === 'main' ? [currentResult] : [currentCompareResults?.resultA,currentCompareResults?.resultB];
+      if (!results.every(r => r?.cuttingData && r.tool && !r.errors.length)) {
+        const panel = launcher.closest('section');
+        let message = panel.querySelector('.spg-report-error');
+        if (!message) {
+          message=document.createElement('p'); message.className='spg-report-error';
+          message.setAttribute('role','status');panel.append(message);
+        }
+        message.textContent=uiText('print.incomplete');
+        document.getElementById('smiprog-app').addEventListener('input',()=>message.remove(),{once:true});
+        return;
+      }
+      include.disabled = mode === 'compare' || !currentResult?.canGenerateCncProgram;
+      include.parentElement.hidden = include.disabled;
+      include.checked = target === 'cnc' && !include.disabled;
+      refresh();
+      document.body.classList.add('spg-report-active');
+      dialog.showModal();
+      dialog.scrollTop=0;
+    });
+  }
+
   function init() {
     i18n.apply(document.getElementById("smiprog-app"));
     document.getElementById("smiprog-app").lang = i18n.getLocaleKey();
@@ -2687,4 +2934,5 @@
   }
 
   init();
+  installPrintReports();
 })(window);

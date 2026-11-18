@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "Frais ulir kiri dengan Heidenhain belum diverifikasi.",
   "action.reset": "Atur ulang",
   "tool.markedHelp": "Masukkan diameter yang ditandai laser pada cutter Anda untuk menyesuaikan program CNC dan mendapatkan ulir dalam toleransi.",
-  "tool.adjustDiameter": "Penyesuaian diameter cutter."
+  "tool.adjustDiameter": "Penyesuaian diameter cutter.",
+  "print.button": "Cetak",
+  "print.back": "Kembali",
+  "print.preview": "Pratinjau cetak",
+  "print.includeCnc": "Sertakan program CNC",
+  "print.setup": "Lembar penyetelan frais ulir",
+  "print.machine": "Penyetelan mesin",
+  "print.comparison": "Perbandingan frais ulir",
+  "print.tools": "Perbandingan alat",
+  "print.part": "Nomor artikel",
+  "print.price": "Harga alat",
+  "print.results": "Hasil",
+  "print.incomplete": "Selesaikan perhitungan untuk mencetak.",
+  "print.sameTime": "Waktu per ulir sama untuk kedua alat.",
+  "print.saved": "{tool} menghemat {seconds} detik per ulir.",
+  "print.page": "Halaman {page} dari {pages}"
 }

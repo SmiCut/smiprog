@@ -1,6 +1,6 @@
 {
   "name": "smiprog",
-  "version": "1.2.4",
+  "version": "1.3.0",
   "private": true,
   "description": "SmiCut thread-milling calculator and CNC programming widget.",
   "scripts": {
@@ -11,7 +11,7 @@
     "test:golden": "cd apps/web && node run-golden-tests.mjs",
     "test:parity-policy": "node --test apps/web/tests/cnc-parity-policy.test.mjs",
     "test:excel-parity": "node apps/web/tools/compare-excel-parity.mjs",
-    "test:browser": "cd apps/web && node verify-webapp.mjs && node verify-marked-diameter.mjs && node verify-material-selector.mjs && node verify-excel-parity.mjs && node verify-compare-cost.mjs && cd ../.. && npm run verify:html && npm run verify:compare-layout && npm run verify:compare-discount",
+    "test:browser": "cd apps/web && node verify-webapp.mjs && node verify-marked-diameter.mjs && node verify-material-selector.mjs && node verify-excel-parity.mjs && node verify-compare-cost.mjs && cd ../.. && npm run verify:html && npm run verify:compare-layout && npm run verify:compare-discount && npm run verify:print",
     "verify:compare-discount": "node tools/verify-inline-discount-preview.mjs",
     "verify:main-layout": "node tools/verify-main-layout.mjs",
     "verify:compare-layout": "node tools/verify-compare-layout.mjs",
@@ -20,7 +20,9 @@
     "verify:languages": "node tools/verify-language-packages.mjs && node tools/verify-languages.mjs",
     "test:cnc-motion": "node --test apps/web/tests/cnc-motion.test.mjs",
     "build:html": "node tools/build-single-html.mjs",
-    "verify:html": "node tools/verify-single-html.mjs"
+    "verify:html": "node tools/verify-single-html.mjs",
+    "build:ios-print": "node tools/build-ios-print-kit.mjs",
+    "verify:print": "node tools/verify-print.mjs"
   },
   "engines": {
     "node": ">=20"

@@ -50,6 +50,8 @@ ZIP extraction, image folders or GitHub account is needed.
 | 简体中文 | [Open SmiProg](https://smicut.com/zh/smiprog-online-%e8%9e%ba%e7%ba%b9%e9%93%a3%e5%89%8a%e8%bd%af%e4%bb%b6/) | [Download smiprog-zh.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh.html) |
 | 繁體中文（台灣） | [Open SmiProg](https://smicut.com/zh-tw/smiprog-online-%e8%9e%ba%e7%b4%8b%e9%8a%91%e5%89%8a%e8%bb%9f%e9%ab%94/) | [Download smiprog-zh-tw.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh-tw.html) |
 
+Use **Print** next to Cutting data, CNC Program or Compare results to preview the report, print it or save it as PDF. Opening Print from CNC Program includes the program by default. All 16 editions include localized reports. The [iOS integration kit](ios-print/README.md) uses these same offline editions.
+
 Version 1.2.4 reviews the complete information tab in all 16 languages against
 the original SmiProg terminology and the current web controls. It clarifies tool
 compensation, spiral cycles, custom tools and indexable inserts. The shared iOS

@@ -360,5 +360,20 @@
   "cnc.leftHandUnverified": "Linksgewindefräsen mit Heidenhain ist noch nicht verifiziert.",
   "action.reset": "Zurücksetzen",
   "tool.markedHelp": "Geben Sie den lasermarkierten Durchmesser Ihres Fräsers ein, um das CNC-Programm anzupassen und das Gewinde in Toleranz zu fertigen.",
-  "tool.adjustDiameter": "Anpassung des Fräserdurchmessers."
+  "tool.adjustDiameter": "Anpassung des Fräserdurchmessers.",
+  "print.button": "Drucken",
+  "print.back": "Zurück",
+  "print.preview": "Druckvorschau",
+  "print.includeCnc": "CNC-Programm einschließen",
+  "print.setup": "Einrichtblatt zum Gewindefräsen",
+  "print.machine": "Maschineneinstellungen",
+  "print.comparison": "Vergleich beim Gewindefräsen",
+  "print.tools": "Werkzeugvergleich",
+  "print.part": "Artikelnummer",
+  "print.price": "Werkzeugpreis",
+  "print.results": "Ergebnisse",
+  "print.incomplete": "Schließen Sie die Berechnung ab, um zu drucken.",
+  "print.sameTime": "Beide Werkzeuge benötigen pro Gewinde gleich viel Zeit.",
+  "print.saved": "{tool} spart {seconds} s pro Gewinde.",
+  "print.page": "Seite {page} von {pages}"
 }

@@ -1,0 +1,564 @@
+<!DOCTYPE html><html lang="ro"><head><script>window.SmiProgConfig={"locale":"ro","assetBase":"../assets/"};</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmiProg – Frezarea filetelor</title>
+  <!-- Copyright (c) 2026 SmiCut AB. Licensed under the MIT License; see LICENSE. -->
+  <meta name="description" content="SmiCut SmiProg thread milling calculator for cutting data, tool selection and Fanuc CNC program generation.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../styles.css?v=20261110-8">
+  <link rel="stylesheet" href="../material-selector.css?v=20261005-1">
+  <link rel="stylesheet" href="../report.css">
+</head>
+<body>
+  <main id="smiprog-app" class="spg-app">
+    <section class="spg-shell" aria-label="Calculator SmiProg pentru frezarea filetelor" data-i18n-aria-label="aria.calculator">
+      <div class="spg-tabs" role="tablist" aria-label="Secțiuni SmiProg" data-i18n-aria-label="aria.sections">
+        <button type="button" class="spg-tab spg-tab-active" data-spg-tab="start" role="tab" aria-selected="true" data-i18n-html="tabs.start">Acasă</button>
+        <button type="button" class="spg-tab" data-spg-tab="materialselector" role="tab" aria-selected="false" data-i18n-html="tabs.materialSelector">Selector de materiale</button>
+        <button type="button" class="spg-tab" data-spg-tab="main" role="tab" aria-selected="false" data-i18n="tabs.threadMilling">Frezarea filetelor interioare</button>
+        <button type="button" class="spg-tab" data-spg-tab="compare" role="tab" aria-selected="false" data-i18n="tabs.compare">Compară</button>
+        <button type="button" class="spg-tab" data-spg-tab="information" role="tab" aria-selected="false" data-i18n="tabs.information">Informații</button>
+      </div>
+
+      <section id="spg-start-panel" class="spg-panel spg-panel-active" role="tabpanel">
+        <div class="spg-start-content">
+          <!-- Lucide icons (arrow-left-right, book-open): ISC License.
+          Copyright (c) 2026 Lucide Icons and Contributors.
+          Permission to use, copy, modify, and/or distribute this software for any purpose
+          with or without fee is hereby granted, provided that the above copyright notice
+          and this permission notice appear in all copies.
+          THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+          REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+          AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+          INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+          LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+          OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+          PERFORMANCE OF THIS SOFTWARE. -->
+          <div class="spg-start-grid">
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-main" data-spg-start-tab="main">
+              <strong><span data-i18n="start.threadMilling.title">Frezarea filetelor interioare</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.threadMilling.description">Alegeți freza, calculați parametrii de așchiere și generați programul CNC.</span>
+              <span class="spg-start-card-visual" aria-hidden="true"><img src="../assets/thread-mills/NB08075D21_1.5ISO_AC.webp" alt=""></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-compare" data-spg-start-tab="compare">
+              <strong><span data-i18n="start.compare.title">Compară</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.compare.description">Comparați două freze, timpul de prelucrare și costul pe filet.</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="arrow-left-right" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"></path><path d="M4 7h16"></path><path d="m16 21 4-4-4-4"></path><path d="M20 17H4"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-information" data-spg-start-tab="information">
+              <strong><span data-i18n="start.information.title">Informații</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.information.description">Cum se utilizează SmiProg</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="book-open" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16"></path><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-materialselector" data-spg-start-tab="materialselector">
+              <span class="spg-start-card-materialselector-icon" aria-hidden="true"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><circle cx="21" cy="21" r="12" style="fill:none; stroke:#676d72; stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round;"></circle><path d="M30.2,30.2l10.2,10.2" style="fill:none; stroke:#676d72; stroke-width:4.6; stroke-linecap:round; stroke-linejoin:round;"></path></svg></span>
+              <strong><span data-i18n="start.materialSelector.title">Selector de materiale SmiCut</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.materialSelector.description">Găsiți categoria SmiCut după denumirea sau simbolul materialului.</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-material-selector-panel" class="spg-panel spg-material-selector-panel" role="tabpanel" hidden="">
+        <div id="spg-material-selector-widget">
+          <div class="sms-panel">
+            <div class="sms-header"><span>SmiCut Material Selector</span></div>
+            <div class="sms-welcome" id="spg-material-selector-welcome" data-sms-role="welcome">
+              <div class="sms-welcome-title" data-sms-i18n="welcomeTitle" role="heading" aria-level="2">Which material will you machine?</div>
+              <div data-sms-i18n="welcomeDescription">Enter the material designation or name, and we’ll help you find the right material category.</div>
+            </div>
+            <div id="spg-material-selector-messages" data-sms-role="messages" class="sms-messages" role="log" aria-label="Material conversation" aria-live="polite" hidden=""></div>
+            <div class="sms-composer">
+              <label id="spg-material-selector-label" data-sms-role="label" for="spg-material-selector-input"><svg class="sms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"></path></svg> <span data-sms-i18n="enterLabel">Enter your material</span></label>
+              <div class="sms-input-row">
+                <textarea id="spg-material-selector-input" data-sms-role="input" rows="1" maxlength="4000" placeholder="E.g. AISI 1045 or EN 1.4301"></textarea>
+                <button id="spg-material-selector-send" data-sms-role="send" type="button" aria-label="Find material category" disabled="">Find material category</button>
+              </div>
+              <div id="spg-material-selector-status" data-sms-role="status" role="status"></div>
+              <button id="spg-material-selector-retry" data-sms-role="retry" type="button" hidden="" data-sms-i18n="retry">Try again</button>
+            </div>
+            <button id="spg-material-selector-apply" data-sms-role="apply" class="sms-apply-material" type="button" hidden="">Use in SmiProg</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-main-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-layout">
+          <form class="spg-form-stack" id="spg-form">
+            <section class="spg-inputs-card">
+              <div class="spg-field">
+                <label for="spg-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Material de prelucrat</span></label>
+                <select id="spg-material" class="spg-control"></select>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Profilul filetului</span></label>
+                  <select id="spg-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Dimensiunea filetului</span></label>
+                  <select id="spg-thread-size" class="spg-control"></select>
+                </div>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Diametrul filetului (mm)</span></label>
+                  <input id="spg-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label id="spg-pitch-label" for="spg-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Pasul filetului (mm)</span></label>
+                  <input id="spg-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+                <div class="spg-field spg-mobile-compact-field spg-thread-length-field">
+                  <label for="spg-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Lungimea filetului (mm)</span></label>
+                  <input id="spg-thread-length" class="spg-control" type="number" min="0" step="0.001" placeholder="Lungimea filetului" data-i18n-placeholder="placeholder.enterLength">
+                </div>
+              </div>
+
+              <div id="spg-tool-field" class="spg-field">
+                <label for="spg-tool" class="spg-field-label"><span class="spg-step">7</span><span data-i18n="field.tool">Freză de filetat</span></label>
+                <select id="spg-tool" class="spg-control"></select>
+                <div id="spg-tool-metrics" class="spg-tool-metric-grid">
+                  <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
+                    <div class="spg-label-with-help">
+                      <label for="spg-marked-diameter" class="spg-result-label"><span class="spg-step">8</span><span data-i18n="field.cutterDiameter">Diametrul frezei (mm)</span></label>
+                    </div>
+                    <div class="spg-marked-diameter-controls">
+                      <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
+                      <button id="spg-reset-diameter" type="button" aria-label="Restabilește" data-i18n-aria-label="action.reset" title="Reset">↺</button>
+                      <span class="spg-info">
+                        <button type="button" class="spg-info-button" aria-label="Diametrul frezei (mm)" data-i18n-aria-label="field.cutterDiameter" aria-expanded="false" aria-controls="spg-marked-diameter-help"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                        <span id="spg-marked-diameter-help" class="spg-info-tip" role="tooltip" data-i18n="tool.markedHelp" hidden="">Introduceți diametrul marcat cu laser pe freză pentru a ajusta programul CNC și a obține filetul în toleranță.</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="spg-result-row"><span class="spg-result-label" data-i18n="tool.length">Lungimea muchiei așchietoare</span><span id="spg-tool-cutting-length" class="spg-result-value">-</span></div>
+                  <div class="spg-result-row"><span class="spg-result-label" data-i18n="tool.flutes">Număr de dinți</span><span id="spg-tool-flutes" class="spg-result-value">-</span></div>
+                </div>
+                <div id="spg-custom-tool-fields" class="spg-custom-tool-fields" hidden="">
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.cutterDiameter">Diametrul frezei (mm)</span></label>
+                    <input id="spg-override-cutter-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-edge-length" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cuttingLength">Lungimea muchiei așchietoare (mm)</span></label>
+                    <input id="spg-override-edge-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-flutes" class="spg-field-label"><span class="spg-step">10</span><span data-i18n="field.flutes">Număr de dinți</span></label>
+                    <input id="spg-override-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                </div>
+                <div id="spg-tool-summary" class="spg-tool-inline-summary"></div>
+                <a id="spg-tool-link" class="spg-tool-link spg-tool-link-disabled" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">&nbsp;</a>
+              </div>
+
+              <div class="spg-note" role="status" aria-live="polite">
+                <div class="spg-note-title" data-i18n="note.title">Notă</div>
+                <div id="spg-note-message" class="spg-note-text" data-i18n="note.enterThreadLength">Introduceți lungimea filetului pentru a alege o freză potrivită.</div>
+              </div>
+            </section>
+          </form>
+
+          <div class="spg-results">
+            <section class="spg-card spg-final-card">
+              <div class="spg-card-head">
+                <div class="spg-section-title" data-i18n="section.cuttingData">Parametri de așchiere</div>
+                <div id="spg-cutting-data-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cutting-data" class="spg-button" data-i18n="button.copy">Copiază</button>
+              </div>
+              <div id="spg-cutting-data" class="spg-final-calculations">
+                <div class="spg-final-summary-frame">
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.cuttingSpeed">Viteză de așchiere</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-cutting-speed" class="spg-result-value">-</span>
+                      <input id="spg-override-cutting-speed" class="spg-adjustable-input" type="number" min="0" step="1">
+                      <span id="spg-final-cutting-speed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.feedTooth">Avans pe dinte</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-feed" class="spg-result-value">-</span>
+                      <input id="spg-override-feed" class="spg-adjustable-input" type="number" min="0" step="0.001">
+                      <span id="spg-final-feed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label"><span data-i18n="result.radialPasses">Treceri radiale</span> <span class="spg-label-note" data-i18n="result.max3">(≤ 3)</span></span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-radial-passes" class="spg-result-value">-</span>
+                      <input id="spg-override-radial-passes" class="spg-adjustable-input" type="number" min="1" max="3" step="1">
+                      <span id="spg-final-radial-passes-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.axialPasses">Treceri axiale</span>
+                    <span id="spg-final-axial-passes" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.spindleSpeed">Turația arborelui</span>
+                    <span id="spg-final-spindle-speed" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedThreadDiameter">Avans la diametrul filetului</span>
+                    <span id="spg-final-feed-thread" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedCenter">Avans în centrul frezei</span>
+                    <span id="spg-final-feed-center" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.timeToMillThread">Timp pe filet</span>
+                    <span id="spg-final-machining-time" class="spg-result-value">-</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="spg-card spg-cnc-card">
+              <div class="spg-cnc-head">
+                <div class="spg-label-with-help">
+                  <div class="spg-section-title" data-i18n="section.cncProgram">Program CNC</div>
+                  <span class="spg-info">
+                    <button type="button" class="spg-info-button" aria-label="Program CNC" data-i18n-aria-label="section.cncProgram" aria-expanded="false" aria-controls="spg-cnc-disclaimer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                    <span id="spg-cnc-disclaimer" class="spg-info-tip" role="tooltip" data-i18n="cnc.disclaimer" hidden="">Înainte de prelucrare verificați programul CNC prin simulare sau bloc cu bloc. Opțiunile mașinii și setările postprocesorului pot necesita ajustări.</span>
+                  </span>
+                </div>
+                <div id="spg-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cnc" class="spg-button" data-i18n="button.copy">Copiază</button>
+              </div>
+              <div class="spg-cnc-settings spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-process" class="spg-field-label spg-visually-hidden"><span data-i18n="field.manufacturingProcess">Proces de prelucrare</span></label>
+                  <select id="spg-process" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-control-system" class="spg-field-label spg-visually-hidden"><span data-i18n="field.controlSystem">Sistem de comandă</span></label>
+                  <select id="spg-control-system" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-thread-hand" class="spg-field-label spg-visually-hidden"><span data-i18n="field.threadHand">Sensul filetului</span></label>
+                  <select id="spg-thread-hand" class="spg-control">
+                    <option value="right" data-i18n="option.rightHandThread">Filet pe dreapta</option>
+                    <option value="left" data-i18n="option.leftHandThread">Filet pe stânga</option>
+                  </select>
+                </div>
+
+                <div class="spg-field spg-cnc-safety-field">
+                  <div class="spg-label-with-help">
+                    <label for="spg-safety-distance" class="spg-field-label"><span data-i18n="field.safetyDistance">Distanță de siguranță (mm)</span></label>
+                    <span class="spg-info">
+                      <button type="button" class="spg-info-button" aria-label="Distanță de siguranță (mm)" data-i18n-aria-label="field.safetyDistance" aria-expanded="false" aria-controls="spg-safety-distance-help"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                      <span id="spg-safety-distance-help" class="spg-info-tip" role="tooltip" data-i18n="help.safetyDistance" hidden="">Distanță axială de siguranță la apropiere și retragere.</span>
+                    </span>
+                  </div>
+                  <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2" aria-describedby="spg-safety-distance-help">
+                </div>
+                <div class="spg-field spg-dev-only">
+                  <label for="spg-program-template" data-i18n="field.programTemplate">Șablon de program Fanuc</label>
+                  <select id="spg-program-template" class="spg-control">
+                    <option value="" data-i18n="option.auto">Auto</option>
+                    <option value="milling-normal-1-pass" data-i18n="option.millingNormal1">Frezarea filetelor interioare pe centru de prelucrare – Normal (1)</option>
+                    <option value="milling-normal-2-pass" data-i18n="option.millingNormal2">Frezarea filetelor interioare pe centru de prelucrare – Normal (2)</option>
+                    <option value="milling-normal-3-pass" data-i18n="option.millingNormal3">Frezarea filetelor interioare pe centru de prelucrare – Normal (3)</option>
+                    <option value="milling-axial-1-pass" data-i18n="option.millingAxial1">Frezarea filetelor interioare pe centru de prelucrare – Axial (1)</option>
+                    <option value="milling-axial-2-pass" data-i18n="option.millingAxial2">Frezarea filetelor interioare pe centru de prelucrare – Axial (2)</option>
+                    <option value="milling-axial-3-pass" data-i18n="option.millingAxial3">Frezarea filetelor interioare pe centru de prelucrare – Axial (3)</option>
+                    <option value="milling-micro-1-pass" data-i18n="option.millingMicro1">Frezarea filetelor interioare pe centru de prelucrare – Micro (1)</option>
+                    <option value="milling-micro-2-pass" data-i18n="option.millingMicro2">Frezarea filetelor interioare pe centru de prelucrare – Micro (2)</option>
+                    <option value="milling-micro-3-pass" data-i18n="option.millingMicro3">Frezarea filetelor interioare pe centru de prelucrare – Micro (3)</option>
+                    <option value="milling-tapered-1-pass" data-i18n="option.millingTapered1">Frezarea filetelor interioare pe centru de prelucrare – Conic (1)</option>
+                    <option value="milling-tapered-2-pass" data-i18n="option.millingTapered2">Frezarea filetelor interioare pe centru de prelucrare – Conic (2)</option>
+                    <option value="milling-tapered-3-pass" data-i18n="option.millingTapered3">Frezarea filetelor interioare pe centru de prelucrare – Conic (3)</option>
+                    <option value="lathe-normal-1-pass" data-i18n="option.latheNormal1">Frezarea filetelor interioare pe strung cu sculă antrenată – Normal (1)</option>
+                    <option value="lathe-normal-2-pass" data-i18n="option.latheNormal2">Frezarea filetelor interioare pe strung cu sculă antrenată – Normal (2)</option>
+                    <option value="lathe-normal-3-pass" data-i18n="option.latheNormal3">Frezarea filetelor interioare pe strung cu sculă antrenată – Normal (3)</option>
+                    <option value="lathe-axial-1-pass" data-i18n="option.latheAxial1">Frezarea filetelor interioare pe strung cu sculă antrenată – Axial (1)</option>
+                    <option value="lathe-axial-2-pass" data-i18n="option.latheAxial2">Frezarea filetelor interioare pe strung cu sculă antrenată – Axial (2)</option>
+                    <option value="lathe-axial-3-pass" data-i18n="option.latheAxial3">Frezarea filetelor interioare pe strung cu sculă antrenată – Axial (3)</option>
+                    <option value="lathe-micro-1-pass" data-i18n="option.latheMicro1">Frezarea filetelor interioare pe strung cu sculă antrenată – Micro (1)</option>
+                    <option value="lathe-micro-2-pass" data-i18n="option.latheMicro2">Frezarea filetelor interioare pe strung cu sculă antrenată – Micro (2)</option>
+                    <option value="lathe-micro-3-pass" data-i18n="option.latheMicro3">Frezarea filetelor interioare pe strung cu sculă antrenată – Micro (3)</option>
+                    <option value="lathe-tapered-1-pass" data-i18n="option.latheTapered1">Frezarea filetelor interioare pe strung cu sculă antrenată – Conic (1)</option>
+                    <option value="lathe-tapered-2-pass" data-i18n="option.latheTapered2">Frezarea filetelor interioare pe strung cu sculă antrenată – Conic (2)</option>
+                    <option value="lathe-tapered-3-pass" data-i18n="option.latheTapered3">Frezarea filetelor interioare pe strung cu sculă antrenată – Conic (3)</option>
+                  </select>
+                </div>
+              </div>
+              <textarea id="spg-cnc-program" class="spg-copy-text" readonly="" spellcheck="false" placeholder="Corectați datele pentru a genera programul CNC." data-i18n-placeholder="placeholder.cncProgram"></textarea>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div id="spg-compare-access" class="spg-compare-access">
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Introduceți propriile prețuri. Distribuitorii pot solicita de la SmiCut parola pentru consultarea prețurilor.</p>
+          <div id="spg-compare-lock" class="spg-compare-password-row">
+            <label for="spg-compare-password" data-i18n="compare.password">Parolă</label>
+            <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">Deblochează prețurile</button>
+          </div>
+          <div id="spg-compare-unlock-message" class="spg-help-text" role="status"></div>
+        </div>
+
+        <div id="spg-compare-content" class="spg-compare-content">
+          <div class="spg-compare-workspace">
+            <section class="spg-compare-thread-card">
+              <div class="spg-compare-thread-input-grid">
+                <div class="spg-field spg-compare-thread-material-field">
+                  <label for="spg-compare-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Material de prelucrat</span></label>
+                  <select id="spg-compare-material" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-compare-thread-profile-field">
+                  <label for="spg-compare-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Profilul filetului</span></label>
+                  <select id="spg-compare-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-size-field">
+                  <label for="spg-compare-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Dimensiunea filetului</span></label>
+                  <select id="spg-compare-thread-size" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-diameter-field">
+                  <label for="spg-compare-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Diametrul filetului (mm)</span></label>
+                  <input id="spg-compare-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-pitch-field">
+                  <label id="spg-compare-pitch-label" for="spg-compare-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Pasul filetului (mm)</span></label>
+                  <input id="spg-compare-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-length-field">
+                  <label for="spg-compare-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Lungimea filetului (mm)</span></label>
+                  <input id="spg-compare-thread-length" class="spg-control" type="number" min="0" step="0.001" value="12">
+                </div>
+
+                <div class="spg-field spg-compare-machine-cost-field">
+                  <label for="spg-machine-cost" class="spg-field-label"><span data-i18n="field.machineCostPerHour">Cost orar al mașinii (€)</span></label>
+                  <input id="spg-machine-cost" class="spg-control" type="number" min="0" step="0.01" value="80">
+                </div>
+              </div>
+            </section>
+
+            <div class="spg-compare-tool-grid">
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-a-card">
+                <div id="spg-compare-tool-a-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-a" data-i18n="field.toolA">Scula A</label>
+                  <select id="spg-compare-tool-a" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-a-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-price" data-i18n="field.toolingCost">Costul sculei (€)</label>
+                  <input id="spg-compare-tool-a-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-life" data-i18n="field.toolLife">Durabilitatea sculei (min)</label>
+                  <input id="spg-compare-tool-a-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-diameter" data-i18n="field.cutterDiameter">Diametrul frezei (mm)</label>
+                  <input id="spg-compare-tool-a-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-length" data-i18n="field.cuttingLength">Lungimea muchiei așchietoare (mm)</label>
+                  <input id="spg-compare-tool-a-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-flutes" data-i18n="field.flutes">Număr de dinți</label>
+                  <input id="spg-compare-tool-a-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-speed" data-i18n="field.cuttingSpeed">Viteză de așchiere (m/min)</label>
+                  <input id="spg-compare-tool-a-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-feed" data-i18n="field.feedPerTooth">Avans pe dinte (mm/dinte)</label>
+                  <input id="spg-compare-tool-a-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-passes" data-i18n="field.radialPassesMax">Treceri radiale (≤ 3)</label>
+                  <input id="spg-compare-tool-a-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-b-card">
+                <div id="spg-compare-tool-b-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-b" data-i18n="field.toolB">Scula B</label>
+                  <select id="spg-compare-tool-b" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-b-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-price" data-i18n="field.toolingCost">Costul sculei (€)</label>
+                  <input id="spg-compare-tool-b-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-life" data-i18n="field.toolLife">Durabilitatea sculei (min)</label>
+                  <input id="spg-compare-tool-b-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-diameter" data-i18n="field.cutterDiameter">Diametrul frezei (mm)</label>
+                  <input id="spg-compare-tool-b-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-length" data-i18n="field.cuttingLength">Lungimea muchiei așchietoare (mm)</label>
+                  <input id="spg-compare-tool-b-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-flutes" data-i18n="field.flutes">Număr de dinți</label>
+                  <input id="spg-compare-tool-b-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-speed" data-i18n="field.cuttingSpeed">Viteză de așchiere (m/min)</label>
+                  <input id="spg-compare-tool-b-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-feed" data-i18n="field.feedPerTooth">Avans pe dinte (mm/dinte)</label>
+                  <input id="spg-compare-tool-b-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-passes" data-i18n="field.radialPassesMax">Treceri radiale (≤ 3)</label>
+                  <input id="spg-compare-tool-b-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="spg-compare-note-row">
+            <div class="spg-note spg-compare-note" role="status" aria-live="polite">
+              <div class="spg-note-title" data-i18n="note.title">Notă</div>
+              <div id="spg-compare-summary" class="spg-note-text"></div>
+            </div>
+            <button id="spg-use-current-setup" type="button" class="spg-button" data-i18n="compare.useCurrent">Folosește setările actuale</button>
+          </div>
+
+          <section class="spg-card spg-final-card spg-compare-results-card">
+            <div id="spg-cost-data" class="spg-compare-result-table"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="spg-information-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-info-page">
+          <article class="spg-info-card spg-info-overview-card">
+            <div class="spg-info-hero-head">
+              <h2 data-i18n="info.howToUse">Cum se utilizează SmiProg</h2>
+            </div>
+            <div class="spg-info-overview-copy">
+              <div class="spg-info-workflow">
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Definiți filetul</strong><p data-i18n="info.step1.body">Alegeți materialul, profilul, dimensiunea și lungimea filetului. Introduceți distanța de siguranță în secțiunea Program CNC. La filetele M, pasul se exprimă în milimetri. Celelalte profile folosesc numărul de spire pe inch (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Alegeți freza de filetat</strong><p data-i18n="info.step2.body">Alegeți o freză SmiCut recomandată sau introduceți dimensiunile sculei proprii.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Verificați rezultatul</strong><p data-i18n="info.step3.body">În secțiunea Program CNC, selectați procesul, sistemul de comandă și sensul filetului. Verificați parametrii de așchiere, timpul și programul CNC înainte de prelucrare.</p></div></div>
+              </div>
+              <div class="spg-info-check-strip">
+                <strong data-i18n="info.beforeMachining.title">Înainte de prelucrare</strong>
+                <p data-i18n="info.beforeMachining.body">Verificați dacă freza este potrivită pentru diametrul, pasul și lungimea filetului. Verificați programul prin simulare sau bloc cu bloc înainte de producție.</p>
+              </div>
+            </div>
+
+            <div class="spg-info-overview-figure">
+              <figure class="spg-info-figure">
+                <img src="../assets/info/smiprog-nb.svg" alt="Schiță cu diametrul, pasul și lungimea filetului, lungimea muchiei, distanța de siguranță și diametrul frezei." data-i18n-alt="info.figureAlt">
+                <figcaption>
+                  <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Diametrul filetului</span></span>
+                  <span><strong>P</strong><span data-i18n="info.figure.pitch">Pasul filetului</span></span>
+                  <span><strong>L</strong><span data-i18n="info.figure.threadLength">Lungimea filetului</span></span>
+                  <span><strong>S</strong><span data-i18n="info.figure.safetyDistance">Distanță de siguranță</span></span>
+                  <span><strong>d</strong><span data-i18n="info.figure.cutterDiameter">Diametrul frezei</span></span>
+                  <span><strong>l</strong><span data-i18n="info.figure.cuttingLength">Lungimea muchiei așchietoare</span></span>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <section class="spg-info-section" aria-label="Instrucțiuni de prelucrare" data-i18n-aria-label="aria.machiningNotes">
+            <div class="spg-info-section-head">
+              <h2 data-i18n="info.machiningNotes">Instrucțiuni de prelucrare</h2>
+            </div>
+            <div class="spg-info-notes-grid">
+              <article class="spg-info-card">
+                <h2 data-i18n="info.toolCompensation.title">Compensarea sculei</h2>
+                <p data-i18n="info.toolCompensation.body">Folosiți compensarea sculei doar pentru reglaje mici. Astfel se reduc problemele de compensare a razei la deplasări scurte. În tabelul de scule al comenzii, setați compensarea diametrului aproape de zero.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.correctThreadDiameter.title">Diametrul corect al filetului de la prima trecere</h2>
+                <p data-i18n="info.correctThreadDiameter.body">SmiCut măsoară optic diametrul mediu al frezei și marchează cu laser diametrul exterior teoretic. Introduceți valoarea marcată ca diametru al frezei. Dacă este necesar, reglați valoarea în SmiProg sau prin compensarea sculei în comandă.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.customTools.title">Scule speciale și nelistate</h2>
+                <p data-i18n="info.customTools.body">Dacă freza lipsește din listă, alegeți dimensiunile proprii și introduceți diametrul, lungimea muchiei și numărul de dinți. Verificați atent programul CNC.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
+                <p data-i18n="info.threadBurr.body">Pentru debavurare cu ThreadBurr, introduceți întreaga lungime de așchiere a frezei din carbură ca lungime a filetului. Frezarea și debavurarea se fac într-o singură operație.</p>
+                <p><a href="https://smicut.com/en/threadburr-solid-carbide-thread-mills/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">ThreadBurr – freze de filetat din carbură SmiCut (în engleză)</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.oneTwoRows.title">Freze cu unul sau doi dinți în direcție axială</h2>
+                <p data-i18n="info.oneTwoRows.body">Pentru o freză SmiCut NM cu unul sau doi dinți în direcție axială, programul generează o spirală pe toată lungimea filetului. Cu altă freză adecvată, introduceți pasul ca lungime a muchiei în dimensiunile proprii. Verificați scula și programul CNC.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.flankInfeed.title">Pătrundere pe flanc</h2>
+                <p data-i18n="info.flankInfeed.body">La mai multe treceri radiale, SmiProg folosește pătrunderea pe flanc pentru a reduce vibrațiile și a crește stabilitatea.</p>
+                <p><a href="https://smicut.com/en/vibration-free-thread-milling-improving-productivity-and-economy/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Frezarea filetelor fără vibrații (în engleză)</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.shortCuttingLength.title">Freze cu gât degajat</h2>
+                <p data-i18n="info.shortCuttingLength.body">Dacă muchia este mai scurtă decât filetul, SmiProg împarte prelucrarea în mai multe treceri axiale, când tipul sculei permite acest lucru.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.inserts.title">Freze de filetat cu plăcuțe amovibile</h2>
+                <p data-i18n="info.inserts.body">La dimensiunile proprii introduceți diametrul de așchiere al corpului frezei, lungimea muchiei plăcuței și numărul de plăcuțe. Dacă este necesar, se execută mai multe treceri axiale. Verificați programul CNC.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.taperedThreads.title">Filete conice</h2>
+                <p data-i18n="info.taperedThreads.body">La frezele conice, diametrul de așchiere se măsoară la ultimul dinte complet dinspre coadă. Introduceți diametrul filetului în poziția în care lucrează acest dinte.</p>
+              </article>
+
+              <article class="spg-info-warning" aria-label="Avertisment" data-i18n-aria-label="aria.warning">
+                <div class="spg-info-kicker" data-i18n="info.warning.title">Avertisment</div>
+                <p data-i18n="info.warning.body">Parametrii de așchiere sunt valori inițiale recomandate. Materialul, rigiditatea mașinii, fixarea, reglarea sculei, răcirea și evacuarea așchiilor pot impune ajustări. SmiCut nu răspunde pentru daunele rezultate din utilizarea programului CNC sau a parametrilor recomandați.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../i18n/en.js?v=20261110-1"></script>
+  <script src="../js/i18n.js?v=20261110-1"></script>
+  <script src="../data/smiprog-data.js?v=20261110-1"></script>
+  <script src="../data/tool-web-links.js?v=20261110-1"></script>
+  <script src="../js/core.js?v=20261110-1"></script>
+  <script src="../js/material-selector.js?v=20261005-1"></script>
+  <script src="../js/app.js?v=20261110-8"></script>
+
+
+</body></html>

@@ -111,8 +111,10 @@ try {
       const discountedCopy = await page.evaluate(() => window.copiedText);
       assert.ok(discountedCopy.includes(dictionary['compare.netPrice']));
       assert.ok(discountedCopy.includes(dictionary['compare.discount']));
-      const numberLocale = await page.evaluate(() => window.SmiProgI18n.getNumberLocale());
-      for (const net of [80, 160]) assert.ok(discountedCopy.includes(net.toLocaleString(numberLocale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })));
+      const netAmounts = await page.evaluate(() => [80, 160].map(net =>
+        net.toLocaleString(window.SmiProgI18n.getNumberLocale(), { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+      ));
+      for (const amount of netAmounts) assert.ok(discountedCopy.includes(amount), `${locale}: missing net price ${amount}`);
       await page.locator('.spg-compare-discount-input:visible').last().fill('');
       assert.equal(await page.getByText(dictionary['compare.netPrice'], { exact: true }).first().isVisible(), true);
       assert.equal(await page.getByRole('button', {name:dictionary['button.share'],exact:true}).count(), 0);

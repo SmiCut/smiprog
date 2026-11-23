@@ -22,7 +22,9 @@ public final class SmiProgPrintKit: NSObject, WKNavigationDelegate {
         if parts.first == "zh" {
             return parts.contains(where: { ["hant","tw","hk","mo"].contains($0) }) ? "zh-tw" : "zh"
         }
-        let supported = ["en","sv","da","de","es","fr","hu","id","it","ja","ko","nl","pl","ru"]
+        if parts.first == "pt" { return "pt-pt" }
+        if parts.first == "no" { return "nb" }
+        let supported = ["en","sv","da","de","es","fr","hu","id","it","ja","ko","nl","pl","ru","nb","cs","et","eu","ro","fi"]
         return parts.first.flatMap { supported.contains($0) ? $0 : nil } ?? "en"
     }
 

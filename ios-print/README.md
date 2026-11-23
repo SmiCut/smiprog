@@ -1,6 +1,6 @@
 # Utskrift och PDF i SmiProg för iOS
 
-Paketet innehåller Swift-koden, de 16 kompletta språkversionerna av SmiProg och samma rapportmall, översättningar och bilder som webbutgåvan. Rapporten byggs lokalt. En export ger en PDF i A4-format som kan förhandsvisas, delas, sparas och skrivas ut.
+Paketet innehåller Swift-koden, de 23 kompletta språkversionerna av SmiProg och samma rapportmall, översättningar och bilder som webbutgåvan. Rapporten byggs lokalt. En export ger en PDF i A4-format som kan förhandsvisas, delas, sparas och skrivas ut.
 
 ## Lägg till paketet i Xcode
 

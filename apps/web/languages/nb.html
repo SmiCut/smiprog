@@ -1,0 +1,564 @@
+<!DOCTYPE html><html lang="nb"><head><script>window.SmiProgConfig={"locale":"nb","assetBase":"../assets/"};</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmiProg – gjengefresing</title>
+  <!-- Copyright (c) 2026 SmiCut AB. Licensed under the MIT License; see LICENSE. -->
+  <meta name="description" content="SmiCut SmiProg thread milling calculator for cutting data, tool selection and Fanuc CNC program generation.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../styles.css?v=20261110-8">
+  <link rel="stylesheet" href="../material-selector.css?v=20261005-1">
+  <link rel="stylesheet" href="../report.css">
+</head>
+<body>
+  <main id="smiprog-app" class="spg-app">
+    <section class="spg-shell" aria-label="SmiProg-kalkulator for gjengefresing" data-i18n-aria-label="aria.calculator">
+      <div class="spg-tabs" role="tablist" aria-label="SmiProg-faner" data-i18n-aria-label="aria.sections">
+        <button type="button" class="spg-tab spg-tab-active" data-spg-tab="start" role="tab" aria-selected="true" data-i18n-html="tabs.start">Startside</button>
+        <button type="button" class="spg-tab" data-spg-tab="materialselector" role="tab" aria-selected="false" data-i18n-html="tabs.materialSelector">Materialvelger</button>
+        <button type="button" class="spg-tab" data-spg-tab="main" role="tab" aria-selected="false" data-i18n="tabs.threadMilling">Innvendig gjengefresing</button>
+        <button type="button" class="spg-tab" data-spg-tab="compare" role="tab" aria-selected="false" data-i18n="tabs.compare">Sammenlign</button>
+        <button type="button" class="spg-tab" data-spg-tab="information" role="tab" aria-selected="false" data-i18n="tabs.information">Informasjon</button>
+      </div>
+
+      <section id="spg-start-panel" class="spg-panel spg-panel-active" role="tabpanel">
+        <div class="spg-start-content">
+          <!-- Lucide icons (arrow-left-right, book-open): ISC License.
+          Copyright (c) 2026 Lucide Icons and Contributors.
+          Permission to use, copy, modify, and/or distribute this software for any purpose
+          with or without fee is hereby granted, provided that the above copyright notice
+          and this permission notice appear in all copies.
+          THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+          REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+          AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+          INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+          LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+          OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+          PERFORMANCE OF THIS SOFTWARE. -->
+          <div class="spg-start-grid">
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-main" data-spg-start-tab="main">
+              <strong><span data-i18n="start.threadMilling.title">Innvendig gjengefresing</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.threadMilling.description">Velg gjengefres, beregn skjærdata og opprett et CNC-program.</span>
+              <span class="spg-start-card-visual" aria-hidden="true"><img src="../assets/thread-mills/NB08075D21_1.5ISO_AC.webp" alt=""></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-compare" data-spg-start-tab="compare">
+              <strong><span data-i18n="start.compare.title">Sammenlign</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.compare.description">Sammenlign to gjengefreser, bearbeidingstid og kostnad per gjenge.</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="arrow-left-right" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"></path><path d="M4 7h16"></path><path d="m16 21 4-4-4-4"></path><path d="M20 17H4"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-information" data-spg-start-tab="information">
+              <strong><span data-i18n="start.information.title">Informasjon</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.information.description">Slik bruker du SmiProg</span>
+              <span class="spg-start-card-symbol" aria-hidden="true"><svg data-lucide="book-open" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16"></path><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"></path></svg></span>
+            </button>
+
+            <button type="button" class="spg-start-card spg-start-card-button spg-start-card-materialselector" data-spg-start-tab="materialselector">
+              <span class="spg-start-card-materialselector-icon" aria-hidden="true"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><circle cx="21" cy="21" r="12" style="fill:none; stroke:#676d72; stroke-width:3.4; stroke-linecap:round; stroke-linejoin:round;"></circle><path d="M30.2,30.2l10.2,10.2" style="fill:none; stroke:#676d72; stroke-width:4.6; stroke-linecap:round; stroke-linejoin:round;"></path></svg></span>
+              <strong><span data-i18n="start.materialSelector.title">SmiCuts materialvelger</span> <span class="spg-card-arrow">➜</span></strong>
+              <span data-i18n="start.materialSelector.description">Finn riktig SmiCut-kategori ved å skrive inn materialets navn eller betegnelse.</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-material-selector-panel" class="spg-panel spg-material-selector-panel" role="tabpanel" hidden="">
+        <div id="spg-material-selector-widget">
+          <div class="sms-panel">
+            <div class="sms-header"><span>SmiCut Material Selector</span></div>
+            <div class="sms-welcome" id="spg-material-selector-welcome" data-sms-role="welcome">
+              <div class="sms-welcome-title" data-sms-i18n="welcomeTitle" role="heading" aria-level="2">Which material will you machine?</div>
+              <div data-sms-i18n="welcomeDescription">Enter the material designation or name, and we’ll help you find the right material category.</div>
+            </div>
+            <div id="spg-material-selector-messages" data-sms-role="messages" class="sms-messages" role="log" aria-label="Material conversation" aria-live="polite" hidden=""></div>
+            <div class="sms-composer">
+              <label id="spg-material-selector-label" data-sms-role="label" for="spg-material-selector-input"><svg class="sms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"></path></svg> <span data-sms-i18n="enterLabel">Enter your material</span></label>
+              <div class="sms-input-row">
+                <textarea id="spg-material-selector-input" data-sms-role="input" rows="1" maxlength="4000" placeholder="E.g. AISI 1045 or EN 1.4301"></textarea>
+                <button id="spg-material-selector-send" data-sms-role="send" type="button" aria-label="Find material category" disabled="">Find material category</button>
+              </div>
+              <div id="spg-material-selector-status" data-sms-role="status" role="status"></div>
+              <button id="spg-material-selector-retry" data-sms-role="retry" type="button" hidden="" data-sms-i18n="retry">Try again</button>
+            </div>
+            <button id="spg-material-selector-apply" data-sms-role="apply" class="sms-apply-material" type="button" hidden="">Use in SmiProg</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-main-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-layout">
+          <form class="spg-form-stack" id="spg-form">
+            <section class="spg-inputs-card">
+              <div class="spg-field">
+                <label for="spg-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Materiale som skal bearbeides</span></label>
+                <select id="spg-material" class="spg-control"></select>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Gjengeprofil</span></label>
+                  <select id="spg-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Gjengedimensjon</span></label>
+                  <select id="spg-thread-size" class="spg-control"></select>
+                </div>
+              </div>
+
+              <div class="spg-grid-2">
+                <div class="spg-field spg-mobile-compact-field">
+                  <label for="spg-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Gjengediameter (mm)</span></label>
+                  <input id="spg-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+                <div class="spg-field spg-mobile-compact-field">
+                  <label id="spg-pitch-label" for="spg-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Stigning (mm)</span></label>
+                  <input id="spg-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+                <div class="spg-field spg-mobile-compact-field spg-thread-length-field">
+                  <label for="spg-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Gjengelengde (mm)</span></label>
+                  <input id="spg-thread-length" class="spg-control" type="number" min="0" step="0.001" placeholder="Gjengelengde" data-i18n-placeholder="placeholder.enterLength">
+                </div>
+              </div>
+
+              <div id="spg-tool-field" class="spg-field">
+                <label for="spg-tool" class="spg-field-label"><span class="spg-step">7</span><span data-i18n="field.tool">Gjengefres</span></label>
+                <select id="spg-tool" class="spg-control"></select>
+                <div id="spg-tool-metrics" class="spg-tool-metric-grid">
+                  <div id="spg-marked-diameter-field" class="spg-marked-diameter-field">
+                    <div class="spg-label-with-help">
+                      <label for="spg-marked-diameter" class="spg-result-label"><span class="spg-step">8</span><span data-i18n="field.cutterDiameter">Fresediameter (mm)</span></label>
+                    </div>
+                    <div class="spg-marked-diameter-controls">
+                      <input id="spg-marked-diameter" class="spg-control" type="text" inputmode="decimal" aria-describedby="spg-marked-diameter-help">
+                      <button id="spg-reset-diameter" type="button" aria-label="Tilbakestill" data-i18n-aria-label="action.reset" title="Reset">↺</button>
+                      <span class="spg-info">
+                        <button type="button" class="spg-info-button" aria-label="Fresediameter (mm)" data-i18n-aria-label="field.cutterDiameter" aria-expanded="false" aria-controls="spg-marked-diameter-help"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                        <span id="spg-marked-diameter-help" class="spg-info-tip" role="tooltip" data-i18n="tool.markedHelp" hidden="">Angi den lasermerkede diameteren på fresen for å justere CNC-programmet og få gjengen innenfor toleransen.</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="spg-result-row"><span class="spg-result-label" data-i18n="tool.length">Skjærlengde</span><span id="spg-tool-cutting-length" class="spg-result-value">-</span></div>
+                  <div class="spg-result-row"><span class="spg-result-label" data-i18n="tool.flutes">Antall skjær</span><span id="spg-tool-flutes" class="spg-result-value">-</span></div>
+                </div>
+                <div id="spg-custom-tool-fields" class="spg-custom-tool-fields" hidden="">
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-cutter-diameter" class="spg-field-label"><span class="spg-step">8</span><span data-i18n="field.cutterDiameter">Fresediameter (mm)</span></label>
+                    <input id="spg-override-cutter-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-edge-length" class="spg-field-label"><span class="spg-step">9</span><span data-i18n="field.cuttingLength">Skjærlengde (mm)</span></label>
+                    <input id="spg-override-edge-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                  <div class="spg-tool-custom-input">
+                    <label for="spg-override-flutes" class="spg-field-label"><span class="spg-step">10</span><span data-i18n="field.flutes">Antall skjær</span></label>
+                    <input id="spg-override-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                  </div>
+                </div>
+                <div id="spg-tool-summary" class="spg-tool-inline-summary"></div>
+                <a id="spg-tool-link" class="spg-tool-link spg-tool-link-disabled" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">&nbsp;</a>
+              </div>
+
+              <div class="spg-note" role="status" aria-live="polite">
+                <div class="spg-note-title" data-i18n="note.title">Merk:</div>
+                <div id="spg-note-message" class="spg-note-text" data-i18n="note.enterThreadLength">Angi gjengelengden for å velge et passende verktøy.</div>
+              </div>
+            </section>
+          </form>
+
+          <div class="spg-results">
+            <section class="spg-card spg-final-card">
+              <div class="spg-card-head">
+                <div class="spg-section-title" data-i18n="section.cuttingData">Skjærdata</div>
+                <div id="spg-cutting-data-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cutting-data" class="spg-button" data-i18n="button.copy">Kopier</button>
+              </div>
+              <div id="spg-cutting-data" class="spg-final-calculations">
+                <div class="spg-final-summary-frame">
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.cuttingSpeed">Skjærhastighet</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-cutting-speed" class="spg-result-value">-</span>
+                      <input id="spg-override-cutting-speed" class="spg-adjustable-input" type="number" min="0" step="1">
+                      <span id="spg-final-cutting-speed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label" data-i18n="result.feedTooth">Mating per tann</span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-feed" class="spg-result-value">-</span>
+                      <input id="spg-override-feed" class="spg-adjustable-input" type="number" min="0" step="0.001">
+                      <span id="spg-final-feed-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item spg-final-summary-adjustable">
+                    <span class="spg-result-label"><span data-i18n="result.radialPasses">Radielle kutt</span> <span class="spg-label-note" data-i18n="result.max3">(≤ 3)</span></span>
+                    <span class="spg-adjustable-content">
+                      <span id="spg-final-radial-passes" class="spg-result-value">-</span>
+                      <input id="spg-override-radial-passes" class="spg-adjustable-input" type="number" min="1" max="3" step="1">
+                      <span id="spg-final-radial-passes-note" class="spg-recommendation-note"></span>
+                    </span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.axialPasses">Aksielle kutt</span>
+                    <span id="spg-final-axial-passes" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.spindleSpeed">Spindelturtall</span>
+                    <span id="spg-final-spindle-speed" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedThreadDiameter">Mating ved gjengediameteren</span>
+                    <span id="spg-final-feed-thread" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.feedCenter">Mating i fresens senter</span>
+                    <span id="spg-final-feed-center" class="spg-result-value">-</span>
+                  </div>
+                  <div class="spg-final-summary-item">
+                    <span class="spg-result-label" data-i18n="result.timeToMillThread">Tid per gjenge</span>
+                    <span id="spg-final-machining-time" class="spg-result-value">-</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="spg-card spg-cnc-card">
+              <div class="spg-cnc-head">
+                <div class="spg-label-with-help">
+                  <div class="spg-section-title" data-i18n="section.cncProgram">CNC-program</div>
+                  <span class="spg-info">
+                    <button type="button" class="spg-info-button" aria-label="CNC-program" data-i18n-aria-label="section.cncProgram" aria-expanded="false" aria-controls="spg-cnc-disclaimer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                    <span id="spg-cnc-disclaimer" class="spg-info-tip" role="tooltip" data-i18n="cnc.disclaimer" hidden="">Kontroller CNC-programmet i simulering eller med enkeltblokkjøring før bearbeiding. Maskinens tilleggsutstyr og innstillingene i postprosessoren kan kreve justeringer.</span>
+                  </span>
+                </div>
+                <div id="spg-copy-message" class="spg-copy-message spg-copy-message-inline" aria-live="polite"></div>
+                <button type="button" id="spg-copy-cnc" class="spg-button" data-i18n="button.copy">Kopier</button>
+              </div>
+              <div class="spg-cnc-settings spg-grid-2">
+                <div class="spg-field">
+                  <label for="spg-process" class="spg-field-label spg-visually-hidden"><span data-i18n="field.manufacturingProcess">Bearbeidingsmetode</span></label>
+                  <select id="spg-process" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-control-system" class="spg-field-label spg-visually-hidden"><span data-i18n="field.controlSystem">Styringssystem</span></label>
+                  <select id="spg-control-system" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field">
+                  <label for="spg-thread-hand" class="spg-field-label spg-visually-hidden"><span data-i18n="field.threadHand">Gjengeretning</span></label>
+                  <select id="spg-thread-hand" class="spg-control">
+                    <option value="right" data-i18n="option.rightHandThread">Høyregjenge</option>
+                    <option value="left" data-i18n="option.leftHandThread">Venstregjenge</option>
+                  </select>
+                </div>
+
+                <div class="spg-field spg-cnc-safety-field">
+                  <div class="spg-label-with-help">
+                    <label for="spg-safety-distance" class="spg-field-label"><span data-i18n="field.safetyDistance">Sikkerhetsavstand (mm)</span></label>
+                    <span class="spg-info">
+                      <button type="button" class="spg-info-button" aria-label="Sikkerhetsavstand (mm)" data-i18n-aria-label="field.safetyDistance" aria-expanded="false" aria-controls="spg-safety-distance-help"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7h.01"></path></svg></button>
+                      <span id="spg-safety-distance-help" class="spg-info-tip" role="tooltip" data-i18n="help.safetyDistance" hidden="">Aksial sikkerhetsavstand ved innkjøring og tilbaketrekking.</span>
+                    </span>
+                  </div>
+                  <input id="spg-safety-distance" class="spg-control" type="number" min="0" step="0.001" value="2" aria-describedby="spg-safety-distance-help">
+                </div>
+                <div class="spg-field spg-dev-only">
+                  <label for="spg-program-template" data-i18n="field.programTemplate">Fanuc-programmal</label>
+                  <select id="spg-program-template" class="spg-control">
+                    <option value="" data-i18n="option.auto">Auto</option>
+                    <option value="milling-normal-1-pass" data-i18n="option.millingNormal1">Innvendig gjengefresing i fresemaskin – normal (1)</option>
+                    <option value="milling-normal-2-pass" data-i18n="option.millingNormal2">Innvendig gjengefresing i fresemaskin – normal (2)</option>
+                    <option value="milling-normal-3-pass" data-i18n="option.millingNormal3">Innvendig gjengefresing i fresemaskin – normal (3)</option>
+                    <option value="milling-axial-1-pass" data-i18n="option.millingAxial1">Innvendig gjengefresing i fresemaskin – aksial (1)</option>
+                    <option value="milling-axial-2-pass" data-i18n="option.millingAxial2">Innvendig gjengefresing i fresemaskin – aksial (2)</option>
+                    <option value="milling-axial-3-pass" data-i18n="option.millingAxial3">Innvendig gjengefresing i fresemaskin – aksial (3)</option>
+                    <option value="milling-micro-1-pass" data-i18n="option.millingMicro1">Innvendig gjengefresing i fresemaskin – mikro (1)</option>
+                    <option value="milling-micro-2-pass" data-i18n="option.millingMicro2">Innvendig gjengefresing i fresemaskin – mikro (2)</option>
+                    <option value="milling-micro-3-pass" data-i18n="option.millingMicro3">Innvendig gjengefresing i fresemaskin – mikro (3)</option>
+                    <option value="milling-tapered-1-pass" data-i18n="option.millingTapered1">Innvendig gjengefresing i fresemaskin – konisk (1)</option>
+                    <option value="milling-tapered-2-pass" data-i18n="option.millingTapered2">Innvendig gjengefresing i fresemaskin – konisk (2)</option>
+                    <option value="milling-tapered-3-pass" data-i18n="option.millingTapered3">Innvendig gjengefresing i fresemaskin – konisk (3)</option>
+                    <option value="lathe-normal-1-pass" data-i18n="option.latheNormal1">Innvendig gjengefresing i dreiebenk med drevne verktøy – normal (1)</option>
+                    <option value="lathe-normal-2-pass" data-i18n="option.latheNormal2">Innvendig gjengefresing i dreiebenk med drevne verktøy – normal (2)</option>
+                    <option value="lathe-normal-3-pass" data-i18n="option.latheNormal3">Innvendig gjengefresing i dreiebenk med drevne verktøy – normal (3)</option>
+                    <option value="lathe-axial-1-pass" data-i18n="option.latheAxial1">Innvendig gjengefresing i dreiebenk med drevne verktøy – aksial (1)</option>
+                    <option value="lathe-axial-2-pass" data-i18n="option.latheAxial2">Innvendig gjengefresing i dreiebenk med drevne verktøy – aksial (2)</option>
+                    <option value="lathe-axial-3-pass" data-i18n="option.latheAxial3">Innvendig gjengefresing i dreiebenk med drevne verktøy – aksial (3)</option>
+                    <option value="lathe-micro-1-pass" data-i18n="option.latheMicro1">Innvendig gjengefresing i dreiebenk med drevne verktøy – mikro (1)</option>
+                    <option value="lathe-micro-2-pass" data-i18n="option.latheMicro2">Innvendig gjengefresing i dreiebenk med drevne verktøy – mikro (2)</option>
+                    <option value="lathe-micro-3-pass" data-i18n="option.latheMicro3">Innvendig gjengefresing i dreiebenk med drevne verktøy – mikro (3)</option>
+                    <option value="lathe-tapered-1-pass" data-i18n="option.latheTapered1">Innvendig gjengefresing i dreiebenk med drevne verktøy – konisk (1)</option>
+                    <option value="lathe-tapered-2-pass" data-i18n="option.latheTapered2">Innvendig gjengefresing i dreiebenk med drevne verktøy – konisk (2)</option>
+                    <option value="lathe-tapered-3-pass" data-i18n="option.latheTapered3">Innvendig gjengefresing i dreiebenk med drevne verktøy – konisk (3)</option>
+                  </select>
+                </div>
+              </div>
+              <textarea id="spg-cnc-program" class="spg-copy-text" readonly="" spellcheck="false" placeholder="Korriger inndataene for å generere et CNC-program." data-i18n-placeholder="placeholder.cncProgram"></textarea>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="spg-compare-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div id="spg-compare-access" class="spg-compare-access">
+          <p id="spg-compare-price-help" class="spg-help-text" data-i18n="compare.dealerAccess">Skriv inn egne verktøypriser. SmiCuts forhandlere kan be SmiCut om passordet for å se prisene.</p>
+          <div id="spg-compare-lock" class="spg-compare-password-row">
+            <label for="spg-compare-password" data-i18n="compare.password">Passord</label>
+            <input id="spg-compare-password" class="spg-control" type="password" autocomplete="off">
+            <button type="button" id="spg-unlock-compare" class="spg-button" data-i18n="compare.unlockPrices">Lås opp priser</button>
+          </div>
+          <div id="spg-compare-unlock-message" class="spg-help-text" role="status"></div>
+        </div>
+
+        <div id="spg-compare-content" class="spg-compare-content">
+          <div class="spg-compare-workspace">
+            <section class="spg-compare-thread-card">
+              <div class="spg-compare-thread-input-grid">
+                <div class="spg-field spg-compare-thread-material-field">
+                  <label for="spg-compare-material" class="spg-field-label"><span class="spg-step">1</span><span data-i18n="field.material">Materiale som skal bearbeides</span></label>
+                  <select id="spg-compare-material" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-compare-thread-profile-field">
+                  <label for="spg-compare-thread-profile" class="spg-field-label"><span class="spg-step">2</span><span data-i18n="field.threadProfile">Gjengeprofil</span></label>
+                  <select id="spg-compare-thread-profile" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-size-field">
+                  <label for="spg-compare-thread-size" class="spg-field-label"><span class="spg-step">3</span><span data-i18n="field.threadSize">Gjengedimensjon</span></label>
+                  <select id="spg-compare-thread-size" class="spg-control"></select>
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-diameter-field">
+                  <label for="spg-compare-diameter" class="spg-field-label"><span class="spg-step">4</span><span data-i18n="field.threadDiameter">Gjengediameter (mm)</span></label>
+                  <input id="spg-compare-diameter" class="spg-control" type="number" min="0" step="0.001" value="42">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-pitch-field">
+                  <label id="spg-compare-pitch-label" for="spg-compare-pitch" class="spg-field-label"><span class="spg-step">5</span><span class="spg-pitch-label-text" data-i18n="field.pitch">Stigning (mm)</span></label>
+                  <input id="spg-compare-pitch" class="spg-control" type="number" min="0" step="0.001" value="1.5">
+                </div>
+
+                <div class="spg-field spg-mobile-compact-field spg-compare-thread-length-field">
+                  <label for="spg-compare-thread-length" class="spg-field-label"><span class="spg-step">6</span><span data-i18n="field.threadLength">Gjengelengde (mm)</span></label>
+                  <input id="spg-compare-thread-length" class="spg-control" type="number" min="0" step="0.001" value="12">
+                </div>
+
+                <div class="spg-field spg-compare-machine-cost-field">
+                  <label for="spg-machine-cost" class="spg-field-label"><span data-i18n="field.machineCostPerHour">Maskinkostnad per time (€)</span></label>
+                  <input id="spg-machine-cost" class="spg-control" type="number" min="0" step="0.01" value="80">
+                </div>
+              </div>
+            </section>
+
+            <div class="spg-compare-tool-grid">
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-a-card">
+                <div id="spg-compare-tool-a-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-a" data-i18n="field.toolA">Verktøy A</label>
+                  <select id="spg-compare-tool-a" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-a-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-price" data-i18n="field.toolingCost">Verktøykostnad (€)</label>
+                  <input id="spg-compare-tool-a-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-life" data-i18n="field.toolLife">Standtid (minutter)</label>
+                  <input id="spg-compare-tool-a-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-diameter" data-i18n="field.cutterDiameter">Fresediameter (mm)</label>
+                  <input id="spg-compare-tool-a-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-length" data-i18n="field.cuttingLength">Skjærlengde (mm)</label>
+                  <input id="spg-compare-tool-a-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-flutes" data-i18n="field.flutes">Antall skjær</label>
+                  <input id="spg-compare-tool-a-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-speed" data-i18n="field.cuttingSpeed">Skjærhastighet (m/min)</label>
+                  <input id="spg-compare-tool-a-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-feed" data-i18n="field.feedPerTooth">Mating per tann (mm/tann)</label>
+                  <input id="spg-compare-tool-a-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-a-passes" data-i18n="field.radialPassesMax">Radielle kutt (maks. 3)</label>
+                  <input id="spg-compare-tool-a-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+
+              <section class="spg-card spg-compare-tool-card spg-compare-tool-b-card">
+                <div id="spg-compare-tool-b-type" class="spg-compare-tool-type" hidden="">-</div>
+                <div class="spg-compare-tool-select-row">
+                  <label for="spg-compare-tool-b" data-i18n="field.toolB">Verktøy B</label>
+                  <select id="spg-compare-tool-b" class="spg-control"></select>
+                </div>
+                <div id="spg-compare-tool-b-summary" class="spg-compare-tool-summary"></div>
+                <div class="spg-compare-input-grid">
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-price" data-i18n="field.toolingCost">Verktøykostnad (€)</label>
+                  <input id="spg-compare-tool-b-price" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-life" data-i18n="field.toolLife">Standtid (minutter)</label>
+                  <input id="spg-compare-tool-b-life" class="spg-control" type="number" min="0" step="1">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-diameter" data-i18n="field.cutterDiameter">Fresediameter (mm)</label>
+                  <input id="spg-compare-tool-b-diameter" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-length" data-i18n="field.cuttingLength">Skjærlengde (mm)</label>
+                  <input id="spg-compare-tool-b-length" class="spg-control" type="number" min="0" step="0.01" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-flutes" data-i18n="field.flutes">Antall skjær</label>
+                  <input id="spg-compare-tool-b-flutes" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-speed" data-i18n="field.cuttingSpeed">Skjærhastighet (m/min)</label>
+                  <input id="spg-compare-tool-b-speed" class="spg-control" type="number" min="0" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-feed" data-i18n="field.feedPerTooth">Mating per tann (mm/tann)</label>
+                  <input id="spg-compare-tool-b-feed" class="spg-control" type="number" min="0" step="0.001" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                <div class="spg-field">
+                  <label for="spg-compare-tool-b-passes" data-i18n="field.radialPassesMax">Radielle kutt (maks. 3)</label>
+                  <input id="spg-compare-tool-b-passes" class="spg-control" type="number" min="1" max="3" step="1" placeholder="Auto" data-i18n-placeholder="placeholder.auto">
+                </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="spg-compare-note-row">
+            <div class="spg-note spg-compare-note" role="status" aria-live="polite">
+              <div class="spg-note-title" data-i18n="note.title">Merk:</div>
+              <div id="spg-compare-summary" class="spg-note-text"></div>
+            </div>
+            <button id="spg-use-current-setup" type="button" class="spg-button" data-i18n="compare.useCurrent">Bruk gjeldende innstillinger</button>
+          </div>
+
+          <section class="spg-card spg-final-card spg-compare-results-card">
+            <div id="spg-cost-data" class="spg-compare-result-table"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="spg-information-panel" class="spg-panel" role="tabpanel" hidden="">
+        <div class="spg-info-page">
+          <article class="spg-info-card spg-info-overview-card">
+            <div class="spg-info-hero-head">
+              <h2 data-i18n="info.howToUse">Slik bruker du SmiProg</h2>
+            </div>
+            <div class="spg-info-overview-copy">
+              <div class="spg-info-workflow">
+                <div class="spg-info-workflow-step"><span>1</span><div><strong data-i18n="info.step1.title">Angi gjengemålene</strong><p data-i18n="info.step1.body">Velg materiale, gjengeprofil, gjengedimensjon og gjengelengde. Angi sikkerhetsavstanden under CNC-program. For M-gjenger oppgis stigningen i millimeter. De øvrige profilene bruker gjenger per tomme (TPI).</p></div></div>
+                <div class="spg-info-workflow-step"><span>2</span><div><strong data-i18n="info.step2.title">Velg gjengefres</strong><p data-i18n="info.step2.body">Velg en av gjengefresene SmiProg foreslår, eller velg Egne verktøymål og angi målene på fresen din.</p></div></div>
+                <div class="spg-info-workflow-step"><span>3</span><div><strong data-i18n="info.step3.title">Kontroller resultatet</strong><p data-i18n="info.step3.body">Velg bearbeidingsmetode, styringssystem og gjengeretning under CNC-program. Kontroller skjærdata, bearbeidingstid og CNC-program før bearbeiding.</p></div></div>
+              </div>
+              <div class="spg-info-check-strip">
+                <strong data-i18n="info.beforeMachining.title">Før bearbeiding</strong>
+                <p data-i18n="info.beforeMachining.body">Kontroller at gjengefresen passer til valgt gjengediameter, stigning og gjengelengde. Kontroller programmet i simulering eller med enkeltblokkjøring før produksjon.</p>
+              </div>
+            </div>
+
+            <div class="spg-info-overview-figure">
+              <figure class="spg-info-figure">
+                <img src="../assets/info/smiprog-nb.svg" alt="Målskisse for gjengefresing med gjengediameter, stigning, gjengelengde, skjærlengde, sikkerhetsavstand og fresediameter." data-i18n-alt="info.figureAlt">
+                <figcaption>
+                  <span><strong>D</strong><span data-i18n="info.figure.threadDiameter">Gjengediameter</span></span>
+                  <span><strong>P</strong><span data-i18n="info.figure.pitch">Stigning</span></span>
+                  <span><strong>L</strong><span data-i18n="info.figure.threadLength">Gjengelengde</span></span>
+                  <span><strong>S</strong><span data-i18n="info.figure.safetyDistance">Sikkerhetsavstand</span></span>
+                  <span><strong>d</strong><span data-i18n="info.figure.cutterDiameter">Fresediameter</span></span>
+                  <span><strong>l</strong><span data-i18n="info.figure.cuttingLength">Skjærlengde</span></span>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <section class="spg-info-section" aria-label="Bearbeidingsanvisninger" data-i18n-aria-label="aria.machiningNotes">
+            <div class="spg-info-section-head">
+              <h2 data-i18n="info.machiningNotes">Bearbeidingsanvisninger</h2>
+            </div>
+            <div class="spg-info-notes-grid">
+              <article class="spg-info-card">
+                <h2 data-i18n="info.toolCompensation.title">Verktøykompensering</h2>
+                <p data-i18n="info.toolCompensation.body">I SmiProg brukes verktøykompensering bare til mindre justeringer. Det reduserer risikoen for problemer med radiuskompensering ved korte bevegelser. Angi derfor en verdi nær null for diameterkompenseringen i styringssystemets verktøyregister.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.correctThreadDiameter.title">Riktig gjengediameter fra første kutt</h2>
+                <p data-i18n="info.correctThreadDiameter.body">På gjengefreser fra SmiCut er middeldiameteren målt optisk, og den teoretiske ytterdiameteren er lasermerket på verktøyet. Angi det lasermerkede målet som fresediameter i SmiProg for å få riktig gjengediameter fra første kutt. Ved behov kan du finjustere verdien i SmiProg eller verktøykompenseringen i styringssystemet.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.customTools.title">Spesialverktøy</h2>
+                <p data-i18n="info.customTools.body">Hvis fresen ikke finnes på listen, velger du Egne verktøymål og angir fresediameter, skjærlengde og antall skjær. Kontroller CNC-programmet nøye når du bruker egne verktøy eller spesialverktøy.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.threadBurr.title">ThreadBurr</h2>
+                <p data-i18n="info.threadBurr.body">Angi hele skjærlengden til den valgte hardmetallfresen som gjengelengde. Med SmiCuts ThreadBurr freses og avgrades gjengen i samme operasjon.</p>
+                <p><a href="https://smicut.com/en/threadburr-solid-carbide-thread-mills/" target="_blank" rel="noopener" data-i18n="info.threadBurr.link" data-i18n-href="info.threadBurr.url">ThreadBurr – gjengefreser i solid hardmetall fra SmiCut (engelsk)</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.oneTwoRows.title">Verktøy med én eller to tenner i aksial retning</h2>
+                <p data-i18n="info.oneTwoRows.body">Når du velger en standardfres fra SmiCut av typen NM med én eller to tenner i aksial retning, lager SmiProg automatisk en spiralbevegelse til gjengen er ferdig. For å bruke samme syklus med et annet egnet verktøy angir du stigningen som skjærlengde under Egne verktøymål. Kontroller at verktøyet er egnet, og verifiser CNC-programmet før bearbeiding.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.flankInfeed.title">Flankemating</h2>
+                <p data-i18n="info.flankInfeed.body">SmiProg bruker flankemating ved flere radielle kutt. Det reduserer vibrasjoner og gir mer stabil bearbeiding.</p>
+                <p><a href="https://smicut.com/en/vibration-free-thread-milling-improving-productivity-and-economy/" target="_blank" rel="noopener" data-i18n="info.flankInfeed.link" data-i18n-href="info.flankInfeed.url">Vibrasjonsfri gjengefresing for bedre produktivitet og økonomi (engelsk)</a></p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.shortCuttingLength.title">Verktøy med skaftreduksjon</h2>
+                <p data-i18n="info.shortCuttingLength.body">Når fresens skjærlengde er kortere enn gjengelengden, deler SmiProg bearbeidingen opp i flere aksielle kutt dersom verktøytypen tillater det.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.inserts.title">Gjengefreser med vendeskjær</h2>
+                <p data-i18n="info.inserts.body">Velg Egne verktøymål og angi fresekroppens skjærdiameter, vendeskjærets skjærlengde og antall skjær. Ved behov deles bearbeidingen opp i flere aksielle kutt. Kontroller CNC-programmet før bearbeiding.</p>
+              </article>
+
+              <article class="spg-info-card">
+                <h2 data-i18n="info.taperedThreads.title">Koniske gjenger</h2>
+                <p data-i18n="info.taperedThreads.body">For koniske gjengefreser angis skjærdiameteren ved den siste hele gjengetannen nærmest skaftet. Gjengediameteren i SmiProg skal derfor tilsvare posisjonen der denne delen av verktøyet går i inngrep.</p>
+              </article>
+
+              <article class="spg-info-warning" aria-label="Advarsel" data-i18n-aria-label="aria.warning">
+                <div class="spg-info-kicker" data-i18n="info.warning.title">Advarsel</div>
+                <p data-i18n="info.warning.body">Skjærdataene i SmiProg er anbefalte startverdier. Arbeidsmateriale, maskinstabilitet, oppspenning, verktøyoppsett, kjøling og sponavgang kan kreve justeringer. SmiCut tar ikke ansvar for skader som oppstår ved bruk av programmets CNC-kode eller anbefalte skjærdata.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../i18n/en.js?v=20261110-1"></script>
+  <script src="../js/i18n.js?v=20261110-1"></script>
+  <script src="../data/smiprog-data.js?v=20261110-1"></script>
+  <script src="../data/tool-web-links.js?v=20261110-1"></script>
+  <script src="../js/core.js?v=20261110-1"></script>
+  <script src="../js/material-selector.js?v=20261005-1"></script>
+  <script src="../js/app.js?v=20261110-8"></script>
+
+
+</body></html>

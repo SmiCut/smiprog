@@ -12,10 +12,17 @@ native-speaker review; automated tests cannot establish linguistic quality.
 
 ## Build and review
 
-`apps/web/i18n/translations.csv` is the maintained source, with 362 keys per
+`apps/web/i18n/translations.csv` is the maintained source, with 377 keys per
 language. Keep the same key and named placeholders in every column. Do not edit
 generated dictionaries or HTML files by hand. Raw internal handover notes and
 historical spreadsheets are not needed in this public repository.
+
+The Norwegian Bokmål pilot (`nb`) uses the Norwegian CNC and INFO columns in
+the original SmiProg workbook for machining terminology. Its web controls,
+comparison and print text are maintained in the web CSV. The 16-language iOS
+workbook has no Norwegian column. Its importer preserves the web's Norwegian
+text when refreshing the shared languages. The two Norwegian information links
+open the English articles and are labelled accordingly.
 
 1. Run `npm run build:languages` after changing translations.
 2. Open `apps/web/languages/index.html` for local review with shared resources.

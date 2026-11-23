@@ -16,7 +16,7 @@ function runtime(locale) {
   return window.SmiProgI18n;
 }
 
-test("all 16 dictionaries have complete matching keys and named placeholders", () => {
+test("all dictionaries have complete matching keys and named placeholders", () => {
   const keys = Object.keys(dictionaries.en).sort();
   for (const locale of locales) {
     assert.deepEqual(Object.keys(dictionaries[locale]).sort(), keys, locale);
@@ -50,7 +50,9 @@ test("regional and Chinese variants resolve without losing backend market codes"
     ["zh-Hans", "zh", "zh"], ["zh-CN", "zh", "zh"], ["zh-Hant-TW", "zh-tw", "zh-tw"],
     ["zh-TW", "zh-tw", "zh-tw"], ["zh_HK", "zh-tw", "zh-tw"],
     ["en-ZA", "en", "en-za"], ["fr-BE", "fr", "fr-be"], ["es-GL", "es", "es-gl"],
-    ["nl-BE", "nl", "nl-be"], ["sv_SE", "sv", "sv-se"], ["xx", "en", "xx"]
+    ["nl-BE", "nl", "nl-be"], ["sv_SE", "sv", "sv-se"], ["nb_NO", "nb", "nb-no"], ["cs_CZ", "cs", "cs-cz"], ["et_EE", "et", "et-ee"], ["eu_ES", "eu", "eu-es"],
+    ["pt_PT", "pt-pt", "pt-pt"], ["pt", "pt-pt", "pt"], ["ro_RO", "ro", "ro-ro"],
+    ["fi_FI", "fi", "fi-fi"], ["no_NO", "nb", "no-no"], ["xx", "en", "xx"]
   ]) {
     const i18n = runtime(locale);
     assert.equal(i18n.getLocaleKey(), key);

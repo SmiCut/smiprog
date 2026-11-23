@@ -1,6 +1,6 @@
 /*
  * Builds SmiProg locale JSON files from i18n/translations.csv.
- * The CSV is the master for all 16 supported languages.
+ * The CSV is the master for all supported languages.
  * Copyright (c) 2026 SmiCut AB. Licensed under the MIT License; see LICENSE.
  */
 

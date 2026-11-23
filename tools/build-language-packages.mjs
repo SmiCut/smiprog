@@ -9,7 +9,7 @@ import { zipSync } from 'fflate';
 import { parse, parseFragment, serialize } from 'parse5';
 import { createAppFiles, repositoryRoot } from './build-app-files.mjs';
 
-export const locales = ['en', 'sv', 'da', 'de', 'es', 'fr', 'hu', 'id', 'it', 'ja', 'ko', 'nl', 'pl', 'ru', 'zh', 'zh-tw'];
+export const locales = ['en', 'sv', 'da', 'de', 'es', 'fr', 'hu', 'id', 'it', 'ja', 'ko', 'nl', 'pl', 'ru', 'zh', 'zh-tw', 'nb', 'cs', 'et', 'eu', 'pt-pt', 'ro', 'fi'];
 export const webRoot = path.join(repositoryRoot, 'apps/web');
 export function walk(node, visit) {
   visit(node);
@@ -107,7 +107,7 @@ export async function buildLanguagePackages() {
       [`smiprog-${locale}/${name}`, [new Uint8Array(bytes), { mtime: new Date('2026-01-01T00:00:00Z') }]]));
     await fs.writeFile(path.join(output, `smiprog-${locale}.zip`), zipSync(entries, { level: 9 }));
   }
-  const names = ['English','Svenska','Dansk','Deutsch','Español','Français','Magyar','Bahasa Indonesia','Italiano','日本語','한국어','Nederlands','Polski','Русский','简体中文','繁體中文（台灣）'];
+  const names = ['English','Svenska','Dansk','Deutsch','Español','Français','Magyar','Bahasa Indonesia','Italiano','日本語','한국어','Nederlands','Polski','Русский','简体中文','繁體中文（台灣）','Norsk bokmål','Čeština','Eesti','Euskara','Português (Portugal)','Română','Suomi'];
   await fs.writeFile(path.join(reviewRoot, 'index.html'), `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SmiProg</title><style>body{font:16px system-ui;margin:32px auto;padding:0 20px;max-width:680px}a{display:block;padding:10px;color:#704b3a}ul{list-style:none;padding:0}</style></head><body><h1>SmiProg</h1><nav><ul>${locales.map((locale,i)=>`<li><a lang="${locale}" href="${locale}.html">${names[i]}</a></li>`).join('')}</ul></nav></body></html>\n`);
   console.log(JSON.stringify({ output, locales: packages.map(p => p.locale), archives: packages.length }, null, 2));
 }

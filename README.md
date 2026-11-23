@@ -49,8 +49,15 @@ ZIP extraction, image folders or GitHub account is needed.
 | Русский | [Open SmiProg](https://smicut.com/ru/smiprog-online-%d0%bf%d1%80%d0%be%d0%b3%d1%80%d0%b0%d0%bc%d0%bc%d0%b0-%d0%b4%d0%bb%d1%8f-%d1%84%d1%80%d0%b5%d0%b7%d0%b5%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d1%8f-%d1%80%d0%b5%d0%b7%d1%8c%d0%b1%d1%8b/) | [Download smiprog-ru.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-ru.html) |
 | 简体中文 | [Open SmiProg](https://smicut.com/zh/smiprog-online-%e8%9e%ba%e7%ba%b9%e9%93%a3%e5%89%8a%e8%bd%af%e4%bb%b6/) | [Download smiprog-zh.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh.html) |
 | 繁體中文（台灣） | [Open SmiProg](https://smicut.com/zh-tw/smiprog-online-%e8%9e%ba%e7%b4%8b%e9%8a%91%e5%89%8a%e8%bb%9f%e9%ab%94/) | [Download smiprog-zh-tw.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-zh-tw.html) |
+| Norsk bokmål | [Open SmiProg](https://smicut.com/nb/smiprog-online-programvare-for-gjengefresing/) | [Download smiprog-nb.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-nb.html) |
+| Čeština | [Open SmiProg](https://smicut.com/cs/smiprog-online-software-pro-frezovani-zavitu/) | [Download smiprog-cs.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-cs.html) |
+| Eesti | [Open SmiProg](https://smicut.com/et/smiprog-online-keermefreesimise-tarkvara/) | [Download smiprog-et.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-et.html) |
+| Euskara | [Open SmiProg](https://smicut.com/eu/smiprog-online-hariak-fresatzeko-softwarea/) | [Download smiprog-eu.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-eu.html) |
+| Português (Portugal) | [Open SmiProg](https://smicut.com/pt/smiprog-online-software-de-fresagem-de-roscas/) | [Download smiprog-pt-pt.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-pt-pt.html) |
+| Română | [Open SmiProg](https://smicut.com/ro/smiprog-online-software-pentru-frezarea-filetelor/) | [Download smiprog-ro.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-ro.html) |
+| Suomi | [Open SmiProg](https://smicut.com/fi/smiprog-online-kierteenjyrsintaohjelmisto/) | [Download smiprog-fi.html](https://github.com/SmiCut/smiprog/releases/latest/download/smiprog-fi.html) |
 
-Use **Print** next to Cutting data, CNC Program or Compare results to preview the report, print it or save it as PDF. Opening Print from CNC Program includes the program by default. All 16 editions include localized reports. The [iOS integration kit](ios-print/README.md) uses these same offline editions.
+Use **Print** next to Cutting data, CNC Program or Compare results to preview the report, print it or save it as PDF. Opening Print from CNC Program includes the program by default. All 23 editions include localized reports. The [iOS integration kit](ios-print/README.md) uses these same offline editions.
 
 Version 1.2.4 reviews the complete information tab in all 16 languages against
 the original SmiProg terminology and the current web controls. It clarifies tool
@@ -115,7 +122,7 @@ already embedded in the HTML and do not require visible branding in your interfa
 - **Tapping, thread turning, grooving, milling and drilling:** see [SmiCalc](https://github.com/SmiCut/smicalc).
 
 For developers: the editable text source is `apps/web/i18n/translations.csv`.
-Run `npm run build:languages` to generate all 16 complete HTML editions in
+Run `npm run build:languages` to generate all 23 complete HTML editions in
 `dist/downloads/`. Local source previews are in `apps/web/languages/index.html`.
 [Set up a development copy](docs/development.md#developer-setup-and-editable-prices).
 

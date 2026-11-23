@@ -31,6 +31,8 @@
     if (dictionaries[normalized]) return normalized;
     const baseLocale = normalized.split("-")[0];
     if (dictionaries[baseLocale]) return baseLocale;
+    if (baseLocale === "pt" && dictionaries["pt-pt"]) return "pt-pt";
+    if (baseLocale === "no" && dictionaries.nb) return "nb";
     return DEFAULT_LOCALE;
   }
 

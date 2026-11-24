@@ -1,6 +1,6 @@
 {
   "name": "smiprog",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "private": true,
   "description": "SmiCut thread-milling calculator and CNC programming widget.",
   "scripts": {

@@ -22,7 +22,8 @@ Portuguese, Romanian and Finnish. The original SmiProg Excel workbook supplies
 machining terminology. App controls, comparison and print text use the same
 keys as the other editions. The earlier 16-language iOS handover has no
 columns for these seven languages. The importer preserves their web text when
-refreshing that handover. Article links open the labelled English fallback.
+refreshing that handover. Basque article links open the Spanish pages for Spain.
+The other six editions link to the English articles.
 The Portuguese offline file uses `pt-pt` and its WordPress page uses `/pt/`.
 
 1. Run `npm run build:languages` after changing translations.
